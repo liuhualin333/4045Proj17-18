@@ -1,0 +1,4 @@
+#
+CREATE TABLE posts_training AS SELECT * FROM posts ORDER BY RANDOM() LIMIT 50;
+CREATE TABLE answers_training AS SELECT * FROM answers ORDER BY RANDOM() LIMIT 50;
+#
