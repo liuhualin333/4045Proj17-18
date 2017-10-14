@@ -1,0 +1,714 @@
+Id|Title|Body
+509211|Explain slice notation|"I need a good explanation (references are a plus) on Python's slice notation. 
+
+To me, this notation needs a bit of picking up. 
+
+It looks extremely powerful, but I haven't quite got my head around it.
+"
+12836128|Convert list to tuple in Python|"I'm trying to convert a list to a tuple. 
+
+When I google it, I find a lot of answers similar to:
+
+<code><<l>> <<=>> [<<4>>,<<5>>,<<6>>]
+<<tuple(>><<l>>)
+</code>
+
+But if I do that I get this error message:
+
+
+  TypeError: 'tuple' object is not callable
+
+
+How can I fix this problem?
+"
+6996603|How to delete a file or folder?|"How do I delete a file or folder in Python?
+"
+2582138|finding and replacing elements in a list (python)|"I have to search through a list and replace all occurrences of one element with another. So far my attempts in code are getting me nowhere, what is the best way to do this?
+
+For example, suppose my list has the following integers
+
+<code><<&gt>>;<<&gt>>;<<&gt>>; <<a>> <<=>> [<<1>>,<<2>>,<<3>>,<<4>>,<<5>>,<<1>>,<<2>>,<<3>>,<<4>>,<<5>>,<<1>>]
+</code>
+
+and I need to replace all occurrences of the number 1 with the value 10 so the output I need is 
+
+<code><<&gt>>;<<&gt>>;<<&gt>>; <<a>> <<=>> [<<10>>, <<2>>, <<3>>, <<4>>, <<5>>, <<10>>, <<2>>, <<3>>, <<4>>, <<5>>, <<10>>]
+</code>
+
+Thus my goal is to replace all instances of the number 1 with the number 10.
+"
+4289331|Python: Extract numbers from a string|"I would extract all the numbers contained in a string. Which is the better suited for the purpose, regular expressions or the <code><<isdigit(>>)</code> method?
+
+Example:
+
+<code><<line>> <<=>> ""<<hello>> <<12>> <<hi>> <<89>>""
+</code>
+
+Result:
+
+<code>[<<12>>, <<89>>]
+</code>
+"
+2504411|Proper indentation for Python multiline strings|"What is the proper indentation for Python multiline strings within a function?
+
+<code>    <<def>> <<method(>>)<<:>>
+        <<string>> <<=>> """"""<<line>> <<one>>
+<<line>> <<two>>
+<<line>> <<three>>""""""
+</code>
+
+or
+
+<code>    <<def>> <<method(>>)<<:>>
+        <<string>> <<=>> """"""<<line>> <<one>>
+        <<line>> <<two>>
+        <<line>> <<three>>""""""
+</code>
+
+or something else?
+
+It looks kind of weird to have the string hanging outside the function in the first example.
+"
+27341064|How do I fix 'ImportError: cannot import name IncompleteRead'?|"When I try to install anything with <code><<pip>></code> or <code><<pip3>></code>, I get:
+
+<code>$ <<sudo>> <<pip3>> <<install>> <<python3>>-<<tk>>
+<<Traceback>> (<<most>> <<recent>> <<call>> <<last>>)<<:>>
+  <<File>> ""<</>><<usr>><</>><<bin>><</>><<pip3>>"", <<line>> <<9>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<load_entry_point(>>'<<pip==1.5.6>>', '<<console_scripts>>', '<<pip3>>')()
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pkg_resources>>.<<py>>"", <<line>> <<356>>, <<in>> <<load_entry_point>>
+    <<return>> <<get_distribution(>><<dist>>).<<load_entry_point(>><<group>>, <<name>>)
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pkg_resources>>.<<py>>"", <<line>> <<2476>>, <<in>> <<load_entry_point>>
+    <<return>> <<ep>>.<<load(>>)
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pkg_resources>>.<<py>>"", <<line>> <<2190>>, <<in>> <<load>>
+    ['<<__name__>>'])
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pip>><</>><<__init__>>.<<py>>"", <<line>> <<61>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<pip>>.<<vcs>> <<import>> <<git>>, <<mercurial>>, <<subversion>>, <<bazaar>>  # <<noqa>>
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pip>><</>><<vcs>><</>><<mercurial>>.<<py>>"", <<line>> <<9>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<pip>>.<<download>> <<import>> <<path_to_url>>
+  <<File>> ""<</>><<usr>><</>><<lib>><</>><<python3>><</>><<dist>>-<<packages>><</>><<pip>><</>><<download>>.<<py>>"", <<line>> <<25>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<requests>>.<<compat>> <<import>> <<IncompleteRead>>
+<<ImportError>><<:>> <<cannot>> <<import>> <<name>> '<<IncompleteRead>>'
+</code>
+
+I have a Ubuntu 14.10 system.
+
+How can I fix this problem?
+"
+4978787|How to split a string into array of characters with Python?|"I've tried to look around the web for answers to splitting a string into an array of characters but I can't seem to find a simple method
+
+<code><<str>>.<<split(>><<//>>)</code> does not seem to work like Ruby does. Is there a simple way of doing this without looping?
+"
+713847|Recommendations of Python REST (web services) framework?|"Is there a list somewhere of recommendations of different Python-based REST frameworks for use on the serverside to write your own RESTful APIs? Preferably with pros and cons.
+
+Please feel free to add recommendations here. :)
+"
+454854|No module named MySQLdb|"I am using Python version 2.5.4 and install MySQL version 5.0 and Django. Django is working fine with Python, but not MySQL. I am using it in Windows Vista.
+"
+123198|How do I copy a file in python?|"How do I copy a file in Python? I couldn't find anything under <code><<os>></code>.
+"
+4934806|How can I find script's directory with Python?|"Consider the following Python code:
+
+<code><<import>> <<os>>
+<<print>> <<os>>.<<getcwd(>>)
+</code>
+
+I use <code><<os>>.<<getcwd(>>)</code> to get the script file's directory location. When I run the script from the command line it gives me the correct path whereas when I run it from a script run by code in a Django view it prints <code><</>></code>.
+
+How can I get the path to the script from within a script run by a Django view?
+
+UPDATE:
+Summing up the answers thus far - <code><<os>>.<<getcwd(>>)</code> and <code><<os>>.<<path>>.<<abspath(>>)</code> both give the current working directory which may or may not be the directory where the script resides. In my web host setup <code><<<>><<code>><<>>><<__file__>></code></code> gives only the filename without the path.
+
+Isn't there any way in Python to (always) be able to receive the path in which the script resides?
+"
+12309269|How do I write JSON data to a file?|"I have JSON data stored in the variable <code><<data>></code>.
+
+I want to write this to a text file for testing so I don't have to grab the data from the server each time.
+
+Currently, I am trying this:
+
+<code><<obj>> <<=>> <<open(>>'<<data>>.<<txt>>', '<<wb>>')
+<<obj>>.<<write(>><<data>>)
+<<obj>>.<<close>>
+</code>
+
+And am receiving the error: 
+
+<code><<TypeError>><<:>> <<must>> <<be>> <<string>> <<or>> <<buffer>>, <<not>> <<dict>></code>
+
+How to fix this?
+"
+1747817|Create a dictionary with list comprehension in Python|"I like the Python list comprehension syntax.
+
+Can it be used to create dictionaries too? For example, by iterating over pairs of keys and values:
+
+<code><<mydict>> <<=>> <<{>>(<<k>>,<<v>>) <<for>> (<<k>>,<<v>>) <<in>> <<blah>> <<blah>> <<blah>><<}>>  # <<doesn't>> <<work>>
+</code>
+"
+865115|How do I correctly clean up a Python object?|"<code><<class>> <<Package>><<:>>
+    <<def>> <<__init__(>><<self>>)<<:>>
+        <<self>>.<<files>> <<=>> []
+
+    # <<...>>
+
+    <<def>> <<__del__(>><<self>>)<<:>>
+        <<for>> <<file>> <<in>> <<self>>.<<files>><<:>>
+            <<os>>.<<unlink(>><<file>>)
+</code>
+
+<code><<__del__(>><<self>>)</code> above fails with an AttributeError exception.  I understand Python doesn't guarantee the existence of ""global variables"" (member data in this context?) when <code><<__del__(>>)</code> is invoked.  If that is the case and this is the reason for the exception, how do I make sure the object destructs properly?
+"
+9252543|ImportError: Cannot import name X|"I have four different files named: main, vector, entity, and physics. I will not post all the code, mostly just the imports, because I think that's where the error is. But if you want, I can post more.
+
+Main:
+
+<code><<import>> <<time>>
+<<from>> <<entity>> <<import>> <<Ent>>
+<<from>> <<vector>> <<import>> <<Vect>>
+#<<the>> <<rest>> <<just>> <<creates>> <<an>> <<entity>> <<and>> <<prints>> <<the>> <<result>> <<of>> <<movement>>
+</code>
+
+Entity:
+
+<code><<from>> <<vector>> <<import>> <<Vect>>
+<<from>> <<physics>> <<import>> <<Physics>>
+<<class>> <<Ent>><<:>>
+    #<<holds>> <<vector>> <<information>> <<and>> <<id>>
+<<def>> <<tick(>><<self>>, <<dt>>)<<:>>
+    #<<this>> <<is>> <<where>> <<physics>> <<changes>> <<the>> <<velocity>> <<and>> <<position>> <<vectors>>
+</code>
+
+Vector:
+
+<code><<from>> <<math>> <<import>> <<*>>
+<<class>> <<Vect>><<:>>
+    #<<holds>> <<i>>, <<j>>, <<k>>, <<and>> <<does>> <<vector>> <<math>>
+</code>
+
+Physics:
+
+<code><<from>> <<entity>> <<import>> <<Ent>>
+<<class>> <<Physics>><<:>>
+    #<<physics>> <<class>> <<gets>> <<an>> <<entity>> <<and>> <<does>> <<physics>> <<calculations>> <<on>> <<it>>.
+</code>
+
+I then run from main.py and I get the following error:
+
+<code><<Traceback>> (<<most>> <<recent>> <<call>> <<last>>)<<:>>
+<<File>> ""<<main>>.<<py>>"", <<line>> <<2>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<entity>> <<import>> <<Ent>>
+<<File>> ""...<</>><<entity>>.<<py>>"", <<line>> <<5>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<physics>> <<import>> <<Physics>>
+<<File>> ""...<</>><<physics>>.<<py>>"", <<line>> <<2>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+    <<from>> <<entity>> <<import>> <<Ent>>
+<<ImportError>><<:>> <<cannot>> <<import>> <<name>> <<Ent>>
+</code>
+
+I am very new to python, but have worked with C++ for a long time. I am guessing that the cause is from importing entity twice, once in main, and later in physics, but I don't know a workaround. Anyone help?
+"
+11178061|Print list without brackets in a single row|"I have a list in Python
+e.g.
+
+<code><<names>> <<=>> [""<<Sam>>"", ""<<Peter>>"", ""<<James>>"", ""<<Julian>>"", ""<<Ann>>""]
+</code>
+
+I want to print the array in a single line without the normal "" []
+
+<code><<names>> <<=>> [""<<Sam>>"", ""<<Peter>>"", ""<<James>>"", ""<<Julian>>"", ""<<Ann>>""]
+<<print>> (<<names>>)
+</code>
+
+Will give the output as;
+
+<code>[""<<Sam>>"", ""<<Peter>>"", ""<<James>>"", ""<<Julian>>"", ""<<Ann>>""]
+</code>
+
+That is not the format I want instead I want it to be like this;
+
+<code><<Sam>>, <<Peter>>, <<James>>, <<Julian>>, <<Ann>>
+</code>
+
+Note: It must be in a single row.
+"
+7696924|Way to create multiline comments in Python?|"I have recently started studying Python, but I couldn't find how to implement multi-line comments. Most languages have block comment symbols like 
+
+<code><</>><<*>> 
+
+<<*>><</>>
+</code>
+
+I tried this in Python, but it throws an error, so this probably is not the correct way. Does Python actually have a multiline comment feature?
+"
+954834|How do I use raw_input in Python 3|"<code><<import>> <<sys>>
+<<print>> (<<sys>>.<<platform>>)
+<<print>> (<<2>> <<**>> <<100>>)
+<<raw_input(>> )
+</code>
+
+I am using Python 3.1 and can't get the raw_input to ""freeze"" the dos pop-up. The book I'm reading is for 2.5 and I'm using 3.1
+
+What should I do to fix this?
+"
+4142151|How to import the class within the same directory or sub directory?|"I have a directory that stores all the .py files.
+
+<code><<bin>><</>>
+   <<main>>.<<py>>
+   <<user>>.<<py>> # <<where>> <<class>> <<User>> <<resides>>
+   <<dir>>.<<py>> # <<where>> <<class>> <<Dir>> <<resides>>
+</code>
+
+I want to use classes from user.py and dir.py in main.py.
+How can I import these Python classes into main.py?
+Furthermore, how can I import class <code><<User>></code> if user.py is in a sub directory?
+
+<code><<bin>><</>>
+    <<dir>>.<<py>>
+    <<main>>.<<py>>
+    <<usr>><</>>
+        <<user>>.<<py>>
+</code>
+"
+1934675|How to execute Python scripts in Windows?|"I have a simple script blah.py (using Python 2):
+
+<code><<import>> <<sys>>
+<<print>> <<sys>>.<<argv>>[<<1>>]
+</code>
+
+If I execute my script by:
+
+<code><<python>> <<c>><<:>><</>>....<</>><<blah>>.<<py>> <<argument>>
+</code>
+
+It prints argument but if I execute script by:
+
+<code><<blah>>.<<py>> <<argument>>
+</code>
+
+error occurs:
+
+
+  IndexError...
+
+
+So arguments do not pass to script.
+
+python.exe in PATH. Folder with blah.py also in PATH.
+python.exe is default program to execute *.py files.
+
+What is the problem?
+"
+273192|How can I create a directory if it does not exist?|"What is the most elegant way to check if the directory a file is going to be written to exists, and if not, create the directory using Python? Here is what I tried:
+
+<code><<import>> <<os>>
+
+<<file_path>> <<=>> ""<</>><<my>><</>><<directory>><</>><<filename>>.<<txt>>""
+<<directory>> <<=>> <<os>>.<<path>>.<<dirname(>><<file_path>>)
+
+<<try>><<:>>
+    <<os>>.<<stat(>><<directory>>)
+<<except>><<:>>
+    <<os>>.<<mkdir(>><<directory>>)       
+
+<<f>> <<=>> <<file(>><<filename>>)
+</code>
+
+Somehow, I missed <code><<os>>.<<path>>.<<exists>></code> (thanks kanja, Blair, and Douglas). This is what I have now:
+
+<code><<def>> <<ensure_dir(>><<file_path>>)<<:>>
+    <<directory>> <<=>> <<os>>.<<path>>.<<dirname(>><<file_path>>)
+    <<if>> <<not>> <<os>>.<<path>>.<<exists(>><<directory>>)<<:>>
+        <<os>>.<<makedirs(>><<directory>>)
+</code>
+
+Is there a flag for ""open"", that makes this happen automatically?
+"
+15769246|Pythonic way to print list items|"I would like to know if there is a better way to print all objects in a Python list than this :
+
+<code><<myList>> <<=>> [<<Person(>>""<<Foo>>""), <<Person(>>""<<Bar>>"")]
+<<print(>>""\<<n>>"".<<join(>><<map(>><<str>>, <<myList>>)))
+<<Foo>>
+<<Bar>>
+</code>
+
+I read this way is not really good :
+
+<code><<myList>> <<=>> [<<Person(>>""<<Foo>>""), <<Person(>>""<<Bar>>"")]
+<<for>> <<p>> <<in>> <<myList>><<:>>
+    <<print(>><<p>>)
+</code>
+
+Isn't there something like :
+
+<code><<print(>><<p>>) <<for>> <<p>> <<in>> <<myList>>
+</code>
+
+If not, my question is... why ? If we can do this kind of stuff with comprehensive lists, why not as a simple statement outside a list ?
+"
+627435|How to remove an element from a list by index in Python?|"How to remove an element from a list by index in Python?
+
+I found the <code><<list>>.<<remove>></code> method, but say I want to remove the last element, how do I do this? It seems like the default remove searches the list, but I don't want any search to be performed.
+"
+1483429|How to print an error in Python?|"<code><<try>><<:>>
+    <<something>> <<here>>
+<<except>><<:>>
+    <<print>> '<<the>> <<whatever>> <<error>> <<occurred>>.'
+</code>
+
+How can I print the error in my <code><<except>><<:>></code> block?
+"
+9733638|Post JSON using Python Requests|"I need to POST a JSON from a client to a server. I'm using Python 2.7.1 and simplejson. The client is using Requests. The server is CherryPy. I can GET a hard-coded JSON from the server (code not shown), but when I try to POST a JSON to the server, I get ""400 Bad Request"".
+
+Here is my client code:
+
+<code><<data>> <<=>> <<{>>'<<sender>>'<<:>>   '<<Alice>>',
+    '<<receiver>>'<<:>> '<<Bob>>',
+    '<<message>>'<<:>>  '<<We>> <<did>> <<it!>>'<<}>>
+<<data_json>> <<=>> <<simplejson>>.<<dumps(>><<data>>)
+<<payload>> <<=>> <<{>>'<<json_payload>>'<<:>> <<data_json>><<}>>
+<<r>> <<=>> <<requests>>.<<post(>>""<<http>><<:>><<//>><<localhost>><<:>><<8080>>"", <<data>><<=>><<payload>>)
+</code>
+
+Here is the server code.
+
+<code><<class>> <<Root(>><<object>>)<<:>>
+
+    <<def>> <<__init__(>><<self>>, <<content>>)<<:>>
+        <<self>>.<<content>> <<=>> <<content>>
+        <<print>> <<self>>.<<content>>  # <<this>> <<works>>
+
+    <<exposed>> <<=>> <<True>>
+
+    <<def>> <<GET(>><<self>>)<<:>>
+        <<cherrypy>>.<<response>>.<<headers>>['<<Content-Type>>'] <<=>> '<<application>>/<<json>>'
+        <<return>> <<simplejson>>.<<dumps(>><<self>>.<<content>>)
+
+    <<def>> <<POST(>><<self>>)<<:>>
+        <<self>>.<<content>> <<=>> <<simplejson>>.<<loads(>><<cherrypy>>.<<request>>.<<body>>.<<read(>>))
+</code>
+
+Any ideas?
+"
+2915471|Install a Python package into a different directory using pip?|"I know the obvious answer is to use virtualenv and virtualenvwrapper, but for various reasons I can't/don't want to do that.
+
+So how do I modify the command
+
+<code><<pip>> <<install>> <<package_name>>
+</code>
+
+to make <code><<pip>></code> install the package somewhere other than the default <code><<site>>-<<packages>></code>?
+"
+960733|Python creating a dictionary of lists|"I want to create a dictionary whose values are lists.  For example: 
+
+<code><<{>>
+  <<1>><<:>> ['<<1>>'],
+  <<2>><<:>> ['<<1>>','<<2>>'],
+  <<3>><<:>> ['<<2>>']
+<<}>>
+</code>
+
+If I do:
+
+<code><<d>> <<=>> <<dict(>>)
+<<a>> <<=>> ['<<1>>', '<<2>>']
+<<for>> <<i>> <<in>> <<a>><<:>>
+    <<for>> <<j>> <<in>> <<range(>><<int(>><<i>>), <<int(>><<i>>) + <<2>>)<<:>> 
+        <<d>>[<<j>>].<<append(>><<i>>)
+</code>
+
+I get a KeyError, because d[...] isn't a list.  In this case, I can add the following code after the assignment of a to initialize the dictionary. 
+
+<code><<for>> <<x>> <<in>> <<range(>><<1>>, <<4>>)<<:>>
+    <<d>>[<<x>>] <<=>> <<list(>>)
+</code>
+
+Is there a better way to do this?  Lets say I don't know the keys I am going to need until I am in the second <code><<for>></code> loop.  For example:
+
+<code><<class>> <<relation>><<:>>
+    <<scope_list>> <<=>> <<list(>>)
+...
+<<d>> <<=>> <<dict(>>)
+<<for>> <<relation>> <<in>> <<relation_list>><<:>>
+    <<for>> <<scope_item>> <<in>> <<relation>>.<<scope_list>><<:>>
+        <<d>>[<<scope_item>>].<<append(>><<relation>>)
+</code>
+
+An alternative would then be replacing 
+
+<code><<d>>[<<scope_item>>].<<append(>><<relation>>)
+</code>
+
+with 
+
+<code><<if>> <<d>>.<<has_key(>><<scope_item>>)<<:>>
+    <<d>>[<<scope_item>>].<<append(>><<relation>>)
+<<else>><<:>>
+    <<d>>[<<scope_item>>] <<=>> [<<relation>>,]
+</code>
+
+What is the best way to handle this?  Ideally, appending would ""just work"".  Is there some way to express that I want a dictionary of empty lists, even if I don't know every key when I first create the list?
+"
+159720|What is the naming convention in Python for variable and function names?|"Coming from a C# background the naming convention for variables and method names are usually either CamelCase or Pascal Case:
+
+<code><<//>> <<C>># <<example>>
+<<string>> <<thisIsMyVariable>> <<=>> ""<<a>>""
+<<public>> <<void>> <<ThisIsMyMethod(>>)
+</code>
+
+In Python, I have seen the above but I have also seen underscores being used:
+
+<code># <<python>> <<example>>
+<<this_is_my_variable>> <<=>> '<<a>>'
+<<def>> <<this_is_my_function(>>)<<:>>
+</code>
+
+Is there a more preferable, definitive coding style for Python?
+"
+4426663|How do I remove the first Item from a Python list?|"I have the list <code>[<<0>>, <<1>>, <<2>>, <<3>>, <<4>>]</code> I'd like to make it into <code>[<<1>>, <<2>>, <<3>>, <<4>>]</code>. How do I go about this? 
+"
+122327|How do I find the location of my Python site-packages directory?|"How do I find the location of my site-packages directory?
+"
+89228|Calling an external command in Python|"How can I call an external command (as if I'd typed it at the Unix shell or Windows command prompt) from within a Python script?
+"
+172439|How do I split a multi-line string into multiple lines?|"I have a multi-line string literal that I want to do an operation on each line, like so:
+
+<code><<inputString>> <<=>> """"""<<Line>> <<1>>
+<<Line>> <<2>>
+<<Line>> <<3>>""""""
+</code>
+
+I want to do something like the following:
+
+<code><<for>> <<line>> <<in>> <<inputString>><<:>>
+    <<doStuff(>>)
+</code>
+"
+23708898|'pip' is not recognized as an internal or external command|"I'm running into a weird error trying to install Django on my computer.
+
+This is the sequence that I've typed into my command line:
+
+<code><<C>><<:>>\<<Python34>><<&gt>>;<<python>> <<get>>-<<pip>>.<<py>>
+<<Requirement>> <<already>> <<up>>-<<to>>-<<date>><<:>> <<pip>> <<in>> <<c>><<:>>\<<python34>>\<<lib>>\<<site>>-<<packages>>
+<<Cleaning>> <<up>>...
+
+<<C>><<:>>\<<Python34>><<&gt>>;<<pip>> <<install>> <<Django>>
+'<<pip>>' <<is>> <<not>> <<recognized>> <<as>> <<an>> <<internal>> <<or>> <<external>> <<command>>,
+<<operable>> <<program>> <<or>> <<batch>> <<file>>.
+
+<<C>><<:>>\<<Python34>><<&gt>>;<<lib>>\<<site>>-<<packages>>\<<pip>> <<install>> <<Django>>
+'<<lib\site-packages\pip>>' <<is>> <<not>> <<recognized>> <<as>> <<an>> <<internal>> <<or>> <<external>> <<command>>,
+<<operable>> <<program>> <<or>> <<batch>> <<file>>. 
+</code>
+
+What could be causing this?
+
+EDIT ___________________
+
+As requested this is what I get when I type in echo %PATH%
+
+<code><<C>><<:>>\<<Python34>><<&gt>>;<<echo>> <<%>><<PATH>><<%>>
+<<C>><<:>>\<<Program>> <<Files>>\<<ImageMagick>>-<<6.8>><<.8>>-<<Q16>>;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\<<Intel>>\<<iCLS>> <<Client>>\
+;<<C>><<:>>\<<Program>> <<Files>>\<<Intel>>\<<iCLS>> <<Client>>\;<<C>><<:>>\<<Windows>>\<<system32>>;<<C>><<:>>\<<Windows>>;<<C>><<:>>\<<Windows>>\<<S>>
+<<ystem32>>\<<Wbem>>;<<C>><<:>>\<<Windows>>\<<System32>>\<<WindowsPowerShell>>\<<v1>><<.0>>\;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\
+<<Windows>> <<Live>>\<<Shared>>;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\<<Intel>>\<<OpenCL>> <<SDK>>\<<2.0>>\<<bin>>\<<x86>>;<<C>><<:>>\<<Progr>>
+<<am>> <<Files>> (<<x86>>)\<<Intel>>\<<OpenCL>> <<SDK>>\<<2.0>>\<<bin>>\<<x64>>;<<C>><<:>>\<<Program>> <<Files>>\<<Intel>>\<<Intel(>><<R>>) <<Mana>>
+<<gement>> <<Engine>> <<Components>>\<<DAL>>;<<C>><<:>>\<<Program>> <<Files>>\<<Intel>>\<<Intel(>><<R>>) <<Management>> <<Engine>> <<C>>
+<<omponents>>\<<IPT>>;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\<<Intel>>\<<Intel(>><<R>>) <<Management>> <<Engine>> <<Components>>
+\<<DAL>>;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\<<Intel>>\<<Intel(>><<R>>) <<Management>> <<Engine>> <<Components>>\<<IPT>>;<<C>><<:>>\<<P>>
+<<rogram>> <<Files>> (<<x86>>)\<<nodejs>>\;<<C>><<:>>\<<Program>> <<Files>> (<<x86>>)\<<Heroku>>\<<bin>>;<<C>><<:>>\<<Program>> <<Files>> (<<x>>
+<<86>>)\<<git>>\<<cmd>>;<<C>><<:>>\<<RailsInstaller>>\<<Ruby2>><<.0>><<.0>>\<<bin>>;<<C>><<:>>\<<RailsInstaller>>\<<Git>>\<<cmd>>;<<C>><<:>>\<<RailsIn>>
+<<staller>>\<<Ruby1>><<.9>><<.3>>\<<bin>>;<<C>><<:>>\<<Users>>\<<Javi>>\<<AppData>>\<<Roaming>>\<<npm>>
+</code>
+"
+3249524|Print in one line dynamically|"I would like to make several statements that give standard output without seeing newlines in between statements.
+
+Specifically, suppose I have:
+
+<code><<for>> <<item>> <<in>> <<range(>><<1>>,<<100>>)<<:>>
+    <<print>> <<item>>
+</code>
+
+The result is:
+
+<code><<1>>
+<<2>>
+<<3>>
+<<4>>
+.
+.
+.
+</code>
+
+How get this to instead look like:
+
+<code><<1>> <<2>> <<3>> <<4>> <<5>> ...
+</code>
+
+Even better, is it possible to print the single number over the last number, so only one number is on the screen at a time?
+"
+1485841|Behaviour of increment and decrement operators in Python|"I notice that a pre-increment/decrement operator can be applied on a variable (like <code>++<<count>></code>). It compiles, but it does not actually change the value of the variable!
+
+What is the behavior of the pre-increment/decrement operators (++/--) in Python? 
+
+Why does Python deviate from the behavior of these operators seen in C/C++?
+"
+7818811|Import Error: No module named numpy|"I have a very similar question to this question, but still 1 step behind. 
+I have only one version of python 3 installed on my Windows 7(sorry) 64-bit system.
+I installed numpy following this link - as suggested in the question. 
+The installation went fine but when I want to import
+
+<code><<import>> <<numpy>>
+
+<<Import>> <<error>><<:>><<No>> <<module>> <<named>> <<numpy>>
+</code>
+
+I know this is probably a super basic question, but I'm still learning...
+Thanks
+"
+5563089|raw_input function in Python|"What is the <code><<raw_input>></code> function? Is it a user interface? When do we use it?
+"
+20309456|How to call a function from another file in Python?|"I've seen this topic here covered numerous times, but none of the answers I've seen seem to work for me, so I'll try to be as specific to my problem as possible.
+
+Set_up: I have a .py file for each function I need to use in a program. 
+
+In this program, I need to call the function from the external files.  
+
+I've tried:
+
+<code><<from>> <<file>>.<<py>> <<import>> <<function(>><<a>>,<<b>>)
+</code>
+
+but I get the error: 
+
+<code><<ImportError>><<:>> <<No>> <<module>> <<named>> '<<file>>.<<py>>'; <<file>> <<is>> <<not>> <<a>> <<package>>
+</code>
+"
+1641219|Does Python have “private” variables in classes?|"I'm coming from the Java world and reading Bruce Eckels' Python 3 Patterns, Recipes and Idioms. 
+
+While reading about classes, it goes on to say that in Python there is no need to declare instance variables. You just use them in the constructor, and boom, they are there. 
+
+So for example:
+
+<code><<class>> <<Simple>><<:>>
+    <<def>> <<__init__(>><<self1>>, <<str>>)<<:>>
+        <<print(>>""<<inside>> <<the>> <<simple>> <<constructor>>"")
+        <<self1>>.<<s>> <<=>> <<str>>
+    <<def>> <<show(>><<self1>>)<<:>>
+        <<print(>><<self1>>.<<s>>)
+    <<def>> <<showMsg>> (<<self>>, <<msg>>)<<:>>
+        <<print>> (<<msg>> + '<<:>>', <<self>>.<<show(>>))
+</code>
+
+If that’s true, then any object of class <code><<Simple>></code> can just change the value of variable <code><<s>></code> outside of the class. 
+
+For example: 
+
+<code><<if>> <<__name__>> <<==>> ""<<__main__>>""<<:>>
+    <<x>> <<=>> <<Simple(>>""<<constructor>> <<argument>>"")
+    <<x>>.<<s>> <<=>> ""<<test15>>"" # <<this>> <<changes>> <<the>> <<value>>
+    <<x>>.<<show(>>)
+    <<x>>.<<showMsg(>>""<<A>> <<message>>"")
+</code>
+
+In Java, we have been taught about public/private/protected variables.  Those keywords make sense because at times you want variables in a class to which no one outside the class has access to. 
+
+Why is that not required in Python?
+"
+2972212|Creating an empty list in Python|"What is the best way to create a new empty list in Python?
+
+<code><<l>> <<=>> [] 
+</code>
+
+or
+
+<code><<l>> <<=>> <<list(>>)
+</code>
+
+I am asking this because of two reasons:
+
+
+Technical reasons, as to which is faster. (creating a class causes overhead?)
+Code readability - which one is the standard convention.
+
+"
+4534438|TypeError: 'module' object is not callable|"<code><<File>> ""<<C>><<:>>\<<Users>>\<<Administrator>>\<<Documents>>\<<Mibot>>\<<oops>>\<<blinkserv>>.<<py>>"", <<line>> <<82>>, <<in>> <<__init__>>
+    <<self>>.<<serv>> <<=>> <<socket(>><<AF_INET>>,<<SOCK_STREAM>>)
+<<TypeError>><<:>> '<<module>>' <<object>> <<is>> <<not>> <<callable>>
+</code>
+
+Why am I getting this error?
+I'm confused.
+
+What do you need to know to answer my question?
+"
+610883|How to know if an object has an attribute in Python|"Is there a way in Python to determine if an object has some attribute?  For example:
+
+<code><<&gt>>;<<&gt>>;<<&gt>>; <<a>> <<=>> <<SomeClass(>>)
+<<&gt>>;<<&gt>>;<<&gt>>; <<a>>.<<someProperty>> <<=>> <<value>>
+<<&gt>>;<<&gt>>;<<&gt>>; <<a>>.<<property>>
+<<Traceback>> (<<most>> <<recent>> <<call>> <<last>>)<<:>>
+  <<File>> ""<<&lt>>;<<stdin>><<&gt>>;"", <<line>> <<1>>, <<in>> <<&lt>>;<<module>><<&gt>>;
+<<AttributeError>><<:>> <<SomeClass>> <<instance>> <<has>> <<no>> <<attribute>> '<<property>>'
+</code>
+
+How can you tell if <code><<a>></code> has the attribute <code><<property>></code> before using it?
+"
+1093322|How do I check what version of Python is running my script?|"How can I check what version of the Python Interpreter is interpreting my script?
+"
+675442|Comment out a Python code block|"Is there a mechanism to comment out large blocks of Python code?
+
+Right now, the only ways I can see of commenting out code are to either start every line with a <code>#</code>, or to enclose the code in triple quotes: <code>""""""</code>.
+
+The problem with these is that inserting <code>#</code> before every line is cumbersome and <code>""""""</code> makes the string I want to use as a comment show up in generated documentation.
+
+After reading all comments, the answer seems to be ""No"".
+"
+4990718|Python: about catching ANY exception|"How can I write a <code><<try>></code>/<code><<except>></code> block that catches all exceptions?
+"
+2257441|Random string generation with upper case letters and digits in Python|"I want to generate a string of size N.
+
+It should be made up of numbers and uppercase English letters such as:
+
+
+6U1S75
+4Z4UKK
+U911K4
+
+
+How can I achieve this in a pythonic way?
+"
+1514553|How to declare an array in Python?|"How do I declare an array in Python?
+
+I can't find any reference to arrays in the documentation. 
+"
+8885663|How to format a floating number to fixed width in Python|"How do I format a floating number to a fixed width with the following requirements:
+
+
+Leading zero if n &lt; 1
+Add trailing decimal zero(s) to fill up fixed width
+Truncate decimal digits past fixed width
+Align all decimal points
+
+
+For example:
+
+<code><<%>> <<formatter>> <<something>> <<like>> '<<{:06}>>'
+<<numbers>> <<=>> [<<23.23>>, <<0.123334987>>, <<1>>, <<4.223>>, <<9887.2>>]
+
+<<for>> <<number>> <<in>> <<numbers>><<:>>
+    <<print>> <<formatter>>.<<format(>><<number>>)
+</code>
+
+The output would be like
+
+<code>  <<23.2300>>
+   <<0.1233>>
+   <<1.0000>>
+   <<4.2230>>
+<<9887.2000>>
+</code>
+"
+26053982|error: Setup script exited with error: command 'x86_64-linux-gnu-gcc' failed with exit status 1|"When I try to install odoo-server I got the following error could anyone help me to resolve this?
+
+<code><<error>><<:>> <<Setup>> <<script>> <<exited>> <<with>> <<error>><<:>> <<command>> '<<x86_64-linux-gnu-gcc>>' <<failed>> <<with>> <<exit>> <<status>> <<1>>
+</code>
+"

@@ -1,0 +1,9 @@
+# This file serves as a log of important procedures and facts in our project, # is for single line log, /* ... */ is for block log
+
+/* SQL commands for selecting posts_training and answers_training
+CREATE TABLE posts_training AS SELECT * FROM posts ORDER BY RANDOM() LIMIT 50;
+CREATE TABLE answers_training AS SELECT * FROM answers ORDER BY RANDOM() LIMIT 50;
+*/
+
+# Delimiter '|' for posts_training & answers_training csv file, luckily no post involves '|'
+
