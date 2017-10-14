@@ -1,0 +1,1 @@
+In this case you might consider using a <code>set</code>, especially if the list isn't meant to store duplicates.
