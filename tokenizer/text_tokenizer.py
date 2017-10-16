@@ -116,7 +116,7 @@ class TextTokenizer:
 				search_start = search.start()
 				search_end = search.end()
 				self._sb.Append(self._text[text_anchor : search_start])
-				self._sb.Append('<<'+token+'>>')
+				self._sb.Append('<t>'+token+'</t>')
 				text_anchor = search_end
 			self._sb.Append(self._text[text_anchor:])
 		except Exception as e:
