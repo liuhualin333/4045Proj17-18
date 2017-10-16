@@ -1,21 +1,28 @@
+# -*- coding: utf-8 -*-
 '''
 	This module converts tokenize the code sections defined by <code> ... </code> in the anwsers/posts.
 	Code Token Definition: literals with only [] / {} / ' / " / , are not tokens
 							XXX( is token denoting function/method call
 							.	is token for special meaning
 							Use normal word token for COMMENT / STRING (TODO: still use code tokenizer)
+							Error messega path -> one token
 	Usage:
 		python code_tokenizer.py file1.txt ...
 		(This will output file1_annotated.txt)
+	Token format:
+		<c>XXX</c>
 '''
-
 from tokenize import tokenize, untokenize, NUMBER, STRING, NAME, OP, tok_name, COMMENT, LPAR, RPAR
 from io import BytesIO, StringIO
 import nltk
 import codecs
 import re
 import sys, os
-from text_tokenizer import tokenizer
+import pdb
+
+code_tag = ['<c>', '</c>']
+
+# StringBuilder class, using StringIO() to struct python string fast
 class StringBuilder:
      _file_str = None
 
@@ -28,36 +35,46 @@ class StringBuilder:
      def __str__(self):
          return self._file_str.getvalue()
 
+# Main Tokenizer
 class CodesTokenizer:
+	# _sb is the internal string builder storing the annotated(tagged all tokens) "codes"
+	# _tokens stores the tokens recognized given the "codes"
+	# _codes is the given codes
 	_sb = None
 	_tokens = None
 	_codes = None
+	# Constructor, takes in the codes given, call __setTokens__ to set _tokens
 	def __init__(self, codes):
 		self._tokens = []
 		self._codes = codes
 		self._sb = StringBuilder()
 		self.__setTokens__()
 
+	# __setTokens__: Based on _codes given, put all identified tokens to _tokens
 	def __setTokens__(self):
 		#g = tokenize(BytesIO(self._codes.encode('utf-8')).readline)  # tokenize the string
 		prev_num = -1
 		prev_val = None
 		prev_end = -1
+		# Split _codes line by line and identify each line 
 		ss = self._codes.splitlines()
 		for line in ss:
+			# call python tokenize.tokenize and get the returned generator g
 			g = tokenize(BytesIO(line.encode('utf-8')).readline)  # tokenize the string
 			try:
 				for toknum, tokval, starrt, eend, _ in g:
+					# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
 					if(toknum in [NAME, OP, NUMBER] and re.compile(r"^(?<![a-zA-Z])[,)\-\"';\[\]|..+]+(?![a-zA-Z])$").search(tokval) == None):
+						# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
 						if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
 							self._tokens[-1] = self._tokens[-1] + tokval
 						elif(tokval == '('):
 							pass
 						else:
 							self._tokens.append(tokval)
+					# For comment / string, code 
 					elif(toknum in [COMMENT, STRING]):
-						words = tokenizer(tokval,["#","*","/"])
-						#words = nltk.word_tokenize(tokval)
+						words = CodesTokenizer(line).__str__()
 						if(words):
 							self._tokens.extend(words)
 					prev_num = toknum
@@ -65,43 +82,52 @@ class CodesTokenizer:
 					prev_end = eend
 			except Exception as e:
 				print("Error in __setTokens__", e, line)
-				#import pdb; pdb.set_trace()
+				#pdb.set_trace()
 				pass
 	
+	# annotate: Based on _tokens and _codes, annotate the cooresponding tokens with token tags. 
 	def annotate(self):
 		assert self._sb.__str__() == '', "_sb already has value!"
+		# code_anchor mark the current position in codes, before which has been processed already 
 		code_anchor = 0
 		if(len(self._tokens) == 0):
 			return self._codes
 		try:
+			# For every token, find its starting pos and ending pos in codes, append original codes from code_anchor to starting pos
+			#																	and append annotated(taged) token
 			for token in self._tokens:
 				search = re.compile(re.escape(token)).search(self._codes, code_anchor)
 				search_start = search.start()
 				search_end = search.end()
 				self._sb.Append(self._codes[code_anchor : search_start])
-				self._sb.Append('<<'+token+'>>')
+				self._sb.Append(code_tag[0]+token+code_tag[1])
+				# update code_anchor to ending pos of current token
 				code_anchor = search_end
 			self._sb.Append(self._codes[code_anchor:])
 		except Exception as e:
 			print(e, "code: \n", self._codes, "tokens: \n", self._tokens)
 			raise()
+		# return the annotated codes
 		return self._sb.__str__()
 
 
 
 
 def main(file):
-	source = open(file).read()
+	source = codecs.open(file, encoding='UTF-8').read()
 	code_secs = re.compile("<code>.*?</code>", flags = re.S|re.M).finditer(source)
 	sb_file = StringBuilder()
+	# file_anchor mark the current position in current file, before which has been processed already 
 	file_anchor = 0
 	# iterate all codes area, defined by <code> ... </code>
 	for code_sec in code_secs:
 		# +6 and -7 to exclude <code> & </code> tags
 		code_start = code_sec.start() + 6
 		code_end = code_sec.end() - 7
+		# Append the origin text from file_anchor to code_start
 		sb_file.Append(source[file_anchor : code_start])
-
+		#pdb.set_trace()
+		# Init a new CodesTokenizer with codes, append the annotated codes to sb_file
 		codes = source[code_start : code_end]
 		ct = CodesTokenizer(codes)
 		sb_file.Append(ct.annotate())
@@ -113,5 +139,6 @@ def main(file):
 			new_file.write(sb_file.__str__())
 
 if __name__ == '__main__':
+	# take in 1+ file(s) for processing
 	for file in sys.argv[1:]:
 		main(file)

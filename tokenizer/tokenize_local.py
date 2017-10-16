@@ -733,7 +733,7 @@ def generate_tokens(readline):
 
 def main():
     import argparse
-
+    import pdb; pdb.set_trace()
     # Helper error handling routines
     def perror(message):
         print(message, file=sys.stderr)
