@@ -9,7 +9,7 @@
 							1.4.6 -> one token
 	Usage:
 		python code_tokenizer.py file1.txt ...
-		(This will output file1_annotated.txt)
+		(This will output file1_codeanno.txt)
 	Token format:
 		<c>XXX</c>
 '''
@@ -198,7 +198,7 @@ def main(file):
 		file_anchor = code_end
 	sb_file.Append(source[file_anchor:])
 	file_sep = os.path.splitext(file)
-	with open(file_sep[0] + "_annotated" + file_sep[1], 'w') as new_file:
+	with open(file_sep[0] + "_codeAnno" + file_sep[1], 'w') as new_file:
 			new_file.write(sb_file.__str__())
 
 if __name__ == '__main__':
