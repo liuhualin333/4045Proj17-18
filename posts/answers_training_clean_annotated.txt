@@ -1,29 +1,29 @@
 Id|Body
 35823399|"Adding this answer for completeness, though it's only usable under certain conditions.
 
-If you have very large lists, removing from the end of the list avoids CPython internals having to <code><<memmove>></code>, for situations where you can re-order the list. It gives a performance gain to remove from the end of the list, since it won't need to <code><<memmove>></code> every item after the one your removing - back one step (1).
+If you have very large lists, removing from the end of the list avoids CPython internals having to <code><c>memmove</c></code>, for situations where you can re-order the list. It gives a performance gain to remove from the end of the list, since it won't need to <code><c>memmove</c></code> every item after the one your removing - back one step (1).
 For one-off removals the performance difference may be acceptable, but if you have a large list and need to remove many items - you will likely notice a performance hit.
 
 Although admittedly, in these cases, doing a full list search is likely to be a performance bottleneck too, unless items are mostly at the front of the list.
 
 This method can be used for more efficient removal,as long as re-ordering the list is acceptable. (2)
 
-<code><<def>> <<remove_unordered(>><<ls>>, <<item>>)<<:>>
-    <<i>> <<=>> <<ls>>.<<index(>><<item>>)
-    <<ls>>[-<<1>>], <<ls>>[<<i>>] <<=>> <<ls>>[<<i>>], <<ls>>[-<<1>>]
-    <<ls>>.<<pop(>>)
+<code><c>def</c> <c>remove_unordered(</c><c>ls</c>, <c>item</c>)<c>:</c>
+    <c>i</c> <c>=</c> <c>ls</c><c>.</c><c>index(</c><c>item</c>)
+    <c>ls</c>[<c>-</c><c>1</c>], <c>ls</c>[<c>i</c>] <c>=</c> <c>ls</c>[<c>i</c>], <c>ls</c>[<c>-</c><c>1</c>]
+    <c>ls</c><c>.</c><c>pop(</c>)
 </code>
 
-You may want to avoid raising an error when the <code><<item>></code> isn't in the list.
+You may want to avoid raising an error when the <code><c>item</c></code> isn't in the list.
 
-<code><<def>> <<remove_unordered_test(>><<ls>>, <<item>>)<<:>>
-    <<try>><<:>>
-        <<i>> <<=>> <<ls>>.<<index(>><<item>>)
-    <<except>> <<ValueError>><<:>>
-        <<return>> <<False>>
-    <<ls>>[-<<1>>], <<ls>>[<<i>>] <<=>> <<ls>>[<<i>>], <<ls>>[-<<1>>]
-    <<ls>>.<<pop(>>)
-    <<return>> <<True>>
+<code><c>def</c> <c>remove_unordered_test(</c><c>ls</c>, <c>item</c>)<c>:</c>
+    <c>try</c><c>:</c>
+        <c>i</c> <c>=</c> <c>ls</c><c>.</c><c>index(</c><c>item</c>)
+    <c>except</c> <c>ValueError</c><c>:</c>
+        <c>return</c> <c>False</c>
+    <c>ls</c>[<c>-</c><c>1</c>], <c>ls</c>[<c>i</c>] <c>=</c> <c>ls</c>[<c>i</c>], <c>ls</c>[<c>-</c><c>1</c>]
+    <c>ls</c><c>.</c><c>pop(</c>)
+    <c>return</c> <c>True</c>
 </code>
 
 
@@ -35,26 +35,26 @@ While I tested this with CPython, its quite likely most/all other Python impleme
 
   A simple way to test this, compare the speed difference from removing from the front of the list with removing the last element:
 
-<code><<python>> -<<m>> <<timeit>> '<<a = [0]>> * <<100000>>' '<<while>> <<a:>> <<a>>.<<remove(0>>)'
+<code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c><c>:</c> <c>a</c><c>.</c><c>remove(</c><c>0</c>)'
 </code>
   
   With:
 
-<code><<python>> -<<m>> <<timeit>> '<<a = [0]>> * <<100000>>' '<<while>> <<a:>> <<a>>.<<pop>>()'
+<code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c><c>:</c> <c>a</c><c>.</c><c>pop(</c>)'
 </code>
   
   (gives an order of magnitude speed difference where the second example is faster with CPython and PyPy).
 
 
 
-In this case you might consider using a <code><<set>></code>, especially if the list isn't meant to store duplicates.In practice though you may need to store mutable data which can't be added to a <code><<set>></code>. Also check on btree's if the data can be ordered.
+In this case you might consider using a <code><c>set</c></code>, especially if the list isn't meant to store duplicates.In practice though you may need to store mutable data which can't be added to a <code><c>set</c></code>. Also check on btree's if the data can be ordered.
 
 "
 45074712|"Python classes are themselves objects - as in instance - of their meta-class. 
 
 The default metaclass, which is applied when when you determine classes as:
 
-<code><<class>> <<foo>><<:>>
+<code><c>class</c> <c>foo</c><c>:</c>
     ...
 </code>
 
@@ -62,249 +62,249 @@ meta class are used to apply some rule to an entire set of classes. For example,
 
 when you define metaclass, you subclass type, and can overrided the following magic methods to insert your logic. 
 
-<code><<class>> <<somemeta(>><<type>>)<<:>>
-    <<__new__(>><<mcs>>, <<name>>, <<bases>>, <<clsdict>>)<<:>>
+<code><c>class</c> <c>somemeta(</c><c>type</c>)<c>:</c>
+    <c>__new__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>:</c>
       """"""
-  <<mcs>><<:>> <<is>> <<the>> <<base>> <<metaclass>>, <<in>> <<this>> <<case>> <<type>>.
-  <<name>><<:>> <<name>> <<of>> <<the>> <<new>> <<class>>, <<as>> <<provided>> <<by>> <<the>> <<user>>.
-  <<bases>><<:>> <<tuple>> <<of>> <<base>> <<classes>> 
-  <<clsdict>><<:>> <<a>> <<dictionary>> <<containing>> <<all>> <<methods>> <<and>> <<attributes>> <<defined>> <<on>> <<class>>
+  <c>mcs</c><c>:</c> <c>is</c> <c>the</c> <c>base</c> <c>metaclass</c>, <c>in</c> <c>this</c> <c>case</c> <c>type</c><c>.</c>
+  <c>name</c><c>:</c> <c>name</c> <c>of</c> <c>the</c> <c>new</c> <c>class</c>, <c>as</c> <c>provided</c> <c>by</c> <c>the</c> <c>user</c><c>.</c>
+  <c>bases</c><c>:</c> <c>tuple</c> <c>of</c> <c>base</c> <c>classes</c> 
+  <c>clsdict</c><c>:</c> <c>a</c> <c>dictionary</c> <c>containing</c> <c>all</c> <c>methods</c> <c>and</c> <c>attributes</c> <c>defined</c> <c>on</c> <c>class</c>
 
-  <<you>> <<must>> <<return>> <<a>> <<class>> <<object>> <<by>> <<invoking>> <<the>> <<__new__>> <<constructor>> <<on>> <<the>> <<base>> <<metaclass>>. 
- <<ie>><<:>> 
-    <<return>> <<type>>.<<__call__(>><<mcs>>, <<name>>, <<bases>>, <<clsdict>>).
+  <c>you</c> <c>must</c> <c>return</c> <c>a</c> <c>class</c> <c>object</c> <c>by</c> <c>invoking</c> <c>the</c> <c>__new__</c> <c>constructor</c> <c>on</c> <c>the</c> <c>base</c> <c>metaclass</c><c>.</c> 
+ <c>ie</c><c>:</c> 
+    <c>return</c> <c>type</c><c>.</c><c>__call__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>.</c>
 
-  <<in>> <<the>> <<following>> <<case>><<:>>
+  <c>in</c> <c>the</c> <c>following</c> <c>case</c><c>:</c>
 
-  <<class>> <<foo(>><<baseclass>>)<<:>>
-        <<__metaclass__>> <<=>> <<somemeta>>
+  <c>class</c> <c>foo(</c><c>baseclass</c>)<c>:</c>
+        <c>__metaclass__</c> <c>=</c> <c>somemeta</c>
 
-  <<an_attr>> <<=>> <<12>>
+  <c>an_attr</c> <c>=</c> <c>12</c>
 
-  <<def>> <<bar(>><<self>>)<<:>>
+  <c>def</c> <c>bar(</c><c>self</c>)<c>:</c>
       ...
 
-  <<@>><<classmethod>>
-  <<def>> <<foo(>><<cls>>)<<:>>
+  <c>@</c><c>classmethod</c>
+  <c>def</c> <c>foo(</c><c>cls</c>)<c>:</c>
       ...
 
-      <<arguments>> <<would>> <<be>> <<:>> ( <<somemeta>>, ""<<foo>>"", (<<baseclass>>, <<baseofbase>>,..., <<object>>), <<{>>""<<an_attr>>""<<:>><<12>>, ""<<bar>>""<<:>> <<&lt>>;<<function>><<&gt>>;, ""<<foo>>""<<:>> <<&lt>>;<<bound>> <<class>> <<method>><<&gt>>;<<}>>
+      <c>arguments</c> <c>would</c> <c>be</c> <c>:</c> ( <c>somemeta</c>, ""<c>foo</c>"", (<c>baseclass</c>, <c>baseofbase</c>,..., <c>object</c>), {""<c>an_attr</c>""<c>:</c><c>12</c>, ""<c>bar</c>""<c>:</c> <c>&lt</c>;<c>function</c><c>&gt</c>;, ""<c>foo</c>""<c>:</c> <c>&lt</c>;<c>bound</c> <c>class</c> <c>method</c><c>&gt</c>;}
 
-      <<you>> <<can>> <<modify>> <<any>> <<of>> <<these>> <<values>> <<before>> <<passing>> <<on>> <<to>> <<type>>
+      <c>you</c> <c>can</c> <c>modify</c> <c>any</c> <c>of</c> <c>these</c> <c>values</c> <c>before</c> <c>passing</c> <c>on</c> <c>to</c> <c>type</c>
       """"""
-      <<return>> <<type>>.<<__call__(>><<mcs>>, <<name>>, <<bases>>, <<clsdict>>)
+      <c>return</c> <c>type</c><c>.</c><c>__call__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)
 
 
-    <<def>> <<__init__(>><<self>>, <<name>>, <<bases>>, <<clsdict>>)<<:>>
+    <c>def</c> <c>__init__(</c><c>self</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>:</c>
       """""" 
-      <<called>> <<after>> <<type>> <<has>> <<been>> <<created>>. <<unlike>> <<in>> <<standard>> <<classes>>, <<__init__>> <<method>> <<cannot>> <<modify>> <<the>> <<instance>> (<<cls>>) - <<and>> <<should>> <<be>> <<used>> <<for>> <<class>> <<validaton>>.
+      <c>called</c> <c>after</c> <c>type</c> <c>has</c> <c>been</c> <c>created</c><c>.</c> <c>unlike</c> <c>in</c> <c>standard</c> <c>classes</c>, <c>__init__</c> <c>method</c> <c>cannot</c> <c>modify</c> <c>the</c> <c>instance</c> (<c>cls</c>) <c>-</c> <c>and</c> <c>should</c> <c>be</c> <c>used</c> <c>for</c> <c>class</c> <c>validaton</c><c>.</c>
       """"""
-      <<pass>>
+      <c>pass</c>
 
 
-    <<def>> <<__prepare__(>>)<<:>>
+    <c>def</c> <c>__prepare__(</c>)<c>:</c>
         """"""
-        <<returns>> <<a>> <<dict>> <<or>> <<something>> <<that>> <<can>> <<be>> <<used>> <<as>> <<a>> <<namespace>>.
-        <<the>> <<type>> <<will>> <<then>> <<attach>> <<methods>> <<and>> <<attributes>> <<from>> <<class>> <<definition>> <<to>> <<it>>.
+        <c>returns</c> <c>a</c> <c>dict</c> <c>or</c> <c>something</c> <c>that</c> <c>can</c> <c>be</c> <c>used</c> <c>as</c> <c>a</c> <c>namespace</c><c>.</c>
+        <c>the</c> <c>type</c> <c>will</c> <c>then</c> <c>attach</c> <c>methods</c> <c>and</c> <c>attributes</c> <c>from</c> <c>class</c> <c>definition</c> <c>to</c> <c>it</c><c>.</c>
 
-        <<call>> <<order>> <<:>>
+        <c>call</c> <c>order</c> <c>:</c>
 
-        <<somemeta>>.<<__new__>> -<<&gt>>;  <<type>>.<<__new__>> -<<&gt>>; <<type>>.<<__init__>> -<<&gt>>; <<somemeta>>.<<__init__>> 
+        <c>somemeta</c><c>.</c><c>__new__</c> <c>-</c><c>&gt</c>;  <c>type</c><c>.</c><c>__new__</c> <c>-</c><c>&gt</c>; <c>type</c><c>.</c><c>__init__</c> <c>-</c><c>&gt</c>; <c>somemeta</c><c>.</c><c>__init__</c> 
         """"""
-        <<return>> <<dict(>>)
+        <c>return</c> <c>dict(</c>)
 
-    <<def>> <<mymethod(>><<cls>>)<<:>>
-        """""" <<works>> <<like>> <<a>> <<classmethod>>, <<but>> <<for>> <<class>> <<objects>>. <<Also>>, <<my>> <<method>> <<will>> <<not>> <<be>> <<visible>> <<to>> <<instances>> <<of>> <<cls>>.
+    <c>def</c> <c>mymethod(</c><c>cls</c>)<c>:</c>
+        """""" <c>works</c> <c>like</c> <c>a</c> <c>classmethod</c>, <c>but</c> <c>for</c> <c>class</c> <c>objects</c><c>.</c> <c>Also</c>, <c>my</c> <c>method</c> <c>will</c> <c>not</c> <c>be</c> <c>visible</c> <c>to</c> <c>instances</c> <c>of</c> <c>cls</c><c>.</c>
         """"""
-        <<pass>>
+        <c>pass</c>
 </code>
 
 anyhow, those two are the most commonly used hooks. metaclassing is powerful, and above is nowhere near and exhaustive list of uses for metaclassing. 
 "
-13891070|"The <code><<time>>.<<time(>>)</code> function returns the number of seconds since the epoch as seconds in UTC.
+13891070|"The <code><c>time</c><c>.</c><c>time(</c>)</code> function returns the number of seconds since the epoch as seconds in UTC.
 
 Here is some sample output I ran on my computer, converting it to a string as well.
 
-<code><<Python>> <<2.7>><<.3>> (<<default>>, <<Apr>> <<24>> <<2012>>, <<00>><<:>><<00>><<:>><<54>>) 
-[<<GCC>> <<4.7>><<.0>> <<20120414>> (<<prerelease>>)] <<on>> <<linux2>>
-<<Type>> ""<<help>>"", ""<<copyright>>"", ""<<credits>>"" <<or>> ""<<license>>"" <<for>> <<more>> <<information>>.
-<<&gt>>;<<&gt>>;<<&gt>>; <<import>> <<time>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<ts>> <<=>> <<time>>.<<time(>>)
-<<&gt>>;<<&gt>>;<<&gt>>; <<print>> <<ts>>
-<<1355563265.81>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<import>> <<datetime>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<st>> <<=>> <<datetime>>.<<datetime>>.<<fromtimestamp(>><<ts>>).<<strftime(>>'<<%Y-%m-%d>> <<%H:%M:%S>>')
-<<&gt>>;<<&gt>>;<<&gt>>; <<print>> <<st>>
-<<2012>>-<<12>>-<<15>> <<0>><<1>><<:>><<21>><<:>><<0>><<5>>
-<<&gt>>;<<&gt>>;<<&gt>>;
+<code><c>Python</c> <c>2.7.3</c> (<c>default</c>, <c>Apr</c> <c>24</c> <c>2012</c>, <c>00</c><c>:</c><c>00</c><c>:</c><c>54</c>) 
+[<c>GCC</c> <c>4.7.0</c> <c>20120414</c> (<c>prerelease</c>)] <c>on</c> <c>linux2</c>
+<c>Type</c> ""<c>help</c>"", ""<c>copyright</c>"", ""<c>credits</c>"" <c>or</c> ""<c>license</c>"" <c>for</c> <c>more</c> <c>information</c><c>.</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>time</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>ts</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print</c> <c>ts</c>
+<c>1355563265.81</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%</c><c>Y</c><c>-</c><c>%</c><c>m</c><c>-</c><c>%</c><c>d</c> <c>%</c><c>H</c><c>:</c><c>%</c><c>M</c><c>:</c><c>%</c><c>S</c>')
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print</c> <c>st</c>
+<c>2012-12-15</c> <c>0</c><c>1</c><c>:</c><c>21</c><c>:</c><c>0</c><c>5</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>;
 </code>
 
-The <code><<ts>></code> variable is the time returned in seconds.  I then converted it to a string using the <code><<datetime>></code> library making it a string that is human readable. 
+The <code><c>ts</c></code> variable is the time returned in seconds.  I then converted it to a string using the <code><c>datetime</c></code> library making it a string that is human readable. 
 "
 37403193|"Here's a fast generator that uses a dict to store each element as a key with a boolean value for checking if the duplicate item has already been yielded.
 
 For lists with all elements that are hashable types:
 
-<code><<def>> <<gen_dupes(>><<array>>)<<:>>
-    <<unique>> <<=>> <<{>><<}>>
-    <<for>> <<value>> <<in>> <<array>><<:>>
-        <<if>> <<value>> <<in>> <<unique>> <<and>> <<unique>>[<<value>>]<<:>>
-            <<unique>>[<<value>>] <<=>> <<False>>
-            <<yield>> <<value>>
-        <<else>><<:>>
-            <<unique>>[<<value>>] <<=>> <<True>>
+<code><c>def</c> <c>gen_dupes(</c><c>array</c>)<c>:</c>
+    <c>unique</c> <c>=</c> {}
+    <c>for</c> <c>value</c> <c>in</c> <c>array</c><c>:</c>
+        <c>if</c> <c>value</c> <c>in</c> <c>unique</c> <c>and</c> <c>unique</c>[<c>value</c>]<c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>False</c>
+            <c>yield</c> <c>value</c>
+        <c>else</c><c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>True</c>
 
-<<array>> <<=>> [<<1>>, <<2>>, <<2>>, <<3>>, <<4>>, <<1>>, <<5>>, <<2>>, <<6>>, <<6>>]
-<<print(>><<list(>><<gen_dupes(>><<array>>)))
-# <<=&gt;>> <<[2>>, <<1>>, <<6]>>
+<c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>1</c>, <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
+<c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
+# <c>=</c><c>&gt</c>; [<c>2</c>, <c>1</c>, <c>6</c>]
 </code>
 
 For lists that might contain lists:
 
-<code><<def>> <<gen_dupes(>><<array>>)<<:>>
-    <<unique>> <<=>> <<{>><<}>>
-    <<for>> <<value>> <<in>> <<array>><<:>>
-        <<is_list>> <<=>> <<False>>
-        <<if>> <<type(>><<value>>) <<is>> <<list>><<:>>
-            <<value>> <<=>> <<tuple(>><<value>>)
-            <<is_list>> <<=>> <<True>>
+<code><c>def</c> <c>gen_dupes(</c><c>array</c>)<c>:</c>
+    <c>unique</c> <c>=</c> {}
+    <c>for</c> <c>value</c> <c>in</c> <c>array</c><c>:</c>
+        <c>is_list</c> <c>=</c> <c>False</c>
+        <c>if</c> <c>type(</c><c>value</c>) <c>is</c> <c>list</c><c>:</c>
+            <c>value</c> <c>=</c> <c>tuple(</c><c>value</c>)
+            <c>is_list</c> <c>=</c> <c>True</c>
 
-        <<if>> <<value>> <<in>> <<unique>> <<and>> <<unique>>[<<value>>]<<:>>
-            <<unique>>[<<value>>] <<=>> <<False>>
-            <<if>> <<is_list>><<:>>
-                <<value>> <<=>> <<list(>><<value>>)
+        <c>if</c> <c>value</c> <c>in</c> <c>unique</c> <c>and</c> <c>unique</c>[<c>value</c>]<c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>False</c>
+            <c>if</c> <c>is_list</c><c>:</c>
+                <c>value</c> <c>=</c> <c>list(</c><c>value</c>)
 
-            <<yield>> <<value>>
-        <<else>><<:>>
-            <<unique>>[<<value>>] <<=>> <<True>>
+            <c>yield</c> <c>value</c>
+        <c>else</c><c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>True</c>
 
-<<array>> <<=>> [<<1>>, <<2>>, <<2>>, [<<1>>, <<2>>], <<3>>, <<4>>, [<<1>>, <<2>>], <<5>>, <<2>>, <<6>>, <<6>>]
-<<print(>><<list(>><<gen_dupes(>><<array>>)))
-# <<=&gt;>> <<[2>>, <<[1>>, <<2]>>, <<6]>>
+<c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, [<c>1</c>, <c>2</c>], <c>3</c>, <c>4</c>, [<c>1</c>, <c>2</c>], <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
+<c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
+# <c>=</c><c>&gt</c>; [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
 </code>
 "
 32555515|"Below is a ""standard recursive answer"", similar to the other similar answer https://stackoverflow.com/a/23743696/711085 . (We don't realistically have to worry about running out of stack space since there's no way we could process all N! permutations.)
 
 It visits every element in turn, and either takes it or leaves it (we can directly see the 2^N cardinality from this algorithm).
 
-<code><<def>> <<combs(>><<xs>>, <<i>><<=>><<0>>)<<:>>
-    <<if>> <<i>><<==>><<len(>><<xs>>)<<:>>
-        <<yield>> ()
-        <<return>>
-    <<for>> <<c>> <<in>> <<combs(>><<xs>>,<<i>>+<<1>>)<<:>>
-        <<yield>> <<c>>
-        <<yield>> <<c>>+(<<xs>>[<<i>>],)
+<code><c>def</c> <c>combs(</c><c>xs</c>, <c>i</c><c>=</c><c>0</c>)<c>:</c>
+    <c>if</c> <c>i</c><c>==</c><c>len(</c><c>xs</c>)<c>:</c>
+        <c>yield</c> ()
+        <c>return</c>
+    <c>for</c> <c>c</c> <c>in</c> <c>combs(</c><c>xs</c>,<c>i</c><c>+</c><c>1</c>)<c>:</c>
+        <c>yield</c> <c>c</c>
+        <c>yield</c> <c>c</c><c>+</c>(<c>xs</c>[<c>i</c>],)
 </code>
 
 
 
 Demo:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<list(>> <<combs(>><<range(>><<5>>)) )
-[(), (<<0>>,), (<<1>>,), (<<1>>, <<0>>), (<<2>>,), (<<2>>, <<0>>), (<<2>>, <<1>>), (<<2>>, <<1>>, <<0>>), (<<3>>,), (<<3>>, <<0>>), (<<3>>, <<1>>), (<<3>>, <<1>>, <<0>>), (<<3>>, <<2>>), (<<3>>, <<2>>, <<0>>), (<<3>>, <<2>>, <<1>>), (<<3>>, <<2>>, <<1>>, <<0>>), (<<4>>,), (<<4>>, <<0>>), (<<4>>, <<1>>), (<<4>>, <<1>>, <<0>>), (<<4>>, <<2>>), (<<4>>, <<2>>, <<0>>), (<<4>>, <<2>>, <<1>>), (<<4>>, <<2>>, <<1>>, <<0>>), (<<4>>, <<3>>), (<<4>>, <<3>>, <<0>>), (<<4>>, <<3>>, <<1>>), (<<4>>, <<3>>, <<1>>, <<0>>), (<<4>>, <<3>>, <<2>>), (<<4>>, <<3>>, <<2>>, <<0>>), (<<4>>, <<3>>, <<2>>, <<1>>), (<<4>>, <<3>>, <<2>>, <<1>>, <<0>>)]
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c> <c>combs(</c><c>range(</c><c>5</c>)) )
+[(), (<c>0</c>,), (<c>1</c>,), (<c>1</c>, <c>0</c>), (<c>2</c>,), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>,), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>,), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
 
-<<&gt>>;<<&gt>>;<<&gt>>; <<list(>><<sorted(>> <<combs(>><<range(>><<5>>)), <<key>><<=>><<len>>))
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>sorted(</c> <c>combs(</c><c>range(</c><c>5</c>)), <c>key</c><c>=</c><c>len</c>))
 [(), 
- (<<0>>,), (<<1>>,), (<<2>>,), (<<3>>,), (<<4>>,), 
- (<<1>>, <<0>>), (<<2>>, <<0>>), (<<2>>, <<1>>), (<<3>>, <<0>>), (<<3>>, <<1>>), (<<3>>, <<2>>), (<<4>>, <<0>>), (<<4>>, <<1>>), (<<4>>, <<2>>), (<<4>>, <<3>>), 
- (<<2>>, <<1>>, <<0>>), (<<3>>, <<1>>, <<0>>), (<<3>>, <<2>>, <<0>>), (<<3>>, <<2>>, <<1>>), (<<4>>, <<1>>, <<0>>), (<<4>>, <<2>>, <<0>>), (<<4>>, <<2>>, <<1>>), (<<4>>, <<3>>, <<0>>), (<<4>>, <<3>>, <<1>>), (<<4>>, <<3>>, <<2>>), 
- (<<3>>, <<2>>, <<1>>, <<0>>), (<<4>>, <<2>>, <<1>>, <<0>>), (<<4>>, <<3>>, <<1>>, <<0>>), (<<4>>, <<3>>, <<2>>, <<0>>), (<<4>>, <<3>>, <<2>>, <<1>>), 
- (<<4>>, <<3>>, <<2>>, <<1>>, <<0>>)]
+ (<c>0</c>,), (<c>1</c>,), (<c>2</c>,), (<c>3</c>,), (<c>4</c>,), 
+ (<c>1</c>, <c>0</c>), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), 
+ (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>), 
+ (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), 
+ (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
 
-<<&gt>>;<<&gt>>;<<&gt>>; <<len(>><<set(>><<combs(>><<range(>><<5>>))))
-<<32>>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>len(</c><c>set(</c><c>combs(</c><c>range(</c><c>5</c>))))
+<c>32</c>
 </code>
 "
 6347576|"Here is a variant on Alec Thomas's solution:
 
-<code><<def>> <<enum(>><<*>><<args>>, <<**>><<kwargs>>)<<:>>
-    <<return>> <<type(>>'<<Enum>>', (), <<dict(>>(<<y>>, <<x>>) <<for>> <<x>>, <<y>> <<in>> <<enumerate(>><<args>>), <<**>><<kwargs>>)) 
+<code><c>def</c> <c>enum(</c><c>*</c><c>args</c>, <c>**</c><c>kwargs</c>)<c>:</c>
+    <c>return</c> <c>type(</c>'<c>Enum</c>', (), <c>dict(</c>(<c>y</c>, <c>x</c>) <c>for</c> <c>x</c>, <c>y</c> <c>in</c> <c>enumerate(</c><c>args</c>), <c>**</c><c>kwargs</c>)) 
 
-<<x>> <<=>> <<enum(>>'<<POOH>>', '<<TIGGER>>', '<<EEYORE>>', '<<ROO>>', '<<PIGLET>>', '<<RABBIT>>', '<<OWL>>')
-<<assert>> <<x>>.<<POOH>> <<==>> <<0>>
-<<assert>> <<x>>.<<TIGGER>> <<==>> <<1>>
+<c>x</c> <c>=</c> <c>enum(</c>'<c>POOH</c>', '<c>TIGGER</c>', '<c>EEYORE</c>', '<c>ROO</c>', '<c>PIGLET</c>', '<c>RABBIT</c>', '<c>OWL</c>')
+<c>assert</c> <c>x</c><c>.</c><c>POOH</c> <c>==</c> <c>0</c>
+<c>assert</c> <c>x</c><c>.</c><c>TIGGER</c> <c>==</c> <c>1</c>
 </code>
 "
-32649302|"<code><<from>> <<operator>> <<import>> <<truediv>>
+32649302|"<code><c>from</c> <c>operator</c> <c>import</c> <c>truediv</c>
 
-<<c>> <<=>> <<truediv(>><<a>>, <<b>>)
+<c>c</c> <c>=</c> <c>truediv(</c><c>a</c>, <c>b</c>)
 </code>
 "
 35199035|"Here is a tiny timer class that returns ""hh:mm:ss"" string: 
 
-<code><<class>> <<Timer>><<:>>
-  <<def>> <<__init__(>><<self>>)<<:>>
-    <<self>>.<<start>> <<=>> <<time>>.<<time(>>)
+<code><c>class</c> <c>Timer</c><c>:</c>
+  <c>def</c> <c>__init__(</c><c>self</c>)<c>:</c>
+    <c>self</c><c>.</c><c>start</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
 
-  <<def>> <<restart(>><<self>>)<<:>>
-    <<self>>.<<start>> <<=>> <<time>>.<<time(>>)
+  <c>def</c> <c>restart(</c><c>self</c>)<c>:</c>
+    <c>self</c><c>.</c><c>start</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
 
-  <<def>> <<get_time_hhmmss(>><<self>>)<<:>>
-    <<end>> <<=>> <<time>>.<<time(>>)
-    <<m>>, <<s>> <<=>> <<divmod(>><<end>> - <<self>>.<<start>>, <<60>>)
-    <<h>>, <<m>> <<=>> <<divmod(>><<m>>, <<60>>)
-    <<time_str>> <<=>> ""<<%>><<0>><<2>><<d>><<:>><<%>><<0>><<2>><<d>><<:>><<%>><<0>><<2>><<d>>"" <<%>> (<<h>>, <<m>>, <<s>>)
-    <<return>> <<time_str>>
+  <c>def</c> <c>get_time_hhmmss(</c><c>self</c>)<c>:</c>
+    <c>end</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+    <c>m</c>, <c>s</c> <c>=</c> <c>divmod(</c><c>end</c> <c>-</c> <c>self</c><c>.</c><c>start</c>, <c>60</c>)
+    <c>h</c>, <c>m</c> <c>=</c> <c>divmod(</c><c>m</c>, <c>60</c>)
+    <c>time_str</c> <c>=</c> ""<c>%</c><c>0</c><c>2</c><c>d</c><c>:</c><c>%</c><c>0</c><c>2</c><c>d</c><c>:</c><c>%</c><c>0</c><c>2</c><c>d</c>"" <c>%</c> (<c>h</c>, <c>m</c>, <c>s</c>)
+    <c>return</c> <c>time_str</c>
 </code>
 
 Usage: 
 
-<code># <<Start>> <<timer>>
-<<my_timer>> <<=>> <<Timer(>>)
+<code># <c>Start</c> <c>timer</c>
+<c>my_timer</c> <c>=</c> <c>Timer(</c>)
 
-# <<...>> <<do>> <<something>>
+# ... <c>do</c> <c>something</c>
 
-# <<Get>> <<time>> <<string:>>
-<<time_hhmmss>> <<=>> <<my_timer>>.<<get_time_hhmmss(>>)
-<<print(>>""<<Time>> <<elapsed>><<:>> <<%>><<s>>"" <<%>> <<time_hhmmss>> )
+# <c>Get</c> <c>time</c> <c>string</c><c>:</c>
+<c>time_hhmmss</c> <c>=</c> <c>my_timer</c><c>.</c><c>get_time_hhmmss(</c>)
+<c>print(</c>""<c>Time</c> <c>elapsed</c><c>:</c> <c>%</c><c>s</c>"" <c>%</c> <c>time_hhmmss</c> )
 
-# <<...>> <<use>> <<the>> <<timer>> <<again>>
-<<my_timer>>.<<restart(>>)
+# ... <c>use</c> <c>the</c> <c>timer</c> <c>again</c>
+<c>my_timer</c><c>.</c><c>restart(</c>)
 
-# <<...>> <<do>> <<something>>
+# ... <c>do</c> <c>something</c>
 
-# <<Get>> <<time:>>
-<<time_hhmmss>> <<=>> <<my_timer>>.<<get_time_hhmmss(>>)
+# <c>Get</c> <c>time</c><c>:</c>
+<c>time_hhmmss</c> <c>=</c> <c>my_timer</c><c>.</c><c>get_time_hhmmss(</c>)
 
-# <<...>> <<etc>>
+# ... <c>etc</c>
 </code>
 "
 16637874|"Just an FYI adding to Chris. B (best answer):
 
-<code><<d>> <<=>> <<defaultdict(>><<int>>)
+<code><c>d</c> <c>=</c> <c>defaultdict(</c><c>int</c>)
 </code>
 
-Works as well; the reason is that calling <code><<int(>>)</code> returns <code><<0>></code> which is what <code><<defaultdict>></code> does behind the scenes (when constructing a dictionary), hence the name ""Factory Function"" in the documentation.
+Works as well; the reason is that calling <code><c>int(</c>)</code> returns <code><c>0</c></code> which is what <code><c>defaultdict</c></code> does behind the scenes (when constructing a dictionary), hence the name ""Factory Function"" in the documentation.
 "
 5574749|"I would say that your first approach:
 
-<code><<print>> <<&gt>>;<<&gt>>; <<sys>>.<<stderr>>, '<<spam>>' 
+<code><c>print</c> <c>&gt</c>;<c>&gt</c>; <c>sys</c><c>.</c><c>stderr</c>, '<c>spam</c>' 
 </code>
 
 is the ""One . . . obvious way to do it""  The others don't satisfy rule #1 (""Beautiful is better than ugly."")
 "
-8369232|"<code><<f>> <<=>> <<open(>>'<<data>>.<<txt>>','<<r>>')
-<<string>> <<=>> """"
-<<while>> <<1>><<:>>
-    <<line>> <<=>> <<f>>.<<readline(>>)
-    <<if>> <<not>> <<line>><<:>><<break>>
-    <<string>> <<+=>> <<line>>
+8369232|"<code><c>f</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>','<c>r</c>')
+<c>string</c> <c>=</c> """"
+<c>while</c> <c>1</c><c>:</c>
+    <c>line</c> <c>=</c> <c>f</c><c>.</c><c>readline(</c>)
+    <c>if</c> <c>not</c> <c>line</c><c>:</c><c>break</c>
+    <c>string</c> <c>+=</c> <c>line</c>
 
-<<f>>.<<close(>>)
+<c>f</c><c>.</c><c>close(</c>)
 
 
-<<print>> <<string>>
+<c>print</c> <c>string</c>
 </code>
 "
-35041435|"<code><<pip>> <<install>> -<<U>> <<setuptools>></code> and <code><<easy_install>></code> was putting egg-info in the wrong directory.
+35041435|"<code><c>pip</c> <c>install</c> <c>-</c><c>U</c> <c>setuptools</c></code> and <code><c>easy_install</c></code> was putting egg-info in the wrong directory.
 
-Then I just reinstalled <code><<apt>>-<<get>> <<install>> <<python>>-<<dev>></code>.
+Then I just reinstalled <code><c>apt-get</c> <c>install</c> <c>python-dev</c></code>.
 Let me install the drivers I want after that
 "
-1810760|"Try <code><<os>>.<<chdir>></code>
+1810760|"Try <code><c>os</c><c>.</c><c>chdir</c></code>
 
 
-<code><<os>>.<<chdir(>><<path>>)
+<code><c>os</c><c>.</c><c>chdir(</c><c>path</c>)
 </code>
   
           Change the current working directory to path. Availability: Unix, Windows.
@@ -324,220 +324,220 @@ I mention this for the sake of completeness, and this should be your last resort
   How do I get the current time in Python?
 
 
-The <code><<time>></code> module
+The <code><c>time</c></code> module
 
-The <code><<time>></code> module provides functions that tells us the time in ""seconds since the epoch"" as well as other utilities.
+The <code><c>time</c></code> module provides functions that tells us the time in ""seconds since the epoch"" as well as other utilities.
 
-<code><<import>> <<time>>
+<code><c>import</c> <c>time</c>
 </code>
 
 Unix Epoch Time
 
 This is the format you should get timestamps in for saving in databases. It is a simple floating point number that can be converted to an integer. It is also good for arithmetic in seconds, as it represents the number of seconds since Jan 1, 1970 00:00:00, and it is memory light relative to the other representations of time we'll be looking at next:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<time>>.<<time(>>)
-<<1424233311.771502>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>time(</c>)
+<c>1424233311.771502</c>
 </code>
 
 This timestamp does not account for leap-seconds, so it's not linear - leap seconds are ignored. So while it is not equivalent to the international UTC standard, it is close, and therefore quite good for most cases of record-keeping. 
 
 This is not ideal for human scheduling, however. If you have a future event you wish to take place at a certain point in time, you'll want to store that time with a string that can be parsed into a datetime object or a serialized datetime object (these will be described later).
 
-<code><<time>>.<<ctime>></code>
+<code><c>time</c><c>.</c><c>ctime</c></code>
 
 You can also represent the current time in the way preferred by your operating system (which means it can change when you change your system preferences, so don't rely on this to be standard across all systems, as I've seen others expect). This is typically user friendly, but doesn't typically result in strings one can sort chronologically:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<time>>.<<ctime(>>)
-'<<Tue Feb>> <<17>> <<23:21:56>> <<2015>>'
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>ctime(</c>)
+'<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>56</c> <c>2015</c>'
 </code>
 
-You can hydrate timestamps into human readable form with <code><<ctime>></code> as well:
+You can hydrate timestamps into human readable form with <code><c>ctime</c></code> as well:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<time>>.<<ctime(>><<1424233311.771502>>)
-'<<Tue Feb>> <<17>> <<23:21:51>> <<2015>>'
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>ctime(</c><c>1424233311.771502</c>)
+'<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>51</c> <c>2015</c>'
 </code>
 
 This conversion is also not good for record-keeping (except in text that will only be parsed by humans - and with improved Optical Character Recognition and Artificial Intelligence, I think the number of these cases will diminish).
 
-<code><<datetime>></code> module
+<code><c>datetime</c></code> module
 
-The <code><<datetime>></code> module is also quite useful here:
+The <code><c>datetime</c></code> module is also quite useful here:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<import>> <<datetime>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
 </code>
 
-<code><<datetime>>.<<datetime>>.<<now>></code>
+<code><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now</c></code>
 
-The <code><<datetime>>.<<now>></code> is a class method that returns the current time. It uses the <code><<time>>.<<localtime>></code> without the timezone info (if not given, otherwise see timezone aware below). It has a representation (which would allow you to recreate an equivalent object) echoed on the shell, but when printed (or coerced to a <code><<str>></code>), it is in human readable (and nearly ISO) format, and the lexicographic sort is equivalent to the chronological sort:
+The <code><c>datetime</c><c>.</c><c>now</c></code> is a class method that returns the current time. It uses the <code><c>time</c><c>.</c><c>localtime</c></code> without the timezone info (if not given, otherwise see timezone aware below). It has a representation (which would allow you to recreate an equivalent object) echoed on the shell, but when printed (or coerced to a <code><c>str</c></code>), it is in human readable (and nearly ISO) format, and the lexicographic sort is equivalent to the chronological sort:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<now(>>)
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<17>>, <<23>>, <<43>>, <<49>>, <<94252>>)
-<<&gt>>;<<&gt>>;<<&gt>>; <<print(>><<datetime>>.<<datetime>>.<<now(>>))
-<<2015>>-<<0>><<2>>-<<17>> <<23>><<:>><<43>><<:>><<51.782461>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>17</c>, <c>23</c>, <c>43</c>, <c>49</c>, <c>94252</c>)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>))
+<c>2015-02-17</c> <c>23</c><c>:</c><c>43</c><c>:</c><c>51.782461</c>
 </code>
 
-datetime's <code><<utcnow>></code>
+datetime's <code><c>utcnow</c></code>
 
 You can get a datetime object in UTC time, a global standard, by doing this:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<utcnow(>>)
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<18>>, <<4>>, <<53>>, <<28>>, <<394163>>)
-<<&gt>>;<<&gt>>;<<&gt>>; <<print(>><<datetime>>.<<datetime>>.<<utcnow(>>))
-<<2015>>-<<0>><<2>>-<<18>> <<0>><<4>><<:>><<53>><<:>><<31.783988>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>53</c>, <c>28</c>, <c>394163</c>)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>53</c><c>:</c><c>31.783988</c>
 </code>
 
 UTC is a time standard that is nearly equivalent to the GMT timezone. (While GMT and UTC do not change for Daylight Savings Time, their users may switch to other timezones, like British Summer Time, during the Summer.) 
 
 datetime timezone aware
 
-However, none of the datetime objects we've created so far can be easily converted to various timezones. We can solve that problem with the <code><<pytz>></code> module:
+However, none of the datetime objects we've created so far can be easily converted to various timezones. We can solve that problem with the <code><c>pytz</c></code> module:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<import>> <<pytz>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<then>> <<=>> <<datetime>>.<<datetime>>.<<now(>><<pytz>>.<<utc>>)
-<<&gt>>;<<&gt>>;<<&gt>>; <<then>>
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<18>>, <<4>>, <<55>>, <<58>>, <<753949>>, <<tzinfo>><<=>><<&lt>>;<<UTC>><<&gt>>;)
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>pytz</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>then</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>then</c>
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>55</c>, <c>58</c>, <c>753949</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
 </code>
 
-Equivalently, in Python 3 we have the <code><<timezone>></code> class with a utc <code><<timezone>></code> instance attached, which also makes the object timezone aware (but to convert to another timezone without the handy <code><<pytz>></code> module is left as an exercise to the reader):
+Equivalently, in Python 3 we have the <code><c>timezone</c></code> class with a utc <code><c>timezone</c></code> instance attached, which also makes the object timezone aware (but to convert to another timezone without the handy <code><c>pytz</c></code> module is left as an exercise to the reader):
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<now(>><<datetime>>.<<timezone>>.<<utc>>)
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<18>>, <<22>>, <<31>>, <<56>>, <<564191>>, <<tzinfo>><<=>><<datetime>>.<<timezone>>.<<utc>>)
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>22</c>, <c>31</c>, <c>56</c>, <c>564191</c>, <c>tzinfo</c><c>=</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
 </code>
 
 And we see we can easily convert to timezones from the original utc object.
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<print(>><<then>>)
-<<2015>>-<<0>><<2>>-<<18>> <<0>><<4>><<:>><<55>><<:>><<58.753949>>+<<00>><<:>><<00>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<print(>><<then>>.<<astimezone(>><<pytz>>.<<timezone(>>'US/Eastern')))
-<<2015>>-<<0>><<2>>-<<17>> <<23>><<:>><<55>><<:>><<58.753949>>-<<0>><<5>><<:>><<00>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>then</c>)
+<c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>55</c><c>:</c><c>58.753949</c><c>+</c><c>00</c><c>:</c><c>00</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>then</c><c>.</c><c>astimezone(</c><c>pytz</c><c>.</c><c>timezone(</c>'<c>US</c><c>/Eastern</c>')))
+<c>2015-02-17</c> <c>23</c><c>:</c><c>55</c><c>:</c><c>58.753949-05</c><c>:</c><c>00</c>
 </code>
 
-You can also make a naive datetime object aware with the <code><<pytz>></code> timezone <code><<localize>></code> method, or by replacing the tzinfo attribute (with <code><<replace>></code>, this is done blindly), but these are more last resorts than best practices:
+You can also make a naive datetime object aware with the <code><c>pytz</c></code> timezone <code><c>localize</c></code> method, or by replacing the tzinfo attribute (with <code><c>replace</c></code>, this is done blindly), but these are more last resorts than best practices:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<pytz>>.<<utc>>.<<localize(>><<datetime>>.<<datetime>>.<<utcnow(>>))
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<18>>, <<6>>, <<6>>, <<29>>, <<32285>>, <<tzinfo>><<=>><<&lt>>;<<UTC>><<&gt>>;)
-<<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<utcnow(>>).<<replace(>><<tzinfo>><<=>><<pytz>>.<<utc>>)
-<<datetime>>.<<datetime(>><<2015>>, <<2>>, <<18>>, <<6>>, <<9>>, <<30>>, <<728550>>, <<tzinfo>><<=>><<&lt>>;<<UTC>><<&gt>>;)
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>pytz</c><c>.</c><c>utc</c><c>.</c><c>localize(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>6</c>, <c>29</c>, <c>32285</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)<c>.</c><c>replace(</c><c>tzinfo</c><c>=</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>9</c>, <c>30</c>, <c>728550</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
 </code>
 
-The <code><<pytz>></code> module allows us to make our <code><<datetime>></code> objects timezone aware and convert the times to the hundreds of timezones available in the <code><<pytz>></code> module.
+The <code><c>pytz</c></code> module allows us to make our <code><c>datetime</c></code> objects timezone aware and convert the times to the hundreds of timezones available in the <code><c>pytz</c></code> module.
 
 One could ostensibly serialize this object for UTC time and store that in a database, but it would require far more memory and be more prone to error than simply storing the Unix Epoch time, which I demonstrated first. 
 
 The other ways of viewing times are much more error prone, especially when dealing with data that may come from different time zones. You want there to be no confusion as to which timezone a string or serialized datetime object was intended for.
 
-If you're displaying the time with Python for the user, <code><<ctime>></code> works nicely, not in a table (it doesn't typically sort well), but perhaps in a clock. However, I personally recommend, when dealing with time in Python, either using Unix time, or a timezone aware UTC <code><<datetime>></code> object. 
+If you're displaying the time with Python for the user, <code><c>ctime</c></code> works nicely, not in a table (it doesn't typically sort well), but perhaps in a clock. However, I personally recommend, when dealing with time in Python, either using Unix time, or a timezone aware UTC <code><c>datetime</c></code> object. 
 "
 1207460|"Your best approach for such an example would be a list comprehension
 
-<code><<somelist>> <<=>> [<<tup>> <<for>> <<tup>> <<in>> <<somelist>> <<if>> <<determine(>><<tup>>)]
+<code><c>somelist</c> <c>=</c> [<c>tup</c> <c>for</c> <c>tup</c> <c>in</c> <c>somelist</c> <c>if</c> <c>determine(</c><c>tup</c>)]
 </code>
 
-In cases where you're doing something more complex than calling a <code><<determine>></code> function, I prefer constructing a new list and simply appending to it as I go.  For example
+In cases where you're doing something more complex than calling a <code><c>determine</c></code> function, I prefer constructing a new list and simply appending to it as I go.  For example
 
-<code><<newlist>> <<=>> []
-<<for>> <<tup>> <<in>> <<somelist>><<:>>
-    # <<lots>> <<of>> <<code>> <<here>>, <<possibly>> <<setting>> <<things>> <<up>> <<for>> <<calling>> <<determine>>
-    <<if>> <<determine(>><<tup>>)<<:>>
-        <<newlist>>.<<append(>><<tup>>)
-<<somelist>> <<=>> <<newlist>>
+<code><c>newlist</c> <c>=</c> []
+<c>for</c> <c>tup</c> <c>in</c> <c>somelist</c><c>:</c>
+    # <c>lots</c> <c>of</c> <c>code</c> <c>here</c>, <c>possibly</c> <c>setting</c> <c>things</c> <c>up</c> <c>for</c> <c>calling</c> <c>determine</c>
+    <c>if</c> <c>determine(</c><c>tup</c>)<c>:</c>
+        <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
+<c>somelist</c> <c>=</c> <c>newlist</c>
 </code>
 
-Copying the list using <code><<remove>></code> might make your code look a little cleaner, as described in one of the answers below.  You should definitely not do this for extremely large lists, since this involves first copying the entire list, and also performing an <code><<O(>><<n>>)</code> <code><<remove>></code> operation for each element being removed, making this an <code><<O(>><<n>><<^>><<2>>)</code> algorithm.
+Copying the list using <code><c>remove</c></code> might make your code look a little cleaner, as described in one of the answers below.  You should definitely not do this for extremely large lists, since this involves first copying the entire list, and also performing an <code><c>O(</c><c>n</c>)</code> <code><c>remove</c></code> operation for each element being removed, making this an <code><c>O(</c><c>n</c><c>^</c><c>2</c>)</code> algorithm.
 
-<code><<for>> <<tup>> <<in>> <<somelist>>[<<:>>]<<:>>
-    # <<lots>> <<of>> <<code>> <<here>>, <<possibly>> <<setting>> <<things>> <<up>> <<for>> <<calling>> <<determine>>
-    <<if>> <<determine(>><<tup>>)<<:>>
-        <<newlist>>.<<append(>><<tup>>)
+<code><c>for</c> <c>tup</c> <c>in</c> <c>somelist</c>[<c>:</c>]<c>:</c>
+    # <c>lots</c> <c>of</c> <c>code</c> <c>here</c>, <c>possibly</c> <c>setting</c> <c>things</c> <c>up</c> <c>for</c> <c>calling</c> <c>determine</c>
+    <c>if</c> <c>determine(</c><c>tup</c>)<c>:</c>
+        <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
 </code>
 "
 326279|"Note that rstrip doesn't act exactly like Perl's chomp() because it doesn't modify the string. That is, in Perl:
 
-<code>$<<x>><<=>>""<<a>>\<<n>>"";
+<code><c>$</c><c>x</c><c>=</c>""<c>a</c><c>\n</c>"";
 
-<<chomp>> $<<x>>
+<c>chomp</c><c> </c><c>$</c><c>x</c>
 </code>
 
-results in <code>$<<x>></code> being <code>""<<a>>""</code>.
+results in <code><c>$</c><c>x</c></code> being <code>""<c>a</c>""</code>.
 
 but in Python:
 
-<code><<x>><<=>>""<<a>>\<<n>>""
+<code><c>x</c><c>=</c>""<c>a</c><c>\n</c>""
 
-<<x>>.<<rstrip(>>)
+<c>x</c><c>.</c><c>rstrip(</c>)
 </code>
 
-will mean that the value of <code><<x>></code> is still <code>""<<a>>\<<n>>""</code>. Even <code><<x>><<=>><<x>>.<<rstrip(>>)</code> doesn't always give the same result, as it strips all whitespace from the end of the string, not just one newline at most.
+will mean that the value of <code><c>x</c></code> is still <code>""<c>a</c><c>\n</c>""</code>. Even <code><c>x</c><c>=</c><c>x</c><c>.</c><c>rstrip(</c>)</code> doesn't always give the same result, as it strips all whitespace from the end of the string, not just one newline at most.
 "
 17016257|"Edit 2016
 
-As Raymond pointed out, in python 3.5+ where <code><<OrderedDict>></code> is implemented in C, the list comprehension approach will be slower than <code><<OrderedDict>></code> (unless you actually need the list at the end - and even then, only if the input is very short). So the best solution for 3.5+ is <code><<OrderedDict>></code>.
+As Raymond pointed out, in python 3.5+ where <code><c>OrderedDict</c></code> is implemented in C, the list comprehension approach will be slower than <code><c>OrderedDict</c></code> (unless you actually need the list at the end - and even then, only if the input is very short). So the best solution for 3.5+ is <code><c>OrderedDict</c></code>.
 
 Important Edit 2015
 
-As @abarnert notes, the <code><<more_itertools>></code> library (<code><<pip>> <<install>> <<more_itertools>></code>) contains a <code><<unique_everseen>></code> function that is built to solve this problem without any unreadable (<code><<not>> <<seen>>.<<add>></code>) mutations in list comprehensions. This is also the fastest solution too:
+As @abarnert notes, the <code><c>more_itertools</c></code> library (<code><c>pip</c> <c>install</c> <c>more_itertools</c></code>) contains a <code><c>unique_everseen</c></code> function that is built to solve this problem without any unreadable (<code><c>not</c> <c>seen</c><c>.</c><c>add</c></code>) mutations in list comprehensions. This is also the fastest solution too:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<from>>  <<more_itertools>> <<import>> <<unique_everseen>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<items>> <<=>> [<<1>>, <<2>>, <<0>>, <<1>>, <<3>>, <<2>>]
-<<&gt>>;<<&gt>>;<<&gt>>; <<list(>><<unique_everseen(>><<items>>))
-[<<1>>, <<2>>, <<0>>, <<3>>]
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>unique_everseen(</c><c>items</c>))
+[<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
 Just one simple library import and no hacks. 
-This comes from an implementation of the itertools recipe <code><<unique_everseen>></code> which looks like:
+This comes from an implementation of the itertools recipe <code><c>unique_everseen</c></code> which looks like:
 
-<code><<def>> <<unique_everseen(>><<iterable>>, <<key>><<=>><<None>>)<<:>>
-    ""<<List>> <<unique>> <<elements>>, <<preserving>> <<order>>. <<Remember>> <<all>> <<elements>> <<ever>> <<seen>>.""
-    # unique_everseen('AAAABBBCCDAABBB') --&gt; A B C D
-    # <<unique_everseen('ABBCcAD>>', <<str>>.lower) --&gt; A B C D
-    <<seen>> <<=>> <<set(>>)
-    <<seen_add>> <<=>> <<seen>>.<<add>>
-    <<if>> <<key>> <<is>> <<None>><<:>>
-        <<for>> <<element>> <<in>> <<filterfalse(>><<seen>>.<<__contains__>>, <<iterable>>)<<:>>
-            <<seen_add(>><<element>>)
-            <<yield>> <<element>>
-    <<else>><<:>>
-        <<for>> <<element>> <<in>> <<iterable>><<:>>
-            <<k>> <<=>> <<key(>><<element>>)
-            <<if>> <<k>> <<not>> <<in>> <<seen>><<:>>
-                <<seen_add(>><<k>>)
-                <<yield>> <<element>>
+<code><c>def</c> <c>unique_everseen(</c><c>iterable</c>, <c>key</c><c>=</c><c>None</c>)<c>:</c>
+    ""<c>List</c> <c>unique</c> <c>elements</c>, <c>preserving</c> <c>order</c><c>.</c> <c>Remember</c> <c>all</c> <c>elements</c> <c>ever</c> <c>seen</c><c>.</c>""
+    # <c>unique_everseen(</c>'<c>AAAABBBCCDAABBB</c>') <c>-</c><c>-</c><c>&gt</c>; <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    # <c>unique_everseen(</c>'<c>ABBCcAD</c>', <c>str</c><c>.</c><c>lower</c>) <c>-</c><c>-</c><c>&gt</c>; <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    <c>seen</c> <c>=</c> <c>set(</c>)
+    <c>seen_add</c> <c>=</c> <c>seen</c><c>.</c><c>add</c>
+    <c>if</c> <c>key</c> <c>is</c> <c>None</c><c>:</c>
+        <c>for</c> <c>element</c> <c>in</c> <c>filterfalse(</c><c>seen</c><c>.</c><c>__contains__</c>, <c>iterable</c>)<c>:</c>
+            <c>seen_add(</c><c>element</c>)
+            <c>yield</c> <c>element</c>
+    <c>else</c><c>:</c>
+        <c>for</c> <c>element</c> <c>in</c> <c>iterable</c><c>:</c>
+            <c>k</c> <c>=</c> <c>key(</c><c>element</c>)
+            <c>if</c> <c>k</c> <c>not</c> <c>in</c> <c>seen</c><c>:</c>
+                <c>seen_add(</c><c>k</c>)
+                <c>yield</c> <c>element</c>
 </code>
 
 
 
-In Python <code><<2.7>>+</code> the accepted common idiom (this works but isn't optimized for speed, i would now use <code><<unique_everseen>></code>) for this uses <code><<collections>>.<<OrderedDict>></code>:
+In Python <code><c>2.7</c><c>+</c></code> the accepted common idiom (this works but isn't optimized for speed, i would now use <code><c>unique_everseen</c></code>) for this uses <code><c>collections</c><c>.</c><c>OrderedDict</c></code>:
 
 Runtime: O(N)
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<from>> <<collections>> <<import>> <<OrderedDict>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<items>> <<=>> [<<1>>, <<2>>, <<0>>, <<1>>, <<3>>, <<2>>]
-<<&gt>>;<<&gt>>;<<&gt>>; <<list(>><<OrderedDict>>.<<fromkeys(>><<items>>))
-[<<1>>, <<2>>, <<0>>, <<3>>]
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
+[<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
 This looks much nicer than:
 
-<code><<seen>> <<=>> <<set(>>)
-[<<x>> <<for>> <<x>> <<in>> <<seq>> <<if>> <<x>> <<not>> <<in>> <<seen>> <<and>> <<not>> <<seen>>.<<add(>><<x>>)]
+<code><c>seen</c> <c>=</c> <c>set(</c>)
+[<c>x</c> <c>for</c> <c>x</c> <c>in</c> <c>seq</c> <c>if</c> <c>x</c> <c>not</c> <c>in</c> <c>seen</c> <c>and</c> <c>not</c> <c>seen</c><c>.</c><c>add(</c><c>x</c>)]
 </code>
 
 and doesn't utilize the ugly hack:
 
-<code><<not>> <<seen>>.<<add(>><<x>>)
+<code><c>not</c> <c>seen</c><c>.</c><c>add(</c><c>x</c>)
 </code>
 
-which relies on the fact that <code><<set>>.<<add>></code> is an in-place method that always returns <code><<None>></code> so <code><<not>> <<None>></code> evaluates to <code><<True>></code>. 
+which relies on the fact that <code><c>set</c><c>.</c><c>add</c></code> is an in-place method that always returns <code><c>None</c></code> so <code><c>not</c> <c>None</c></code> evaluates to <code><c>True</c></code>. 
 
 Note however that the hack solution is faster in raw speed though it has the same runtime complexity O(N).
 "
-9847269|"Use <code><<weekday(>>)</code> (docs):
+9847269|"Use <code><c>weekday(</c>)</code> (docs):
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<import>> <<datetime>>
-<<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<today(>>)
-<<datetime>>.<<datetime(>><<2012>>, <<3>>, <<23>>, <<23>>, <<24>>, <<55>>, <<173504>>)
-<<&gt>>;<<&gt>>;<<&gt>>; <<datetime>>.<<datetime>>.<<today(>>).<<weekday(>>)
-<<4>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2012</c>, <c>3</c>, <c>23</c>, <c>23</c>, <c>24</c>, <c>55</c>, <c>173504</c>)
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
+<c>4</c>
 </code>
 
 From the documentation:
@@ -548,131 +548,131 @@ From the documentation:
 "
 36096474|"Install prerequisites.
 
-<code><<sudo>> <<apt>>-<<get>> <<install>> <<python3>> <<python3>>-<<pip>> <<virtualenvwrapper>>
+<code><c>sudo</c> <c>apt-get</c> <c>install</c> <c>python3</c> <c>python3-pip</c> <c>virtualenvwrapper</c>
 </code>
 
-Create a Python3 based virtual environment. Optionally enable <code>--<<system>>-<<site>>-<<packages>></code> flag.
+Create a Python3 based virtual environment. Optionally enable <code><c>-</c><c>-</c><c>system-site-packages</c></code> flag.
 
-<code><<mkvirtualenv>> -<<p>> <</>><<usr>><</>><<bin>><</>><<python3>> <<&lt>>;<<venv>>-<<name>><<&gt>>;
+<code><c>mkvirtualenv</c> <c>-</c><c>p</c> <c>/usr/bin/python3</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
 </code>
 
 Set into the virtual environment.
 
-<code><<workon>> <<&lt>>;<<venv>>-<<name>><<&gt>>;
+<code><c>workon</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
 </code>
 
-Install other requirements using <code><<pip>></code> package manager.
+Install other requirements using <code><c>pip</c></code> package manager.
 
-<code><<pip>> <<install>> -<<r>> <<requirements>>.<<txt>>
-<<pip>> <<install>> <<&lt>>;<<package_name>><<&gt>>;
+<code><c>pip</c> <c>install</c> <c>-</c><c>r</c> <c>requirements</c><c>.</c><c>txt</c>
+<c>pip</c> <c>install</c> <c>&lt</c>;<c>package_name</c><c>&gt</c>;
 </code>
 
 
 
-When working on multiple python projects simultaneously it is usually recommended to install common packages like <code><<Django>></code> globally and then reuse them in virtualenvs.
+When working on multiple python projects simultaneously it is usually recommended to install common packages like <code><c>Django</c></code> globally and then reuse them in virtualenvs.
 
 Using this technique saves a lot of time spent on fetching packages and installing them, apart from consuming minimal disk space and network bandwidth.
 
-<code><<sudo>> -<<H>> <<pip3>> -<<v>> <<install>> <<Django>>
-<<mkvirtualenv>> -<<p>> $(<<which>> <<python3>>) --<<system>>-<<site>>-<<packages>> <<&lt>>;<<venv>>-<<name>><<&gt>>;
+<code><c>sudo</c> <c>-</c><c>H</c> <c>pip3</c> <c>-</c><c>v</c> <c>install</c> <c>Django</c>
+<c>mkvirtualenv</c> <c>-</c><c>p</c><c> </c><c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
 </code>
 "
 3242895|"You can ask any object which module it came from by looking at its __ module__ property. This is useful, for example, if you're experimenting at the command line and have imported a lot of things.
 
 Along the same lines, you can ask a module where it came from by looking at its __ file__ property.  This is useful when debugging path issues.
 "
-1952485|"This isn't sufficient: the object returned by <code><<__iter__>></code> must implement the iteration protocol (i.e. <code><<next>></code> method). See the relevant section in the documentation.
+1952485|"This isn't sufficient: the object returned by <code><c>__iter__</c></code> must implement the iteration protocol (i.e. <code><c>next</c></code> method). See the relevant section in the documentation.
 
 In Python, a good practice is to ""try and see"" instead of ""checking"".
 "
-10973829|"Simplifying a bit, you can imagine <code><<map(>>)</code> doing something like this:
+10973829|"Simplifying a bit, you can imagine <code><c>map(</c>)</code> doing something like this:
 
-<code><<def>> <<mymap(>><<func>>, <<lst>>)<<:>>
-    <<result>> <<=>> []
-    <<for>> <<e>> <<in>> <<lst>><<:>>
-        <<result>>.<<append(>><<func(>><<e>>))
-    <<return>> <<result>>
+<code><c>def</c> <c>mymap(</c><c>func</c>, <c>lst</c>)<c>:</c>
+    <c>result</c> <c>=</c> []
+    <c>for</c> <c>e</c> <c>in</c> <c>lst</c><c>:</c>
+        <c>result</c><c>.</c><c>append(</c><c>func(</c><c>e</c>))
+    <c>return</c> <c>result</c>
 </code>
 
-As you can see, it takes a function and a list, and returns a new list with the result of applying the function to each of the elements in the input list. I said ""simplifying a bit"" because in reality <code><<map(>>)</code> can process more than one iterable:
+As you can see, it takes a function and a list, and returns a new list with the result of applying the function to each of the elements in the input list. I said ""simplifying a bit"" because in reality <code><c>map(</c>)</code> can process more than one iterable:
 
 
   If additional iterable arguments are passed, function must take that many arguments and is applied to the items from all iterables in parallel. If one iterable is shorter than another it is assumed to be extended with None items.
 
 
-For the second part in the question: What role does this play in making a Cartesian product? well, <code><<map(>>)</code> could be used for generating the cartesian product of a list like this:
+For the second part in the question: What role does this play in making a Cartesian product? well, <code><c>map(</c>)</code> could be used for generating the cartesian product of a list like this:
 
-<code><<lst>> <<=>> [<<1>>, <<2>>, <<3>>, <<4>>, <<5>>]
+<code><c>lst</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>]
 
-<<from>> <<operator>> <<import>> <<add>>
-<<reduce(>><<add>>, <<map(>><<lambda>> <<i>><<:>> <<map(>><<lambda>> <<j>><<:>> (<<i>>, <<j>>), <<lst>>), <<lst>>))
+<c>from</c> <c>operator</c> <c>import</c> <c>add</c>
+<c>reduce(</c><c>add</c>, <c>map(</c><c>lambda</c> <c>i</c><c>:</c> <c>map(</c><c>lambda</c> <c>j</c><c>:</c> (<c>i</c>, <c>j</c>), <c>lst</c>), <c>lst</c>))
 </code>
 
-... But to tell the truth, using <code><<product(>>)</code> is a much simpler and natural way to solve the problem:
+... But to tell the truth, using <code><c>product(</c>)</code> is a much simpler and natural way to solve the problem:
 
-<code><<from>> <<itertools>> <<import>> <<product>>
-<<list(>><<product(>><<lst>>, <<lst>>))
+<code><c>from</c> <c>itertools</c> <c>import</c> <c>product</c>
+<c>list(</c><c>product(</c><c>lst</c>, <c>lst</c>))
 </code>
 
-Either way, the result is the cartesian product of <code><<lst>></code> as defined above:
+Either way, the result is the cartesian product of <code><c>lst</c></code> as defined above:
 
-<code>[(<<1>>, <<1>>), (<<1>>, <<2>>), (<<1>>, <<3>>), (<<1>>, <<4>>), (<<1>>, <<5>>),
- (<<2>>, <<1>>), (<<2>>, <<2>>), (<<2>>, <<3>>), (<<2>>, <<4>>), (<<2>>, <<5>>),
- (<<3>>, <<1>>), (<<3>>, <<2>>), (<<3>>, <<3>>), (<<3>>, <<4>>), (<<3>>, <<5>>),
- (<<4>>, <<1>>), (<<4>>, <<2>>), (<<4>>, <<3>>), (<<4>>, <<4>>), (<<4>>, <<5>>),
- (<<5>>, <<1>>), (<<5>>, <<2>>), (<<5>>, <<3>>), (<<5>>, <<4>>), (<<5>>, <<5>>)]
+<code>[(<c>1</c>, <c>1</c>), (<c>1</c>, <c>2</c>), (<c>1</c>, <c>3</c>), (<c>1</c>, <c>4</c>), (<c>1</c>, <c>5</c>),
+ (<c>2</c>, <c>1</c>), (<c>2</c>, <c>2</c>), (<c>2</c>, <c>3</c>), (<c>2</c>, <c>4</c>), (<c>2</c>, <c>5</c>),
+ (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>3</c>, <c>3</c>), (<c>3</c>, <c>4</c>), (<c>3</c>, <c>5</c>),
+ (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), (<c>4</c>, <c>4</c>), (<c>4</c>, <c>5</c>),
+ (<c>5</c>, <c>1</c>), (<c>5</c>, <c>2</c>), (<c>5</c>, <c>3</c>), (<c>5</c>, <c>4</c>), (<c>5</c>, <c>5</c>)]
 </code>
 "
 39079453|"For deleting files:
 
-You can use <code><<unlink>></code> or <code><<remove>></code>. 
+You can use <code><c>unlink</c></code> or <code><c>remove</c></code>. 
 
-<code><<os>>.<<unlink(>><<path>>, <<*>>, <<dir_fd>><<=>><<None>>)
+<code><c>os</c><c>.</c><c>unlink(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
 </code>
 
 Or
 
-<code><<os>>.<<remove(>><<path>>, <<*>>, <<dir_fd>><<=>><<None>>)
+<code><c>os</c><c>.</c><c>remove(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
 </code>
 
-This functions removes (deletes) the file path. If path is a directory, <code><<OSError>></code> is raised.
+This functions removes (deletes) the file path. If path is a directory, <code><c>OSError</c></code> is raised.
 
-In Python 2, if the path does not exist, <code><<OSError>></code> with [Errno 2] (<code><<ENOENT>></code>) is raised. In Python 3, <code><<FileNotFoundError>></code> with [Errno 2] (<code><<ENOENT>></code>) is raised. In Python 3, because <code><<FileNotFoundError>></code> is a subclass of <code><<OSError>></code>, catching the latter will catch the former.
+In Python 2, if the path does not exist, <code><c>OSError</c></code> with [Errno 2] (<code><c>ENOENT</c></code>) is raised. In Python 3, <code><c>FileNotFoundError</c></code> with [Errno 2] (<code><c>ENOENT</c></code>) is raised. In Python 3, because <code><c>FileNotFoundError</c></code> is a subclass of <code><c>OSError</c></code>, catching the latter will catch the former.
 
 For deleting folders:
 
-<code><<os>>.<<rmdir(>><<path>>, <<*>>, <<dir_fd>><<=>><<None>>)
+<code><c>os</c><c>.</c><c>rmdir(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
 </code>
 
-<code><<rmdir>></code> Remove (delete) the directory path. Only works when the directory is empty, otherwise, OSError is raised. 
-In order to remove whole directory trees, <code><<shutil>>.<<rmtree(>>)</code> can be used.
+<code><c>rmdir</c></code> Remove (delete) the directory path. Only works when the directory is empty, otherwise, OSError is raised. 
+In order to remove whole directory trees, <code><c>shutil</c><c>.</c><c>rmtree(</c>)</code> can be used.
 
-<code><<shutil>>.<<rmtree(>><<path>>, <<ignore_errors>><<=>><<False>>, <<onerror>><<=>><<None>>)
+<code><c>shutil</c><c>.</c><c>rmtree(</c><c>path</c>, <c>ignore_errors</c><c>=</c><c>False</c>, <c>onerror</c><c>=</c><c>None</c>)
 </code>
 
-<code><<shutil>>.<<rmtree>></code> Delete an entire directory tree. Path must point to a directory (but not a symbolic link to a directory). 
+<code><c>shutil</c><c>.</c><c>rmtree</c></code> Delete an entire directory tree. Path must point to a directory (but not a symbolic link to a directory). 
 
 If ignore_errors is true, errors resulting from failed removals will be ignored and if false or omitted, such errors are handled by calling a handler specified by onerror or, if that is omitted, they raise an exception.
 
 See also:
 
-<code><<os>>.<<removedirs(>><<name>>)
+<code><c>os</c><c>.</c><c>removedirs(</c><c>name</c>)
 </code>
 
-<code><<os>>.<<removedirs(>><<name>>)</code> Remove directories recursively. Works like rmdir() except that, if the leaf directory is successfully removed, removedirs() tries to successively remove every parent directory mentioned in path until an error is raised (which is ignored, because it generally means that a parent directory is not empty). 
+<code><c>os</c><c>.</c><c>removedirs(</c><c>name</c>)</code> Remove directories recursively. Works like rmdir() except that, if the leaf directory is successfully removed, removedirs() tries to successively remove every parent directory mentioned in path until an error is raised (which is ignored, because it generally means that a parent directory is not empty). 
 
 For example, os.removedirs('foo/bar/baz') will first remove the directory 'foo/bar/baz', and then remove 'foo/bar' and 'foo' if they are empty. 
 "
 38778859|"Yet another functional solution for Python 2:
 
-<code><<from>> <<functools>> <<import>> <<partial>>
+<code><c>from</c> <c>functools</c> <c>import</c> <c>partial</c>
 
-<<map(>><<partial(>><<map>>, <<int>>), <<T1>>)
+<c>map(</c><c>partial(</c><c>map</c>, <c>int</c>), <c>T1</c>)
 </code>
 
 Python 3 will be a little bit messy though:
 
-<code><<list(>><<map(>><<list>>, <<map(>><<partial(>><<map>>, <<int>>), <<T1>>)))
+<code><c>list(</c><c>map(</c><c>list</c>, <c>map(</c><c>partial(</c><c>map</c>, <c>int</c>), <c>T1</c>)))
 </code>
 "
 18296313|"I recommend looking at docopt as a simple alternative to these others.
@@ -681,113 +681,113 @@ docopt is a new project that works by parsing your --help usage message rather t
 "
 1035419|"If the file is not too big that holding it in memory is a problem:
 
-<code><<bytes_read>> <<=>> <<open(>>""<<filename>>"", ""<<rb>>"").<<read(>>)
-<<for>> <<b>> <<in>> <<bytes_read>><<:>>
-    <<process_byte(>><<b>>)
+<code><c>bytes_read</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")<c>.</c><c>read(</c>)
+<c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c><c>:</c>
+    <c>process_byte(</c><c>b</c>)
 </code>
 
 where process_byte represents some operation you want to perform on the passed-in byte.
 
 If you want to process a chunk at a time:
 
-<code><<file>> <<=>> <<open(>>""<<filename>>"", ""<<rb>>"")
-<<try>><<:>>
-    <<bytes_read>> <<=>> <<file>>.<<read(>><<CHUNKSIZE>>)
-    <<while>> <<bytes_read>><<:>>
-        <<for>> <<b>> <<in>> <<bytes_read>><<:>>
-            <<process_byte(>><<b>>)
-        <<bytes_read>> <<=>> <<file>>.<<read(>><<CHUNKSIZE>>)
-<<finally>><<:>>
-    <<file>>.<<close(>>)
+<code><c>file</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")
+<c>try</c><c>:</c>
+    <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
+    <c>while</c> <c>bytes_read</c><c>:</c>
+        <c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c><c>:</c>
+            <c>process_byte(</c><c>b</c>)
+        <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
+<c>finally</c><c>:</c>
+    <c>file</c><c>.</c><c>close(</c>)
 </code>
 "
 15441162|"I like Spyder, it has many tools, such as profiling, intelligent indentation helper and a good autocompletion support
 
 https://code.google.com/p/spyderlib/
 "
-1835599|"Generally speaking, the fact that a function which iterates over an object works on strings as well as tuples and lists is more feature than bug.  You certainly can use <code><<isinstance>></code> or duck typing to check an argument, but why should you?
+1835599|"Generally speaking, the fact that a function which iterates over an object works on strings as well as tuples and lists is more feature than bug.  You certainly can use <code><c>isinstance</c></code> or duck typing to check an argument, but why should you?
 
 That sounds like a rhetorical question, but it isn't.  The answer to ""why should I check the argument's type?"" is probably going to suggest a solution to the real problem, not the perceived problem.  Why is it a bug when a string is passed to the function?  Also:  if it's a bug when a string is passed to this function, is it also a bug if some other non-list/tuple iterable is passed to it?  Why, or why not?
 
-I think that the most common answer to the question is likely to be that developers who write <code><<f(>>""<<abc>>"")</code> are expecting the function to behave as though they'd written <code><<f(>>[""<<abc>>""])</code>.  There are probably circumstances where it makes more sense to protect developers from themselves than it does to support the use case of iterating across the characters in a string.  But I'd think long and hard about it first.
+I think that the most common answer to the question is likely to be that developers who write <code><c>f(</c>""<c>abc</c>"")</code> are expecting the function to behave as though they'd written <code><c>f(</c>[""<c>abc</c>""])</code>.  There are probably circumstances where it makes more sense to protect developers from themselves than it does to support the use case of iterating across the characters in a string.  But I'd think long and hard about it first.
 "
 4847186|"The type module also exists if you are checking more than ints and strings. 
 http://docs.python.org/library/types.html
 "
-85489|"<code><<clock(>>) -<<&gt>>; <<floating>> <<point>> <<number>>
+85489|"<code><c>clock(</c>) <c>-</c><c>&gt</c>; <c>floating</c> <c>point</c> <c>number</c>
 
-<<Return>> <<the>> <<CPU>> <<time>> <<or>> <<real>> <<time>> <<since>> <<the>> <<start>> <<of>> <<the>> <<process>> <<or>> <<since>>
-<<the>> <<first>> <<call>> <<to>> <<clock(>>).  <<This>> <<has>> <<as>> <<much>> <<precision>> <<as>> <<the>> <<system>>
-<<records>>.
+<c>Return</c> <c>the</c> <c>CPU</c> <c>time</c> <c>or</c> <c>real</c> <c>time</c> <c>since</c> <c>the</c> <c>start</c> <c>of</c> <c>the</c> <c>process</c> <c>or</c> <c>since</c>
+<c>the</c> <c>first</c> <c>call</c> <c>to</c> <c>clock(</c>)<c>.</c>  <c>This</c> <c>has</c> <c>as</c> <c>much</c> <c>precision</c> <c>as</c> <c>the</c> <c>system</c>
+<c>records</c><c>.</c>
 
-<<time(>>) -<<&gt>>; <<floating>> <<point>> <<number>>
+<c>time(</c>) <c>-</c><c>&gt</c>; <c>floating</c> <c>point</c> <c>number</c>
 
-<<Return>> <<the>> <<current>> <<time>> <<in>> <<seconds>> <<since>> <<the>> <<Epoch>>.
-<<Fractions>> <<of>> <<a>> <<second>> <<may>> <<be>> <<present>> <<if>> <<the>> <<system>> <<clock>> <<provides>> <<them>>.
+<c>Return</c> <c>the</c> <c>current</c> <c>time</c> <c>in</c> <c>seconds</c> <c>since</c> <c>the</c> <c>Epoch</c><c>.</c>
+<c>Fractions</c> <c>of</c> <c>a</c> <c>second</c> <c>may</c> <c>be</c> <c>present</c> <c>if</c> <c>the</c> <c>system</c> <c>clock</c> <c>provides</c> <c>them</c><c>.</c>
 </code>
 
 Usually time() is more precise, because operating systems do not store the process running time with the precision they store the system time (ie, actual time)
 "
 22893823|"You can try this code
 
-<code><<import>> <<glob>>
-<<import>> <<os>>
-<<filenames_without_extension>> <<=>> [<<os>>.<<path>>.<<basename(>><<c>>).<<split(>>'.')[<<0>><<:>><<1>>][<<0>>] <<for>> <<c>> <<in>> <<glob>>.<<glob(>>'<<your>>/<<files>>/<<dir>>/*.<<txt>>')]
-<<filenames_with_extension>> <<=>> [<<os>>.<<path>>.<<basename(>><<c>>) <<for>> <<c>> <<in>> <<glob>>.<<glob(>>'<<your>>/<<files>>/<<dir>>/*.<<txt>>')]
+<code><c>import</c> <c>glob</c>
+<c>import</c> <c>os</c>
+<c>filenames_without_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>)<c>.</c><c>split(</c>'<c>.</c>')[<c>0</c><c>:</c><c>1</c>][<c>0</c>] <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
+<c>filenames_with_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>) <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
 </code>
 "
-1207634|"Well, if you're willing/ready to switch to Python 3 (which you may not be due to the backwards incompatibility with some Python 2 code), you don't have to do any converting; all text in Python 3 is represented with Unicode strings, which also means that there's no more usage of the <code><<u'&lt;text&gt;>>'</code> syntax. You also have what are, in effect, strings of bytes, which are used to represent data (which may be an encoded string).
+1207634|"Well, if you're willing/ready to switch to Python 3 (which you may not be due to the backwards incompatibility with some Python 2 code), you don't have to do any converting; all text in Python 3 is represented with Unicode strings, which also means that there's no more usage of the <code><c>u</c>'<c>&lt</c>;<c>text</c><c>&gt</c>;'</code> syntax. You also have what are, in effect, strings of bytes, which are used to represent data (which may be an encoded string).
 
 http://docs.python.org/3.1/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit
 
 (Of course, if you're currently using Python 3, then the problem is likely something to do with how you're attempting to save the text to a file.)
 "
-13485766|"It's difficult to make <code><<del>> <<df>>.<<column_name>></code> work simply as the result of syntactic limitations in Python. <code><<del>> <<df>>[<<name>>]</code> gets translated to <code><<df>>.<<__delitem__(>><<name>>)</code> under the covers by Python
+13485766|"It's difficult to make <code><c>del</c> <c>df</c><c>.</c><c>column_name</c></code> work simply as the result of syntactic limitations in Python. <code><c>del</c> <c>df</c>[<c>name</c>]</code> gets translated to <code><c>df</c><c>.</c><c>__delitem__(</c><c>name</c>)</code> under the covers by Python
 "
-438845|"<code><<reload(>><<module>>)</code>, but only if it's completely stand-alone. If anything else has a reference to the module (or any object belonging to the module), then you'll get subtle and curious errors caused by the old code hanging around longer than you expected, and things like <code><<isinstance>></code> not working across different versions of the same code.
+438845|"<code><c>reload(</c><c>module</c>)</code>, but only if it's completely stand-alone. If anything else has a reference to the module (or any object belonging to the module), then you'll get subtle and curious errors caused by the old code hanging around longer than you expected, and things like <code><c>isinstance</c></code> not working across different versions of the same code.
 
 If you have one-way dependencies, you must also reload all modules that depend on the the reloaded module to get rid of all the references to the old code. And then reload modules that depend on the reloaded modules, recursively.
 
-If you have circular dependencies, which is very common for example when you are dealing with reloading a package, you must unload all the modules in the group in one go. You can't do this with <code><<reload(>>)</code> because it will re-import each module before its dependencies have been refreshed, allowing old references to creep into new modules.
+If you have circular dependencies, which is very common for example when you are dealing with reloading a package, you must unload all the modules in the group in one go. You can't do this with <code><c>reload(</c>)</code> because it will re-import each module before its dependencies have been refreshed, allowing old references to creep into new modules.
 
-The only way to do it in this case is to hack <code><<sys>>.<<modules>></code>, which is kind of unsupported. You'd have to go through and delete each <code><<sys>>.<<modules>></code> entry you wanted to be reloaded on next import, and also delete entries whose values are <code><<None>></code> to deal with an implementation issue to do with caching failed relative imports. It's not terribly nice but as long as you have a fully self-contained set of dependencies that doesn't leave references outside its codebase, it's workable.
+The only way to do it in this case is to hack <code><c>sys</c><c>.</c><c>modules</c></code>, which is kind of unsupported. You'd have to go through and delete each <code><c>sys</c><c>.</c><c>modules</c></code> entry you wanted to be reloaded on next import, and also delete entries whose values are <code><c>None</c></code> to deal with an implementation issue to do with caching failed relative imports. It's not terribly nice but as long as you have a fully self-contained set of dependencies that doesn't leave references outside its codebase, it's workable.
 
 It's probably best to restart the server. :-)
 "
-1010597|"There is also <code><<argparse>></code> stdlib module (an ""impovement"" on stdlib's <code><<optparse>></code> module). Example from the introduction to argparse:
+1010597|"There is also <code><c>argparse</c></code> stdlib module (an ""impovement"" on stdlib's <code><c>optparse</c></code> module). Example from the introduction to argparse:
 
-<code># <<script>>.<<py>>
-<<import>> <<argparse>>
+<code># <c>script</c><c>.</c><c>py</c>
+<c>import</c> <c>argparse</c>
 
-<<if>> <<__name__>> <<==>> '<<__main__>>'<<:>>
-    <<parser>> <<=>> <<argparse>>.<<ArgumentParser(>>)
-    <<parser>>.<<add_argument(>>
-        '<<integers>>', <<metavar>><<=>>'<<int>>', <<type>><<=>><<int>>, <<choices>><<=>><<range(>><<10>>),
-         <<nargs>><<=>>'<<+>>', <<help>><<=>>'<<an>> <<integer>> <<in>> <<the>> <<range>> <<0..9>>')
-    <<parser>>.<<add_argument(>>
-        '<<--sum>>', <<dest>><<=>>'<<accumulate>>', <<action>><<=>>'<<store_const>>', <<const>><<=>><<sum>>,
-        <<default>><<=>><<max>>, <<help>><<=>>'<<sum>> <<the>> <<integers>> (<<default:>> <<find>> <<the>> <<max>>)')
+<c>if</c> <c>__name__</c> <c>==</c> '<c>__main__</c>'<c>:</c>
+    <c>parser</c> <c>=</c> <c>argparse</c><c>.</c><c>ArgumentParser(</c>)
+    <c>parser</c><c>.</c><c>add_argument(</c>
+        '<c>integers</c>', <c>metavar</c><c>=</c>'<c>int</c>', <c>type</c><c>=</c><c>int</c>, <c>choices</c><c>=</c><c>range(</c><c>10</c>),
+         <c>nargs</c><c>=</c>'<c>+</c>', <c>help</c><c>=</c>'<c>an</c> <c>integer</c> <c>in</c> <c>the</c> <c>range</c> 0..9')
+    <c>parser</c><c>.</c><c>add_argument(</c>
+        '<c>-</c><c>-</c><c>sum</c>', <c>dest</c><c>=</c>'<c>accumulate</c>', <c>action</c><c>=</c>'<c>store_const</c>', <c>const</c><c>=</c><c>sum</c>,
+        <c>default</c><c>=</c><c>max</c>, <c>help</c><c>=</c>'<c>sum</c> <c>the</c> <c>integers</c> (<c>default</c><c>:</c> <c>find</c> <c>the</c> <c>max</c>)')
 
-    <<args>> <<=>> <<parser>>.<<parse_args(>>)
-    <<print(>><<args>>.<<accumulate(>><<args>>.<<integers>>))
+    <c>args</c> <c>=</c> <c>parser</c><c>.</c><c>parse_args(</c>)
+    <c>print(</c><c>args</c><c>.</c><c>accumulate(</c><c>args</c><c>.</c><c>integers</c>))
 </code>
 
 Usage:
 
-<code>$ <<script>>.<<py>> <<1>> <<2>> <<3>> <<4>>
-<<4>>
+<code><c>$</c> <c>script</c><c>.</c><c>py</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<c>4</c>
 
-$ <<script>>.<<py>> --<<sum>> <<1>> <<2>> <<3>> <<4>>
-<<10>>
+<c>$</c> <c>script</c><c>.</c><c>py</c> <c>-</c><c>-</c><c>sum</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<c>10</c>
 </code>
 "
 1019572|"One line, probably pretty fast:
 
-<code><<num_lines>> <<=>> <<sum(>><<1>> <<for>> <<line>> <<in>> <<open(>>'<<myfile>>.<<txt>>'))
+<code><c>num_lines</c> <c>=</c> <c>sum(</c><c>1</c> <c>for</c> <c>line</c> <c>in</c> <c>open(</c>'<c>myfile</c><c>.</c><c>txt</c>'))
 </code>
 "
-2294513|"<code><<string>>.<<find(>><<character>>)  
-<<string>>.<<index(>><<character>>)  
+2294513|"<code><c>string</c><c>.</c><c>find(</c><c>character</c>)  
+<c>string</c><c>.</c><c>index(</c><c>character</c>)  
 </code>
 
 Perhaps you'd like to have a look at the documentation to find out what the difference between the two is.
@@ -796,28 +796,28 @@ Perhaps you'd like to have a look at the documentation to find out what the diff
 
 A sorted list of dict values:
 
-<code><<sorted(>><<d>>.<<values(>>))
+<code><c>sorted(</c><c>d</c><c>.</c><c>values(</c>))
 </code>
 
 A list of (key, value) pairs, sorted by value:
 
-<code><<from>> <<operator>> <<import>> <<itemgetter>>
-<<sorted(>><<d>>.<<items(>>), <<key>><<=>><<itemgetter(>><<1>>))
+<code><c>from</c> <c>operator</c> <c>import</c> <c>itemgetter</c>
+<c>sorted(</c><c>d</c><c>.</c><c>items(</c>), <c>key</c><c>=</c><c>itemgetter(</c><c>1</c>))
 </code>
 "
 7817348|"Use ValueSortedDict from dicts:
 
-<code><<from>> <<dicts>>.<<sorteddict>> <<import>> <<ValueSortedDict>>
-<<d>> <<=>> <<{>><<1>><<:>> <<2>>, <<3>><<:>> <<4>>, <<4>><<:>><<3>>, <<2>><<:>><<1>>, <<0>><<:>><<0>><<}>>
-<<sorted_dict>> <<=>> <<ValueSortedDict(>><<d>>)
-<<print>> <<sorted_dict>>.<<items(>>) 
+<code><c>from</c> <c>dicts</c><c>.</c><c>sorteddict</c> <c>import</c> <c>ValueSortedDict</c>
+<c>d</c> <c>=</c> {<c>1</c><c>:</c> <c>2</c>, <c>3</c><c>:</c> <c>4</c>, <c>4</c><c>:</c><c>3</c>, <c>2</c><c>:</c><c>1</c>, <c>0</c><c>:</c><c>0</c>}
+<c>sorted_dict</c> <c>=</c> <c>ValueSortedDict(</c><c>d</c>)
+<c>print</c> <c>sorted_dict</c><c>.</c><c>items(</c>) 
 
-[(<<0>>, <<0>>), (<<2>>, <<1>>), (<<1>>, <<2>>), (<<4>>, <<3>>), (<<3>>, <<4>>)]
+[(<c>0</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>1</c>, <c>2</c>), (<c>4</c>, <c>3</c>), (<c>3</c>, <c>4</c>)]
 </code>
 "
 227466|"You are looking for:
 
-<code><<ord(>>)
+<code><c>ord(</c>)
 </code>
 "
 7838845|"A nice profiling module is the line_profiler (called using the script kernprof.py).  It can be downloaded here.
@@ -828,103 +828,103 @@ My understanding is that cProfile only gives information about total time spent 
 
 But when CtrlB does not work, Sublime Text probably can't find the Python Interpreter. When trying to run your program, see the log and find the reference to Python in path.
 
-<code>[<<cmd>><<:>>  [<<u'python>>', <<u'-u>>', <<u'C:\\scripts\\test>>.<<py>>']]
-[<<path>><<:>> ...;<<C>><<:>>\<<Python27>> <<32>><<bit>>;...]
+<code>[<c>cmd</c><c>:</c>  [<c>u</c>'<c>python</c>', <c>u</c>'<c>-</c><c>u</c>', <c>u</c>'<c>C:\\scripts\\test.py</c>']]
+[<c>path</c><c>:</c> ...;<c>C:\Python27</c> <c>32</c><c>bit</c>;...]
 </code>
 
 The point is that it tries to run python via command line, the cmd looks like:
 
-<code><<python>> -<<u>> <<C>><<:>>\<<scripts>>\<<test>>.<<py>>
-</code>
+<code><c>python</c> <c>-</c><c>u</c> <c>C:\scripts\test.py
+</c></code>
 
 If you can't run python from cmd, Sublime Text can't too.
 (Try it yourself in cmd, type python in it and run it, python commandline should appear)
 
 SOLUTION
 
-You can either change the Sublime Text build formula or the System <code><<%>><<PATH>><<%>></code>.  
+You can either change the Sublime Text build formula or the System <code><c>%</c><c>PATH</c><c>%</c></code>.  
 
 
-To set your <code><<%>><<PATH>><<%>></code>:
-*You will need to restart your editor to load new <code><<%>><<PATH>><<%>></code>
+To set your <code><c>%</c><c>PATH</c><c>%</c></code>:
+*You will need to restart your editor to load new <code><c>%</c><c>PATH</c><c>%</c></code>
 
 
 Run Command Line* and enter this command: *needs to be run as administrator
-<code><<SETX>> <</>><<M>> <<PATH>> ""<<%>><<PATH>><<%>>;<<&lt>>;<<python_folder>><<&gt>>;""</code>
-for example: <code><<SETX>> <</>><<M>> <<PATH>> ""<<%>><<PATH>><<%>>;<<C>><<:>>\<<Python27>>;<<C>><<:>>\<<Python27>>\<<Scripts>>""</code>  
+<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt</c>;<c>python_folder</c><c>&gt</c>;""</code>
+for example: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
 OR manually: (preferable)
-Add <code>;<<C>><<:>>\<<Python27>>;<<C>><<:>>\<<Python27>>\<<Scripts>></code> at the end of the string.
+Add <code>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c></code> at the end of the string.
   
 
-To set the interpreter's path without messing with System <code><<%>><<PATH>><<%>></code> see this answer by ppy.
+To set the interpreter's path without messing with System <code><c>%</c><c>PATH</c><c>%</c></code> see this answer by ppy.
 
 "
 28811205|"Simply call del d['key'].
 
 However, in production, it is always a good practice to check if 'key' exists in d.
 
-<code><<if>> '<<key>>' <<in>> <<d>><<:>>
-    <<del>> <<d>>['<<key>>']
+<code><c>if</c> '<c>key</c>' <c>in</c> <c>d</c><c>:</c>
+    <c>del</c> <c>d</c>['<c>key</c>']
 </code>
 "
-34971949|"<code><<import>> <<os>>;
-<<print>> <<os>>.<<getcwd(>>); # <<Prints>> <<the>> <<working>> <<directory>>
+34971949|"<code><c>import</c> <c>os</c>;
+<c>print</c> <c>os</c><c>.</c><c>getcwd(</c>); # <c>Prints</c> <c>the</c> <c>working</c> <c>directory</c>
 </code>
 
 To set the working directory:
 
-<code><<os>>.<<chdir(>>'<<c:\\Users\uname\desktop\python>>') # <<Provide>> <<the>> <<path>> <<here>>
+<code><c>os</c><c>.</c><c>chdir(</c>'<c>c:\\Users\uname\desktop\python</c>') # <c>Provide</c> <c>the</c> <c>path</c> <c>here</c>
 </code>
 "
-29289118|"<code><<with>> <<open(>><<fname>>) <<as>> <<fo>><<:>>
-        <<data>><<=>><<fo>>.<<read(>>).<<replace(>>'<<\n>>', ' ').<<replace>> (',', ' ')
+29289118|"<code><c>with</c> <c>open(</c><c>fname</c>) <c>as</c> <c>fo</c><c>:</c>
+        <c>data</c><c>=</c><c>fo</c><c>.</c><c>read(</c>)<c>.</c><c>replace(</c>'<c>\n</c>', ' ')<c>.</c><c>replace</c> (',', ' ')
 </code>
 
 This should answer your question. The replace function will act as delimiter to strip the file.
 "
 23102554|"Lets Say I h'v a Dictionary D with elements below. To sort just use key argument in sorted to pass custom function as below
 
-<code><<D>> <<=>> <<{>>'<<eggs>>'<<:>> <<3>>, '<<ham>>'<<:>> <<1>>, '<<spam>>'<<:>> <<2>><<}>>
+<code><c>D</c> <c>=</c> {'<c>eggs</c>'<c>:</c> <c>3</c>, '<c>ham</c>'<c>:</c> <c>1</c>, '<c>spam</c>'<c>:</c> <c>2</c>}
 
-<<def>> <<get_count(>><<tuple>>)<<:>>
-    <<return>> <<tuple>>[<<1>>]
+<c>def</c> <c>get_count(</c><c>tuple</c>)<c>:</c>
+    <c>return</c> <c>tuple</c>[<c>1</c>]
 
-<<sorted(>><<D>>.<<items(>>), <<key>> <<=>> <<get_count>>, <<reverse>><<=>><<True>>)
-<<or>>
-<<sorted(>><<D>>.<<items(>>), <<key>> <<=>> <<lambda>> <<x>><<:>> <<x>>[<<1>>], <<reverse>><<=>><<True>>)  <<avoiding>> <<get_count>> <<function>> <<call>>
+<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>get_count</c>, <c>reverse</c><c>=</c><c>True</c>)
+<c>or</c>
+<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>lambda</c> <c>x</c><c>:</c> <c>x</c>[<c>1</c>], <c>reverse</c><c>=</c><c>True</c>)  <c>avoiding</c> <c>get_count</c> <c>function</c> <c>call</c>
 </code>
 
 https://wiki.python.org/moin/HowTo/Sorting/#Key_Functions
 "
-89267|"<code><<os>>.<<system>></code> has been superseded by the <code><<subprocess>></code> module. Use subproccess instead.
+89267|"<code><c>os</c><c>.</c><c>system</c></code> has been superseded by the <code><c>subprocess</c></code> module. Use subproccess instead.
 "
-2294502|"There are two string methods for this, <code><<find>></code> and <code><<index>></code>.
+2294502|"There are two string methods for this, <code><c>find</c></code> and <code><c>index</c></code>.
 
 Example:
 
-<code><<&gt>>;<<&gt>>;<<&gt>>; <<myString>> <<=>> ""<<Position>> <<of>> <<a>> <<character>>""
-<<&gt>>;<<&gt>>;<<&gt>>; <<myString>>.<<index(>>'<<s>>')
-<<2>>
+<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
+<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
+<c>2</c>
 </code>
 
-The difference is that <code><<find>></code> returns <code>-<<1>></code> when what you're looking for isn't found. <code><<index>></code> throws an exception.
+The difference is that <code><c>find</c></code> returns <code><c>-</c><c>1</c></code> when what you're looking for isn't found. <code><c>index</c></code> throws an exception.
 
 
-  Function <code><<str>>.<<find(>><<sub>>[, <<start>>[, <<end>>]])</code>
-  Return the lowest index in the string where substring sub is found, such that sub is contained in the range <code>[<<start>>, <<end>>]</code>. Optional arguments start and end are interpreted as in slice notation. Return <code>-<<1>></code> if sub is not found. 
+  Function <code><c>str</c><c>.</c><c>find(</c><c>sub</c>[, <c>start</c>[, <c>end</c>]])</code>
+  Return the lowest index in the string where substring sub is found, such that sub is contained in the range <code>[<c>start</c>, <c>end</c>]</code>. Optional arguments start and end are interpreted as in slice notation. Return <code><c>-</c><c>1</c></code> if sub is not found. 
 
 
 And:
 
 
-  Function <code><<str>>.<<index(>><<sub>>[, <<start>>[, <<end>>]])</code>
-  Like <code><<find(>>)</code>, but <code><<raise>> <<ValueError>></code> when the substring is not found.
+  Function <code><c>str</c><c>.</c><c>index(</c><c>sub</c>[, <c>start</c>[, <c>end</c>]])</code>
+  Like <code><c>find(</c>)</code>, but <code><c>raise</c> <c>ValueError</c></code> when the substring is not found.
 
 "
 28867664|"I usually use: 
 
-<code><<if>> ((<<cond1>> <<==>> '<<val1>>' <<and>> <<cond2>> <<==>> '<<val2>>' <<and>>
-     <<cond3>> <<==>> '<<val3>>' <<and>> <<cond4>> <<==>> '<<val4>>'))<<:>>
-    <<do_something(>>)
+<code><c>if</c> ((<c>cond1</c> <c>==</c> '<c>val1</c>' <c>and</c> <c>cond2</c> <c>==</c> '<c>val2</c>' <c>and</c>
+     <c>cond3</c> <c>==</c> '<c>val3</c>' <c>and</c> <c>cond4</c> <c>==</c> '<c>val4</c>'))<c>:</c>
+    <c>do_something(</c>)
 </code>
 "
