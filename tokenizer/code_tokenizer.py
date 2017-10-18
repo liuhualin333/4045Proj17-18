@@ -6,20 +6,22 @@
 							.	is token for special meaning
 							Use normal word token for COMMENT / STRING (TODO: still use code tokenizer)
 							Error messega path -> one token
+							1.4.6 -> one token
 	Usage:
 		python code_tokenizer.py file1.txt ...
 		(This will output file1_annotated.txt)
 	Token format:
 		<c>XXX</c>
 '''
-from tokenize import tokenize, untokenize, NUMBER, STRING, NAME, OP, tok_name, COMMENT, LPAR, RPAR
+from tokenize import tokenize, untokenize, NUMBER, STRING, NAME, OP, tok_name, COMMENT, LPAR, RPAR, ERRORTOKEN
 from io import BytesIO, StringIO
 import nltk
 import codecs
 import re
 import sys, os
 import pdb
-
+from utilities import *
+import hashlib
 code_tag = ['<c>', '</c>']
 
 # StringBuilder class, using StringIO() to struct python string fast
@@ -43,6 +45,8 @@ class CodesTokenizer:
 	_sb = None
 	_tokens = None
 	_codes = None
+	_reserve_codes = {}
+	_processed_codes = None
 	# Constructor, takes in the codes given, call __setTokens__ to set _tokens
 	def __init__(self, codes):
 		self._tokens = []
@@ -50,41 +54,99 @@ class CodesTokenizer:
 		self._sb = StringBuilder()
 		self.__setTokens__()
 
+	# detec reserved tokens and store its signature in self._reserve_codes, replace those tokens with their corresponding signature(long int)
+	def __ReplaceReserved__(self):
+		paths = []
+		consec_nums = []
+		new_codes = StringBuilder()
+		dashs = []
+		overall = []
+		# get all paths 
+		for path in re.finditer(re.compile(r"(\w\:)?((\\[^,;\'\" ]+)+|(/[^,;\'\" ]+)+)(\.\w+)?"), self._codes):
+			paths.append([path.start(), path.end()])
+
+		# get all 1.3.4 liked pattern
+		for consec_num in re.finditer(re.compile(r"\d+(\.\d+)+"), self._codes):
+			consec_nums.append([consec_num.start(), consec_num.end()])
+
+		# get all python3-tk liked pattern
+		for dash in re.finditer(re.compile(r"[\d\w]+(-[\d\w]+)+"), self._codes):
+			dashs.append([dash.start(), dash.end()])
+
+		# custom union function to union the ranges of different reserved codes
+		overall = union([paths, consec_nums, dashs])
+		#pdb.set_trace()
+		code_anchor = 0
+		for start, end in overall:
+			new_codes.Append(self._codes[code_anchor : start])
+			hash_code = hash_str(self._codes[start : end])
+			self._reserve_codes[hash_code] = self._codes[start : end]
+			new_codes.Append(' ' + str(hash_code) + ' ')
+			code_anchor = end
+		if(code_anchor < len(self._codes)):
+			new_codes.Append(self._codes[code_anchor:])
+		self._processed_codes = new_codes.__str__()
+
 	# __setTokens__: Based on _codes given, put all identified tokens to _tokens
 	def __setTokens__(self):
 		#g = tokenize(BytesIO(self._codes.encode('utf-8')).readline)  # tokenize the string
 		prev_num = -1
 		prev_val = None
 		prev_end = -1
+		self.__ReplaceReserved__()
 		# Split _codes line by line and identify each line 
-		ss = self._codes.splitlines()
+		ss = self._processed_codes.splitlines()
+		#pdb.set_trace()
 		for line in ss:
 			# call python tokenize.tokenize and get the returned generator g
 			g = tokenize(BytesIO(line.encode('utf-8')).readline)  # tokenize the string
+			#pdb.set_trace()
 			try:
 				for toknum, tokval, starrt, eend, _ in g:
+					chop_start = 0
+					chop_end = len(tokval) - 1
+					#pdb.set_trace()
 					# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
-					if(toknum in [NAME, OP, NUMBER] and re.compile(r"^(?<![a-zA-Z])[,)\-\"';\[\]|..+]+(?![a-zA-Z])$").search(tokval) == None):
+					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([,)\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+						#pdb.set_trace()
 						# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
 						if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
 							self._tokens[-1] = self._tokens[-1] + tokval
 						elif(tokval == '('):
 							pass
+						elif(toknum == NUMBER and int(tokval) in self._reserve_codes):
+							self._tokens.append(self._reserve_codes[int(tokval)])
 						else:
 							self._tokens.append(tokval)
 					# For comment / string, code 
 					elif(toknum in [COMMENT, STRING]):
-						words = CodesTokenizer(line).__str__()
-						if(words):
-							self._tokens.extend(words)
+						#pdb.set_trace()
+						if(toknum == STRING):
+							# remove starting and ending ' / "
+							while((tokval[chop_start] == '"' or tokval[chop_start] == "'") and chop_start < chop_end):
+								chop_start += 1
+							while((tokval[chop_end] == '"' or tokval[chop_end] == "'") and chop_start < chop_end):
+								chop_end -= 1
+						else:
+							# remove starting # / ''' / """
+							while((tokval[chop_start] == '#' and chop_start < chop_end)
+								or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == "'''") 
+								or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == '"""')):
+								if(tokval[chop_start] == '#'):
+									chop_start += 1
+								else:
+									chop_start += 3
+						if(chop_start < chop_end or (tokval[chop_start] not in ['#', "'", '"'])):
+							words = CodesTokenizer(tokval[chop_start:chop_end+1])._tokens
+							if(words):
+								self._tokens.extend(words)
 					prev_num = toknum
 					prev_val = tokval
 					prev_end = eend
 			except Exception as e:
-				print("Error in __setTokens__", e, line)
+				#print("Error in __setTokens__", e, line)
 				#pdb.set_trace()
 				pass
-	
 	# annotate: Based on _tokens and _codes, annotate the cooresponding tokens with token tags. 
 	def annotate(self):
 		assert self._sb.__str__() == '', "_sb already has value!"
@@ -106,6 +168,7 @@ class CodesTokenizer:
 			self._sb.Append(self._codes[code_anchor:])
 		except Exception as e:
 			print(e, "code: \n", self._codes, "tokens: \n", self._tokens)
+			#pdb.set_trace()
 			raise()
 		# return the annotated codes
 		return self._sb.__str__()
