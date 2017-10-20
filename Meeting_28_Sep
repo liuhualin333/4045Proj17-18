@@ -1,7 +1,0 @@
-Meeting on 28th Sep:
-Covered topics:
-  1. Checked dataset preprocessed by Hualin. The data is now stored in sqlite database
-  2. Decided to do tokenization first and then stemming/POS-tagging. 
-      a. Hualin and Yue will work on tokenization for normal text
-      b. Hailin and Ziji will work on tokenization for code text
-      c. This task is due before the end of recess week
