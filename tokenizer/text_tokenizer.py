@@ -69,7 +69,7 @@ class TextTokenizer:
 					continue
 				if (lastWord == ''):
 					lastWord = ' '
-				if (lastWord[0].isupper() and word[0].isupper() and not lastWord[-1].isalnum()):
+				if (lastWord[0].isupper() and word[0].isupper()):
 					tokenList = tokenList[:-1]
 					lastWord = lastWord + ' ' + word
 					specialPronounFlag = True
@@ -98,7 +98,7 @@ class TextTokenizer:
 						lastWord = word
 						continue
 					for elm in word:
-						elm = elm.strip('()\"\':?!')
+						elm = elm.strip('()\"\'')
 						if (not equalSignFlag and elm != ''):
 							tokenList.append(elm)
 						else:
