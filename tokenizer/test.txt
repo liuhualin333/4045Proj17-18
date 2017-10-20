@@ -1,0 +1,1 @@
+1641219|Does Python have “private” variables in classes?|"I'm coming from the Java world and reading Bruce Eckels' Python 3 Patterns, Recipes and 
