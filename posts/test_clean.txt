@@ -1,0 +1,1 @@
+<code>\ImageMagick-6.8.8-Q16;</code>
