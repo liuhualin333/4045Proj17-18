@@ -88,7 +88,7 @@ when you define metaclass, you subclass type, and can overrided the following ma
   <c>def</c> <c>foo(</c><c>cls</c>)<c>:</c>
       ...
 
-      <c>arguments</c> <c>would</c> <c>be</c> <c>:</c> ( <c>somemeta</c>, ""<c>foo</c>"", (<c>baseclass</c>, <c>baseofbase</c>,..., <c>object</c>), {""<c>an_attr</c>""<c>:</c><c>12</c>, ""<c>bar</c>""<c>:</c> <c>&lt</c>;<c>function</c><c>&gt</c>;, ""<c>foo</c>""<c>:</c> <c>&lt</c>;<c>bound</c> <c>class</c> <c>method</c><c>&gt</c>;}
+      <c>arguments</c> <c>would</c> <c>be</c> <c>:</c> ( <c>somemeta</c>, ""<c>foo</c>"", (<c>baseclass</c>, <c>baseofbase</c>,..., <c>object</c>), {""<c>an_attr</c>""<c>:</c><c>12</c>, ""<c>bar</c>""<c>:</c> <c>&lt;</c><c>function</c><c>&gt;</c>, ""<c>foo</c>""<c>:</c> <c>&lt;</c><c>bound</c> <c>class</c> <c>method</c><c>&gt;</c>}
 
       <c>you</c> <c>can</c> <c>modify</c> <c>any</c> <c>of</c> <c>these</c> <c>values</c> <c>before</c> <c>passing</c> <c>on</c> <c>to</c> <c>type</c>
       """"""
@@ -109,7 +109,7 @@ when you define metaclass, you subclass type, and can overrided the following ma
 
         <c>call</c> <c>order</c> <c>:</c>
 
-        <c>somemeta</c><c>.</c><c>__new__</c> <c>-</c><c>&gt</c>;  <c>type</c><c>.</c><c>__new__</c> <c>-</c><c>&gt</c>; <c>type</c><c>.</c><c>__init__</c> <c>-</c><c>&gt</c>; <c>somemeta</c><c>.</c><c>__init__</c> 
+        <c>somemeta</c><c>.</c><c>__new__</c> <c>-</c><c>&gt;</c>  <c>type</c><c>.</c><c>__new__</c> <c>-</c><c>&gt;</c> <c>type</c><c>.</c><c>__init__</c> <c>-</c><c>&gt;</c> <c>somemeta</c><c>.</c><c>__init__</c> 
         """"""
         <c>return</c> <c>dict(</c>)
 
@@ -128,15 +128,15 @@ Here is some sample output I ran on my computer, converting it to a string as we
 <code><c>Python</c> <c>2.7.3</c> (<c>default</c>, <c>Apr</c> <c>24</c> <c>2012</c>, <c>00</c><c>:</c><c>00</c><c>:</c><c>54</c>) 
 [<c>GCC</c> <c>4.7.0</c> <c>20120414</c> (<c>prerelease</c>)] <c>on</c> <c>linux2</c>
 <c>Type</c> ""<c>help</c>"", ""<c>copyright</c>"", ""<c>credits</c>"" <c>or</c> ""<c>license</c>"" <c>for</c> <c>more</c> <c>information</c><c>.</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>time</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>ts</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print</c> <c>ts</c>
+<c>&gt;&gt;&gt;</c> <c>import</c> <c>time</c>
+<c>&gt;&gt;&gt;</c> <c>ts</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+<c>&gt;&gt;&gt;</c> <c>print</c> <c>ts</c>
 <c>1355563265.81</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%</c><c>Y</c><c>-</c><c>%</c><c>m</c><c>-</c><c>%</c><c>d</c> <c>%</c><c>H</c><c>:</c><c>%</c><c>M</c><c>:</c><c>%</c><c>S</c>')
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print</c> <c>st</c>
+<c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
+<c>&gt;&gt;&gt;</c> <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%</c><c>Y</c><c>-</c><c>%</c><c>m</c><c>-</c><c>%</c><c>d</c> <c>%</c><c>H</c><c>:</c><c>%</c><c>M</c><c>:</c><c>%</c><c>S</c>')
+<c>&gt;&gt;&gt;</c> <c>print</c> <c>st</c>
 <c>2012-12-15</c> <c>0</c><c>1</c><c>:</c><c>21</c><c>:</c><c>0</c><c>5</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>;
+<c>&gt;&gt;&gt;</c>
 </code>
 
 The <code><c>ts</c></code> variable is the time returned in seconds.  I then converted it to a string using the <code><c>datetime</c></code> library making it a string that is human readable. 
@@ -156,7 +156,7 @@ For lists with all elements that are hashable types:
 
 <c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>1</c>, <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
 <c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
-# <c>=</c><c>&gt</c>; [<c>2</c>, <c>1</c>, <c>6</c>]
+# <c>=</c><c>&gt;</c> [<c>2</c>, <c>1</c>, <c>6</c>]
 </code>
 
 For lists that might contain lists:
@@ -180,7 +180,7 @@ For lists that might contain lists:
 
 <c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, [<c>1</c>, <c>2</c>], <c>3</c>, <c>4</c>, [<c>1</c>, <c>2</c>], <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
 <c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
-# <c>=</c><c>&gt</c>; [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
+# <c>=</c><c>&gt;</c> [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
 </code>
 "
 32555515|"Below is a ""standard recursive answer"", similar to the other similar answer https://stackoverflow.com/a/23743696/711085 . (We don't realistically have to worry about running out of stack space since there's no way we could process all N! permutations.)
@@ -200,10 +200,10 @@ It visits every element in turn, and either takes it or leaves it (we can direct
 
 Demo:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c> <c>combs(</c><c>range(</c><c>5</c>)) )
+<code><c>&gt;&gt;&gt;</c> <c>list(</c> <c>combs(</c><c>range(</c><c>5</c>)) )
 [(), (<c>0</c>,), (<c>1</c>,), (<c>1</c>, <c>0</c>), (<c>2</c>,), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>,), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>,), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
 
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>sorted(</c> <c>combs(</c><c>range(</c><c>5</c>)), <c>key</c><c>=</c><c>len</c>))
+<c>&gt;&gt;&gt;</c> <c>list(</c><c>sorted(</c> <c>combs(</c><c>range(</c><c>5</c>)), <c>key</c><c>=</c><c>len</c>))
 [(), 
  (<c>0</c>,), (<c>1</c>,), (<c>2</c>,), (<c>3</c>,), (<c>4</c>,), 
  (<c>1</c>, <c>0</c>), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), 
@@ -211,7 +211,7 @@ Demo:
  (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), 
  (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
 
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>len(</c><c>set(</c><c>combs(</c><c>range(</c><c>5</c>))))
+<c>&gt;&gt;&gt;</c> <c>len(</c><c>set(</c><c>combs(</c><c>range(</c><c>5</c>))))
 <c>32</c>
 </code>
 "
@@ -278,7 +278,7 @@ Works as well; the reason is that calling <code><c>int(</c>)</code> returns <cod
 "
 5574749|"I would say that your first approach:
 
-<code><c>print</c> <c>&gt</c>;<c>&gt</c>; <c>sys</c><c>.</c><c>stderr</c>, '<c>spam</c>' 
+<code><c>print</c> <c>&gt;&gt;</c> <c>sys</c><c>.</c><c>stderr</c>, '<c>spam</c>' 
 </code>
 
 is the ""One . . . obvious way to do it""  The others don't satisfy rule #1 (""Beautiful is better than ugly."")
@@ -335,7 +335,7 @@ Unix Epoch Time
 
 This is the format you should get timestamps in for saving in databases. It is a simple floating point number that can be converted to an integer. It is also good for arithmetic in seconds, as it represents the number of seconds since Jan 1, 1970 00:00:00, and it is memory light relative to the other representations of time we'll be looking at next:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>time(</c>)
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>time(</c>)
 <c>1424233311.771502</c>
 </code>
 
@@ -347,13 +347,13 @@ This is not ideal for human scheduling, however. If you have a future event you 
 
 You can also represent the current time in the way preferred by your operating system (which means it can change when you change your system preferences, so don't rely on this to be standard across all systems, as I've seen others expect). This is typically user friendly, but doesn't typically result in strings one can sort chronologically:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>ctime(</c>)
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>ctime(</c>)
 '<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>56</c> <c>2015</c>'
 </code>
 
 You can hydrate timestamps into human readable form with <code><c>ctime</c></code> as well:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>time</c><c>.</c><c>ctime(</c><c>1424233311.771502</c>)
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>ctime(</c><c>1424233311.771502</c>)
 '<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>51</c> <c>2015</c>'
 </code>
 
@@ -363,16 +363,16 @@ This conversion is also not good for record-keeping (except in text that will on
 
 The <code><c>datetime</c></code> module is also quite useful here:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
+<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
 </code>
 
 <code><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now</c></code>
 
 The <code><c>datetime</c><c>.</c><c>now</c></code> is a class method that returns the current time. It uses the <code><c>time</c><c>.</c><c>localtime</c></code> without the timezone info (if not given, otherwise see timezone aware below). It has a representation (which would allow you to recreate an equivalent object) echoed on the shell, but when printed (or coerced to a <code><c>str</c></code>), it is in human readable (and nearly ISO) format, and the lexicographic sort is equivalent to the chronological sort:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>)
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>)
 <c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>17</c>, <c>23</c>, <c>43</c>, <c>49</c>, <c>94252</c>)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>))
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>))
 <c>2015-02-17</c> <c>23</c><c>:</c><c>43</c><c>:</c><c>51.782461</c>
 </code>
 
@@ -380,9 +380,9 @@ datetime's <code><c>utcnow</c></code>
 
 You can get a datetime object in UTC time, a global standard, by doing this:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)
 <c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>53</c>, <c>28</c>, <c>394163</c>)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
 <c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>53</c><c>:</c><c>31.783988</c>
 </code>
 
@@ -392,32 +392,32 @@ datetime timezone aware
 
 However, none of the datetime objects we've created so far can be easily converted to various timezones. We can solve that problem with the <code><c>pytz</c></code> module:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>pytz</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>then</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>pytz</c><c>.</c><c>utc</c>)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>then</c>
-<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>55</c>, <c>58</c>, <c>753949</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
+<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>pytz</c>
+<c>&gt;&gt;&gt;</c> <c>then</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>&gt;&gt;&gt;</c> <c>then</c>
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>55</c>, <c>58</c>, <c>753949</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
 </code>
 
 Equivalently, in Python 3 we have the <code><c>timezone</c></code> class with a utc <code><c>timezone</c></code> instance attached, which also makes the object timezone aware (but to convert to another timezone without the handy <code><c>pytz</c></code> module is left as an exercise to the reader):
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
 <c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>22</c>, <c>31</c>, <c>56</c>, <c>564191</c>, <c>tzinfo</c><c>=</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
 </code>
 
 And we see we can easily convert to timezones from the original utc object.
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>then</c>)
+<code><c>&gt;&gt;&gt;</c> <c>print(</c><c>then</c>)
 <c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>55</c><c>:</c><c>58.753949</c><c>+</c><c>00</c><c>:</c><c>00</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>print(</c><c>then</c><c>.</c><c>astimezone(</c><c>pytz</c><c>.</c><c>timezone(</c>'<c>US</c><c>/Eastern</c>')))
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>then</c><c>.</c><c>astimezone(</c><c>pytz</c><c>.</c><c>timezone(</c>'<c>US</c><c>/Eastern</c>')))
 <c>2015-02-17</c> <c>23</c><c>:</c><c>55</c><c>:</c><c>58.753949-05</c><c>:</c><c>00</c>
 </code>
 
 You can also make a naive datetime object aware with the <code><c>pytz</c></code> timezone <code><c>localize</c></code> method, or by replacing the tzinfo attribute (with <code><c>replace</c></code>, this is done blindly), but these are more last resorts than best practices:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>pytz</c><c>.</c><c>utc</c><c>.</c><c>localize(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
-<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>6</c>, <c>29</c>, <c>32285</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)<c>.</c><c>replace(</c><c>tzinfo</c><c>=</c><c>pytz</c><c>.</c><c>utc</c>)
-<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>9</c>, <c>30</c>, <c>728550</c>, <c>tzinfo</c><c>=</c><c>&lt</c>;<c>UTC</c><c>&gt</c>;)
+<code><c>&gt;&gt;&gt;</c> <c>pytz</c><c>.</c><c>utc</c><c>.</c><c>localize(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>6</c>, <c>29</c>, <c>32285</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
+<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)<c>.</c><c>replace(</c><c>tzinfo</c><c>=</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>9</c>, <c>30</c>, <c>728550</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
 </code>
 
 The <code><c>pytz</c></code> module allows us to make our <code><c>datetime</c></code> objects timezone aware and convert the times to the hundreds of timezones available in the <code><c>pytz</c></code> module.
@@ -477,9 +477,9 @@ Important Edit 2015
 
 As @abarnert notes, the <code><c>more_itertools</c></code> library (<code><c>pip</c> <c>install</c> <c>more_itertools</c></code>) contains a <code><c>unique_everseen</c></code> function that is built to solve this problem without any unreadable (<code><c>not</c> <c>seen</c><c>.</c><c>add</c></code>) mutations in list comprehensions. This is also the fastest solution too:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>unique_everseen(</c><c>items</c>))
+<code><c>&gt;&gt;&gt;</c> <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
+<c>&gt;&gt;&gt;</c> <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+<c>&gt;&gt;&gt;</c> <c>list(</c><c>unique_everseen(</c><c>items</c>))
 [<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
@@ -488,8 +488,8 @@ This comes from an implementation of the itertools recipe <code><c>unique_everse
 
 <code><c>def</c> <c>unique_everseen(</c><c>iterable</c>, <c>key</c><c>=</c><c>None</c>)<c>:</c>
     ""<c>List</c> <c>unique</c> <c>elements</c>, <c>preserving</c> <c>order</c><c>.</c> <c>Remember</c> <c>all</c> <c>elements</c> <c>ever</c> <c>seen</c><c>.</c>""
-    # <c>unique_everseen(</c>'<c>AAAABBBCCDAABBB</c>') <c>-</c><c>-</c><c>&gt</c>; <c>A</c> <c>B</c> <c>C</c> <c>D</c>
-    # <c>unique_everseen(</c>'<c>ABBCcAD</c>', <c>str</c><c>.</c><c>lower</c>) <c>-</c><c>-</c><c>&gt</c>; <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    # <c>unique_everseen(</c>'<c>AAAABBBCCDAABBB</c>') <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    # <c>unique_everseen(</c>'<c>ABBCcAD</c>', <c>str</c><c>.</c><c>lower</c>) <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
     <c>seen</c> <c>=</c> <c>set(</c>)
     <c>seen_add</c> <c>=</c> <c>seen</c><c>.</c><c>add</c>
     <c>if</c> <c>key</c> <c>is</c> <c>None</c><c>:</c>
@@ -510,9 +510,9 @@ In Python <code><c>2.7</c><c>+</c></code> the accepted common idiom (this works 
 
 Runtime: O(N)
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
+<code><c>&gt;&gt;&gt;</c> <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
+<c>&gt;&gt;&gt;</c> <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+<c>&gt;&gt;&gt;</c> <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
 [<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
@@ -533,10 +533,10 @@ Note however that the hack solution is faster in raw speed though it has the sam
 "
 9847269|"Use <code><c>weekday(</c>)</code> (docs):
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>import</c> <c>datetime</c>
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
+<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
+<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
 <c>datetime</c><c>.</c><c>datetime(</c><c>2012</c>, <c>3</c>, <c>23</c>, <c>23</c>, <c>24</c>, <c>55</c>, <c>173504</c>)
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
+<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
 <c>4</c>
 </code>
 
@@ -553,18 +553,18 @@ From the documentation:
 
 Create a Python3 based virtual environment. Optionally enable <code><c>-</c><c>-</c><c>system-site-packages</c></code> flag.
 
-<code><c>mkvirtualenv</c> <c>-</c><c>p</c> <c>/usr/bin/python3</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
+<code><c>mkvirtualenv</c> <c>-</c><c>p</c> <c>/usr/bin/python3</c> <c>&lt;venv-name&gt;</c>
 </code>
 
 Set into the virtual environment.
 
-<code><c>workon</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
+<code><c>workon</c> <c>&lt;venv-name&gt;</c>
 </code>
 
 Install other requirements using <code><c>pip</c></code> package manager.
 
 <code><c>pip</c> <c>install</c> <c>-</c><c>r</c> <c>requirements</c><c>.</c><c>txt</c>
-<c>pip</c> <c>install</c> <c>&lt</c>;<c>package_name</c><c>&gt</c>;
+<c>pip</c> <c>install</c> <c>&lt;</c><c>package_name</c><c>&gt;</c>
 </code>
 
 
@@ -574,7 +574,7 @@ When working on multiple python projects simultaneously it is usually recommende
 Using this technique saves a lot of time spent on fetching packages and installing them, apart from consuming minimal disk space and network bandwidth.
 
 <code><c>sudo</c> <c>-</c><c>H</c> <c>pip3</c> <c>-</c><c>v</c> <c>install</c> <c>Django</c>
-<c>mkvirtualenv</c> <c>-</c><c>p</c><c> </c><c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt</c>;<c>venv-name</c><c>&gt</c>;
+<c>mkvirtualenv</c> <c>-</c><c>p</c><c> </c><c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt;venv-name&gt;</c>
 </code>
 "
 3242895|"You can ask any object which module it came from by looking at its __ module__ property. This is useful, for example, if you're experimenting at the command line and have imported a lot of things.
@@ -714,13 +714,13 @@ I think that the most common answer to the question is likely to be that develop
 4847186|"The type module also exists if you are checking more than ints and strings. 
 http://docs.python.org/library/types.html
 "
-85489|"<code><c>clock(</c>) <c>-</c><c>&gt</c>; <c>floating</c> <c>point</c> <c>number</c>
+85489|"<code><c>clock(</c>) <c>-</c><c>&gt;</c> <c>floating</c> <c>point</c> <c>number</c>
 
 <c>Return</c> <c>the</c> <c>CPU</c> <c>time</c> <c>or</c> <c>real</c> <c>time</c> <c>since</c> <c>the</c> <c>start</c> <c>of</c> <c>the</c> <c>process</c> <c>or</c> <c>since</c>
 <c>the</c> <c>first</c> <c>call</c> <c>to</c> <c>clock(</c>)<c>.</c>  <c>This</c> <c>has</c> <c>as</c> <c>much</c> <c>precision</c> <c>as</c> <c>the</c> <c>system</c>
 <c>records</c><c>.</c>
 
-<c>time(</c>) <c>-</c><c>&gt</c>; <c>floating</c> <c>point</c> <c>number</c>
+<c>time(</c>) <c>-</c><c>&gt;</c> <c>floating</c> <c>point</c> <c>number</c>
 
 <c>Return</c> <c>the</c> <c>current</c> <c>time</c> <c>in</c> <c>seconds</c> <c>since</c> <c>the</c> <c>Epoch</c><c>.</c>
 <c>Fractions</c> <c>of</c> <c>a</c> <c>second</c> <c>may</c> <c>be</c> <c>present</c> <c>if</c> <c>the</c> <c>system</c> <c>clock</c> <c>provides</c> <c>them</c><c>.</c>
@@ -736,7 +736,7 @@ Usually time() is more precise, because operating systems do not store the proce
 <c>filenames_with_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>) <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
 </code>
 "
-1207634|"Well, if you're willing/ready to switch to Python 3 (which you may not be due to the backwards incompatibility with some Python 2 code), you don't have to do any converting; all text in Python 3 is represented with Unicode strings, which also means that there's no more usage of the <code><c>u</c>'<c>&lt</c>;<c>text</c><c>&gt</c>;'</code> syntax. You also have what are, in effect, strings of bytes, which are used to represent data (which may be an encoded string).
+1207634|"Well, if you're willing/ready to switch to Python 3 (which you may not be due to the backwards incompatibility with some Python 2 code), you don't have to do any converting; all text in Python 3 is represented with Unicode strings, which also means that there's no more usage of the <code><c>u</c>'<c>&lt;</c><c>text</c><c>&gt;</c>'</code> syntax. You also have what are, in effect, strings of bytes, which are used to represent data (which may be an encoded string).
 
 http://docs.python.org/3.1/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit
 
@@ -850,7 +850,7 @@ To set your <code><c>%</c><c>PATH</c><c>%</c></code>:
 
 
 Run Command Line* and enter this command: *needs to be run as administrator
-<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt</c>;<c>python_folder</c><c>&gt</c>;""</code>
+<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
 for example: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
 OR manually: (preferable)
 Add <code>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c></code> at the end of the string.
@@ -902,8 +902,8 @@ https://wiki.python.org/moin/HowTo/Sorting/#Key_Functions
 
 Example:
 
-<code><c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
-<c>&gt</c>;<c>&gt</c>;<c>&gt</c>; <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
+<code><c>&gt;&gt;&gt;</c> <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
+<c>&gt;&gt;&gt;</c> <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
 <c>2</c>
 </code>
 
