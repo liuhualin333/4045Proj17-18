@@ -49,9 +49,6 @@ class TextTokenizer:
 				wordList = _temp
 				_temp = []
 		"""
-
-		tokenList = []
-		lastWord = ' '
 		#For names and special pronouns
 		specialPronounFlag = False
 		#Combine equal sign with previous and next words
@@ -61,7 +58,12 @@ class TextTokenizer:
 		for sentence in sentenceList:
 			tokenList = []
 			lastWord = ' '
-			wordList = sentence.split('|')[-1].split()
+			wordList = []
+			try:
+				wordList.extend(sentence.split('|')[-2].split())
+				wordList.extend(sentence.split('|')[-1].split())
+			except:
+				wordList.extend(sentence.split('|')[-1].split())
 			for word in wordList:
 				if (word == ''):
 					continue
@@ -96,7 +98,7 @@ class TextTokenizer:
 						lastWord = word
 						continue
 					for elm in word:
-						elm = elm.strip('()\"\':')
+						elm = elm.strip('()\"\':?!')
 						if (not equalSignFlag and elm != ''):
 							tokenList.append(elm)
 						else:
@@ -129,9 +131,16 @@ def main(file):
 	code_secs = re.compile("<code>.*?</code>", flags = re.S|re.M).finditer(source)
 	sb_file = StringBuilder()
 	# iterate all non-codes area, defined by <code> ... </code>
-	file_anchor = 0;
+	file_anchor = 0
 	# Skip the first line
-	file_anchor = re.compile(re.escape('Id|Body')).search(source, 0).end()
+	anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
+	anchor_post = re.compile(re.escape('Id|Title|Body')).search(source, 0)
+	if (anchor_answer != None):
+		file_anchor = anchor_answer.end()
+	elif (anchor_post != None):
+		file_anchor = anchor_post.end()
+	else:
+		file_anchor = 0
 	sb_file.Append(source[0:file_anchor])
 	# Define text as "not code"
 	for code_sec in code_secs:
@@ -150,7 +159,7 @@ def main(file):
 	sb_file.Append(TextTokenizer(text).annotate())
 	file_sep = os.path.splitext(file)
 	# Create annotated file
-	with open(file_sep[0] + "_annotated" + file_sep[1], 'w') as new_file:
+	with open(file_sep[0] + "_textAnno" + file_sep[1], 'w') as new_file:
 			new_file.write(sb_file.__str__())
 
 if __name__ == "__main__":
