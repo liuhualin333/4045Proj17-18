@@ -60,6 +60,7 @@ class CodesTokenizer:
 		consec_nums = []
 		new_codes = StringBuilder()
 		dashs = []
+		lts_gts = []
 		overall = []
 		# get all paths 
 		for path in re.finditer(re.compile(r"(\w\:)?((\\[^,;\'\" ]+)+|(/[^,;\'\" ]+)+)(\.\w+)?"), self._codes):
@@ -73,8 +74,13 @@ class CodesTokenizer:
 		for dash in re.finditer(re.compile(r"[\d\w]+(-[\d\w]+)+"), self._codes):
 			dashs.append([dash.start(), dash.end()])
 
+		# get all &lt; and &gt;
+		for lt_gt in re.finditer(re.compile(r"&(lt|gt);"), self._codes):
+			lts_gts.append([lt_gt.start(), lt_gt.end()])
+
+
 		# custom union function to union the ranges of different reserved codes
-		overall = union([paths, consec_nums, dashs])
+		overall = union([paths, consec_nums, dashs, lts_gts])
 		#pdb.set_trace()
 		code_anchor = 0
 		for start, end in overall:

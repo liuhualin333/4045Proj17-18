@@ -1,6 +1,7 @@
 import re
 import sys
 import os
+import pdb
 from io import StringIO
 #Python 3 string is unicode compatible. Python 2 will report error
 
@@ -49,6 +50,7 @@ class TextTokenizer:
 				wordList = _temp
 				_temp = []
 		"""
+		notSPFlag = False
 		#For names and special pronouns
 		specialPronounFlag = False
 		#Combine equal sign with previous and next words
@@ -69,37 +71,37 @@ class TextTokenizer:
 					continue
 				if (lastWord == ''):
 					lastWord = ' '
-				if (lastWord[0].isupper() and word[0].isupper()):
-					tokenList = tokenList[:-1]
-					lastWord = lastWord + ' ' + word
+				#if (word=='RESTful'): 
+					#pdb.set_trace()
+				if (lastWord[0].isupper() and word[0].isupper() and notSPFlag == False):
+					if (not word[-1].isalnum()):
+						notSPFlag = True
+					tokenList = tokenList[:-1] #Delete last token (ground step to form special pronoun)
+					lastWord = lastWord + ' ' + word #Form current special pronoun
 					specialPronounFlag = True
 				elif (word == '='):
+					notSPFlag = False
 					tokenList = tokenList[:-1]
-					lastWord = lastWord + ' ' + word
+					lastWord = lastWord + ' ' + word #Concatenate previous word with '='
 					equalSignFlag = True
 				else:
+					notSPFlag = False
 					if (specialPronounFlag == True):
-						tokenList.append(lastWord.strip('.,'))
+						tokenList.append(lastWord.strip('.,?!:'))#Append finalized special noun
 						specialPronounFlag = False
 					elif (equalSignFlag == True):
-						tokenList.append((lastWord + ' ' + word).strip('.,'))
+						tokenList.append((lastWord + ' ' + word).strip('.,?!:'))#Append finalized formula (with current word)
 					# Handle Ph.D. and case like science.[7][8]
-					if (not moneyPattern.match(word)):
+					if (not moneyPattern.match(word)):	
 						if (word.count('.') < 2):
-							word = re.split(r',|\.', word)#split on ,.
-						else:
-							word = word.split(',')
+							word = re.split(r',|\.|\?|:|!', word)#split on ,.?:!
 					if (type(word) is str):
-						word = word.strip('()')
-						if (not equalSignFlag):
-							tokenList.append(word)
-						else:
-							equalSignFlag = False
-						lastWord = word
-						continue
+						tmp = word
+						word = []
+						word.append(tmp)
 					for elm in word:
-						elm = elm.strip('()\"\'')
-						if (not equalSignFlag and elm != ''):
+						elm = elm.strip('()\"\':?!')
+						if (not equalSignFlag):
 							tokenList.append(elm)
 						else:
 							equalSignFlag = False
