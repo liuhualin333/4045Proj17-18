@@ -152,6 +152,7 @@ def main(file):
     sb_file.Append(source[0:file_anchor])
     # Define text as "not code"
     for code_sec in code_secs:
+        print("here")
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]

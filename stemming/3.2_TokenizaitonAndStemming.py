@@ -45,7 +45,6 @@ def main(file):
     reducedSortedTokens_file=StringBuilder()
     # file_anchor mark the current position in current file, before which has been processed already
     file_anchor = 0
-    sb_file = StringBuilder()
     # Skip the first line
     anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
     anchor_post = re.compile(re.escape('Id|Title|Body')).search(source, 0)
@@ -55,30 +54,28 @@ def main(file):
         file_anchor = anchor_post.end()
     else:
         file_anchor = 0
+    sb_file = StringBuilder()
     sb_file.Append(source[0:file_anchor])
     # Define text as "not code"
     for code_sec in code_secs:
+        print("there")
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]
-
         tokenList = Tokenize(text)
-        print(tokenList[0])
 
         # Sort the token list based on occurance
         sortedTokens = sorted(tokenList, key=Counter(tokenList).get, reverse=True)
-        print(sortedTokens[0])
         reducedTokens= removeDuplicate(sortedTokens)
-        print(reducedTokens[0])
 
         stemmedTokens = []
         for token in tokenList:
             stemmedTokens.append(stemmer.stem(token))
 
         # Add to file for output
-        tokens_file.Append(tokenList)
+        tokens_file.Append(str(tokenList))
         sortedTokens_file.Append(str(sortedTokens))
-        reducedSortedTokens_file.Append(reducedTokens)
+        reducedSortedTokens_file.Append(str(reducedTokens))
 
         file_anchor = code_end
 
