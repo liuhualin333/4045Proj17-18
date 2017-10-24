@@ -200,7 +200,6 @@ def main(file):
 		codes = source[code_start : code_end]
 		ct = CodesTokenizer(codes)
 		sb_file.Append(ct.annotate())
-
 		file_anchor = code_end
 	sb_file.Append(source[file_anchor:])
 	file_sep = os.path.splitext(file)
