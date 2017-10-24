@@ -1,1 +1,10 @@
 In this case you might consider using a <code>set</code>, especially if the list isn't meant to store duplicates.
+While I tested this with CPython, its quite likely most/all other Python implementations use an array to store lists internally.
+Lets say I don't know the keys I am going to need until I am in the second <code>for</code> loop.
+What is the behavior of the pre-increment/decrement operators (++/--) in Python?
+While reading about classes, it goes on to say that in Python there is no need to declare instance variables.
+How can you tell if <code>a</code> has the attribute <code>property</code> before using it?
+Although admittedly, in these cases, doing a full list search is likely to be a performance bottleneck too, unless items are mostly at the front of the list.
+In practice though you may need to store mutable data which can't be added to a <code>set</code>. Also check on btree's if the data can be ordered.
+metaclassing is powerful, and above is nowhere near and exhaustive list of uses for metaclassing.
+Here is some sample output I ran on my computer, converting it to a string as well.

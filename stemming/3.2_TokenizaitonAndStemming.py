@@ -1,6 +1,12 @@
-# Author : SHI ZIJI
-# Use an off-the-shelf tool to stem the tokens.
-# Based on the comparison from nltk.org, snowball stemming is preferred over porter stemming for higher accuracy
+'''
+Author : SHI ZIJI
+
+Use an off-the-shelf tool to stem the tokens.
+Based on the comparison from nltk.org, snowball stemming is preferred over porter stemming for higher accuracy
+
+Tested input : /post/post_training_clean.txt
+Cannot directly apply on xml file.
+'''
 import sys
 
 import re
