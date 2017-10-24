@@ -29,7 +29,6 @@ class StringBuilder:
      def __str__(self):
          return self._file_str.getvalue()
 
-
 def removeDuplicate(ls):
     newList = []
     for elt in ls:
@@ -48,6 +47,7 @@ def main(file):
     tokens_file=StringBuilder()
     sortedTokens_file=StringBuilder()
     reducedSortedTokens_file=StringBuilder()
+    stemmedTokens_file=StringBuilder()
     # file_anchor mark the current position in current file, before which has been processed already
     # Skip the first line
     anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
@@ -77,6 +77,7 @@ def main(file):
         tokens_file.Append(str(tokenList))
         sortedTokens_file.Append(str(sortedTokens))
         reducedSortedTokens_file.Append(str(reducedTokens))
+        stemmedTokens_file.Append(str(stemmedTokens))
 
         file_anchor = code_end
 
@@ -87,6 +88,8 @@ def main(file):
         s_file.write(sortedTokens_file.__str__())
     with open("rSortedTokens.txt", "w+") as rs_file:
         rs_file.write(reducedSortedTokens_file.__str__())
+    with open("stemmedTokens.txt", "w+") as st_file:
+        st_file.write(stemmedTokens_file.__str__())
 
 if __name__ == "__main__":
     for file in sys.argv[1:]:
