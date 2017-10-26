@@ -1,22 +1,10 @@
-from itertools import chain
-
-import nltk
-import sklearn
-import scipy.stats
-from sklearn.metrics import make_scorer
-from sklearn.cross_validation import cross_val_score
-from sklearn.grid_search import RandomizedSearchCV
-
 import sklearn_crfsuite
-from sklearn_crfsuite import scorers
 from sklearn_crfsuite import metrics
 
-import numpy as np
 
-
-def word2features(input, i):
-    word = input[i][0]
-    token = input[i][1]
+def word2features(sentence, i):
+    word = sentence[i][0]
+    token = sentence[i][1]
 
     features = {
         'bias': 1.0,
@@ -28,8 +16,8 @@ def word2features(input, i):
     }
 
     if i > 0:
-        word1 = input[i-1][0]
-        token1 = input[i-1][1]
+        word1 = sentence[i-1][0]
+        token1 = sentence[i-1][1]
         features.update({
             'preLower': word1.lower(),
             'preIsUpper': word1.isupper(),
@@ -40,9 +28,9 @@ def word2features(input, i):
     else:
         features['BOS'] = True
 
-    if i < len(input)-1:
-        word1 = input[i - 1][0]
-        token1 = input[i - 1][1]
+    if i < len(sentence)-1:
+        word1 = sentence[i - 1][0]
+        token1 = sentence[i - 1][1]
         features.update({
             'nextLower': word1.lower(),
             'nextIsUpper': word1.isupper(),
@@ -56,49 +44,58 @@ def word2features(input, i):
     return features
 
 
-def input2features(input):
-    return [word2features(input, i) for i in range(len(input))]
+def sentence2features(sentence):
+    return [word2features(sentence, i) for i in range(len(sentence))]
 
 
-def input2tokens(input):
-    return [token for word, token in input]
+def sentence2tokens(sentence):
+    return [token for word, token in sentence]
 
 
-def input2words(input):
-    return [word for word, token in input]
+def sentence2words(sentence):
+    return [word for word, token in sentence]
 
 
-train_input = [[('I','U'),('love','U'),('New','B'),('York.','E')],[('Bei','B'),('Jing','E'),('is','U'),('far','U')]]
-test_input = [[('This','U'),('is','U'),('Shang','B'),('Hai','E'),('city.','U')]]
+def main():
+    # read data
+    train_sentence = [[('I','U'),('love','U'),('New','B'),('York.','E')],[('Bei','B'),('Jing','E'),('is','U'),('far','U')]]
+    test_sentence = [[('This','U'),('is','U'),('Shang','B'),('Hai','E'),('city.','U')]]
 
-x_train = [input2features(s) for s in train_input]
-y_train = [input2tokens(s) for s in train_input]
+    x_train = [sentence2features(s) for s in train_sentence]
+    y_train = [sentence2tokens(s) for s in train_sentence]
 
-x_test = [input2features(s) for s in test_input]
-y_test = [input2tokens(s) for s in test_input]
+    x_test = [sentence2features(s) for s in test_sentence]
+    y_test = [sentence2tokens(s) for s in test_sentence]
 
+    # build model
+    crf = sklearn_crfsuite.CRF(
+        algorithm='lbfgs',
+        c1=0.1,
+        c2=0.1,
+        max_iterations=100,
+        all_possible_transitions=True
+    )
 
-crf = sklearn_crfsuite.CRF(
-    algorithm='lbfgs',
-    c1=0.1,
-    c2=0.1,
-    max_iterations=100,
-    all_possible_transitions=True
-)
+    # train model
+    crf.fit(x_train, y_train)
 
-crf.fit(x_train, y_train)
+    labels = list(crf.classes_)
 
-labels = list(crf.classes_)
+    # predict model
+    y_pred = crf.predict(x_test)
+    print(y_pred)
 
-y_pred = crf.predict(x_test)
-print(y_pred)
-metrics.flat_f1_score(y_test, y_pred,
-                      average='weighted', labels=labels)
+    # show metrics
+    metrics.flat_f1_score(y_test, y_pred,
+                          average='weighted', labels=labels)
 
-sorted_labels = sorted(
-    labels,
-    key=lambda name: (name[1:], name[0])
-)
-print(metrics.flat_classification_report(
-    y_test, y_pred, labels=sorted_labels, digits=3
-))
+    sorted_labels = sorted(
+        labels,
+        key=lambda name: (name[1:], name[0])
+    )
+    print(metrics.flat_classification_report(
+        y_test, y_pred, labels=sorted_labels, digits=3
+    ))
+
+if __name__ == '__main__':
+    main()
