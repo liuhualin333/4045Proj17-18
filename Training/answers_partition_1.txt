@@ -1,0 +1,471 @@
+Id|Body
+<t>35823399</t>|"<t>Adding</t> <t>this</t> <t>answer</t> <t>for</t> <t>completeness</t><t></t>, <t>though</t> <t>it's</t> <t>only</t> <t>usable</t> <t>under</t> <t>certain</t> <t>conditions</t><t></t>.
+
+<t>If</t> <t>you</t> <t>have</t> <t>very</t> <t>large</t> <t>lists</t><t></t>, <t>removing</t> <t>from</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>list</t> <t>avoids</t> <t>CPython</t> <t>internals</t> <t>having</t> <t>to</t> <code><c>memmove</c></code><t></t><t></t>, <t>for</t> <t>situations</t> <t>where</t> <t>you</t> <t>can</t> <t>re-order</t> <t>the</t> <t>list</t><t></t>. <t>It</t> <t>gives</t> <t>a</t> <t>performance</t> <t>gain</t> <t>to</t> <t>remove</t> <t>from</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>list</t><t></t>, <t>since</t> <t>it</t> <t>won't</t> <t>need</t> <t>to</t> <code><c>memmove</c></code> <t>every</t> <t>item</t> <t>after</t> <t>the</t> <t>one</t> <t>your</t> <t>removing</t> <t>-</t> <t>back</t> <t>one</t> <t>step</t> (<t>1</t><t></t>).
+<t>For</t> <t>one-off</t> <t>removals</t> <t>the</t> <t>performance</t> <t>difference</t> <t>may</t> <t>be</t> <t>acceptable</t><t></t>, <t>but</t> <t>if</t> <t>you</t> <t>have</t> <t>a</t> <t>large</t> <t>list</t> <t>and</t> <t>need</t> <t>to</t> <t>remove</t> <t>many</t> <t>items</t> <t>-</t> <t>you</t> <t>will</t> <t>likely</t> <t>notice</t> <t>a</t> <t>performance</t> <t>hit</t><t></t>.
+
+<t>Although</t> <t>admittedly</t><t></t>, <t>in</t> <t>these</t> <t>cases</t><t></t>, <t>doing</t> <t>a</t> <t>full</t> <t>list</t> <t>search</t> <t>is</t> <t>likely</t> <t>to</t> <t>be</t> <t>a</t> <t>performance</t> <t>bottleneck</t> <t>too</t><t></t>, <t>unless</t> <t>items</t> <t>are</t> <t>mostly</t> <t>at</t> <t>the</t> <t>front</t> <t>of</t> <t>the</t> <t>list</t><t></t>.
+
+<t>This</t> <t>method</t> <t>can</t> <t>be</t> <t>used</t> <t>for</t> <t>more</t> <t>efficient</t> <t>removal</t>,<t>as</t> <t>long</t> <t>as</t> <t>re-ordering</t> <t>the</t> <t>list</t> <t>is</t> <t>acceptable</t><t></t>. (<t>2</t>)
+
+<code><c>def</c> <c>remove_unordered(</c><c>ls</c>, <c>item</c>)<c>:</c>
+    <c>i</c> <c>=</c> <c>ls</c><c>.</c><c>index(</c><c>item</c>)
+    <c>ls</c>[<c>-</c><c>1</c>], <c>ls</c>[<c>i</c>] <c>=</c> <c>ls</c>[<c>i</c>], <c>ls</c>[<c>-</c><c>1</c>]
+    <c>ls</c><c>.</c><c>pop(</c>)
+</code>
+
+<t>You</t> <t>may</t> <t>want</t> <t>to</t> <t>avoid</t> <t>raising</t> <t>an</t> <t>error</t> <t>when</t> <t>the</t> <code><c>item</c></code> <t>isn't</t> <t>in</t> <t>the</t> <t>list</t><t></t>.
+
+<code><c>def</c> <c>remove_unordered_test(</c><c>ls</c>, <c>item</c>)<c>:</c>
+    <c>try</c><c>:</c>
+        <c>i</c> <c>=</c> <c>ls</c><c>.</c><c>index(</c><c>item</c>)
+    <c>except</c> <c>ValueError</c><c>:</c>
+        <c>return</c> <c>False</c>
+    <c>ls</c>[<c>-</c><c>1</c>], <c>ls</c>[<c>i</c>] <c>=</c> <c>ls</c>[<c>i</c>], <c>ls</c>[<c>-</c><c>1</c>]
+    <c>ls</c><c>.</c><c>pop(</c>)
+    <c>return</c> <c>True</c>
+</code>
+
+
+
+
+<t>While I</t> <t>tested</t> <t>this</t> <t>with</t> <t>CPython</t><t></t>, <t>its</t> <t>quite</t> <t>likely</t> <t>most/all</t> <t>other</t> <t>Python</t> <t>implementations</t> <t>use</t> <t>an</t> <t>array</t> <t>to</t> <t>store</t> <t>lists</t> <t>internally</t><t></t>. <t>So</t> <t>unless</t> <t>they</t> <t>use</t> <t>a</t> <t>sophisticated</t> <t>data</t> <t>structure</t> <t>designed</t> <t>for</t> <t>efficient</t> <t>list</t> <t>re-sizing</t><t></t>, <t>they</t> <t>likely</t> <t>have</t> <t>the</t> <t>same</t> <t>performance</t> <t>characteristic</t><t></t>.
+
+
+
+  <t>A</t> <t>simple</t> <t>way</t> <t>to</t> <t>test</t> <t>this</t><t></t>, <t>compare</t> <t>the</t> <t>speed</t> <t>difference</t> <t>from</t> <t>removing</t> <t>from</t> <t>the</t> <t>front</t> <t>of</t> <t>the</t> <t>list</t> <t>with</t> <t>removing</t> <t>the</t> <t>last</t> <t>element</t><t></t>:
+
+<code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c><c>:</c> <c>a</c><c>.</c><c>remove(</c><c>0</c>)'
+</code>
+  
+  <t>With</t><t></t>:
+
+<code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c><c>:</c> <c>a</c><c>.</c><c>pop(</c>)'
+</code>
+  
+  (<t>gives</t> <t>an</t> <t>order</t> <t>of</t> <t>magnitude</t> <t>speed</t> <t>difference</t> <t>where</t> <t>the</t> <t>second</t> <t>example</t> <t>is</t> <t>faster</t> <t>with</t> <t>CPython</t> <t>and</t> <t>PyPy</t><t></t>).
+
+
+
+<t>In</t> <t>this</t> <t>case</t> <t>you</t> <t>might</t> <t>consider</t> <t>using</t> <t>a</t> <code><c>set</c></code><t></t><t></t>, <t>especially</t> <t>if</t> <t>the</t> <t>list</t> <t>isn't</t> <t>meant</t> <t>to</t> <t>store</t> <t>duplicates</t>.<t>In</t> <t>practice</t> <t>though</t> <t>you</t> <t>may</t> <t>need</t> <t>to</t> <t>store</t> <t>mutable</t> <t>data</t> <t>which</t> <t>can't</t> <t>be</t> <t>added</t> <t>to</t> <t>a</t> <code><c>set</c></code><t></t><t></t>. <t>Also</t> <t>check</t> <t>on</t> <t>btree's</t> <t>if</t> <t>the</t> <t>data</t> <t>can</t> <t>be</t> <t>ordered</t><t></t><t></t>.
+
+"
+<t>45074712</t>|"<t>Python</t> <t>classes</t> <t>are</t> <t>themselves</t> <t>objects</t> <t>-</t> <t>as</t> <t>in</t> <t>instance</t> <t>-</t> <t>of</t> <t>their</t> <t>meta-class</t><t></t>. 
+
+<t>The</t> <t>default</t> <t>metaclass</t><t></t>, <t>which</t> <t>is</t> <t>applied</t> <t>when</t> <t>when</t> <t>you</t> <t>determine</t> <t>classes</t> <t>as</t><t></t>:
+
+<code><c>class</c> <c>foo</c><c>:</c>
+    ...
+</code>
+
+<t>meta</t> <t>class</t> <t>are</t> <t>used</t> <t>to</t> <t>apply</t> <t>some</t> <t>rule</t> <t>to</t> <t>an</t> <t>entire</t> <t>set</t> <t>of</t> <t>classes</t><t></t>. <t>For</t> <t>example</t><t></t>, <t>suppose</t> <t>you're</t> <t>building</t> <t>an</t> <t>ORM</t> <t>to</t> <t>access</t> <t>a</t> <t>database</t><t></t>, <t>and</t> <t>you</t> <t>want</t> <t>records</t> <t>from</t> <t>each</t> <t>table</t> <t>to</t> <t>be</t> <t>of</t> <t>a</t> <t>class</t> <t>mapped</t> <t>to</t> <t>that</t> <t>table</t> (<t>based</t> <t>on</t> <t>fields</t><t></t>, <t>business</t> <t>rules</t><t></t>, <t>etc..,),</t> <t>a</t> <t>possible</t> <t>use</t> <t>of</t> <t>metaclass</t> <t>is</t> <t>for</t> <t>instance</t><t></t>, <t>connection</t> <t>pool</t> <t>logic</t><t></t>, <t>which</t> <t>is</t> <t>share</t> <t>by</t> <t>all</t> <t>classes</t> <t>of</t> <t>record</t> <t>from</t> <t>all</t> <t>tables</t><t></t>. <t>Another</t> <t>use</t> <t>is</t> <t>logic</t> <t>to</t> <t>to</t> <t>support</t> <t>foreign</t> <t>keys</t><t></t>, <t>which</t> <t>involves</t> <t>multiple</t> <t>classes</t> <t>of</t> <t>records</t><t></t>. 
+
+<t>when</t> <t>you</t> <t>define</t> <t>metaclass</t><t></t>, <t>you</t> <t>subclass</t> <t>type</t><t></t>, <t>and</t> <t>can</t> <t>overrided</t> <t>the</t> <t>following</t> <t>magic</t> <t>methods</t> <t>to</t> <t>insert</t> <t>your</t> <t>logic</t><t></t>. 
+
+<code><c>class</c> <c>somemeta(</c><c>type</c>)<c>:</c>
+    <c>__new__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>:</c>
+      """"""
+  <c>mcs</c><c>:</c> <c>is</c> <c>the</c> <c>base</c> <c>metaclass</c>, <c>in</c> <c>this</c> <c>case</c> <c>type</c><c>.</c>
+  <c>name</c><c>:</c> <c>name</c> <c>of</c> <c>the</c> <c>new</c> <c>class</c>, <c>as</c> <c>provided</c> <c>by</c> <c>the</c> <c>user</c><c>.</c>
+  <c>bases</c><c>:</c> <c>tuple</c> <c>of</c> <c>base</c> <c>classes</c> 
+  <c>clsdict</c><c>:</c> <c>a</c> <c>dictionary</c> <c>containing</c> <c>all</c> <c>methods</c> <c>and</c> <c>attributes</c> <c>defined</c> <c>on</c> <c>class</c>
+
+  <c>you</c> <c>must</c> <c>return</c> <c>a</c> <c>class</c> <c>object</c> <c>by</c> <c>invoking</c> <c>the</c> <c>__new__</c> <c>constructor</c> <c>on</c> <c>the</c> <c>base</c> <c>metaclass</c><c>.</c> 
+ <c>ie</c><c>:</c> 
+    <c>return</c> <c>type</c><c>.</c><c>__call__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>.</c>
+
+  <c>in</c> <c>the</c> <c>following</c> <c>case</c><c>:</c>
+
+  <c>class</c> <c>foo(</c><c>baseclass</c>)<c>:</c>
+        <c>__metaclass__</c> <c>=</c> <c>somemeta</c>
+
+  <c>an_attr</c> <c>=</c> <c>12</c>
+
+  <c>def</c> <c>bar(</c><c>self</c>)<c>:</c>
+      ...
+
+  <c>@</c><c>classmethod</c>
+  <c>def</c> <c>foo(</c><c>cls</c>)<c>:</c>
+      ...
+
+      <c>arguments</c> <c>would</c> <c>be</c> <c>:</c> ( <c>somemeta</c>, ""<c>foo</c>"", (<c>baseclass</c>, <c>baseofbase</c>,..., <c>object</c>), {""<c>an_attr</c>""<c>:</c><c>12</c>, ""<c>bar</c>""<c>:</c> <c>&lt;</c><c>function</c><c>&gt;</c>, ""<c>foo</c>""<c>:</c> <c>&lt;</c><c>bound</c> <c>class</c> <c>method</c><c>&gt;</c>}
+
+      <c>you</c> <c>can</c> <c>modify</c> <c>any</c> <c>of</c> <c>these</c> <c>values</c> <c>before</c> <c>passing</c> <c>on</c> <c>to</c> <c>type</c>
+      """"""
+      <c>return</c> <c>type</c><c>.</c><c>__call__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)
+
+
+    <c>def</c> <c>__init__(</c><c>self</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>:</c>
+      """""" 
+      <c>called</c> <c>after</c> <c>type</c> <c>has</c> <c>been</c> <c>created</c><c>.</c> <c>unlike</c> <c>in</c> <c>standard</c> <c>classes</c>, <c>__init__</c> <c>method</c> <c>cannot</c> <c>modify</c> <c>the</c> <c>instance</c> (<c>cls</c>) <c>-</c> <c>and</c> <c>should</c> <c>be</c> <c>used</c> <c>for</c> <c>class</c> <c>validaton</c><c>.</c>
+      """"""
+      <c>pass</c>
+
+
+    <c>def</c> <c>__prepare__(</c>)<c>:</c>
+        """"""
+        <c>returns</c> <c>a</c> <c>dict</c> <c>or</c> <c>something</c> <c>that</c> <c>can</c> <c>be</c> <c>used</c> <c>as</c> <c>a</c> <c>namespace</c><c>.</c>
+        <c>the</c> <c>type</c> <c>will</c> <c>then</c> <c>attach</c> <c>methods</c> <c>and</c> <c>attributes</c> <c>from</c> <c>class</c> <c>definition</c> <c>to</c> <c>it</c><c>.</c>
+
+        <c>call</c> <c>order</c> <c>:</c>
+
+        <c>somemeta</c><c>.</c><c>__new__</c> <c>-</c><c>&gt;</c>  <c>type</c><c>.</c><c>__new__</c> <c>-</c><c>&gt;</c> <c>type</c><c>.</c><c>__init__</c> <c>-</c><c>&gt;</c> <c>somemeta</c><c>.</c><c>__init__</c> 
+        """"""
+        <c>return</c> <c>dict(</c>)
+
+    <c>def</c> <c>mymethod(</c><c>cls</c>)<c>:</c>
+        """""" <c>works</c> <c>like</c> <c>a</c> <c>classmethod</c>, <c>but</c> <c>for</c> <c>class</c> <c>objects</c><c>.</c> <c>Also</c>, <c>my</c> <c>method</c> <c>will</c> <c>not</c> <c>be</c> <c>visible</c> <c>to</c> <c>instances</c> <c>of</c> <c>cls</c><c>.</c>
+        """"""
+        <c>pass</c>
+</code>
+
+<t>anyhow</t><t></t>, <t>those</t> <t>two</t> <t>are</t> <t>the</t> <t>most</t> <t>commonly</t> <t>used</t> <t>hooks</t><t></t>. <t>metaclassing</t> <t>is</t> <t>powerful</t><t></t>, <t>and</t> <t>above</t> <t>is</t> <t>nowhere</t> <t>near</t> <t>and</t> <t>exhaustive</t> <t>list</t> <t>of</t> <t>uses</t> <t>for</t> <t>metaclassing</t><t></t><t></t>. 
+"
+<t>13891070</t>|"<t>The</t> <code><c>time</c><c>.</c><c>time(</c>)</code> <t>function</t> <t>returns</t> <t>the</t> <t>number</t> <t>of</t> <t>seconds</t> <t>since</t> <t>the</t> <t>epoch</t> <t>as</t> <t>seconds</t> <t>in</t> <t>UTC</t><t></t>.
+
+<t>Here</t> <t>is</t> <t>some</t> <t>sample</t> <t>output</t> <t>I</t> <t>ran</t> <t>on</t> <t>my</t> <t>computer</t><t></t>, <t>converting</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>as</t> <t>well</t><t></t>.
+
+<code><c>Python</c> <c>2.7.3</c> (<c>default</c>, <c>Apr</c> <c>24</c> <c>2012</c>, <c>00</c><c>:</c><c>00</c><c>:</c><c>54</c>) 
+[<c>GCC</c> <c>4.7.0</c> <c>20120414</c> (<c>prerelease</c>)] <c>on</c> <c>linux2</c>
+<c>Type</c> ""<c>help</c>"", ""<c>copyright</c>"", ""<c>credits</c>"" <c>or</c> ""<c>license</c>"" <c>for</c> <c>more</c> <c>information</c><c>.</c>
+<c>&gt;&gt;&gt;</c> <c>import</c> <c>time</c>
+<c>&gt;&gt;&gt;</c> <c>ts</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+<c>&gt;&gt;&gt;</c> <c>print</c> <c>ts</c>
+<c>1355563265.81</c>
+<c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
+<c>&gt;&gt;&gt;</c> <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%</c><c>Y</c><c>-</c><c>%</c><c>m</c><c>-</c><c>%</c><c>d</c> <c>%</c><c>H</c><c>:</c><c>%</c><c>M</c><c>:</c><c>%</c><c>S</c>')
+<c>&gt;&gt;&gt;</c> <c>print</c> <c>st</c>
+<c>2012-12-15</c> <c>0</c><c>1</c><c>:</c><c>21</c><c>:</c><c>0</c><c>5</c>
+<c>&gt;&gt;&gt;</c>
+</code>
+
+<t>The</t> <code><c>ts</c></code> <t>variable</t> <t>is</t> <t>the</t> <t>time</t> <t>returned</t> <t>in</t> <t>seconds</t><t></t>.  <t>I</t> <t>then</t> <t>converted</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>using</t> <t>the</t> <code><c>datetime</c></code> <t>library</t> <t>making</t> <t>it</t> <t>a</t> <t>string</t> <t>that</t> <t>is</t> <t>human</t> <t>readable</t><t></t><t></t>. 
+"
+<t>37403193</t>|"<t>Here's</t> <t>a</t> <t>fast</t> <t>generator</t> <t>that</t> <t>uses</t> <t>a</t> <t>dict</t> <t>to</t> <t>store</t> <t>each</t> <t>element</t> <t>as</t> <t>a</t> <t>key</t> <t>with</t> <t>a</t> <t>boolean</t> <t>value</t> <t>for</t> <t>checking</t> <t>if</t> <t>the</t> <t>duplicate</t> <t>item</t> <t>has</t> <t>already</t> <t>been</t> <t>yielded</t><t></t>.
+
+<t>For</t> <t>lists</t> <t>with</t> <t>all</t> <t>elements</t> <t>that</t> <t>are</t> <t>hashable</t> <t>types</t><t></t>:
+
+<code><c>def</c> <c>gen_dupes(</c><c>array</c>)<c>:</c>
+    <c>unique</c> <c>=</c> {}
+    <c>for</c> <c>value</c> <c>in</c> <c>array</c><c>:</c>
+        <c>if</c> <c>value</c> <c>in</c> <c>unique</c> <c>and</c> <c>unique</c>[<c>value</c>]<c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>False</c>
+            <c>yield</c> <c>value</c>
+        <c>else</c><c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>True</c>
+
+<c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>1</c>, <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
+<c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
+# <c>=</c><c>&gt;</c> [<c>2</c>, <c>1</c>, <c>6</c>]
+</code>
+
+<t>For</t> <t>lists</t> <t>that</t> <t>might</t> <t>contain</t> <t>lists</t><t></t>:
+
+<code><c>def</c> <c>gen_dupes(</c><c>array</c>)<c>:</c>
+    <c>unique</c> <c>=</c> {}
+    <c>for</c> <c>value</c> <c>in</c> <c>array</c><c>:</c>
+        <c>is_list</c> <c>=</c> <c>False</c>
+        <c>if</c> <c>type(</c><c>value</c>) <c>is</c> <c>list</c><c>:</c>
+            <c>value</c> <c>=</c> <c>tuple(</c><c>value</c>)
+            <c>is_list</c> <c>=</c> <c>True</c>
+
+        <c>if</c> <c>value</c> <c>in</c> <c>unique</c> <c>and</c> <c>unique</c>[<c>value</c>]<c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>False</c>
+            <c>if</c> <c>is_list</c><c>:</c>
+                <c>value</c> <c>=</c> <c>list(</c><c>value</c>)
+
+            <c>yield</c> <c>value</c>
+        <c>else</c><c>:</c>
+            <c>unique</c>[<c>value</c>] <c>=</c> <c>True</c>
+
+<c>array</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>2</c>, [<c>1</c>, <c>2</c>], <c>3</c>, <c>4</c>, [<c>1</c>, <c>2</c>], <c>5</c>, <c>2</c>, <c>6</c>, <c>6</c>]
+<c>print(</c><c>list(</c><c>gen_dupes(</c><c>array</c>)))
+# <c>=</c><c>&gt;</c> [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
+</code><t></t>
+"
+<t>32555515</t>|"<t>Below</t> <t>is</t> <t>a</t> ""<t>standard</t> <t>recursive</t> <t>answer</t><t></t>"", <t>similar</t> <t>to</t> <t>the</t> <t>other</t> <t>similar</t> <t>answer</t> <t>https</t>:<t>//stackoverflow</t>.<t>com/a/23743696/711085</t><t></t><t></t> . (<t>We</t> <t>don't</t> <t>realistically</t> <t>have</t> <t>to</t> <t>worry</t> <t>about</t> <t>running</t> <t>out</t> <t>of</t> <t>stack</t> <t>space</t> <t>since</t> <t>there's</t> <t>no</t> <t>way</t> <t>we</t> <t>could</t> <t>process</t> <t>all</t> <t>N</t><t></t>! <t>permutations</t><t></t>.)
+
+<t>It</t> <t>visits</t> <t>every</t> <t>element</t> <t>in</t> <t>turn</t><t></t>, <t>and</t> <t>either</t> <t>takes</t> <t>it</t> <t>or</t> <t>leaves</t> <t>it</t> (<t>we</t> <t>can</t> <t>directly</t> <t>see</t> <t>the</t> <t>2^N</t> <t>cardinality</t> <t>from</t> <t>this</t> <t>algorithm</t><t></t>).
+
+<code><c>def</c> <c>combs(</c><c>xs</c>, <c>i</c><c>=</c><c>0</c>)<c>:</c>
+    <c>if</c> <c>i</c><c>==</c><c>len(</c><c>xs</c>)<c>:</c>
+        <c>yield</c> ()
+        <c>return</c>
+    <c>for</c> <c>c</c> <c>in</c> <c>combs(</c><c>xs</c>,<c>i</c><c>+</c><c>1</c>)<c>:</c>
+        <c>yield</c> <c>c</c>
+        <c>yield</c> <c>c</c><c>+</c>(<c>xs</c>[<c>i</c>],)
+</code>
+
+
+
+<t>Demo</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>list(</c> <c>combs(</c><c>range(</c><c>5</c>)) )
+[(), (<c>0</c>,), (<c>1</c>,), (<c>1</c>, <c>0</c>), (<c>2</c>,), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>,), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>,), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
+
+<c>&gt;&gt;&gt;</c> <c>list(</c><c>sorted(</c> <c>combs(</c><c>range(</c><c>5</c>)), <c>key</c><c>=</c><c>len</c>))
+[(), 
+ (<c>0</c>,), (<c>1</c>,), (<c>2</c>,), (<c>3</c>,), (<c>4</c>,), 
+ (<c>1</c>, <c>0</c>), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), 
+ (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>), 
+ (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), 
+ (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
+
+<c>&gt;&gt;&gt;</c> <c>len(</c><c>set(</c><c>combs(</c><c>range(</c><c>5</c>))))
+<c>32</c>
+</code><t></t>
+"
+<t>6347576</t>|"<t>Here</t> <t>is</t> <t>a</t> <t>variant</t> <t>on</t> <t>Alec Thomas's</t> <t>solution</t><t></t>:
+
+<code><c>def</c> <c>enum(</c><c>*</c><c>args</c>, <c>**</c><c>kwargs</c>)<c>:</c>
+    <c>return</c> <c>type(</c>'<c>Enum</c>', (), <c>dict(</c>(<c>y</c>, <c>x</c>) <c>for</c> <c>x</c>, <c>y</c> <c>in</c> <c>enumerate(</c><c>args</c>), <c>**</c><c>kwargs</c>)) 
+
+<c>x</c> <c>=</c> <c>enum(</c>'<c>POOH</c>', '<c>TIGGER</c>', '<c>EEYORE</c>', '<c>ROO</c>', '<c>PIGLET</c>', '<c>RABBIT</c>', '<c>OWL</c>')
+<c>assert</c> <c>x</c><c>.</c><c>POOH</c> <c>==</c> <c>0</c>
+<c>assert</c> <c>x</c><c>.</c><c>TIGGER</c> <c>==</c> <c>1</c>
+</code><t></t>
+"
+<t>32649302</t><t></t>|"<code><c>from</c> <c>operator</c> <c>import</c> <c>truediv</c>
+
+<c>c</c> <c>=</c> <c>truediv(</c><c>a</c>, <c>b</c>)
+</code><t></t>
+"
+<t>35199035</t>|"<t>Here</t> <t>is</t> <t>a</t> <t>tiny</t> <t>timer</t> <t>class</t> <t>that</t> <t>returns</t> ""<t>hh</t>:<t>mm</t>:<t>ss</t>"" <t>string</t><t></t>: 
+
+<code><c>class</c> <c>Timer</c><c>:</c>
+  <c>def</c> <c>__init__(</c><c>self</c>)<c>:</c>
+    <c>self</c><c>.</c><c>start</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+
+  <c>def</c> <c>restart(</c><c>self</c>)<c>:</c>
+    <c>self</c><c>.</c><c>start</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+
+  <c>def</c> <c>get_time_hhmmss(</c><c>self</c>)<c>:</c>
+    <c>end</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
+    <c>m</c>, <c>s</c> <c>=</c> <c>divmod(</c><c>end</c> <c>-</c> <c>self</c><c>.</c><c>start</c>, <c>60</c>)
+    <c>h</c>, <c>m</c> <c>=</c> <c>divmod(</c><c>m</c>, <c>60</c>)
+    <c>time_str</c> <c>=</c> ""<c>%</c><c>0</c><c>2</c><c>d</c><c>:</c><c>%</c><c>0</c><c>2</c><c>d</c><c>:</c><c>%</c><c>0</c><c>2</c><c>d</c>"" <c>%</c> (<c>h</c>, <c>m</c>, <c>s</c>)
+    <c>return</c> <c>time_str</c>
+</code>
+
+<t>Usage</t><t></t>: 
+
+<code># <c>Start</c> <c>timer</c>
+<c>my_timer</c> <c>=</c> <c>Timer(</c>)
+
+# ... <c>do</c> <c>something</c>
+
+# <c>Get</c> <c>time</c> <c>string</c><c>:</c>
+<c>time_hhmmss</c> <c>=</c> <c>my_timer</c><c>.</c><c>get_time_hhmmss(</c>)
+<c>print(</c>""<c>Time</c> <c>elapsed</c><c>:</c> <c>%</c><c>s</c>"" <c>%</c> <c>time_hhmmss</c> )
+
+# ... <c>use</c> <c>the</c> <c>timer</c> <c>again</c>
+<c>my_timer</c><c>.</c><c>restart(</c>)
+
+# ... <c>do</c> <c>something</c>
+
+# <c>Get</c> <c>time</c><c>:</c>
+<c>time_hhmmss</c> <c>=</c> <c>my_timer</c><c>.</c><c>get_time_hhmmss(</c>)
+
+# ... <c>etc</c>
+</code><t></t>
+"
+<t>16637874</t>|"<t>Just</t> <t>an</t> <t>FYI</t> <t>adding</t> <t>to</t> <t>Chris</t><t></t>. <t>B</t> (<t>best</t> <t>answer</t><t></t>):
+
+<code><c>d</c> <c>=</c> <c>defaultdict(</c><c>int</c>)
+</code>
+
+<t>Works</t> <t>as</t> <t>well;</t> <t>the</t> <t>reason</t> <t>is</t> <t>that</t> <t>calling</t> <code><c>int(</c>)</code> <t>returns</t> <code><c>0</c></code> <t>which</t> <t>is</t> <t>what</t> <code><c>defaultdict</c></code> <t>does</t> <t>behind</t> <t>the</t> <t>scenes</t> (<t>when</t> <t>constructing</t> <t>a</t> <t>dictionary</t><t></t>), <t>hence</t> <t>the</t> <t>name</t> ""<t>Factory Function""</t> <t>in</t> <t>the</t> <t>documentation</t><t></t><t></t>.
+"
+<t>5574749</t>|"<t>I</t> <t>would</t> <t>say</t> <t>that</t> <t>your</t> <t>first</t> <t>approach</t><t></t>:
+
+<code><c>print</c> <c>&gt;&gt;</c> <c>sys</c><c>.</c><c>stderr</c>, '<c>spam</c>' 
+</code>
+
+<t>is</t> <t>the</t> ""<t>One</t><t></t><t></t><t></t><t></t><t></t><t></t> . . . <t>obvious</t> <t>way</t> <t>to</t> <t>do</t> <t>it</t>""  <t>The</t> <t>others</t> <t>don't</t> <t>satisfy</t> <t>rule</t> <t>#1</t> (""<t>Beautiful</t> <t>is</t> <t>better</t> <t>than</t> <t>ugly</t><t></t><t></t>."")
+"
+<t>8369232</t><t></t>|"<code><c>f</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>','<c>r</c>')
+<c>string</c> <c>=</c> """"
+<c>while</c> <c>1</c><c>:</c>
+    <c>line</c> <c>=</c> <c>f</c><c>.</c><c>readline(</c>)
+    <c>if</c> <c>not</c> <c>line</c><c>:</c><c>break</c>
+    <c>string</c> <c>+=</c> <c>line</c>
+
+<c>f</c><c>.</c><c>close(</c>)
+
+
+<c>print</c> <c>string</c>
+</code><t></t>
+"
+<t>35041435</t><t></t>|"<code><c>pip</c> <c>install</c> <c>-</c><c>U</c> <c>setuptools</c></code> <t>and</t> <code><c>easy_install</c></code> <t>was</t> <t>putting</t> <t>egg-info</t> <t>in</t> <t>the</t> <t>wrong</t> <t>directory</t><t></t>.
+
+<t>Then I</t> <t>just</t> <t>reinstalled</t> <code><c>apt-get</c> <c>install</c> <c>python-dev</c></code><t></t><t></t>.
+<t>Let</t> <t>me</t> <t>install</t> <t>the</t> <t>drivers</t> <t>I</t> <t>want</t> <t>after</t> <t>that</t><t></t>
+"
+<t>1810760</t>|"<t>Try</t> <code><c>os</c><c>.</c><c>chdir</c></code>
+
+
+<code><c>os</c><c>.</c><c>chdir(</c><c>path</c>)
+</code>
+  
+          <t>Change</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>to</t> <t>path</t><t></t>. <t>Availability</t><t></t>: <t>Unix</t><t></t>, <t>Windows</t><t></t><t></t>.
+
+"
+<t>1229342</t>|"<t>Like</t> <t>other</t> <t>people</t> <t>have</t> <t>said</t><t></t>, <t>generally</t> <t>Python</t> <t>strings</t> <t>are</t> <t>supposed</t> <t>to</t> <t>be</t> <t>immutable</t><t></t>.
+
+<t>However</t><t></t>, <t>if</t> <t>you</t> <t>are</t> <t>using</t> <t>CPython</t><t></t>, <t>the</t> <t>implementation</t> <t>at</t> <t>python</t>.<t>org</t><t></t>, <t>it</t> <t>is</t> <t>possible</t> <t>to</t> <t>use</t> <t>ctypes</t> <t>to</t> <t>modify</t> <t>the</t> <t>string</t> <t>structure</t> <t>in</t> <t>memory</t><t></t>.
+
+<t>Here</t> <t>is</t> <t>an</t> <t>example</t> <t>where</t> <t>I</t> <t>use</t> <t>the</t> <t>technique</t> <t>to</t> <t>clear</t> <t>a</t> <t>string</t><t></t>.
+
+<t>Mark</t> <t>data</t> <t>as</t> <t>sensitive</t> <t>in</t> <t>python</t>
+
+<t>I</t> <t>mention</t> <t>this</t> <t>for</t> <t>the</t> <t>sake</t> <t>of</t> <t>completeness</t><t></t>, <t>and</t> <t>this</t> <t>should</t> <t>be</t> <t>your</t> <t>last</t> <t>resort</t> <t>as</t> <t>it</t> <t>is</t> <t>hackish</t><t></t><t></t>.
+"
+<t>28576383</t><t></t>|"
+  <t>How</t> <t>do</t> <t>I</t> <t>get</t> <t>the</t> <t>current</t> <t>time</t> <t>in</t> <t>Python</t><t></t>?
+
+
+<t>The</t> <code><c>time</c></code> <t>module</t>
+
+<t>The</t> <code><c>time</c></code> <t>module</t> <t>provides</t> <t>functions</t> <t>that</t> <t>tells</t> <t>us</t> <t>the</t> <t>time</t> <t>in</t> ""<t>seconds</t> <t>since</t> <t>the</t> <t>epoch</t>"" <t>as</t> <t>well</t> <t>as</t> <t>other</t> <t>utilities</t><t></t>.
+
+<code><c>import</c> <c>time</c>
+</code>
+
+Unix<t> </t>Epoch Time
+
+<t>This</t> <t>is</t> <t>the</t> <t>format</t> <t>you</t> <t>should</t> <t>get</t> <t>timestamps</t> <t>in</t> <t>for</t> <t>saving</t> <t>in</t> <t>databases</t><t></t>. <t>It</t> <t>is</t> <t>a</t> <t>simple</t> <t>floating</t> <t>point</t> <t>number</t> <t>that</t> <t>can</t> <t>be</t> <t>converted</t> <t>to</t> <t>an</t> <t>integer</t><t></t>. <t>It</t> <t>is</t> <t>also</t> <t>good</t> <t>for</t> <t>arithmetic</t> <t>in</t> <t>seconds</t><t></t>, <t>as</t> <t>it</t> <t>represents</t> <t>the</t> <t>number</t> <t>of</t> <t>seconds</t> <t>since</t> <t>Jan</t> <t>1</t><t></t>, <t>1970</t> <t>00</t>:<t>00</t>:<t>00</t><t></t>, <t>and</t> <t>it</t> <t>is</t> <t>memory</t> <t>light</t> <t>relative</t> <t>to</t> <t>the</t> <t>other</t> <t>representations</t> <t>of</t> <t>time</t> <t>we'll</t> <t>be</t> <t>looking</t> <t>at</t> <t>next</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>time(</c>)
+<c>1424233311.771502</c>
+</code>
+
+<t>This</t> <t>timestamp</t> <t>does</t> <t>not</t> <t>account</t> <t>for</t> <t>leap-seconds</t><t></t>, <t>so</t> <t>it's</t> <t>not</t> <t>linear</t> <t>-</t> <t>leap</t> <t>seconds</t> <t>are</t> <t>ignored</t><t></t>. <t>So</t> <t>while</t> <t>it</t> <t>is</t> <t>not</t> <t>equivalent</t> <t>to</t> <t>the</t> <t>international</t> <t>UTC</t> <t>standard</t><t></t>, <t>it</t> <t>is</t> <t>close</t><t></t>, <t>and</t> <t>therefore</t> <t>quite</t> <t>good</t> <t>for</t> <t>most</t> <t>cases</t> <t>of</t> <t>record-keeping</t><t></t>. 
+
+<t>This</t> <t>is</t> <t>not</t> <t>ideal</t> <t>for</t> <t>human</t> <t>scheduling</t><t></t>, <t>however</t><t></t>. <t>If</t> <t>you</t> <t>have</t> <t>a</t> <t>future</t> <t>event</t> <t>you</t> <t>wish</t> <t>to</t> <t>take</t> <t>place</t> <t>at</t> <t>a</t> <t>certain</t> <t>point</t> <t>in</t> <t>time</t><t></t>, <t>you'll</t> <t>want</t> <t>to</t> <t>store</t> <t>that</t> <t>time</t> <t>with</t> <t>a</t> <t>string</t> <t>that</t> <t>can</t> <t>be</t> <t>parsed</t> <t>into</t> <t>a</t> <t>datetime</t> <t>object</t> <t>or</t> <t>a</t> <t>serialized</t> <t>datetime</t> <t>object</t> (<t>these</t> <t>will</t> <t>be</t> <t>described</t> <t>later</t><t></t>).
+
+<code><c>time</c><c>.</c><c>ctime</c></code>
+
+<t>You</t> <t>can</t> <t>also</t> <t>represent</t> <t>the</t> <t>current</t> <t>time</t> <t>in</t> <t>the</t> <t>way</t> <t>preferred</t> <t>by</t> <t>your</t> <t>operating</t> <t>system</t> (<t>which</t> <t>means</t> <t>it</t> <t>can</t> <t>change</t> <t>when</t> <t>you</t> <t>change</t> <t>your</t> <t>system</t> <t>preferences</t><t></t>, <t>so</t> <t>don't</t> <t>rely</t> <t>on</t> <t>this</t> <t>to</t> <t>be</t> <t>standard</t> <t>across</t> <t>all</t> <t>systems</t><t></t>, <t>as</t> <t>I've</t> <t>seen</t> <t>others</t> <t>expect</t><t></t>). <t>This</t> <t>is</t> <t>typically</t> <t>user</t> <t>friendly</t><t></t>, <t>but</t> <t>doesn't</t> <t>typically</t> <t>result</t> <t>in</t> <t>strings</t> <t>one</t> <t>can</t> <t>sort</t> <t>chronologically</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>ctime(</c>)
+'<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>56</c> <c>2015</c>'
+</code>
+
+<t>You</t> <t>can</t> <t>hydrate</t> <t>timestamps</t> <t>into</t> <t>human</t> <t>readable</t> <t>form</t> <t>with</t> <code><c>ctime</c></code> <t>as</t> <t>well</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>time</c><c>.</c><c>ctime(</c><c>1424233311.771502</c>)
+'<c>Tue</c> <c>Feb</c> <c>17</c> <c>23</c><c>:</c><c>21</c><c>:</c><c>51</c> <c>2015</c>'
+</code>
+
+<t>This</t> <t>conversion</t> <t>is</t> <t>also</t> <t>not</t> <t>good</t> <t>for</t> <t>record-keeping</t> (<t>except</t> <t>in</t> <t>text</t> <t>that</t> <t>will</t> <t>only</t> <t>be</t> <t>parsed</t> <t>by</t> <t>humans</t> <t>-</t> <t>and</t> <t>with</t> improved <t>Optical Character Recognition</t> <t>and</t> <t>Artificial Intelligence</t>, <t>I</t> <t>think</t> <t>the</t> <t>number</t> <t>of</t> <t>these</t> <t>cases</t> <t>will</t> <t>diminish</t><t></t>).
+
+<code><c>datetime</c></code> <t>module</t>
+
+<t>The</t> <code><c>datetime</c></code> <t>module</t> <t>is</t> <t>also</t> <t>quite</t> <t>useful</t> <t>here</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
+</code>
+
+<code><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now</c></code>
+
+<t>The</t> <code><c>datetime</c><c>.</c><c>now</c></code> <t>is</t> <t>a</t> <t>class</t> <t>method</t> <t>that</t> <t>returns</t> <t>the</t> <t>current</t> <t>time</t><t></t>. <t>It</t> <t>uses</t> <t>the</t> <code><c>time</c><c>.</c><c>localtime</c></code> <t>without</t> <t>the</t> <t>timezone</t> <t>info</t> (<t>if</t> <t>not</t> <t>given</t><t></t>, <t>otherwise</t> <t>see</t> <t>timezone</t> <t>aware</t> <t>below</t><t></t>). <t>It</t> <t>has</t> <t>a</t> <t>representation</t> (<t>which</t> <t>would</t> <t>allow</t> <t>you</t> <t>to</t> <t>recreate</t> <t>an</t> <t>equivalent</t> <t>object</t>) <t>echoed</t> <t>on</t> <t>the</t> <t>shell</t><t></t>, <t>but</t> <t>when</t> <t>printed</t> (<t>or</t> <t>coerced</t> <t>to</t> <t>a</t> <code><c>str</c></code><t></t><t></t>), <t>it</t> <t>is</t> <t>in</t> <t>human</t> <t>readable</t> (<t>and</t> <t>nearly</t> <t>ISO</t>) <t>format</t><t></t>, <t>and</t> <t>the</t> <t>lexicographic</t> <t>sort</t> <t>is</t> <t>equivalent</t> <t>to</t> <t>the</t> <t>chronological</t> <t>sort</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>17</c>, <c>23</c>, <c>43</c>, <c>49</c>, <c>94252</c>)
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c>))
+<c>2015-02-17</c> <c>23</c><c>:</c><c>43</c><c>:</c><c>51.782461</c>
+</code>
+
+<t>datetime's</t> <code><c>utcnow</c></code>
+
+<t>You</t> <t>can</t> <t>get</t> <t>a</t> <t>datetime</t> <t>object</t> <t>in</t> <t>UTC</t> <t>time</t><t></t>, <t>a</t> <t>global</t> <t>standard</t><t></t>, <t>by</t> <t>doing</t> <t>this</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>53</c>, <c>28</c>, <c>394163</c>)
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>53</c><c>:</c><c>31.783988</c>
+</code>
+
+<t>UTC</t> <t>is</t> <t>a</t> <t>time</t> <t>standard</t> <t>that</t> <t>is</t> <t>nearly</t> <t>equivalent</t> <t>to</t> <t>the</t> <t>GMT</t> <t>timezone</t><t></t>. (<t>While GMT</t> <t>and</t> <t>UTC</t> <t>do</t> <t>not</t> <t>change</t> for <t>Daylight Savings Time</t>, <t>their</t> <t>users</t> <t>may</t> <t>switch</t> <t>to</t> <t>other</t> <t>timezones</t><t></t>, like <t>British Summer Time</t>, <t>during</t> <t>the</t> <t>Summer</t><t></t>.) 
+
+<t>datetime</t> <t>timezone</t> <t>aware</t>
+
+<t>However</t><t></t>, <t>none</t> <t>of</t> <t>the</t> <t>datetime</t> <t>objects</t> <t>we've</t> <t>created</t> <t>so</t> <t>far</t> <t>can</t> <t>be</t> <t>easily</t> <t>converted</t> <t>to</t> <t>various</t> <t>timezones</t><t></t>. <t>We</t> <t>can</t> <t>solve</t> <t>that</t> <t>problem</t> <t>with</t> <t>the</t> <code><c>pytz</c></code> <t>module</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>pytz</c>
+<c>&gt;&gt;&gt;</c> <c>then</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>&gt;&gt;&gt;</c> <c>then</c>
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>4</c>, <c>55</c>, <c>58</c>, <c>753949</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
+</code>
+
+<t>Equivalently</t><t></t>, <t>in</t> <t>Python</t> <t>3</t> <t>we</t> <t>have</t> <t>the</t> <code><c>timezone</c></code> <t>class</t> <t>with</t> <t>a</t> <t>utc</t> <code><c>timezone</c></code> <t>instance</t> <t>attached</t><t></t>, <t>which</t> <t>also</t> <t>makes</t> <t>the</t> <t>object</t> <t>timezone</t> <t>aware</t> (<t>but</t> <t>to</t> <t>convert</t> <t>to</t> <t>another</t> <t>timezone</t> <t>without</t> <t>the</t> <t>handy</t> <code><c>pytz</c></code> <t>module</t> <t>is</t> <t>left</t> <t>as</t> <t>an</t> <t>exercise</t> <t>to</t> <t>the</t> <t>reader</t><t></t>):
+
+<code><c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>now(</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>22</c>, <c>31</c>, <c>56</c>, <c>564191</c>, <c>tzinfo</c><c>=</c><c>datetime</c><c>.</c><c>timezone</c><c>.</c><c>utc</c>)
+</code>
+
+<t>And</t> <t>we</t> <t>see</t> <t>we</t> <t>can</t> <t>easily</t> <t>convert</t> <t>to</t> <t>timezones</t> <t>from</t> <t>the</t> <t>original</t> <t>utc</t> <t>object</t><t></t>.
+
+<code><c>&gt;&gt;&gt;</c> <c>print(</c><c>then</c>)
+<c>2015-02-18</c> <c>0</c><c>4</c><c>:</c><c>55</c><c>:</c><c>58.753949</c><c>+</c><c>00</c><c>:</c><c>00</c>
+<c>&gt;&gt;&gt;</c> <c>print(</c><c>then</c><c>.</c><c>astimezone(</c><c>pytz</c><c>.</c><c>timezone(</c>'<c>US</c><c>/Eastern</c>')))
+<c>2015-02-17</c> <c>23</c><c>:</c><c>55</c><c>:</c><c>58.753949-05</c><c>:</c><c>00</c>
+</code>
+
+<t>You</t> <t>can</t> <t>also</t> <t>make</t> <t>a</t> <t>naive</t> <t>datetime</t> <t>object</t> <t>aware</t> <t>with</t> <t>the</t> <code><c>pytz</c></code> <t>timezone</t> <code><c>localize</c></code> <t>method</t><t></t>, <t>or</t> <t>by</t> <t>replacing</t> <t>the</t> <t>tzinfo</t> <t>attribute</t> (<t>with</t> <code><c>replace</c></code><t></t><t></t>, <t>this</t> <t>is</t> <t>done</t> <t>blindly</t><t></t>), <t>but</t> <t>these</t> <t>are</t> <t>more</t> <t>last</t> <t>resorts</t> <t>than</t> <t>best</t> <t>practices</t><t></t>:
+
+<code><c>&gt;&gt;&gt;</c> <c>pytz</c><c>.</c><c>utc</c><c>.</c><c>localize(</c><c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>))
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>6</c>, <c>29</c>, <c>32285</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
+<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>utcnow(</c>)<c>.</c><c>replace(</c><c>tzinfo</c><c>=</c><c>pytz</c><c>.</c><c>utc</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2015</c>, <c>2</c>, <c>18</c>, <c>6</c>, <c>9</c>, <c>30</c>, <c>728550</c>, <c>tzinfo</c><c>=</c><c>&lt;</c><c>UTC</c><c>&gt;</c>)
+</code>
+
+<t>The</t> <code><c>pytz</c></code> <t>module</t> <t>allows</t> <t>us</t> <t>to</t> <t>make</t> <t>our</t> <code><c>datetime</c></code> <t>objects</t> <t>timezone</t> <t>aware</t> <t>and</t> <t>convert</t> <t>the</t> <t>times</t> <t>to</t> <t>the</t> <t>hundreds</t> <t>of</t> <t>timezones</t> <t>available</t> <t>in</t> <t>the</t> <code><c>pytz</c></code> <t>module</t><t></t>.
+
+<t>One</t> <t>could</t> <t>ostensibly</t> <t>serialize</t> <t>this</t> <t>object</t> <t>for</t> <t>UTC</t> <t>time</t> <t>and</t> <t>store</t> <t>that</t> <t>in</t> <t>a</t> <t>database</t><t></t>, <t>but</t> <t>it</t> <t>would</t> <t>require</t> <t>far</t> <t>more</t> <t>memory</t> <t>and</t> <t>be</t> <t>more</t> <t>prone</t> <t>to</t> <t>error</t> <t>than</t> <t>simply</t> <t>storing</t> <t>the</t> <t>Unix Epoch</t> <t>time</t><t></t>, <t>which</t> <t>I</t> <t>demonstrated</t> <t>first</t><t></t>. 
+
+<t>The</t> <t>other</t> <t>ways</t> <t>of</t> <t>viewing</t> <t>times</t> <t>are</t> <t>much</t> <t>more</t> <t>error</t> <t>prone</t><t></t>, <t>especially</t> <t>when</t> <t>dealing</t> <t>with</t> <t>data</t> <t>that</t> <t>may</t> <t>come</t> <t>from</t> <t>different</t> <t>time</t> <t>zones</t><t></t>. <t>You</t> <t>want</t> <t>there</t> <t>to</t> <t>be</t> <t>no</t> <t>confusion</t> <t>as</t> <t>to</t> <t>which</t> <t>timezone</t> <t>a</t> <t>string</t> <t>or</t> <t>serialized</t> <t>datetime</t> <t>object</t> <t>was</t> <t>intended</t> <t>for</t><t></t>.
+
+<t>If</t> <t>you're</t> <t>displaying</t> <t>the</t> <t>time</t> <t>with</t> <t>Python</t> <t>for</t> <t>the</t> <t>user</t><t></t>, <code><c>ctime</c></code> <t>works</t> <t>nicely</t><t></t>, <t>not</t> <t>in</t> <t>a</t> <t>table</t> (<t>it</t> <t>doesn't</t> <t>typically</t> <t>sort</t> <t>well</t><t></t>), <t>but</t> <t>perhaps</t> <t>in</t> <t>a</t> <t>clock</t><t></t>. <t>However</t><t></t>, <t>I</t> <t>personally</t> <t>recommend</t><t></t>, <t>when</t> <t>dealing</t> <t>with</t> <t>time</t> <t>in</t> <t>Python</t><t></t>, <t>either</t> <t>using</t> <t>Unix</t> <t>time</t><t></t>, <t>or</t> <t>a</t> <t>timezone</t> <t>aware</t> <t>UTC</t> <code><c>datetime</c></code> <t>object</t><t></t><t></t>. 
+"
+<t>1207460</t>|"<t>Your</t> <t>best</t> <t>approach</t> <t>for</t> <t>such</t> <t>an</t> <t>example</t> <t>would</t> <t>be</t> <t>a</t> <t>list</t> <t>comprehension</t>
+
+<code><c>somelist</c> <c>=</c> [<c>tup</c> <c>for</c> <c>tup</c> <c>in</c> <c>somelist</c> <c>if</c> <c>determine(</c><c>tup</c>)]
+</code>
+
+<t>In</t> <t>cases</t> <t>where</t> <t>you're</t> <t>doing</t> <t>something</t> <t>more</t> <t>complex</t> <t>than</t> <t>calling</t> <t>a</t> <code><c>determine</c></code> <t>function</t><t></t>, <t>I</t> <t>prefer</t> <t>constructing</t> <t>a</t> <t>new</t> <t>list</t> <t>and</t> <t>simply</t> <t>appending</t> <t>to</t> <t>it</t> <t>as</t> <t>I</t> <t>go</t><t></t>.  <t>For</t> <t>example</t>
+
+<code><c>newlist</c> <c>=</c> []
+<c>for</c> <c>tup</c> <c>in</c> <c>somelist</c><c>:</c>
+    # <c>lots</c> <c>of</c> <c>code</c> <c>here</c>, <c>possibly</c> <c>setting</c> <c>things</c> <c>up</c> <c>for</c> <c>calling</c> <c>determine</c>
+    <c>if</c> <c>determine(</c><c>tup</c>)<c>:</c>
+        <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
+<c>somelist</c> <c>=</c> <c>newlist</c>
+</code>
+
+<t>Copying</t> <t>the</t> <t>list</t> <t>using</t> <code><c>remove</c></code> <t>might</t> <t>make</t> <t>your</t> <t>code</t> <t>look</t> <t>a</t> <t>little</t> <t>cleaner</t><t></t>, <t>as</t> <t>described</t> <t>in</t> <t>one</t> <t>of</t> <t>the</t> <t>answers</t> <t>below</t><t></t>.  <t>You</t> <t>should</t> <t>definitely</t> <t>not</t> <t>do</t> <t>this</t> <t>for</t> <t>extremely</t> <t>large</t> <t>lists</t><t></t>, <t>since</t> <t>this</t> <t>involves</t> <t>first</t> <t>copying</t> <t>the</t> <t>entire</t> <t>list</t><t></t>, <t>and</t> <t>also</t> <t>performing</t> <t>an</t> <code><c>O(</c><c>n</c>)</code> <code><c>remove</c></code> <t>operation</t> <t>for</t> <t>each</t> <t>element</t> <t>being</t> <t>removed</t><t></t>, <t>making</t> <t>this</t> <t>an</t> <code><c>O(</c><c>n</c><c>^</c><c>2</c>)</code> <t>algorithm</t><t></t>.
+
+<code><c>for</c> <c>tup</c> <c>in</c> <c>somelist</c>[<c>:</c>]<c>:</c>
+    # <c>lots</c> <c>of</c> <c>code</c> <c>here</c>, <c>possibly</c> <c>setting</c> <c>things</c> <c>up</c> <c>for</c> <c>calling</c> <c>determine</c>
+    <c>if</c> <c>determine(</c><c>tup</c>)<c>:</c>
+        <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
+</code><t></t>
+"
+<t>326279</t>|"<t>Note</t> <t>that</t> <t>rstrip</t> <t>doesn't</t> <t>act</t> <t>exactly</t> <t>like</t> <t>Perl's</t> <t>chomp</t>() <t>because</t> <t>it</t> <t>doesn't</t> <t>modify</t> <t>the</t> <t>string</t><t></t>. <t>That</t> <t>is</t><t></t>, <t>in</t> <t>Perl</t><t></t>:
+
+<code><c>$</c><c>x</c><c>=</c>""<c>a</c><c>\n</c>"";
+
+<c>chomp</c><c> </c><c>$</c><c>x</c>
+</code>
+
+<t>results</t> <t>in</t> <code><c>$</c><c>x</c></code> <t>being</t> <code>""<c>a</c>""</code><t></t><t></t>.
+
+<t>but</t> <t>in</t> <t>Python</t><t></t>:
+
+<code><c>x</c><c>=</c>""<c>a</c><c>\n</c>""
+
+<c>x</c><c>.</c><c>rstrip(</c>)
+</code>
+
+<t>will</t> <t>mean</t> <t>that</t> <t>the</t> <t>value</t> <t>of</t> <code><c>x</c></code> <t>is</t> <t>still</t> <code>""<c>a</c><c>\n</c>""</code><t></t><t></t>. <t>Even</t> <code><c>x</c><c>=</c><c>x</c><c>.</c><c>rstrip(</c>)</code> <t>doesn't</t> <t>always</t> <t>give</t> <t>the</t> <t>same</t> <t>result</t><t></t>, <t>as</t> <t>it</t> <t>strips</t> <t>all</t> <t>whitespace</t> <t>from</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>string</t><t></t>, <t>not</t> <t>just</t> <t>one</t> <t>newline</t> <t>at</t> <t>most</t><t></t><t></t>.
+"
