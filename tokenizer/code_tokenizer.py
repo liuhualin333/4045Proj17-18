@@ -81,7 +81,8 @@ class CodesTokenizer:
 
 		# custom union function to union the ranges of different reserved codes
 		overall = union([paths, consec_nums, dashs, lts_gts])
-		#pdb.set_trace()
+		#
+		#import pdb; pdb.set_trace()
 		code_anchor = 0
 		for start, end in overall:
 			new_codes.Append(self._codes[code_anchor : start])
