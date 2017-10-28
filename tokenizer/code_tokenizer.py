@@ -114,7 +114,7 @@ class CodesTokenizer:
 					chop_end = len(tokval) - 1
 					#pdb.set_trace()
 					# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
-					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([,)\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
 						#pdb.set_trace()
 						# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
 						if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
