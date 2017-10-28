@@ -78,6 +78,8 @@ class TextTokenizer:
                 # if (word=='RESTful'):
                 # pdb.set_trace()
                 if (lastWord[0].isupper() and word[0].isupper() and notSPFlag == False):
+                    #if (word == "Epoch"):
+                        #pdb.set_trace()
                     if (not word[-1].isalnum()):
                         notSPFlag = True
                     tokenList = tokenList[:-1]  # Delete last token (ground step to form special pronoun)
@@ -106,12 +108,19 @@ class TextTokenizer:
                         word.append(tmp)
                     for elm in word:
                         elm = elm.strip('()\"\':?!')
+                        if (elm == ""):
+                        	lastWord = elm
+                        	continue
                         if (not equalSignFlag):
                             tokenList.append(elm)
                         else:
                             equalSignFlag = False
                         lastWord = elm
             # print(tokenList[:-1])
+            if (specialPronounFlag == True or equalSignFlag == True):
+            	tokenList.append(lastWord)
+            	specialPronounFlag = False
+            	equalSignFlag = False
             self._tokens.extend(tokenList)
 
     def annotate(self):
