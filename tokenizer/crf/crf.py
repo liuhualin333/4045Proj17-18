@@ -58,6 +58,7 @@ def sentence2words(sentence):
 
 def main():
     # read data
+    # rules defined in training data
     train_sentence = [[('I','U'),('love','U'),('New','B'),('York.','E')],[('Bei','B'),('Jing','E'),('is','U'),('far','U')]]
     test_sentence = [[('This','U'),('is','U'),('Shang','B'),('Hai','E'),('city.','U')]]
 
