@@ -32,11 +32,13 @@ class TextTokenizer:
     _tokens = None
     _text = None
 
-    def __init__(self, text, special_words=[]):
+    def __init__(self, text, special_words=[],answer_flag=False,post_flag=False):
         self._tokens = []
         self._text = text
         self._sb = StringBuilder()
         self.tokenizer(text, special_words)
+        self.answer_flag = answer_flag
+        self.post_flag = post_flag
 
     def tokenizer(self, text, special_words=[]):
         # Split on whitespace
@@ -66,8 +68,11 @@ class TextTokenizer:
             lastWord = ' '
             wordList = []
             try:
-                wordList.extend(sentence.split('|')[-2].split())
-                wordList.extend(sentence.split('|')[-1].split())
+                if(self.post_flag == True):
+                    wordList.extend(sentence.split('|')[-2].split())
+                    wordList.extend(sentence.split('|')[-1].split())
+                else:
+                    wordList.extend(sentence.split('|')[-1].split())
             except:
                 wordList.extend(sentence.split('|')[-1].split())
             for word in wordList:
@@ -152,10 +157,14 @@ def main(file):
     # Skip the first line
     anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
     anchor_post = re.compile(re.escape('Id|Title|Body')).search(source, 0)
+    answer_flag = False
+    post_flag = False
     if (anchor_answer != None):
         file_anchor = anchor_answer.end()
+        answer_flag = True
     elif (anchor_post != None):
         file_anchor = anchor_post.end()
+        post_flag = True
     else:
         file_anchor = 0
     sb_file.Append(source[0:file_anchor])
@@ -164,7 +173,7 @@ def main(file):
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]
-        tt = TextTokenizer(text)
+        tt = TextTokenizer(text,answer_flag=answer_flag,post_flag=post_flag)
         annotated_text = tt.annotate()
         # Add annotated_text
         sb_file.Append(annotated_text)
