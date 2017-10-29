@@ -1,0 +1,459 @@
+17016257|"<t>Edit</t> <t>2016</t>
+
+<t>As</t> <t>Raymond</t> <t>pointed</t> <t>out</t>, <t>in</t> <t>python</t> <t>3.5+</t> <t>where</t> <code><c>OrderedDict</c></code> <t>is</t> <t>implemented</t> <t>in</t> <t>C</t>, <t>the</t> <t>list</t> <t>comprehension</t> <t>approach</t> <t>will</t> <t>be</t> <t>slower</t> <t>than</t> <code><c>OrderedDict</c></code> (<t>unless</t> <t>you</t> <t>actually</t> <t>need</t> <t>the</t> <t>list</t> <t>at</t> <t>the</t> <t>end</t> <t>-</t> <t>and</t> <t>even</t> <t>then</t>, <t>only</t> <t>if</t> <t>the</t> <t>input</t> <t>is</t> <t>very</t> <t>short</t>). <t>So</t> <t>the</t> <t>best</t> <t>solution</t> <t>for</t> <t>3.5+</t> <t>is</t> <code><c>OrderedDict</c></code>.
+
+<t>Important</t> <t>Edit</t> <t>2015</t>
+
+<t>As</t> <t>@abarnert</t> <t>notes</t>, <t>the</t> <code><c>more_itertools</c></code> <t>library</t> (<code><c>pip</c> <c>install</c> <c>more_itertools</c></code>) <t>contains</t> <t>a</t> <code><c>unique_everseen</c></code> <t>function</t> <t>that</t> <t>is</t> <t>built</t> <t>to</t> <t>solve</t> <t>this</t> <t>problem</t> <t>without</t> <t>any</t> <t>unreadable</t> (<code><c>not</c> <c>seen</c><c>.</c><c>add</c></code>) <t>mutations</t> <t>in</t> <t>list</t> <t>comprehensions</t>. <t>This</t> <t>is</t> <t>also</t> <t>the</t> <t>fastest</t> <t>solution</t> <t>too</t>:
+
+<code>&gt;&gt;&gt; <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
+&gt;&gt;&gt; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+&gt;&gt;&gt; <c>list(</c><c>unique_everseen(</c><c>items</c>))
+[<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
+</code>
+
+<t>Just</t> <t>one</t> <t>simple</t> <t>library</t> <t>import</t> <t>and</t> <t>no</t> <t>hacks</t>. 
+<t>This</t> <t>comes</t> <t>from</t> <t>an</t> <t>implementation</t> <t>of</t> <t>the</t> <t>itertools</t> <t>recipe</t> <code><c>unique_everseen</c></code> <t>which</t> <t>looks</t> <t>like</t>:
+
+<code><c>def</c> <c>unique_everseen(</c><c>iterable</c>, <c>key</c><c>=</c><c>None</c>):
+    ""<c>List</c> <c>unique</c> <c>elements</c>, <c>preserving</c> <c>order</c><c>.</c> <c>Remember</c> <c>all</c> <c>elements</c> <c>ever</c> <c>seen</c><c>.</c>""
+    # <c>unique_everseen(</c>'<c>AAAABBBCCDAABBB</c>') <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    # <c>unique_everseen(</c>'<c>ABBCcAD</c>', <c>str</c><c>.</c><c>lower</c>) <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
+    <c>seen</c> <c>=</c> <c>set(</c>)
+    <c>seen_add</c> <c>=</c> <c>seen</c><c>.</c><c>add</c>
+    <c>if</c> <c>key</c> <c>is</c> <c>None</c>:
+        <c>for</c> <c>element</c> <c>in</c> <c>filterfalse(</c><c>seen</c><c>.</c><c>__contains__</c>, <c>iterable</c>):
+            <c>seen_add(</c><c>element</c>)
+            <c>yield</c> <c>element</c>
+    <c>else</c>:
+        <c>for</c> <c>element</c> <c>in</c> <c>iterable</c>:
+            <c>k</c> <c>=</c> <c>key(</c><c>element</c>)
+            <c>if</c> <c>k</c> <c>not</c> <c>in</c> <c>seen</c>:
+                <c>seen_add(</c><c>k</c>)
+                <c>yield</c> <c>element</c>
+</code>
+
+
+
+<t>In</t> <t>Python</t> <code><c>2.7</c><c>+</c></code> <t>the</t> <t>accepted</t> <t>common</t> <t>idiom</t> (<t>this</t> <t>works</t> <t>but</t> <t>isn't</t> <t>optimized</t> <t>for</t> <t>speed</t>, <t>i</t> <t>would</t> <t>now</t> <t>use</t> <code><c>unique_everseen</c></code>) <t>for</t> <t>this</t> <t>uses</t> <code><c>collections</c><c>.</c><c>OrderedDict</c></code>:
+
+<t>Runtime</t>: <t>O(N)</t>
+
+<code>&gt;&gt;&gt; <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
+&gt;&gt;&gt; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+&gt;&gt;&gt; <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
+[<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
+</code>
+
+<t>This</t> <t>looks</t> <t>much</t> <t>nicer</t> <t>than</t>:
+
+<code><c>seen</c> <c>=</c> <c>set(</c>)
+[<c>x</c> <c>for</c> <c>x</c> <c>in</c> <c>seq</c> <c>if</c> <c>x</c> <c>not</c> <c>in</c> <c>seen</c> <c>and</c> <c>not</c> <c>seen</c><c>.</c><c>add(</c><c>x</c>)]
+</code>
+
+<t>and</t> <t>doesn't</t> <t>utilize</t> <t>the</t> <t>ugly</t> <t>hack</t>:
+
+<code><c>not</c> <c>seen</c><c>.</c><c>add(</c><c>x</c>)
+</code>
+
+<t>which</t> <t>relies</t> <t>on</t> <t>the</t> <t>fact</t> <t>that</t> <code><c>set</c><c>.</c><c>add</c></code> <t>is</t> <t>an</t> <t>in-place</t> <t>method</t> <t>that</t> <t>always</t> <t>returns</t> <code><c>None</c></code> <t>so</t> <code><c>not</c> <c>None</c></code> <t>evaluates</t> <t>to</t> <code><c>True</c></code>. 
+
+<t>Note</t> <t>however</t> <t>that</t> <t>the</t> <t>hack</t> <t>solution</t> <t>is</t> <t>faster</t> <t>in</t> <t>raw</t> <t>speed</t> <t>though</t> <t>it</t> <t>has</t> <t>the</t> <t>same</t> <t>runtime</t> <t>complexity</t> <t>O(N)</t>.
+"
+9847269|"<t>Use</t> <code><c>weekday(</c>)</code> (<t>docs</t>):
+
+<code>&gt;&gt;&gt; <c>import</c> <c>datetime</c>
+&gt;&gt;&gt; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
+<c>datetime</c><c>.</c><c>datetime(</c><c>2012</c>, <c>3</c>, <c>23</c>, <c>23</c>, <c>24</c>, <c>55</c>, <c>173504</c>)
+&gt;&gt;&gt; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
+<c>4</c>
+</code>
+
+<t>From</t> <t>the</t> <t>documentation</t>:
+
+
+  <t>Return</t> <t>the</t> <t>day</t> <t>of</t> <t>the</t> <t>week</t> <t>as</t> <t>an</t> <t>integer</t>, <t>where</t> <t>Monday</t> <t>is</t> <t>0</t> <t>and</t> <t>Sunday</t> <t>is</t> <t>6</t>.
+
+"
+36096474|"<t>Install</t> <t>prerequisites</t>.
+
+<code><c>sudo</c> <c>apt-get</c> <c>install</c> <c>python3</c> <c>python3-pip</c> <c>virtualenvwrapper</c>
+</code>
+
+<t>Create</t> <t>a</t> <t>Python3</t> <t>based</t> <t>virtual</t> <t>environment</t>. <t>Optionally</t> <t>enable</t> <code><c>-</c><c>-</c><c>system-site-packages</c></code> <t>flag</t>.
+
+<code><c>mkvirtualenv</c> <c>-p</c> <c>/usr/bin/python3</c> <c>&lt;venv-name&gt;</c>
+</code>
+
+<t>Set</t> <t>into</t> <t>the</t> <t>virtual</t> <t>environment</t>.
+
+<code><c>workon</c> <c>&lt;venv-name&gt;</c>
+</code>
+
+<t>Install</t> <t>other</t> <t>requirements</t> <t>using</t> <code><c>pip</c></code> <t>package</t> <t>manager</t>.
+
+<code><c>pip</c> <c>install</c> <c>-r</c> <c>requirements.txt</c>
+<c>pip</c> <c>install</c> <c>&lt;package_name&gt;</c>
+</code>
+
+
+
+<t>When</t> <t>working</t> <t>on</t> <t>multiple</t> <t>python</t> <t>projects</t> <t>simultaneously</t> <t>it</t> <t>is</t> <t>usually</t> <t>recommended</t> <t>to</t> <t>install</t> <t>common</t> <t>packages</t> <t>like</t> <code><c>Django</c></code> <t>globally</t> <t>and</t> <t>then</t> <t>reuse</t> <t>them</t> <t>in</t> <t>virtualenvs</t>.
+
+<t>Using</t> <t>this</t> <t>technique</t> <t>saves</t> <t>a</t> <t>lot</t> <t>of</t> <t>time</t> <t>spent</t> <t>on</t> <t>fetching</t> <t>packages</t> <t>and</t> <t>installing</t> <t>them</t>, <t>apart</t> <t>from</t> <t>consuming</t> <t>minimal</t> <t>disk</t> <t>space</t> <t>and</t> <t>network</t> <t>bandwidth</t>.
+
+<code><c>sudo</c> <c>-H</c> <c>pip3</c> <c>-v</c> <c>install</c> <c>Django</c>
+<c>mkvirtualenv</c> <c>-p</c> <c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt;venv-name&gt;</c>
+</code>
+"
+3242895|"<t>You</t> <t>can</t> <t>ask</t> <t>any</t> <t>object</t> <t>which</t> <t>module</t> <t>it</t> <t>came</t> <t>from</t> <t>by</t> <t>looking</t> <t>at</t> <t>its</t> <t>__module__</t> <t>property</t>. <t>This</t> <t>is</t> <t>useful</t>, <t>for</t> <t>example</t>, <t>if</t> <t>you're</t> <t>experimenting</t> <t>at</t> <t>the</t> <t>command</t> <t>line</t> <t>and</t> <t>have</t> <t>imported</t> <t>a</t> <t>lot</t> <t>of</t> <t>things</t>.
+
+<t>Along</t> <t>the</t> <t>same</t> <t>lines</t>, <t>you</t> <t>can</t> <t>ask</t> <t>a</t> <t>module</t> <t>where</t> <t>it</t> <t>came</t> <t>from</t> <t>by</t> <t>looking</t> <t>at</t> <t>its</t> <t>__file__</t> <t>property</t>.  <t>This</t> <t>is</t> <t>useful</t> <t>when</t> <t>debugging</t> <t>path</t> <t>issues</t>.
+"
+1952485|"<t>This</t> <t>isn't</t> <t>sufficient</t>: <t>the</t> <t>object</t> <t>returned</t> <t>by</t> <code><c>__iter__</c></code> <t>must</t> <t>implement</t> <t>the</t> <t>iteration</t> <t>protocol</t> (<t>i.e.</t> <code><c>next</c></code> <t>method</t>). <t>See</t> <t>the</t> <t>relevant</t> <t>section</t> <t>in</t> <t>the</t> <t>documentation</t>.
+
+<t>In</t> <t>Python</t>, <t>a</t> <t>good</t> <t>practice</t> <t>is</t> <t>to</t> ""<t>try</t> <t>and</t> <t>see</t>"" <t>instead</t> <t>of</t> ""<t>checking</t>"".
+"
+10973829|"<t>Simplifying</t> <t>a</t> <t>bit</t>, <t>you</t> <t>can</t> <t>imagine</t> <code><c>map(</c>)</code> <t>doing</t> <t>something</t> <t>like</t> <t>this</t>:
+
+<code><c>def</c> <c>mymap(</c><c>func</c>, <c>lst</c>):
+    <c>result</c> <c>=</c> []
+    <c>for</c> <c>e</c> <c>in</c> <c>lst</c>:
+        <c>result</c><c>.</c><c>append(</c><c>func(</c><c>e</c>))
+    <c>return</c> <c>result</c>
+</code>
+
+<t>As</t> <t>you</t> <t>can</t> <t>see</t>, <t>it</t> <t>takes</t> <t>a</t> <t>function</t> <t>and</t> <t>a</t> <t>list</t>, <t>and</t> <t>returns</t> <t>a</t> <t>new</t> <t>list</t> <t>with</t> <t>the</t> <t>result</t> <t>of</t> <t>applying</t> <t>the</t> <t>function</t> <t>to</t> <t>each</t> <t>of</t> <t>the</t> <t>elements</t> <t>in</t> <t>the</t> <t>input</t> <t>list</t>. <t>I</t> <t>said</t> ""<t>simplifying</t> <t>a</t> <t>bit</t>"" <t>because</t> <t>in</t> <t>reality</t> <code><c>map(</c>)</code> <t>can</t> <t>process</t> <t>more</t> <t>than</t> <t>one</t> <t>iterable</t>:
+
+
+  <t>If</t> <t>additional</t> <t>iterable</t> <t>arguments</t> <t>are</t> <t>passed</t>, <t>function</t> <t>must</t> <t>take</t> <t>that</t> <t>many</t> <t>arguments</t> <t>and</t> <t>is</t> <t>applied</t> <t>to</t> <t>the</t> <t>items</t> <t>from</t> <t>all</t> <t>iterables</t> <t>in</t> <t>parallel</t>. <t>If</t> <t>one</t> <t>iterable</t> <t>is</t> <t>shorter</t> <t>than</t> <t>another</t> <t>it</t> <t>is</t> <t>assumed</t> <t>to</t> <t>be</t> <t>extended</t> <t>with</t> <t>None</t> <t>items</t>.
+
+
+<t>For</t> <t>the</t> <t>second</t> <t>part</t> <t>in</t> <t>the</t> <t>question</t>: <t>What</t> <t>role</t> <t>does</t> <t>this</t> <t>play</t> <t>in</t> <t>making</t> <t>a</t> <t>Cartesian</t> <t>product</t>? <t>well</t>, <code><c>map(</c>)</code> <t>could</t> <t>be</t> <t>used</t> <t>for</t> <t>generating</t> <t>the</t> <t>cartesian</t> <t>product</t> <t>of</t> <t>a</t> <t>list</t> <t>like</t> <t>this</t>:
+
+<code><c>lst</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>]
+
+<c>from</c> <c>operator</c> <c>import</c> <c>add</c>
+<c>reduce(</c><c>add</c>, <c>map(</c><c>lambda</c> <c>i</c>: <c>map(</c><c>lambda</c> <c>j</c>: (<c>i</c>, <c>j</c>), <c>lst</c>), <c>lst</c>))
+</code>
+
+<t>...</t> <t>But</t> <t>to</t> <t>tell</t> <t>the</t> <t>truth</t>, <t>using</t> <code><c>product(</c>)</code> <t>is</t> <t>a</t> <t>much</t> <t>simpler</t> <t>and</t> <t>natural</t> <t>way</t> <t>to</t> <t>solve</t> <t>the</t> <t>problem</t>:
+
+<code><c>from</c> <c>itertools</c> <c>import</c> <c>product</c>
+<c>list(</c><c>product(</c><c>lst</c>, <c>lst</c>))
+</code>
+
+<t>Either</t> <t>way</t>, <t>the</t> <t>result</t> <t>is</t> <t>the</t> <t>cartesian</t> <t>product</t> <t>of</t> <code><c>lst</c></code> <t>as</t> <t>defined</t> <t>above</t>:
+
+<code>[(<c>1</c>, <c>1</c>), (<c>1</c>, <c>2</c>), (<c>1</c>, <c>3</c>), (<c>1</c>, <c>4</c>), (<c>1</c>, <c>5</c>),
+ (<c>2</c>, <c>1</c>), (<c>2</c>, <c>2</c>), (<c>2</c>, <c>3</c>), (<c>2</c>, <c>4</c>), (<c>2</c>, <c>5</c>),
+ (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>3</c>, <c>3</c>), (<c>3</c>, <c>4</c>), (<c>3</c>, <c>5</c>),
+ (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), (<c>4</c>, <c>4</c>), (<c>4</c>, <c>5</c>),
+ (<c>5</c>, <c>1</c>), (<c>5</c>, <c>2</c>), (<c>5</c>, <c>3</c>), (<c>5</c>, <c>4</c>), (<c>5</c>, <c>5</c>)]
+</code>
+"
+39079453|"<t>For</t> <t>deleting</t> <t>files</t>:
+
+<t>You</t> <t>can</t> <t>use</t> <code><c>unlink</c></code> <t>or</t> <code><c>remove</c></code>. 
+
+<code><c>os</c><c>.</c><c>unlink(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
+</code>
+
+<t>Or</t>
+
+<code><c>os</c><c>.</c><c>remove(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
+</code>
+
+<t>This</t> <t>functions</t> <t>removes</t> (<t>deletes</t>) <t>the</t> <t>file</t> <t>path</t>. <t>If</t> <t>path</t> <t>is</t> <t>a</t> <t>directory</t>, <code><c>OSError</c></code> <t>is</t> <t>raised</t>.
+
+<t>In</t> <t>Python</t> <t>2</t>, <t>if</t> <t>the</t> <t>path</t> <t>does</t> <t>not</t> <t>exist</t>, <code><c>OSError</c></code> <t>with</t> [<t>Errno</t> <t>2</t>] (<code><c>ENOENT</c></code>) <t>is</t> <t>raised</t>. <t>In</t> <t>Python</t> <t>3</t>, <code><c>FileNotFoundError</c></code> <t>with</t> [<t>Errno</t> <t>2</t>] (<code><c>ENOENT</c></code>) <t>is</t> <t>raised</t>. <t>In</t> <t>Python</t> <t>3</t>, <t>because</t> <code><c>FileNotFoundError</c></code> <t>is</t> <t>a</t> <t>subclass</t> <t>of</t> <code><c>OSError</c></code>, <t>catching</t> <t>the</t> <t>latter</t> <t>will</t> <t>catch</t> <t>the</t> <t>former</t>.
+
+<t>For</t> <t>deleting</t> <t>folders</t>:
+
+<code><c>os</c><c>.</c><c>rmdir(</c><c>path</c>, <c>*</c>, <c>dir_fd</c><c>=</c><c>None</c>)
+</code>
+
+<code><c>rmdir</c></code> <t>Remove</t> (<t>delete</t>) <t>the</t> <t>directory</t> <t>path</t>. <t>Only</t> <t>works</t> <t>when</t> <t>the</t> <t>directory</t> <t>is</t> <t>empty</t>, <t>otherwise</t>, <t>OSError</t> <t>is</t> <t>raised</t>. 
+<t>In</t> <t>order</t> <t>to</t> <t>remove</t> <t>whole</t> <t>directory</t> <t>trees</t>, <code><c>shutil</c><c>.</c><c>rmtree(</c>)</code> <t>can</t> <t>be</t> <t>used</t>.
+
+<code><c>shutil</c><c>.</c><c>rmtree(</c><c>path</c>, <c>ignore_errors</c><c>=</c><c>False</c>, <c>onerror</c><c>=</c><c>None</c>)
+</code>
+
+<code><c>shutil</c><c>.</c><c>rmtree</c></code> <t>Delete</t> <t>an</t> <t>entire</t> <t>directory</t> <t>tree</t>. <t>Path</t> <t>must</t> <t>point</t> <t>to</t> <t>a</t> <t>directory</t> (<t>but</t> <t>not</t> <t>a</t> <t>symbolic</t> <t>link</t> <t>to</t> <t>a</t> <t>directory</t>). 
+
+<t>If</t> <t>ignore_errors</t> <t>is</t> <t>true</t>, <t>errors</t> <t>resulting</t> <t>from</t> <t>failed</t> <t>removals</t> <t>will</t> <t>be</t> <t>ignored</t> <t>and</t> <t>if</t> <t>false</t> <t>or</t> <t>omitted</t>, <t>such</t> <t>errors</t> <t>are</t> <t>handled</t> <t>by</t> <t>calling</t> <t>a</t> <t>handler</t> <t>specified</t> <t>by</t> <t>onerror</t> <t>or</t>, <t>if</t> <t>that</t> <t>is</t> <t>omitted</t>, <t>they</t> <t>raise</t> <t>an</t> <t>exception</t>.
+
+<t>See</t> <t>also</t>:
+
+<code><c>os</c><c>.</c><c>removedirs(</c><c>name</c>)
+</code>
+
+<code><c>os</c><c>.</c><c>removedirs(</c><c>name</c>)</code> <t>Remove</t> <t>directories</t> <t>recursively</t>. <t>Works</t> <t>like</t> <t>rmdir</t>() <t>except</t> <t>that</t>, <t>if</t> <t>the</t> <t>leaf</t> <t>directory</t> <t>is</t> <t>successfully</t> <t>removed</t>, <t>removedirs</t>() <t>tries</t> <t>to</t> <t>successively</t> <t>remove</t> <t>every</t> <t>parent</t> <t>directory</t> <t>mentioned</t> <t>in</t> <t>path</t> <t>until</t> <t>an</t> <t>error</t> <t>is</t> <t>raised</t> (<t>which</t> <t>is</t> <t>ignored</t>, <t>because</t> <t>it</t> <t>generally</t> <t>means</t> <t>that</t> <t>a</t> <t>parent</t> <t>directory</t> <t>is</t> <t>not</t> <t>empty</t>). 
+
+<t>For</t> <t>example</t>, <t>os</t>.<t>removedirs</t>('<t>foo/bar/baz</t>') <t>will</t> <t>first</t> <t>remove</t> <t>the</t> <t>directory</t> '<t>foo/bar/baz</t>', <t>and</t> <t>then</t> <t>remove</t> '<t>foo/bar</t>' <t>and</t> '<t>foo</t>' <t>if</t> <t>they</t> <t>are</t> <t>empty</t>. 
+"
+38778859|"<t>Yet</t> <t>another</t> <t>functional</t> <t>solution</t> <t>for</t> <t>Python</t> <t>2</t>:
+
+<code><c>from</c> <c>functools</c> <c>import</c> <c>partial</c>
+
+<c>map(</c><c>partial(</c><c>map</c>, <c>int</c>), <c>T1</c>)
+</code>
+
+<t>Python</t> <t>3</t> <t>will</t> <t>be</t> <t>a</t> <t>little</t> <t>bit</t> <t>messy</t> <t>though</t>:
+
+<code><c>list(</c><c>map(</c><c>list</c>, <c>map(</c><c>partial(</c><c>map</c>, <c>int</c>), <c>T1</c>)))
+</code>
+"
+18296313|"<t>I</t> <t>recommend</t> <t>looking</t> <t>at</t> <t>docopt</t> <t>as</t> <t>a</t> <t>simple</t> <t>alternative</t> <t>to</t> <t>these</t> <t>others</t>.
+
+<t>docopt</t> <t>is</t> <t>a</t> <t>new</t> <t>project</t> <t>that</t> <t>works</t> <t>by</t> <t>parsing</t> <t>your</t> <t>--help</t> <t>usage</t> <t>message</t> <t>rather</t> <t>than</t> <t>requiring</t> <t>you</t> <t>to</t> <t>implement</t> <t>everything</t> <t>yourself</t>. <t>You</t> <t>just</t> <t>have</t> <t>to</t> <t>put</t> <t>your</t> <t>usage</t> <t>message</t> <t>in</t> <t>the</t> <t>POSIX</t> <t>format</t>.
+"
+1035419|"<t>If</t> <t>the</t> <t>file</t> <t>is</t> <t>not</t> <t>too</t> <t>big</t> <t>that</t> <t>holding</t> <t>it</t> <t>in</t> <t>memory</t> <t>is</t> <t>a</t> <t>problem</t>:
+
+<code><c>bytes_read</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")<c>.</c><c>read(</c>)
+<c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c>:
+    <c>process_byte(</c><c>b</c>)
+</code>
+
+<t>where</t> <t>process_byte</t> <t>represents</t> <t>some</t> <t>operation</t> <t>you</t> <t>want</t> <t>to</t> <t>perform</t> <t>on</t> <t>the</t> <t>passed-in</t> <t>byte</t>.
+
+<t>If</t> <t>you</t> <t>want</t> <t>to</t> <t>process</t> <t>a</t> <t>chunk</t> <t>at</t> <t>a</t> <t>time</t>:
+
+<code><c>file</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")
+<c>try</c>:
+    <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
+    <c>while</c> <c>bytes_read</c>:
+        <c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c>:
+            <c>process_byte(</c><c>b</c>)
+        <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
+<c>finally</c>:
+    <c>file</c><c>.</c><c>close(</c>)
+</code>
+"
+15441162|"<t>I</t> <t>like</t> <t>Spyder</t>, <t>it</t> <t>has</t> <t>many</t> <t>tools</t>, <t>such</t> <t>as</t> <t>profiling</t>, <t>intelligent</t> <t>indentation</t> <t>helper</t> <t>and</t> <t>a</t> <t>good</t> <t>autocompletion</t> <t>support</t>
+
+<t>https://code.google.com/p/spyderlib/</t>
+"
+1835599|"<t>Generally</t> <t>speaking</t>, <t>the</t> <t>fact</t> <t>that</t> <t>a</t> <t>function</t> <t>which</t> <t>iterates</t> <t>over</t> <t>an</t> <t>object</t> <t>works</t> <t>on</t> <t>strings</t> <t>as</t> <t>well</t> <t>as</t> <t>tuples</t> <t>and</t> <t>lists</t> <t>is</t> <t>more</t> <t>feature</t> <t>than</t> <t>bug</t>.  <t>You</t> <t>certainly</t> <t>can</t> <t>use</t> <code><c>isinstance</c></code> <t>or</t> <t>duck</t> <t>typing</t> <t>to</t> <t>check</t> <t>an</t> <t>argument</t>, <t>but</t> <t>why</t> <t>should</t> <t>you</t>?
+
+<t>That</t> <t>sounds</t> <t>like</t> <t>a</t> <t>rhetorical</t> <t>question</t>, <t>but</t> <t>it</t> <t>isn't</t>.  <t>The</t> <t>answer</t> <t>to</t> ""<t>why</t> <t>should</t> <t>I</t> <t>check</t> <t>the</t> <t>argument's</t> <t>type</t>?"" <t>is</t> <t>probably</t> <t>going</t> <t>to</t> <t>suggest</t> <t>a</t> <t>solution</t> <t>to</t> <t>the</t> <t>real</t> <t>problem</t>, <t>not</t> <t>the</t> <t>perceived</t> <t>problem</t>.  <t>Why</t> <t>is</t> <t>it</t> <t>a</t> <t>bug</t> <t>when</t> <t>a</t> <t>string</t> <t>is</t> <t>passed</t> <t>to</t> <t>the</t> <t>function</t>?  <t>Also</t>:  <t>if</t> <t>it's</t> <t>a</t> <t>bug</t> <t>when</t> <t>a</t> <t>string</t> <t>is</t> <t>passed</t> <t>to</t> <t>this</t> <t>function</t>, <t>is</t> <t>it</t> <t>also</t> <t>a</t> <t>bug</t> <t>if</t> <t>some</t> <t>other</t> <t>non-list/tuple</t> <t>iterable</t> <t>is</t> <t>passed</t> <t>to</t> <t>it</t>?  <t>Why</t>, <t>or</t> <t>why</t> <t>not</t>?
+
+<t>I</t> <t>think</t> <t>that</t> <t>the</t> <t>most</t> <t>common</t> <t>answer</t> <t>to</t> <t>the</t> <t>question</t> <t>is</t> <t>likely</t> <t>to</t> <t>be</t> <t>that</t> <t>developers</t> <t>who</t> <t>write</t> <code><c>f(</c>""<c>abc</c>"")</code> <t>are</t> <t>expecting</t> <t>the</t> <t>function</t> <t>to</t> <t>behave</t> <t>as</t> <t>though</t> <t>they'd</t> <t>written</t> <code><c>f(</c>[""<c>abc</c>""])</code>.  <t>There</t> <t>are</t> <t>probably</t> <t>circumstances</t> <t>where</t> <t>it</t> <t>makes</t> <t>more</t> <t>sense</t> <t>to</t> <t>protect</t> <t>developers</t> <t>from</t> <t>themselves</t> <t>than</t> <t>it</t> <t>does</t> <t>to</t> <t>support</t> <t>the</t> <t>use</t> <t>case</t> <t>of</t> <t>iterating</t> <t>across</t> <t>the</t> <t>characters</t> <t>in</t> <t>a</t> <t>string</t>.  <t>But I'd</t> <t>think</t> <t>long</t> <t>and</t> <t>hard</t> <t>about</t> <t>it</t> <t>first</t>.
+"
+4847186|"<t>The</t> <t>type</t> <t>module</t> <t>also</t> <t>exists</t> <t>if</t> <t>you</t> <t>are</t> <t>checking</t> <t>more</t> <t>than</t> <t>ints</t> <t>and</t> <t>strings</t>. 
+<t>http://docs.python.org/library/types.html</t>
+"
+85489|"<code><c>clock(</c>) <c>-</c><c>&gt;</c> <c>floating</c> <c>point</c> <c>number</c>
+
+<c>Return</c> <c>the</c> <c>CPU</c> <c>time</c> <c>or</c> <c>real</c> <c>time</c> <c>since</c> <c>the</c> <c>start</c> <c>of</c> <c>the</c> <c>process</c> <c>or</c> <c>since</c>
+<c>the</c> <c>first</c> <c>call</c> <c>to</c> <c>clock(</c>)<c>.</c>  <c>This</c> <c>has</c> <c>as</c> <c>much</c> <c>precision</c> <c>as</c> <c>the</c> <c>system</c>
+<c>records</c><c>.</c>
+
+<c>time(</c>) <c>-</c><c>&gt;</c> <c>floating</c> <c>point</c> <c>number</c>
+
+<c>Return</c> <c>the</c> <c>current</c> <c>time</c> <c>in</c> <c>seconds</c> <c>since</c> <c>the</c> <c>Epoch</c><c>.</c>
+<c>Fractions</c> <c>of</c> <c>a</c> <c>second</c> <c>may</c> <c>be</c> <c>present</c> <c>if</c> <c>the</c> <c>system</c> <c>clock</c> <c>provides</c> <c>them</c><c>.</c>
+</code>
+
+<t>Usually</t> <t>time()</t> <t>is</t> <t>more</t> <t>precise</t>, <t>because</t> <t>operating</t> <t>systems</t> <t>do</t> <t>not</t> <t>store</t> <t>the</t> <t>process</t> <t>running</t> <t>time</t> <t>with</t> <t>the</t> <t>precision</t> <t>they</t> <t>store</t> <t>the</t> <t>system</t> <t>time</t> (<t>ie</t>, <t>actual</t> <t>time</t>)
+"
+22893823|"<t>You</t> <t>can</t> <t>try</t> <t>this</t> <t>code</t>
+
+<code><c>import</c> <c>glob</c>
+<c>import</c> <c>os</c>
+<c>filenames_without_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>)<c>.</c><c>split(</c>'<c>.</c>')[<c>0</c>:<c>1</c>][<c>0</c>] <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
+<c>filenames_with_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>) <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
+</code>
+"
+1207634|"<t>Well</t>, <t>if</t> <t>you're</t> <t>willing/ready</t> <t>to</t> <t>switch</t> <t>to</t> <t>Python</t> <t>3</t> (<t>which</t> <t>you</t> <t>may</t> <t>not</t> <t>be</t> <t>due</t> <t>to</t> <t>the</t> <t>backwards</t> <t>incompatibility</t> <t>with</t> <t>some</t> <t>Python</t> <t>2</t> <t>code</t>), <t>you</t> <t>don't</t> <t>have</t> <t>to</t> <t>do</t> <t>any</t> <t>converting</t>; <t>all</t> <t>text</t> <t>in</t> <t>Python</t> <t>3</t> <t>is</t> <t>represented</t> <t>with</t> <t>Unicode</t> <t>strings</t>, <t>which</t> <t>also</t> <t>means</t> <t>that</t> <t>there's</t> <t>no</t> <t>more</t> <t>usage</t> <t>of</t> <t>the</t> <code><c>u</c>'<c>&lt;</c><c>text</c><c>&gt;</c>'</code> <t>syntax</t>. <t>You</t> <t>also</t> <t>have</t> <t>what</t> <t>are</t>, <t>in</t> <t>effect</t>, <t>strings</t> <t>of</t> <t>bytes</t>, <t>which</t> <t>are</t> <t>used</t> <t>to</t> <t>represent</t> <t>data</t> (<t>which</t> <t>may</t> <t>be</t> <t>an</t> <t>encoded</t> <t>string</t>).
+
+<t>http://docs.python.org/3.1/whatsnew/3.0.html#text-vs-data-instead-of-unicode-vs-8-bit</t>
+
+(<t>Of</t> <t>course</t>, <t>if</t> <t>you're</t> <t>currently</t> <t>using</t> <t>Python</t> <t>3</t>, <t>then</t> <t>the</t> <t>problem</t> <t>is</t> <t>likely</t> <t>something</t> <t>to</t> <t>do</t> <t>with</t> <t>how</t> <t>you're</t> <t>attempting</t> <t>to</t> <t>save</t> <t>the</t> <t>text</t> <t>to</t> <t>a</t> <t>file</t>.)
+"
+13485766|"<t>It's</t> <t>difficult</t> <t>to</t> <t>make</t> <code><c>del</c> <c>df</c><c>.</c><c>column_name</c></code> <t>work</t> <t>simply</t> <t>as</t> <t>the</t> <t>result</t> <t>of</t> <t>syntactic</t> <t>limitations</t> <t>in</t> <t>Python</t>. <code><c>del</c> <c>df</c>[<c>name</c>]</code> <t>gets</t> <t>translated</t> <t>to</t> <code><c>df</c><c>.</c><c>__delitem__(</c><c>name</c>)</code> <t>under</t> <t>the</t> <t>covers</t> <t>by</t> <t>Python</t>
+"
+438845|"<code><c>reload(</c><c>module</c>)</code>, <t>but</t> <t>only</t> <t>if</t> <t>it's</t> <t>completely</t> <t>stand-alone</t>. <t>If</t> <t>anything</t> <t>else</t> <t>has</t> <t>a</t> <t>reference</t> <t>to</t> <t>the</t> <t>module</t> (<t>or</t> <t>any</t> <t>object</t> <t>belonging</t> <t>to</t> <t>the</t> <t>module</t>), <t>then</t> <t>you'll</t> <t>get</t> <t>subtle</t> <t>and</t> <t>curious</t> <t>errors</t> <t>caused</t> <t>by</t> <t>the</t> <t>old</t> <t>code</t> <t>hanging</t> <t>around</t> <t>longer</t> <t>than</t> <t>you</t> <t>expected</t>, <t>and</t> <t>things</t> <t>like</t> <code><c>isinstance</c></code> <t>not</t> <t>working</t> <t>across</t> <t>different</t> <t>versions</t> <t>of</t> <t>the</t> <t>same</t> <t>code</t>.
+
+<t>If</t> <t>you</t> <t>have</t> <t>one-way</t> <t>dependencies</t>, <t>you</t> <t>must</t> <t>also</t> <t>reload</t> <t>all</t> <t>modules</t> <t>that</t> <t>depend</t> <t>on</t> <t>the</t> <t>the</t> <t>reloaded</t> <t>module</t> <t>to</t> <t>get</t> <t>rid</t> <t>of</t> <t>all</t> <t>the</t> <t>references</t> <t>to</t> <t>the</t> <t>old</t> <t>code</t>. <t>And</t> <t>then</t> <t>reload</t> <t>modules</t> <t>that</t> <t>depend</t> <t>on</t> <t>the</t> <t>reloaded</t> <t>modules</t>, <t>recursively</t>.
+
+<t>If</t> <t>you</t> <t>have</t> <t>circular</t> <t>dependencies</t>, <t>which</t> <t>is</t> <t>very</t> <t>common</t> <t>for</t> <t>example</t> <t>when</t> <t>you</t> <t>are</t> <t>dealing</t> <t>with</t> <t>reloading</t> <t>a</t> <t>package</t>, <t>you</t> <t>must</t> <t>unload</t> <t>all</t> <t>the</t> <t>modules</t> <t>in</t> <t>the</t> <t>group</t> <t>in</t> <t>one</t> <t>go</t>. <t>You</t> <t>can't</t> <t>do</t> <t>this</t> <t>with</t> <code><c>reload(</c>)</code> <t>because</t> <t>it</t> <t>will</t> <t>re-import</t> <t>each</t> <t>module</t> <t>before</t> <t>its</t> <t>dependencies</t> <t>have</t> <t>been</t> <t>refreshed</t>, <t>allowing</t> <t>old</t> <t>references</t> <t>to</t> <t>creep</t> <t>into</t> <t>new</t> <t>modules</t>.
+
+<t>The</t> <t>only</t> <t>way</t> <t>to</t> <t>do</t> <t>it</t> <t>in</t> <t>this</t> <t>case</t> <t>is</t> <t>to</t> <t>hack</t> <code><c>sys</c><c>.</c><c>modules</c></code>, <t>which</t> <t>is</t> <t>kind</t> <t>of</t> <t>unsupported</t>. <t>You'd</t> <t>have</t> <t>to</t> <t>go</t> <t>through</t> <t>and</t> <t>delete</t> <t>each</t> <code><c>sys</c><c>.</c><c>modules</c></code> <t>entry</t> <t>you</t> <t>wanted</t> <t>to</t> <t>be</t> <t>reloaded</t> <t>on</t> <t>next</t> <t>import</t>, <t>and</t> <t>also</t> <t>delete</t> <t>entries</t> <t>whose</t> <t>values</t> <t>are</t> <code><c>None</c></code> <t>to</t> <t>deal</t> <t>with</t> <t>an</t> <t>implementation</t> <t>issue</t> <t>to</t> <t>do</t> <t>with</t> <t>caching</t> <t>failed</t> <t>relative</t> <t>imports</t>. <t>It's</t> <t>not</t> <t>terribly</t> <t>nice</t> <t>but</t> <t>as</t> <t>long</t> <t>as</t> <t>you</t> <t>have</t> <t>a</t> <t>fully</t> <t>self-contained</t> <t>set</t> <t>of</t> <t>dependencies</t> <t>that</t> <t>doesn't</t> <t>leave</t> <t>references</t> <t>outside</t> <t>its</t> <t>codebase</t>, <t>it's</t> <t>workable</t>.
+
+<t>It's</t> <t>probably</t> <t>best</t> <t>to</t> <t>restart</t> <t>the</t> <t>server</t>. :-)
+"
+1010597|"<t>There</t> <t>is</t> <t>also</t> <code><c>argparse</c></code> <t>stdlib</t> <t>module</t> (<t>an</t> ""<t>impovement</t>"" <t>on</t> <t>stdlib's</t> <code><c>optparse</c></code> <t>module</t>). <t>Example</t> <t>from</t> <t>the</t> <t>introduction</t> <t>to</t> <t>argparse</t>:
+
+<code># <c>script.py</c>
+<c>import</c> <c>argparse</c>
+
+<c>if</c> <c>__name__</c> <c>==</c> '<c>__main__</c>':
+    <c>parser</c> <c>=</c> <c>argparse</c><c>.</c><c>ArgumentParser(</c>)
+    <c>parser</c><c>.</c><c>add_argument(</c>
+        '<c>integers</c>', <c>metavar</c><c>=</c>'<c>int</c>', <c>type</c><c>=</c><c>int</c>, <c>choices</c><c>=</c><c>range(</c><c>10</c>),
+         <c>nargs</c><c>=</c>'<c>+</c>', <c>help</c><c>=</c>'<c>an</c> <c>integer</c> <c>in</c> <c>the</c> <c>range</c> 0..9')
+    <c>parser</c><c>.</c><c>add_argument(</c>
+        '<c>-</c><c>-</c><c>sum</c>', <c>dest</c><c>=</c>'<c>accumulate</c>', <c>action</c><c>=</c>'<c>store_const</c>', <c>const</c><c>=</c><c>sum</c>,
+        <c>default</c><c>=</c><c>max</c>, <c>help</c><c>=</c>'<c>sum</c> <c>the</c> <c>integers</c> (<c>default</c>: <c>find</c> <c>the</c> <c>max</c>)')
+
+    <c>args</c> <c>=</c> <c>parser</c><c>.</c><c>parse_args(</c>)
+    <c>print(</c><c>args</c><c>.</c><c>accumulate(</c><c>args</c><c>.</c><c>integers</c>))
+</code>
+
+<t>Usage</t>:
+
+<code><c>$</c> <c>script.py</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<c>4</c>
+
+<c>$</c> <c>script.py</c> <c>--sum</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<c>10</c>
+</code>
+"
+1019572|"<t>One</t> <t>line</t>, <t>probably</t> <t>pretty</t> <t>fast</t>:
+
+<code><c>num_lines</c> <c>=</c> <c>sum(</c><c>1</c> <c>for</c> <c>line</c> <c>in</c> <c>open(</c>'<c>myfile</c><c>.</c><c>txt</c>'))
+</code>
+"
+2294513|"<code><c>string</c><c>.</c><c>find(</c><c>character</c>)  
+<c>string</c><c>.</c><c>index(</c><c>character</c>)  
+</code>
+
+<t>Perhaps</t> <t>you'd</t> <t>like</t> <t>to</t> <t>have</t> <t>a</t> <t>look</t> <t>at</t> <t>the</t> <t>documentation</t> <t>to</t> <t>find</t> <t>out</t> <t>what</t> <t>the</t> <t>difference</t> <t>between</t> <t>the</t> <t>two</t> <t>is</t>.
+"
+613228|"<t>Dicts</t> <t>can't</t> <t>be</t> <t>sorted</t>, <t>but</t> <t>you</t> <t>can</t> <t>build</t> <t>a</t> <t>sorted</t> <t>list</t> <t>from</t> <t>them</t>.
+
+<t>A</t> <t>sorted</t> <t>list</t> <t>of</t> <t>dict</t> <t>values</t>:
+
+<code><c>sorted(</c><c>d</c><c>.</c><c>values(</c>))
+</code>
+
+<t>A</t> <t>list</t> <t>of</t> (<t>key</t>, <t>value</t>) <t>pairs</t>, <t>sorted</t> <t>by</t> <t>value</t>:
+
+<code><c>from</c> <c>operator</c> <c>import</c> <c>itemgetter</c>
+<c>sorted(</c><c>d</c><c>.</c><c>items(</c>), <c>key</c><c>=</c><c>itemgetter(</c><c>1</c>))
+</code>
+"
+7817348|"<t>Use</t> <t>ValueSortedDict</t> <t>from</t> <t>dicts</t>:
+
+<code><c>from</c> <c>dicts</c><c>.</c><c>sorteddict</c> <c>import</c> <c>ValueSortedDict</c>
+<c>d</c> <c>=</c> {<c>1</c>: <c>2</c>, <c>3</c>: <c>4</c>, <c>4</c>:<c>3</c>, <c>2</c>:<c>1</c>, <c>0</c>:<c>0</c>}
+<c>sorted_dict</c> <c>=</c> <c>ValueSortedDict(</c><c>d</c>)
+<c>print</c> <c>sorted_dict</c><c>.</c><c>items(</c>) 
+
+[(<c>0</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>1</c>, <c>2</c>), (<c>4</c>, <c>3</c>), (<c>3</c>, <c>4</c>)]
+</code>
+"
+227466|"<t>You</t> <t>are</t> <t>looking</t> <t>for</t>:
+
+<code><c>ord(</c>)
+</code>
+"
+7838845|"<t>A</t> <t>nice</t> <t>profiling</t> <t>module</t> <t>is</t> <t>the</t> <t>line_profiler</t> (<t>called</t> <t>using</t> <t>the</t> <t>script</t> <t>kernprof.py</t>).  <t>It</t> <t>can</t> <t>be</t> <t>downloaded</t> <t>here</t>.
+
+<t>My</t> <t>understanding</t> <t>is</t> <t>that</t> <t>cProfile</t> <t>only</t> <t>gives</t> <t>information</t> <t>about</t> <t>total</t> <t>time</t> <t>spent</t> <t>in</t> <t>each</t> <t>function</t>.  <t>So</t> <t>individual</t> <t>lines</t> <t>of</t> <t>code</t> <t>are</t> <t>not</t> <t>timed</t>.  <t>This</t> <t>is</t> <t>an</t> <t>issue</t> <t>in</t> <t>scientific</t> <t>computing</t> <t>since</t> <t>often</t> <t>one</t> <t>single</t> <t>line</t> <t>can</t> <t>take</t> <t>a</t> <t>lot</t> <t>of</t> <t>time</t>.  <t>Also</t>, <t>as</t> <t>I</t> <t>remember</t>, <t>cProfile</t> <t>didn't</t> <t>catch</t> <t>the</t> <t>time</t> <t>I</t> <t>was</t> <t>spending</t> <t>in</t> <t>say</t> <t>numpy.dot</t>.
+"
+14833803|"<t>To</t> <t>RUN</t> <t>press</t> <t>CtrlB</t> (<t>answer</t> <t>by</t> <t>matiit</t>)
+
+<t>But</t> <t>when</t> <t>CtrlB</t> <t>does</t> <t>not</t> <t>work</t>, <t>Sublime Text</t> <t>probably</t> <t>can't</t> <t>find</t> <t>the</t> <t>Python Interpreter</t>. <t>When</t> <t>trying</t> <t>to</t> <t>run</t> <t>your</t> <t>program</t>, <t>see</t> <t>the</t> <t>log</t> <t>and</t> <t>find</t> <t>the</t> <t>reference</t> <t>to</t> <t>Python</t> <t>in</t> <t>path</t>.
+
+<code>[<c>cmd</c>:  [<c>u</c>'<c>python</c>', <c>u</c>'<c>-u</c>', <c>u</c>'<c>C:\\scripts\\test.py</c>']]
+[<c>path</c>: ...;<c>C:\Python27</c> <c>32</c><c>bit</c>;...]
+</code>
+
+<t>The</t> <t>point</t> <t>is</t> <t>that</t> <t>it</t> <t>tries</t> <t>to</t> <t>run</t> <t>python</t> <t>via</t> <t>command</t> <t>line</t>, <t>the</t> <t>cmd</t> <t>looks</t> <t>like</t>:
+
+<code><c>python</c> <c>-u</c> <c>C:\scripts\test.py
+</c></code>
+
+<t>If</t> <t>you</t> <t>can't</t> <t>run</t> <t>python</t> <t>from</t> <t>cmd</t>, <t>Sublime Text</t> <t>can't</t> <t>too</t>.
+(<t>Try</t> <t>it</t> <t>yourself</t> <t>in</t> <t>cmd</t>, <t>type</t> <t>python</t> <t>in</t> <t>it</t> <t>and</t> <t>run</t> <t>it</t>, <t>python</t> <t>commandline</t> <t>should</t> <t>appear</t>)
+
+<t>SOLUTION</t>
+
+<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code>.  
+
+
+<t>To</t> <t>set</t> <t>your</t> <code><c>%</c><c>PATH</c><c>%</c></code>:
+<t>*You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><c>%</c><c>PATH</c><c>%</c></code>
+
+
+<t>Run</t> <t>Command Line*</t> <t>and</t> <t>enter</t> <t>this</t> <t>command</t>: <t>*needs</t> <t>to</t> <t>be</t> <t>run</t> <t>as</t> <t>administrator</t>
+<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
+<t>for</t> <t>example</t>: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
+<t>OR</t> <t>manually</t>: (<t>preferable</t>)
+<t>Add</t> <code>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c></code> <t>at</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>string</t>.
+  
+
+<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
+
+"
+28811205|"<t>Simply</t> <t>call</t> <t>del</t> <t>d['key']</t>.
+
+<t>However</t>, <t>in</t> <t>production</t>, <t>it</t> <t>is</t> <t>always</t> <t>a</t> <t>good</t> <t>practice</t> <t>to</t> <t>check</t> <t>if</t> '<t>key</t>' <t>exists</t> <t>in</t> <t>d</t>.
+
+<code><c>if</c> '<c>key</c>' <c>in</c> <c>d</c>:
+    <c>del</c> <c>d</c>['<c>key</c>']
+</code>
+"
+34971949|"<code><c>import</c> <c>os</c>;
+<c>print</c> <c>os</c><c>.</c><c>getcwd(</c>); # <c>Prints</c> <c>the</c> <c>working</c> <c>directory</c>
+</code>
+
+<t>To</t> <t>set</t> <t>the</t> <t>working</t> <t>directory</t>:
+
+<code><c>os</c><c>.</c><c>chdir(</c>'<c>c:\\Users\uname\desktop\python</c>') # <c>Provide</c> <c>the</c> <c>path</c> <c>here</c>
+</code>
+"
+29289118|"<code><c>with</c> <c>open(</c><c>fname</c>) <c>as</c> <c>fo</c>:
+        <c>data</c><c>=</c><c>fo</c><c>.</c><c>read(</c>)<c>.</c><c>replace(</c>'<c>\n</c>', ' ')<c>.</c><c>replace</c> (',', ' ')
+</code>
+
+<t>This</t> <t>should</t> <t>answer</t> <t>your</t> <t>question</t>. <t>The</t> <t>replace</t> <t>function</t> <t>will</t> <t>act</t> <t>as</t> <t>delimiter</t> <t>to</t> <t>strip</t> <t>the</t> <t>file</t>.
+"
+23102554|"<t>Lets</t> <t>Say</t> <t>I</t> <t>h'v</t> <t>a</t> <t>Dictionary</t> <t>D</t> <t>with</t> <t>elements</t> <t>below</t>. <t>To</t> <t>sort</t> <t>just</t> <t>use</t> <t>key</t> <t>argument</t> <t>in</t> <t>sorted</t> <t>to</t> <t>pass</t> <t>custom</t> <t>function</t> <t>as</t> <t>below</t>
+
+<code><c>D</c> <c>=</c> {'<c>eggs</c>': <c>3</c>, '<c>ham</c>': <c>1</c>, '<c>spam</c>': <c>2</c>}
+
+<c>def</c> <c>get_count(</c><c>tuple</c>):
+    <c>return</c> <c>tuple</c>[<c>1</c>]
+
+<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>get_count</c>, <c>reverse</c><c>=</c><c>True</c>)
+<c>or</c>
+<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>lambda</c> <c>x</c>: <c>x</c>[<c>1</c>], <c>reverse</c><c>=</c><c>True</c>)  <c>avoiding</c> <c>get_count</c> <c>function</c> <c>call</c>
+</code>
+
+<t>https://wiki.python.org/moin/HowTo/Sorting/#Key_Functions</t>
+"
+89267|"<code><c>os</c><c>.</c><c>system</c></code> <t>has</t> <t>been</t> <t>superseded</t> <t>by</t> <t>the</t> <code><c>subprocess</c></code> <t>module</t>. <t>Use</t> <t>subproccess</t> <t>instead</t>.
+"
+2294502|"<t>There</t> <t>are</t> <t>two</t> <t>string</t> <t>methods</t> <t>for</t> <t>this</t>, <code><c>find</c></code> <t>and</t> <code><c>index</c></code>.
+
+<t>Example</t>:
+
+<code>&gt;&gt;&gt; <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
+&gt;&gt;&gt; <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
+<c>2</c>
+</code>
+
+<t>The</t> <t>difference</t> <t>is</t> <t>that</t> <code><c>find</c></code> <t>returns</t> <code><c>-</c><c>1</c></code> <t>when</t> <t>what</t> <t>you're</t> <t>looking</t> <t>for</t> <t>isn't</t> <t>found</t>. <code><c>index</c></code> <t>throws</t> <t>an</t> <t>exception</t>.
+
+
+  <t>Function</t> <code><c>str</c><c>.</c><c>find(</c><c>sub</c>[, <c>start</c>[, <c>end</c>]])</code>
+  <t>Return</t> <t>the</t> <t>lowest</t> <t>index</t> <t>in</t> <t>the</t> <t>string</t> <t>where</t> <t>substring</t> <t>sub</t> <t>is</t> <t>found</t>, <t>such</t> <t>that</t> <t>sub</t> <t>is</t> <t>contained</t> <t>in</t> <t>the</t> <t>range</t> <code>[<c>start</c>, <c>end</c>]</code>. <t>Optional</t> <t>arguments</t> <t>start</t> <t>and</t> <t>end</t> <t>are</t> <t>interpreted</t> <t>as</t> <t>in</t> <t>slice</t> <t>notation</t>. <t>Return</t> <code><c>-</c><c>1</c></code> <t>if</t> <t>sub</t> <t>is</t> <t>not</t> <t>found</t>. 
+
+
+<t>And</t>:
+
+
+  <t>Function</t> <code><c>str</c><c>.</c><c>index(</c><c>sub</c>[, <c>start</c>[, <c>end</c>]])</code>
+  <t>Like</t> <code><c>find(</c>)</code>, <t>but</t> <code><c>raise</c> <c>ValueError</c></code> <t>when</t> <t>the</t> <t>substring</t> <t>is</t> <t>not</t> <t>found</t>.
+
+"
+28867664|"<t>I</t> <t>usually</t> <t>use</t>: 
+
+<code><c>if</c> ((<c>cond1</c> <c>==</c> '<c>val1</c>' <c>and</c> <c>cond2</c> <c>==</c> '<c>val2</c>' <c>and</c>
+     <c>cond3</c> <c>==</c> '<c>val3</c>' <c>and</c> <c>cond4</c> <c>==</c> '<c>val4</c>')):
+    <c>do_something(</c>)
+</code>
+"
