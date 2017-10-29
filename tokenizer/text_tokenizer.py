@@ -130,6 +130,7 @@ class TextTokenizer:
             self._sb.Append(self._text[text_anchor:])
         except Exception as e:
             print(e, "code: \n", self._text, "tokens: \n", self._tokens)
+            pdb.set_trace()
             raise e
         return self._sb.__str__()
 

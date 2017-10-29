@@ -107,14 +107,14 @@ class CodesTokenizer:
 		for line in ss:
 			# call python tokenize.tokenize and get the returned generator g
 			g = tokenize(BytesIO(line.encode('utf-8')).readline)  # tokenize the string
-			#pdb.set_trace()
 			try:
 				for toknum, tokval, starrt, eend, _ in g:
+					#pdb.set_trace()
 					chop_start = 0
 					chop_end = len(tokval) - 1
 					#pdb.set_trace()
 					# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
-					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([\ ,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
 						#pdb.set_trace()
 						# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
 						if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
@@ -166,6 +166,7 @@ class CodesTokenizer:
 			#																	and append annotated(taged) token
 			for token in self._tokens:
 				search = re.compile(re.escape(token)).search(self._codes, code_anchor)
+				#pdb.set_trace()
 				search_start = search.start()
 				search_end = search.end()
 				self._sb.Append(self._codes[code_anchor : search_start])
@@ -175,7 +176,7 @@ class CodesTokenizer:
 			self._sb.Append(self._codes[code_anchor:])
 		except Exception as e:
 			print(e, "code: \n", self._codes, "tokens: \n", self._tokens)
-			#pdb.set_trace()
+			pdb.set_trace()
 			raise()
 		# return the annotated codes
 		return self._sb.__str__()
