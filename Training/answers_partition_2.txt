@@ -6,29 +6,29 @@
 
 <t>As</t> <t>@abarnert</t> <t>notes</t>, <t>the</t> <code><c>more_itertools</c></code> <t>library</t> (<code><c>pip</c> <c>install</c> <c>more_itertools</c></code>) <t>contains</t> <t>a</t> <code><c>unique_everseen</c></code> <t>function</t> <t>that</t> <t>is</t> <t>built</t> <t>to</t> <t>solve</t> <t>this</t> <t>problem</t> <t>without</t> <t>any</t> <t>unreadable</t> (<code><c>not</c> <c>seen</c><c>.</c><c>add</c></code>) <t>mutations</t> <t>in</t> <t>list</t> <t>comprehensions</t>. <t>This</t> <t>is</t> <t>also</t> <t>the</t> <t>fastest</t> <t>solution</t> <t>too</t>:
 
-<code><c>&gt;&gt;&gt;</c> <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
-<c>&gt;&gt;&gt;</c> <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
-<c>&gt;&gt;&gt;</c> <c>list(</c><c>unique_everseen(</c><c>items</c>))
+<code>&gt;&gt;&gt; <c>from</c>  <c>more_itertools</c> <c>import</c> <c>unique_everseen</c>
+&gt;&gt;&gt; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+&gt;&gt;&gt; <c>list(</c><c>unique_everseen(</c><c>items</c>))
 [<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
 <t>Just</t> <t>one</t> <t>simple</t> <t>library</t> <t>import</t> <t>and</t> <t>no</t> <t>hacks</t>. 
 <t>This</t> <t>comes</t> <t>from</t> <t>an</t> <t>implementation</t> <t>of</t> <t>the</t> <t>itertools</t> <t>recipe</t> <code><c>unique_everseen</c></code> <t>which</t> <t>looks</t> <t>like</t>:
 
-<code><c>def</c> <c>unique_everseen(</c><c>iterable</c>, <c>key</c><c>=</c><c>None</c>)<c>:</c>
+<code><c>def</c> <c>unique_everseen(</c><c>iterable</c>, <c>key</c><c>=</c><c>None</c>):
     ""<c>List</c> <c>unique</c> <c>elements</c>, <c>preserving</c> <c>order</c><c>.</c> <c>Remember</c> <c>all</c> <c>elements</c> <c>ever</c> <c>seen</c><c>.</c>""
     # <c>unique_everseen(</c>'<c>AAAABBBCCDAABBB</c>') <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
     # <c>unique_everseen(</c>'<c>ABBCcAD</c>', <c>str</c><c>.</c><c>lower</c>) <c>-</c><c>-</c><c>&gt;</c> <c>A</c> <c>B</c> <c>C</c> <c>D</c>
     <c>seen</c> <c>=</c> <c>set(</c>)
     <c>seen_add</c> <c>=</c> <c>seen</c><c>.</c><c>add</c>
-    <c>if</c> <c>key</c> <c>is</c> <c>None</c><c>:</c>
-        <c>for</c> <c>element</c> <c>in</c> <c>filterfalse(</c><c>seen</c><c>.</c><c>__contains__</c>, <c>iterable</c>)<c>:</c>
+    <c>if</c> <c>key</c> <c>is</c> <c>None</c>:
+        <c>for</c> <c>element</c> <c>in</c> <c>filterfalse(</c><c>seen</c><c>.</c><c>__contains__</c>, <c>iterable</c>):
             <c>seen_add(</c><c>element</c>)
             <c>yield</c> <c>element</c>
-    <c>else</c><c>:</c>
-        <c>for</c> <c>element</c> <c>in</c> <c>iterable</c><c>:</c>
+    <c>else</c>:
+        <c>for</c> <c>element</c> <c>in</c> <c>iterable</c>:
             <c>k</c> <c>=</c> <c>key(</c><c>element</c>)
-            <c>if</c> <c>k</c> <c>not</c> <c>in</c> <c>seen</c><c>:</c>
+            <c>if</c> <c>k</c> <c>not</c> <c>in</c> <c>seen</c>:
                 <c>seen_add(</c><c>k</c>)
                 <c>yield</c> <c>element</c>
 </code>
@@ -39,9 +39,9 @@
 
 <t>Runtime</t>: <t>O(N)</t>
 
-<code><c>&gt;&gt;&gt;</c> <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
-<c>&gt;&gt;&gt;</c> <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
-<c>&gt;&gt;&gt;</c> <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
+<code>&gt;&gt;&gt; <c>from</c> <c>collections</c> <c>import</c> <c>OrderedDict</c>
+&gt;&gt;&gt; <c>items</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>0</c>, <c>1</c>, <c>3</c>, <c>2</c>]
+&gt;&gt;&gt; <c>list(</c><c>OrderedDict</c><c>.</c><c>fromkeys(</c><c>items</c>))
 [<c>1</c>, <c>2</c>, <c>0</c>, <c>3</c>]
 </code>
 
@@ -62,10 +62,10 @@
 "
 9847269|"<t>Use</t> <code><c>weekday(</c>)</code> (<t>docs</t>):
 
-<code><c>&gt;&gt;&gt;</c> <c>import</c> <c>datetime</c>
-<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
+<code>&gt;&gt;&gt; <c>import</c> <c>datetime</c>
+&gt;&gt;&gt; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)
 <c>datetime</c><c>.</c><c>datetime(</c><c>2012</c>, <c>3</c>, <c>23</c>, <c>23</c>, <c>24</c>, <c>55</c>, <c>173504</c>)
-<c>&gt;&gt;&gt;</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
+&gt;&gt;&gt; <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>today(</c>)<c>.</c><c>weekday(</c>)
 <c>4</c>
 </code>
 
@@ -82,7 +82,7 @@
 
 <t>Create</t> <t>a</t> <t>Python3</t> <t>based</t> <t>virtual</t> <t>environment</t>. <t>Optionally</t> <t>enable</t> <code><c>-</c><c>-</c><c>system-site-packages</c></code> <t>flag</t>.
 
-<code><c>mkvirtualenv</c> <c>-</c><c>p</c> <c>/usr/bin/python3</c> <c>&lt;venv-name&gt;</c>
+<code><c>mkvirtualenv</c> <c>-p</c> <c>/usr/bin/python3</c> <c>&lt;venv-name&gt;</c>
 </code>
 
 <t>Set</t> <t>into</t> <t>the</t> <t>virtual</t> <t>environment</t>.
@@ -92,8 +92,8 @@
 
 <t>Install</t> <t>other</t> <t>requirements</t> <t>using</t> <code><c>pip</c></code> <t>package</t> <t>manager</t>.
 
-<code><c>pip</c> <c>install</c> <c>-</c><c>r</c> <c>requirements</c><c>.</c><c>txt</c>
-<c>pip</c> <c>install</c> <c>&lt;</c><c>package_name</c><c>&gt;</c>
+<code><c>pip</c> <c>install</c> <c>-r</c> <c>requirements.txt</c>
+<c>pip</c> <c>install</c> <c>&lt;package_name&gt;</c>
 </code>
 
 
@@ -102,8 +102,8 @@
 
 <t>Using</t> <t>this</t> <t>technique</t> <t>saves</t> <t>a</t> <t>lot</t> <t>of</t> <t>time</t> <t>spent</t> <t>on</t> <t>fetching</t> <t>packages</t> <t>and</t> <t>installing</t> <t>them</t>, <t>apart</t> <t>from</t> <t>consuming</t> <t>minimal</t> <t>disk</t> <t>space</t> <t>and</t> <t>network</t> <t>bandwidth</t>.
 
-<code><c>sudo</c> <c>-</c><c>H</c> <c>pip3</c> <c>-</c><c>v</c> <c>install</c> <c>Django</c>
-<c>mkvirtualenv</c> <c>-</c><c>p</c><c> </c><c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt;venv-name&gt;</c>
+<code><c>sudo</c> <c>-H</c> <c>pip3</c> <c>-v</c> <c>install</c> <c>Django</c>
+<c>mkvirtualenv</c> <c>-p</c> <c>$</c>(<c>which</c> <c>python3</c>) <c>-</c><c>-</c><c>system-site-packages</c> <c>&lt;venv-name&gt;</c>
 </code>
 "
 3242895|"<t>You</t> <t>can</t> <t>ask</t> <t>any</t> <t>object</t> <t>which</t> <t>module</t> <t>it</t> <t>came</t> <t>from</t> <t>by</t> <t>looking</t> <t>at</t> <t>its</t> <t>__module__</t> <t>property</t>. <t>This</t> <t>is</t> <t>useful</t>, <t>for</t> <t>example</t>, <t>if</t> <t>you're</t> <t>experimenting</t> <t>at</t> <t>the</t> <t>command</t> <t>line</t> <t>and</t> <t>have</t> <t>imported</t> <t>a</t> <t>lot</t> <t>of</t> <t>things</t>.
@@ -116,9 +116,9 @@
 "
 10973829|"<t>Simplifying</t> <t>a</t> <t>bit</t>, <t>you</t> <t>can</t> <t>imagine</t> <code><c>map(</c>)</code> <t>doing</t> <t>something</t> <t>like</t> <t>this</t>:
 
-<code><c>def</c> <c>mymap(</c><c>func</c>, <c>lst</c>)<c>:</c>
+<code><c>def</c> <c>mymap(</c><c>func</c>, <c>lst</c>):
     <c>result</c> <c>=</c> []
-    <c>for</c> <c>e</c> <c>in</c> <c>lst</c><c>:</c>
+    <c>for</c> <c>e</c> <c>in</c> <c>lst</c>:
         <c>result</c><c>.</c><c>append(</c><c>func(</c><c>e</c>))
     <c>return</c> <c>result</c>
 </code>
@@ -134,7 +134,7 @@
 <code><c>lst</c> <c>=</c> [<c>1</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>]
 
 <c>from</c> <c>operator</c> <c>import</c> <c>add</c>
-<c>reduce(</c><c>add</c>, <c>map(</c><c>lambda</c> <c>i</c><c>:</c> <c>map(</c><c>lambda</c> <c>j</c><c>:</c> (<c>i</c>, <c>j</c>), <c>lst</c>), <c>lst</c>))
+<c>reduce(</c><c>add</c>, <c>map(</c><c>lambda</c> <c>i</c>: <c>map(</c><c>lambda</c> <c>j</c>: (<c>i</c>, <c>j</c>), <c>lst</c>), <c>lst</c>))
 </code>
 
 <t>...</t> <t>But</t> <t>to</t> <t>tell</t> <t>the</t> <t>truth</t>, <t>using</t> <code><c>product(</c>)</code> <t>is</t> <t>a</t> <t>much</t> <t>simpler</t> <t>and</t> <t>natural</t> <t>way</t> <t>to</t> <t>solve</t> <t>the</t> <t>problem</t>:
@@ -211,7 +211,7 @@
 1035419|"<t>If</t> <t>the</t> <t>file</t> <t>is</t> <t>not</t> <t>too</t> <t>big</t> <t>that</t> <t>holding</t> <t>it</t> <t>in</t> <t>memory</t> <t>is</t> <t>a</t> <t>problem</t>:
 
 <code><c>bytes_read</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")<c>.</c><c>read(</c>)
-<c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c><c>:</c>
+<c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c>:
     <c>process_byte(</c><c>b</c>)
 </code>
 
@@ -220,13 +220,13 @@
 <t>If</t> <t>you</t> <t>want</t> <t>to</t> <t>process</t> <t>a</t> <t>chunk</t> <t>at</t> <t>a</t> <t>time</t>:
 
 <code><c>file</c> <c>=</c> <c>open(</c>""<c>filename</c>"", ""<c>rb</c>"")
-<c>try</c><c>:</c>
+<c>try</c>:
     <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
-    <c>while</c> <c>bytes_read</c><c>:</c>
-        <c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c><c>:</c>
+    <c>while</c> <c>bytes_read</c>:
+        <c>for</c> <c>b</c> <c>in</c> <c>bytes_read</c>:
             <c>process_byte(</c><c>b</c>)
         <c>bytes_read</c> <c>=</c> <c>file</c><c>.</c><c>read(</c><c>CHUNKSIZE</c>)
-<c>finally</c><c>:</c>
+<c>finally</c>:
     <c>file</c><c>.</c><c>close(</c>)
 </code>
 "
@@ -261,7 +261,7 @@
 
 <code><c>import</c> <c>glob</c>
 <c>import</c> <c>os</c>
-<c>filenames_without_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>)<c>.</c><c>split(</c>'<c>.</c>')[<c>0</c><c>:</c><c>1</c>][<c>0</c>] <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
+<c>filenames_without_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>)<c>.</c><c>split(</c>'<c>.</c>')[<c>0</c>:<c>1</c>][<c>0</c>] <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
 <c>filenames_with_extension</c> <c>=</c> [<c>os</c><c>.</c><c>path</c><c>.</c><c>basename(</c><c>c</c>) <c>for</c> <c>c</c> <c>in</c> <c>glob</c><c>.</c><c>glob(</c>'<c>your</c><c>/files/dir/*.txt</c>')]
 </code>
 "
@@ -285,17 +285,17 @@
 "
 1010597|"<t>There</t> <t>is</t> <t>also</t> <code><c>argparse</c></code> <t>stdlib</t> <t>module</t> (<t>an</t> ""<t>impovement</t>"" <t>on</t> <t>stdlib's</t> <code><c>optparse</c></code> <t>module</t>). <t>Example</t> <t>from</t> <t>the</t> <t>introduction</t> <t>to</t> <t>argparse</t>:
 
-<code># <c>script</c><c>.</c><c>py</c>
+<code># <c>script.py</c>
 <c>import</c> <c>argparse</c>
 
-<c>if</c> <c>__name__</c> <c>==</c> '<c>__main__</c>'<c>:</c>
+<c>if</c> <c>__name__</c> <c>==</c> '<c>__main__</c>':
     <c>parser</c> <c>=</c> <c>argparse</c><c>.</c><c>ArgumentParser(</c>)
     <c>parser</c><c>.</c><c>add_argument(</c>
         '<c>integers</c>', <c>metavar</c><c>=</c>'<c>int</c>', <c>type</c><c>=</c><c>int</c>, <c>choices</c><c>=</c><c>range(</c><c>10</c>),
          <c>nargs</c><c>=</c>'<c>+</c>', <c>help</c><c>=</c>'<c>an</c> <c>integer</c> <c>in</c> <c>the</c> <c>range</c> 0..9')
     <c>parser</c><c>.</c><c>add_argument(</c>
         '<c>-</c><c>-</c><c>sum</c>', <c>dest</c><c>=</c>'<c>accumulate</c>', <c>action</c><c>=</c>'<c>store_const</c>', <c>const</c><c>=</c><c>sum</c>,
-        <c>default</c><c>=</c><c>max</c>, <c>help</c><c>=</c>'<c>sum</c> <c>the</c> <c>integers</c> (<c>default</c><c>:</c> <c>find</c> <c>the</c> <c>max</c>)')
+        <c>default</c><c>=</c><c>max</c>, <c>help</c><c>=</c>'<c>sum</c> <c>the</c> <c>integers</c> (<c>default</c>: <c>find</c> <c>the</c> <c>max</c>)')
 
     <c>args</c> <c>=</c> <c>parser</c><c>.</c><c>parse_args(</c>)
     <c>print(</c><c>args</c><c>.</c><c>accumulate(</c><c>args</c><c>.</c><c>integers</c>))
@@ -303,10 +303,10 @@
 
 <t>Usage</t>:
 
-<code><c>$</c> <c>script</c><c>.</c><c>py</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<code><c>$</c> <c>script.py</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
 <c>4</c>
 
-<c>$</c> <c>script</c><c>.</c><c>py</c> <c>-</c><c>-</c><c>sum</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
+<c>$</c> <c>script.py</c> <c>--sum</c> <c>1</c> <c>2</c> <c>3</c> <c>4</c>
 <c>10</c>
 </code>
 "
@@ -337,7 +337,7 @@
 7817348|"<t>Use</t> <t>ValueSortedDict</t> <t>from</t> <t>dicts</t>:
 
 <code><c>from</c> <c>dicts</c><c>.</c><c>sorteddict</c> <c>import</c> <c>ValueSortedDict</c>
-<c>d</c> <c>=</c> {<c>1</c><c>:</c> <c>2</c>, <c>3</c><c>:</c> <c>4</c>, <c>4</c><c>:</c><c>3</c>, <c>2</c><c>:</c><c>1</c>, <c>0</c><c>:</c><c>0</c>}
+<c>d</c> <c>=</c> {<c>1</c>: <c>2</c>, <c>3</c>: <c>4</c>, <c>4</c>:<c>3</c>, <c>2</c>:<c>1</c>, <c>0</c>:<c>0</c>}
 <c>sorted_dict</c> <c>=</c> <c>ValueSortedDict(</c><c>d</c>)
 <c>print</c> <c>sorted_dict</c><c>.</c><c>items(</c>) 
 
@@ -357,13 +357,13 @@
 
 <t>But</t> <t>when</t> <t>CtrlB</t> <t>does</t> <t>not</t> <t>work</t>, <t>Sublime Text</t> <t>probably</t> <t>can't</t> <t>find</t> <t>the</t> <t>Python Interpreter</t>. <t>When</t> <t>trying</t> <t>to</t> <t>run</t> <t>your</t> <t>program</t>, <t>see</t> <t>the</t> <t>log</t> <t>and</t> <t>find</t> <t>the</t> <t>reference</t> <t>to</t> <t>Python</t> <t>in</t> <t>path</t>.
 
-<code>[<c>cmd</c><c>:</c>  [<c>u</c>'<c>python</c>', <c>u</c>'<c>-</c><c>u</c>', <c>u</c>'<c>C:\\scripts\\test.py</c>']]
-[<c>path</c><c>:</c> ...;<c>C:\Python27</c> <c>32</c><c>bit</c>;...]
+<code>[<c>cmd</c>:  [<c>u</c>'<c>python</c>', <c>u</c>'<c>-u</c>', <c>u</c>'<c>C:\\scripts\\test.py</c>']]
+[<c>path</c>: ...;<c>C:\Python27</c> <c>32</c><c>bit</c>;...]
 </code>
 
 <t>The</t> <t>point</t> <t>is</t> <t>that</t> <t>it</t> <t>tries</t> <t>to</t> <t>run</t> <t>python</t> <t>via</t> <t>command</t> <t>line</t>, <t>the</t> <t>cmd</t> <t>looks</t> <t>like</t>:
 
-<code><c>python</c> <c>-</c><c>u</c> <c>C:\scripts\test.py
+<code><c>python</c> <c>-u</c> <c>C:\scripts\test.py
 </c></code>
 
 <t>If</t> <t>you</t> <t>can't</t> <t>run</t> <t>python</t> <t>from</t> <t>cmd</t>, <t>Sublime Text</t> <t>can't</t> <t>too</t>.
@@ -392,7 +392,7 @@
 
 <t>However</t>, <t>in</t> <t>production</t>, <t>it</t> <t>is</t> <t>always</t> <t>a</t> <t>good</t> <t>practice</t> <t>to</t> <t>check</t> <t>if</t> '<t>key</t>' <t>exists</t> <t>in</t> <t>d</t>.
 
-<code><c>if</c> '<c>key</c>' <c>in</c> <c>d</c><c>:</c>
+<code><c>if</c> '<c>key</c>' <c>in</c> <c>d</c>:
     <c>del</c> <c>d</c>['<c>key</c>']
 </code>
 "
@@ -405,7 +405,7 @@
 <code><c>os</c><c>.</c><c>chdir(</c>'<c>c:\\Users\uname\desktop\python</c>') # <c>Provide</c> <c>the</c> <c>path</c> <c>here</c>
 </code>
 "
-29289118|"<code><c>with</c> <c>open(</c><c>fname</c>) <c>as</c> <c>fo</c><c>:</c>
+29289118|"<code><c>with</c> <c>open(</c><c>fname</c>) <c>as</c> <c>fo</c>:
         <c>data</c><c>=</c><c>fo</c><c>.</c><c>read(</c>)<c>.</c><c>replace(</c>'<c>\n</c>', ' ')<c>.</c><c>replace</c> (',', ' ')
 </code>
 
@@ -413,14 +413,14 @@
 "
 23102554|"<t>Lets</t> <t>Say</t> <t>I</t> <t>h'v</t> <t>a</t> <t>Dictionary</t> <t>D</t> <t>with</t> <t>elements</t> <t>below</t>. <t>To</t> <t>sort</t> <t>just</t> <t>use</t> <t>key</t> <t>argument</t> <t>in</t> <t>sorted</t> <t>to</t> <t>pass</t> <t>custom</t> <t>function</t> <t>as</t> <t>below</t>
 
-<code><c>D</c> <c>=</c> {'<c>eggs</c>'<c>:</c> <c>3</c>, '<c>ham</c>'<c>:</c> <c>1</c>, '<c>spam</c>'<c>:</c> <c>2</c>}
+<code><c>D</c> <c>=</c> {'<c>eggs</c>': <c>3</c>, '<c>ham</c>': <c>1</c>, '<c>spam</c>': <c>2</c>}
 
-<c>def</c> <c>get_count(</c><c>tuple</c>)<c>:</c>
+<c>def</c> <c>get_count(</c><c>tuple</c>):
     <c>return</c> <c>tuple</c>[<c>1</c>]
 
 <c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>get_count</c>, <c>reverse</c><c>=</c><c>True</c>)
 <c>or</c>
-<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>lambda</c> <c>x</c><c>:</c> <c>x</c>[<c>1</c>], <c>reverse</c><c>=</c><c>True</c>)  <c>avoiding</c> <c>get_count</c> <c>function</c> <c>call</c>
+<c>sorted(</c><c>D</c><c>.</c><c>items(</c>), <c>key</c> <c>=</c> <c>lambda</c> <c>x</c>: <c>x</c>[<c>1</c>], <c>reverse</c><c>=</c><c>True</c>)  <c>avoiding</c> <c>get_count</c> <c>function</c> <c>call</c>
 </code>
 
 <t>https://wiki.python.org/moin/HowTo/Sorting/#Key_Functions</t>
@@ -431,8 +431,8 @@
 
 <t>Example</t>:
 
-<code><c>&gt;&gt;&gt;</c> <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
-<c>&gt;&gt;&gt;</c> <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
+<code>&gt;&gt;&gt; <c>myString</c> <c>=</c> ""<c>Position</c> <c>of</c> <c>a</c> <c>character</c>""
+&gt;&gt;&gt; <c>myString</c><c>.</c><c>index(</c>'<c>s</c>')
 <c>2</c>
 </code>
 
@@ -453,7 +453,7 @@
 28867664|"<t>I</t> <t>usually</t> <t>use</t>: 
 
 <code><c>if</c> ((<c>cond1</c> <c>==</c> '<c>val1</c>' <c>and</c> <c>cond2</c> <c>==</c> '<c>val2</c>' <c>and</c>
-     <c>cond3</c> <c>==</c> '<c>val3</c>' <c>and</c> <c>cond4</c> <c>==</c> '<c>val4</c>'))<c>:</c>
+     <c>cond3</c> <c>==</c> '<c>val3</c>' <c>and</c> <c>cond4</c> <c>==</c> '<c>val4</c>')):
     <c>do_something(</c>)
 </code>
 "
