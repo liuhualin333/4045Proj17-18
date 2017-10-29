@@ -1,5 +1,5 @@
 Id|Body
-<t>35823399</t>|"<t>Adding</t> <t>this</t> <t>answer</t> <t>for</t> <t>completeness</t>, <t>though</t> <t>it's</t> <t>only</t> <t>usable</t> <t>under</t> <t>certain</t> <t>conditions</t>.
+35823399|"<t>Adding</t> <t>this</t> <t>answer</t> <t>for</t> <t>completeness</t>, <t>though</t> <t>it's</t> <t>only</t> <t>usable</t> <t>under</t> <t>certain</t> <t>conditions</t>.
 
 <t>If</t> <t>you</t> <t>have</t> <t>very</t> <t>large</t> <t>lists</t>, <t>removing</t> <t>from</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>list</t> <t>avoids</t> <t>CPython</t> <t>internals</t> <t>having</t> <t>to</t> <code><c>memmove</c></code>, <t>for</t> <t>situations</t> <t>where</t> <t>you</t> <t>can</t> <t>re-order</t> <t>the</t> <t>list</t>. <t>It</t> <t>gives</t> <t>a</t> <t>performance</t> <t>gain</t> <t>to</t> <t>remove</t> <t>from</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>list</t>, <t>since</t> <t>it</t> <t>won't</t> <t>need</t> <t>to</t> <code><c>memmove</c></code> <t>every</t> <t>item</t> <t>after</t> <t>the</t> <t>one</t> <t>your</t> <t>removing</t> <t>-</t> <t>back</t> <t>one</t> <t>step</t> (<t>1</t>).
 <t>For</t> <t>one-off</t> <t>removals</t> <t>the</t> <t>performance</t> <t>difference</t> <t>may</t> <t>be</t> <t>acceptable</t>, <t>but</t> <t>if</t> <t>you</t> <t>have</t> <t>a</t> <t>large</t> <t>list</t> <t>and</t> <t>need</t> <t>to</t> <t>remove</t> <t>many</t> <t>items</t> <t>-</t> <t>you</t> <t>will</t> <t>likely</t> <t>notice</t> <t>a</t> <t>performance</t> <t>hit</t>.
@@ -50,7 +50,7 @@ Id|Body
 <t>In</t> <t>this</t> <t>case</t> <t>you</t> <t>might</t> <t>consider</t> <t>using</t> <t>a</t> <code><c>set</c></code>, <t>especially</t> <t>if</t> <t>the</t> <t>list</t> <t>isn't</t> <t>meant</t> <t>to</t> <t>store</t> <t>duplicates</t>.<t>In</t> <t>practice</t> <t>though</t> <t>you</t> <t>may</t> <t>need</t> <t>to</t> <t>store</t> <t>mutable</t> <t>data</t> <t>which</t> <t>can't</t> <t>be</t> <t>added</t> <t>to</t> <t>a</t> <code><c>set</c></code>. <t>Also</t> <t>check</t> <t>on</t> <t>btree's</t> <t>if</t> <t>the</t> <t>data</t> <t>can</t> <t>be</t> <t>ordered</t>.
 
 "
-<t>45074712</t>|"<t>Python</t> <t>classes</t> <t>are</t> <t>themselves</t> <t>objects</t> <t>-</t> <t>as</t> <t>in</t> <t>instance</t> <t>-</t> <t>of</t> <t>their</t> <t>meta-class</t>.
+45074712|"<t>Python</t> <t>classes</t> <t>are</t> <t>themselves</t> <t>objects</t> <t>-</t> <t>as</t> <t>in</t> <t>instance</t> <t>-</t> <t>of</t> <t>their</t> <t>meta-class</t>.
 
 <t>The</t> <t>default</t> <t>metaclass</t>, <t>which</t> <t>is</t> <t>applied</t> <t>when</t> <t>when</t> <t>you</t> <t>determine</t> <t>classes</t> <t>as</t>:
 
@@ -121,7 +121,7 @@ Id|Body
 
 <t>anyhow</t>, <t>those</t> <t>two</t> <t>are</t> <t>the</t> <t>most</t> <t>commonly</t> <t>used</t> <t>hooks</t>. <t>metaclassing</t> <t>is</t> <t>powerful</t>, <t>and</t> <t>above</t> <t>is</t> <t>nowhere</t> <t>near</t> <t>and</t> <t>exhaustive</t> <t>list</t> <t>of</t> <t>uses</t> <t>for</t> <t>metaclassing</t>.
 "
-<t>13891070</t>|"<t>The</t> <code><c>time</c><c>.</c><c>time(</c>)</code> <t>function</t> <t>returns</t> <t>the</t> <t>number</t> <t>of</t> <t>seconds</t> <t>since</t> <t>the</t> <t>epoch</t> <t>as</t> <t>seconds</t> <t>in</t> <t>UTC</t>.
+13891070|"<t>The</t> <code><c>time</c><c>.</c><c>time(</c>)</code> <t>function</t> <t>returns</t> <t>the</t> <t>number</t> <t>of</t> <t>seconds</t> <t>since</t> <t>the</t> <t>epoch</t> <t>as</t> <t>seconds</t> <t>in</t> <t>UTC</t>.
 
 <t>Here</t> <t>is</t> <t>some</t> <t>sample</t> <t>output</t> <t>I</t> <t>ran</t> <t>on</t> <t>my</t> <t>computer</t>, <t>converting</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>as</t> <t>well</t>.
 
@@ -141,7 +141,7 @@ Id|Body
 
 <t>The</t> <code><c>ts</c></code> <t>variable</t> <t>is</t> <t>the</t> <t>time</t> <t>returned</t> <t>in</t> <t>seconds</t>.  <t>I</t> <t>then</t> <t>converted</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>using</t> <t>the</t> <code><c>datetime</c></code> <t>library</t> <t>making</t> <t>it</t> <t>a</t> <t>string</t> <t>that</t> <t>is</t> <t>human</t> <t>readable</t>.
 "
-<t>37403193</t>|"<t>Here's</t> <t>a</t> <t>fast</t> <t>generator</t> <t>that</t> <t>uses</t> <t>a</t> <t>dict</t> <t>to</t> <t>store</t> <t>each</t> <t>element</t> <t>as</t> <t>a</t> <t>key</t> <t>with</t> <t>a</t> <t>boolean</t> <t>value</t> <t>for</t> <t>checking</t> <t>if</t> <t>the</t> <t>duplicate</t> <t>item</t> <t>has</t> <t>already</t> <t>been</t> <t>yielded</t>.
+37403193|"<t>Here's</t> <t>a</t> <t>fast</t> <t>generator</t> <t>that</t> <t>uses</t> <t>a</t> <t>dict</t> <t>to</t> <t>store</t> <t>each</t> <t>element</t> <t>as</t> <t>a</t> <t>key</t> <t>with</t> <t>a</t> <t>boolean</t> <t>value</t> <t>for</t> <t>checking</t> <t>if</t> <t>the</t> <t>duplicate</t> <t>item</t> <t>has</t> <t>already</t> <t>been</t> <t>yielded</t>.
 
 <t>For</t> <t>lists</t> <t>with</t> <t>all</t> <t>elements</t> <t>that</t> <t>are</t> <t>hashable</t> <t>types</t>:
 
@@ -183,7 +183,7 @@ Id|Body
 # <c>=</c><c>&gt;</c> [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
 </code>
 "
-<t>32555515</t>|"<t>Below</t> <t>is</t> <t>a</t> ""<t>standard</t> <t>recursive</t> <t>answer</t>"", <t>similar</t> <t>to</t> <t>the</t> <t>other</t> <t>similar</t> <t>answer</t> <t>https</t>:<t>//stackoverflow</t>.<t>com/a/23743696/711085</t> . (<t>We</t> <t>don't</t> <t>realistically</t> <t>have</t> <t>to</t> <t>worry</t> <t>about</t> <t>running</t> <t>out</t> <t>of</t> <t>stack</t> <t>space</t> <t>since</t> <t>there's</t> <t>no</t> <t>way</t> <t>we</t> <t>could</t> <t>process</t> <t>all</t> <t>N</t>! <t>permutations</t>.)
+32555515|"<t>Below</t> <t>is</t> <t>a</t> ""<t>standard</t> <t>recursive</t> <t>answer</t>"", <t>similar</t> <t>to</t> <t>the</t> <t>other</t> <t>similar</t> <t>answer</t> <t>https</t>:<t>//stackoverflow</t>.<t>com/a/23743696/711085</t> . (<t>We</t> <t>don't</t> <t>realistically</t> <t>have</t> <t>to</t> <t>worry</t> <t>about</t> <t>running</t> <t>out</t> <t>of</t> <t>stack</t> <t>space</t> <t>since</t> <t>there's</t> <t>no</t> <t>way</t> <t>we</t> <t>could</t> <t>process</t> <t>all</t> <t>N</t>! <t>permutations</t>.)
 
 <t>It</t> <t>visits</t> <t>every</t> <t>element</t> <t>in</t> <t>turn</t>, <t>and</t> <t>either</t> <t>takes</t> <t>it</t> <t>or</t> <t>leaves</t> <t>it</t> (<t>we</t> <t>can</t> <t>directly</t> <t>see</t> <t>the</t> <t>2^N</t> <t>cardinality</t> <t>from</t> <t>this</t> <t>algorithm</t>).
 
@@ -215,7 +215,7 @@ Id|Body
 <c>32</c>
 </code>
 "
-<t>6347576</t>|"<t>Here</t> <t>is</t> <t>a</t> <t>variant</t> <t>on</t> <t>Alec Thomas's</t> <t>solution</t>:
+6347576|"<t>Here</t> <t>is</t> <t>a</t> <t>variant</t> <t>on</t> <t>Alec Thomas's</t> <t>solution</t>:
 
 <code><c>def</c> <c>enum(</c><c>*</c><c>args</c>, <c>**</c><c>kwargs</c>):
     <c>return</c> <c>type(</c>'<c>Enum</c>', (), <c>dict(</c>(<c>y</c>, <c>x</c>) <c>for</c> <c>x</c>, <c>y</c> <c>in</c> <c>enumerate(</c><c>args</c>), <c>**</c><c>kwargs</c>))
@@ -225,12 +225,12 @@ Id|Body
 <c>assert</c> <c>x</c><c>.</c><c>TIGGER</c> <c>==</c> <c>1</c>
 </code>
 "
-<t>32649302</t>|"<code><c>from</c> <c>operator</c> <c>import</c> <c>truediv</c>
+32649302|"<code><c>from</c> <c>operator</c> <c>import</c> <c>truediv</c>
 
 <c>c</c> <c>=</c> <c>truediv(</c><c>a</c>, <c>b</c>)
 </code>
 "
-<t>35199035</t>|"<t>Here</t> <t>is</t> <t>a</t> <t>tiny</t> <t>timer</t> <t>class</t> <t>that</t> <t>returns</t> ""<t>hh</t>:<t>mm</t>:<t>ss</t>"" <t>string</t>:
+35199035|"<t>Here</t> <t>is</t> <t>a</t> <t>tiny</t> <t>timer</t> <t>class</t> <t>that</t> <t>returns</t> ""<t>hh</t>:<t>mm</t>:<t>ss</t>"" <t>string</t>:
 
 <code><c>class</c> <c>Timer</c>:
   <c>def</c> <c>__init__(</c><c>self</c>):
@@ -269,21 +269,21 @@ Id|Body
 # ... <c>etc</c>
 </code>
 "
-<t>16637874</t>|"<t>Just</t> <t>an</t> <t>FYI</t> <t>adding</t> <t>to</t> <t>Chris</t>. <t>B</t> (<t>best</t> <t>answer</t>):
+16637874|"<t>Just</t> <t>an</t> <t>FYI</t> <t>adding</t> <t>to</t> <t>Chris</t>. <t>B</t> (<t>best</t> <t>answer</t>):
 
 <code><c>d</c> <c>=</c> <c>defaultdict(</c><c>int</c>)
 </code>
 
 <t>Works</t> <t>as</t> <t>well;</t> <t>the</t> <t>reason</t> <t>is</t> <t>that</t> <t>calling</t> <code><c>int(</c>)</code> <t>returns</t> <code><c>0</c></code> <t>which</t> <t>is</t> <t>what</t> <code><c>defaultdict</c></code> <t>does</t> <t>behind</t> <t>the</t> <t>scenes</t> (<t>when</t> <t>constructing</t> <t>a</t> <t>dictionary</t>), <t>hence</t> <t>the</t> <t>name</t> ""<t>Factory Function""</t> <t>in</t> <t>the</t> <t>documentation</t>.
 "
-<t>5574749</t>|"<t>I</t> <t>would</t> <t>say</t> <t>that</t> <t>your</t> <t>first</t> <t>approach</t>:
+5574749|"<t>I</t> <t>would</t> <t>say</t> <t>that</t> <t>your</t> <t>first</t> <t>approach</t>:
 
 <code><c>print</c> <c>&gt;&gt;</c> <c>sys</c><c>.</c><c>stderr</c>, '<c>spam</c>'
 </code>
 
 <t>is</t> <t>the</t> ""<t>One</t> . . . <t>obvious</t> <t>way</t> <t>to</t> <t>do</t> <t>it</t>""  <t>The</t> <t>others</t> <t>don't</t> <t>satisfy</t> <t>rule</t> <t>#1</t> (""<t>Beautiful</t> <t>is</t> <t>better</t> <t>than</t> <t>ugly</t>."")
 "
-<t>8369232</t>|"<code><c>f</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>','<c>r</c>')
+8369232|"<code><c>f</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>','<c>r</c>')
 <c>string</c> <c>=</c> """"
 <c>while</c> <c>1</c>:
     <c>line</c> <c>=</c> <c>f</c><c>.</c><c>readline(</c>)
@@ -296,12 +296,12 @@ Id|Body
 <c>print</c> <c>string</c>
 </code>
 "
-<t>35041435</t>|"<code><c>pip</c> <c>install</c> <c>-</c><c>U</c> <c>setuptools</c></code> <t>and</t> <code><c>easy_install</c></code> <t>was</t> <t>putting</t> <t>egg-info</t> <t>in</t> <t>the</t> <t>wrong</t> <t>directory</t>.
+35041435|"<code><c>pip</c> <c>install</c> <c>-</c><c>U</c> <c>setuptools</c></code> <t>and</t> <code><c>easy_install</c></code> <t>was</t> <t>putting</t> <t>egg-info</t> <t>in</t> <t>the</t> <t>wrong</t> <t>directory</t>.
 
 <t>Then I</t> <t>just</t> <t>reinstalled</t> <code><c>apt-get</c> <c>install</c> <c>python-dev</c></code>.
 <t>Let</t> <t>me</t> <t>install</t> <t>the</t> <t>drivers</t> <t>I</t> <t>want</t> <t>after</t> <t>that</t>
 "
-<t>1810760</t>|"<t>Try</t> <code><c>os</c><c>.</c><c>chdir</c></code>
+1810760|"<t>Try</t> <code><c>os</c><c>.</c><c>chdir</c></code>
 
 
 <code><c>os</c><c>.</c><c>chdir(</c><c>path</c>)
@@ -310,7 +310,7 @@ Id|Body
           <t>Change</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>to</t> <t>path</t>. <t>Availability</t>: <t>Unix</t>, <t>Windows</t>.
 
 "
-<t>1229342</t>|"<t>Like</t> <t>other</t> <t>people</t> <t>have</t> <t>said</t>, <t>generally</t> <t>Python</t> <t>strings</t> <t>are</t> <t>supposed</t> <t>to</t> <t>be</t> <t>immutable</t>.
+1229342|"<t>Like</t> <t>other</t> <t>people</t> <t>have</t> <t>said</t>, <t>generally</t> <t>Python</t> <t>strings</t> <t>are</t> <t>supposed</t> <t>to</t> <t>be</t> <t>immutable</t>.
 
 <t>However</t>, <t>if</t> <t>you</t> <t>are</t> <t>using</t> <t>CPython</t>, <t>the</t> <t>implementation</t> <t>at</t> <t>python</t>.<t>org</t>, <t>it</t> <t>is</t> <t>possible</t> <t>to</t> <t>use</t> <t>ctypes</t> <t>to</t> <t>modify</t> <t>the</t> <t>string</t> <t>structure</t> <t>in</t> <t>memory</t>.
 
@@ -320,7 +320,7 @@ Id|Body
 
 <t>I</t> <t>mention</t> <t>this</t> <t>for</t> <t>the</t> <t>sake</t> <t>of</t> <t>completeness</t>, <t>and</t> <t>this</t> <t>should</t> <t>be</t> <t>your</t> <t>last</t> <t>resort</t> <t>as</t> <t>it</t> <t>is</t> <t>hackish</t>.
 "
-<t>28576383</t>|"
+28576383|"
   <t>How</t> <t>do</t> <t>I</t> <t>get</t> <t>the</t> <t>current</t> <t>time</t> <t>in</t> <t>Python</t>?
 
 
@@ -428,7 +428,7 @@ q
 
 <t>If</t> <t>you're</t> <t>displaying</t> <t>the</t> <t>time</t> <t>with</t> <t>Python</t> <t>for</t> <t>the</t> <t>user</t>, <code><c>ctime</c></code> <t>works</t> <t>nicely</t>, <t>not</t> <t>in</t> <t>a</t> <t>table</t> (<t>it</t> <t>doesn't</t> <t>typically</t> <t>sort</t> <t>well</t>), <t>but</t> <t>perhaps</t> <t>in</t> <t>a</t> <t>clock</t>. <t>However</t>, <t>I</t> <t>personally</t> <t>recommend</t>, <t>when</t> <t>dealing</t> <t>with</t> <t>time</t> <t>in</t> <t>Python</t>, <t>either</t> <t>using</t> <t>Unix</t> <t>time</t>, <t>or</t> <t>a</t> <t>timezone</t> <t>aware</t> <t>UTC</t> <code><c>datetime</c></code> <t>object</t>.
 "
-<t>1207460</t>|"<t>Your</t> <t>best</t> <t>approach</t> <t>for</t> <t>such</t> <t>an</t> <t>example</t> <t>would</t> <t>be</t> <t>a</t> <t>list</t> <t>comprehension</t>
+1207460|"<t>Your</t> <t>best</t> <t>approach</t> <t>for</t> <t>such</t> <t>an</t> <t>example</t> <t>would</t> <t>be</t> <t>a</t> <t>list</t> <t>comprehension</t>
 
 <code><c>somelist</c> <c>=</c> [<c>tup</c> <c>for</c> <c>tup</c> <c>in</c> <c>somelist</c> <c>if</c> <c>determine(</c><c>tup</c>)]
 </code>
@@ -451,7 +451,7 @@ q
         <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
 </code>
 "
-<t>326279</t>|"<t>Note</t> <t>that</t> <c>rstrip</c> <t>doesn't</t> <t>act</t> <t>exactly</t> <t>like</t> <t>Perl's</t> <c>chomp</c>() <t>because</t> <t>it</t> <t>doesn't</t> <t>modify</t> <t>the</t> <t>string</t>. <t>That</t> <t>is</t>, <t>in</t> <t>Perl</t>:
+326279|"<t>Note</t> <t>that</t> <c>rstrip</c> <t>doesn't</t> <t>act</t> <t>exactly</t> <t>like</t> <t>Perl's</t> <c>chomp</c>() <t>because</t> <t>it</t> <t>doesn't</t> <t>modify</t> <t>the</t> <t>string</t>. <t>That</t> <t>is</t>, <t>in</t> <t>Perl</t>:
 
 <code><c>$</c><c>x</c><c>=</c>""<c>a</c><c>\n</c>"";
 
