@@ -1,5 +1,5 @@
-509211,notation,slice,Explain
-12836128,tuple,l,Convert
+4509211,notation,slice,Explain
+12836128,tuple,Convert,convert
 6996603,delete,folder,file
 2582138,replace,number,occurrences
 4289331,numbers,Extract,extract
@@ -11,7 +11,7 @@
 123198,copy,file,under
 4934806,script,path,run
 12309269,data,obj,JSON
-1747817,blah,comprehension,v
+1747817,blah,comprehension,Create
 865115,__del__(,self,exception
 9252543,entity,physics,Ent
 11178061,Sam,Peter,James
@@ -20,12 +20,12 @@
 4142151,py,user,dir
 1934675,execute,blah,argument
 273192,directory,os,file_path
-15769246,myList,Person(,p
+15769246,myList,Person(,Foo
 627435,remove,element,index
 1483429,except,print,error
 9733638,content,self,server
 2915471,pip,package,install
-960733,d,relation,scope_item
+960733,relation,scope_item,append(
 159720,naming,convention,names
 4426663,Item,go,remove
 122327,location,site-packages,directory
@@ -37,8 +37,8 @@
 7818811,numpy,question,still
 5563089,raw_input,function,interface
 20309456,file,I've,function
-1641219,self1,s,constructor
-2972212,empty,reasons,l
+1641219,self1,constructor,show(
+2972212,empty,reasons,Creating
 4534438,callable,TypeError,object
 610883,attribute,property,&gt;&gt;&gt;
 1093322,check,version,script
