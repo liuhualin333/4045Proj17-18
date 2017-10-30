@@ -251,8 +251,8 @@ Id|Title|Body
 "
 4142151|<t>How</t> <t>to</t> <t>import</t> <t>the</t> <t>class</t> <t>within</t> <t>the</t> <t>same</t> <t>directory</t> <t>or</t> <t>sub</t> <t>directory</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>directory</t> <t>that</t> <t>stores</t> <t>all</t> <t>the</t> <t>.py</t> <t>files</t>.
 
-<code><c>bin</c><c>/
-</c>   <c>main.py</c>
+<code><c>bin/</c>
+   <c>main.py</c>
    <c>user.py</c> # <c>where</c> <c>class</c> <c>User</c> <c>resides</c>
    <c>dir.py</c> # <c>where</c> <c>class</c> <c>Dir</c> <c>resides</c>
 </code>
@@ -261,11 +261,11 @@ Id|Title|Body
 <t>How</t> <t>can</t> <t>I</t> <t>import</t> <t>these</t> <t>Python</t> <t>classes</t> <t>into</t> <t>main.py</t>?
 <t>Furthermore</t>, <t>how</t> <t>can</t> <t>I</t> <t>import</t> <t>class</t> <code><c>User</c></code> <t>if</t> <t>user.py</t> <t>is</t> <t>in</t> <t>a</t> <t>sub</t> <t>directory</t>?
 
-<code><c>bin</c><c>/
-</c>    <c>dir.py</c>
+<code><c>bin/</c>
+    <c>dir.py</c>
     <c>main.py</c>
-    <c>usr</c><c>/
-</c>        <c>user.py</c>
+    <c>usr/</c>
+        <c>user.py</c>
 </code>
 "
 1934675|<t>How</t> <t>to</t> <t>execute</t> <t>Python</t> <t>scripts</t> <t>in</t> <t>Windows</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>simple</t> <t>script</t> <t>blah.py</t> (<t>using</t> <t>Python</t> <t>2</t>):

@@ -1,6 +1,6 @@
 import sklearn_crfsuite
 from sklearn_crfsuite import metrics
-
+import pdb
 
 def word2features(sentence, i):
     word = sentence[i][0]
@@ -67,7 +67,7 @@ def main():
 
     x_test = [sentence2features(s) for s in test_sentence]
     y_test = [sentence2tokens(s) for s in test_sentence]
-
+    #pdb.set_trace()
     # build model
     crf = sklearn_crfsuite.CRF(
         algorithm='lbfgs',
