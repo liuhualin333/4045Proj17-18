@@ -136,7 +136,7 @@ Cleaning</c> <c>up</c>...
 '<c>pip</c>' <c>is</c> <c>not</c> <c>recognized</c> <c>as</c> <c>an</c> <c>internal</c> <c>or</c> <c>external</c> <c>command</c>,
 <c>operable</c> <c>program</c> <c>or</c> <c>batch</c> <c>file</c><c>.</c>
 
-<c>C:\Python34&gt;</c><c>lib</c><c>\site-packages\pip</c> <c>install</c> <c>Django</c>
+<c>C:\Python34&gt;</c><c>lib\site-packages\pip</c> <c>install</c> <c>Django</c>
 '<c>lib</c><c>\site-packages\pip</c>' <c>is</c> <c>not</c> <c>recognized</c> <c>as</c> <c>an</c> <c>internal</c> <c>or</c> <c>external</c> <c>command</c>,
 <c>operable</c> <c>program</c> <c>or</c> <c>batch</c> <c>file</c><c>.</c> 
 </code>
@@ -148,16 +148,13 @@ Cleaning</c> <c>up</c>...
 <t>As</t> <t>requested</t> <t>this</t> <t>is</t> <t>what</t> <t>I</t> <t>get</t> <t>when</t> <t>I</t> <t>type</t> <t>in</t> <t>echo</t> <t>%PATH%</t>
 
 <code><c>C:\Python34&gt;</c><c>echo</c> <c>%</c><c>PATH</c><c>%</c>
-<c>C:\Program</c> <c>Files</c><c>\ImageMagick-6.8.8-Q16</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\iCLS</c> <c>Client</c><c>\
-</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\iCLS</c> <c>Client</c><c>\</c>;<c>C:\Windows\system32</c>;<c>C:\Windows</c>;<c>C:\Windows\S
-ystem32\Wbem</c>;<c>C:\Windows\System32\WindowsPowerShell\v1.0\</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\
-Windows</c> <c>Live</c><c>\Shared</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\OpenCL</c> <c>SDK</c><c>\2.0\bin\x86</c>;<c>C:\Progr
-am</c> <c>Files</c> (<c>x86</c>)<c>\Intel\OpenCL</c> <c>SDK</c><c>\2.0\bin\x64</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\Intel(R)</c> <c>Mana</c>
-<c>gement</c> <c>Engine</c> <c>Components</c><c>\DAL</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>C</c>
-<c>omponents</c><c>\IPT</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>Components</c>
-<c>\DAL</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>Components</c><c>\IPT</c>;<c>C:\P
-rogram</c> <c>Files</c> (<c>x86</c>)<c>\nodejs\</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Heroku\bin</c>;<c>C:\Program</c> <c>Files</c> (<c>x</c>
-<c>86</c>)<c>\git\cmd</c>;<c>C:\RailsInstaller\Ruby2.0.0\bin</c>;<c>C:\RailsInstaller\Git\cmd</c>;<c>C:\RailsIn
+<c>C:\Program Files\ImageMagick-6.8.8-Q16</c>;<c>C:\Program Files (x86)\Intel\iCLS Client\</c>
+;<c>C:\Program Files\Intel\iCLS Client\</c>;<c>C:\Windows\system32</c>;<c>C:\Windows</c>;<c>C:\Windows\S
+ystem32\Wbem</c>;<c>C:\Windows\System32\WindowsPowerShell\v1.0\</c>;<c>C:\Program Files (x86)\
+Windows Live\Shared</c>;<c>C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86</c>;<c>C:\Progr
+am Files (x86)\Intel\OpenCL SDK\2.0\bin\x64</c>;<c>C:\Program Files\Intel\Intel(R) Management Engine Components\DAL</c>;<c>C:\Program Files\Intel\Intel(R) Management Engine Components\IPT</c>;<c>C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL</c>;<c>C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT</c>;<c>C:\P
+rogram Files (x86)\nodejs\</c>;<c>C:\Program Files (x86)\Heroku\bin</c>;<c>C:\Program Files (x
+86)\git\cmd</c>;<c>C:\RailsInstaller\Ruby2.0.0\bin</c>;<c>C:\RailsInstaller\Git\cmd</c>;<c>C:\RailsIn
 staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 </c></code>
 "
