@@ -1,3 +1,2 @@
-<code>
-    sd=""23.5° North Latitude""
+<code>      # coding= &lt;encoding name&gt;
 </code>

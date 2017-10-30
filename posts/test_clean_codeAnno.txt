@@ -1,3 +1,2 @@
-<code>
-    <c>sd</c><c>=</c>""<c>23.5</c><c>°</c> <c>North</c> <c>Latitude</c>""
+<code>      # <c>coding</c><c>=</c> <c>&lt;</c><c>encoding</c> <c>name</c><c>&gt;</c>
 </code>
