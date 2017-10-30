@@ -80,7 +80,7 @@ def main(post_path="../posts/posts_training_clean_codeAnno_textAnno.txt"):
     for p in post_list:
         p_tokens = re_text.findall(p[1]) + re_code.findall(p[1])
         # remove stop words, digits, one letter and &gt
-        p_tokens = [i for i in p_tokens if not (i.lower() in stop_words or i.isdigit() or len(i) <= 1 or '&' in i)]
+        p_tokens = [i for i in p_tokens if not (i.lower() in stop_words or i.isdigit() or len(i) <= 1 or '&' in i or '\n' in i)]
         p_id = p[0]
         post_token_count_list.append((p_id, dict(Counter(p_tokens))))
 
