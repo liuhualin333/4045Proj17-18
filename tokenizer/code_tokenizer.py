@@ -62,6 +62,7 @@ class CodesTokenizer:
 		dashs = []
 		lts_gts = []
 		overall = []
+		cookies = []
 		# get all paths 
 		for path in re.finditer(re.compile(r"(\w\:)?((\\[^,;\'\" ]+)+|(/[^,;\'\" ]+)+)(\.\w+)?"), self._codes):
 			paths.append([path.start(), path.end()])
@@ -77,10 +78,12 @@ class CodesTokenizer:
 		# get all &lt; and &gt;
 		for lt_gt in re.finditer(re.compile(r"&(lt|gt);"), self._codes):
 			lts_gts.append([lt_gt.start(), lt_gt.end()])
-
+		# get tokenizer cookie 
+		for cookie in re.finditer(re.compile(r'[A-Za-z]*coding[:=]', re.ASCII), self._codes):
+			cookies.append([cookie.start(), cookie.end()-1])
 
 		# custom union function to union the ranges of different reserved codes
-		overall = union([paths, consec_nums, dashs, lts_gts])
+		overall = union([paths, consec_nums, dashs, lts_gts, cookies])
 		#
 		#import pdb; pdb.set_trace()
 		code_anchor = 0
@@ -105,54 +108,59 @@ class CodesTokenizer:
 		ss = self._processed_codes.splitlines()
 		#pdb.set_trace()
 		for line in ss:
-			# call python tokenize.tokenize and get the returned generator g
-			g = tokenize(BytesIO(line.encode('utf-8')).readline)  # tokenize the string
-			try:
-				for toknum, tokval, starrt, eend, _ in g:
-					#pdb.set_trace()
-					chop_start = 0
-					chop_end = len(tokval) - 1
-					#pdb.set_trace()
-					# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
-					if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([\ ,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+			try: 
+				# call python tokenize.tokenize and get the returned generator g
+				g = tokenize(BytesIO(line.encode('utf-8')).readline)  # tokenize the string
+				try:
+					for toknum, tokval, starrt, eend, _ in g:
 						#pdb.set_trace()
-						# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
-						if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
-							self._tokens[-1] = self._tokens[-1] + tokval
-						elif(tokval == '('):
-							pass
-						elif(toknum == NUMBER and int(tokval) in self._reserve_codes):
-							self._tokens.append(self._reserve_codes[int(tokval)])
-						else:
-							self._tokens.append(tokval)
-					# For comment / string, code 
-					elif(toknum in [COMMENT, STRING]):
+						chop_start = 0
+						chop_end = len(tokval) - 1
 						#pdb.set_trace()
-						if(toknum == STRING):
-							# remove starting and ending ' / "
-							while((tokval[chop_start] == '"' or tokval[chop_start] == "'") and chop_start < chop_end):
-								chop_start += 1
-							while((tokval[chop_end] == '"' or tokval[chop_end] == "'") and chop_start < chop_end):
-								chop_end -= 1
-						else:
-							# remove starting # / ''' / """
-							while((tokval[chop_start] == '#' and chop_start < chop_end)
-								or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == "'''") 
-								or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == '"""')):
-								if(tokval[chop_start] == '#'):
+						# if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
+						if(toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(r"^(?<![a-zA-Z])([\ ,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+							#pdb.set_trace()
+							# Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
+							if(((prev_num == NAME and tokval == '(') or (prev_val == '&' and (tokval == 'lt' or tokval == 'gt')) ) and prev_end == starrt):
+								self._tokens[-1] = self._tokens[-1] + tokval
+							elif(tokval == '('):
+								pass
+							elif(toknum == NUMBER and int(tokval) in self._reserve_codes):
+								self._tokens.append(self._reserve_codes[int(tokval)])
+							else:
+								self._tokens.append(tokval)
+						# For comment / string, code 
+						elif(toknum in [COMMENT, STRING]):
+							#pdb.set_trace()
+							if(toknum == STRING):
+								# remove starting and ending ' / "
+								while((tokval[chop_start] == '"' or tokval[chop_start] == "'") and chop_start < chop_end):
 									chop_start += 1
-								else:
-									chop_start += 3
-						if(chop_start < chop_end or (tokval[chop_start] not in ['#', "'", '"'])):
-							words = CodesTokenizer(tokval[chop_start:chop_end+1])._tokens
-							if(words):
-								self._tokens.extend(words)
-					prev_num = toknum
-					prev_val = tokval
-					prev_end = eend
+								while((tokval[chop_end] == '"' or tokval[chop_end] == "'") and chop_start < chop_end):
+									chop_end -= 1
+							else:
+								# remove starting # / ''' / """
+								while((tokval[chop_start] == '#' and chop_start < chop_end)
+									or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == "'''") 
+									or (chop_end >= chop_start+3 and tokval[chop_start:chop_start+3] == '"""')):
+									if(tokval[chop_start] == '#'):
+										chop_start += 1
+									else:
+										chop_start += 3
+							if(chop_start < chop_end or (tokval[chop_start] not in ['#', "'", '"'])):
+								words = CodesTokenizer(tokval[chop_start:chop_end+1])._tokens
+								if(words):
+									self._tokens.extend(words)
+						prev_num = toknum
+						prev_val = tokval
+						prev_end = eend
+				except Exception as e:
+					#print("Error in __setTokens__", e, line)
+					#pdb.set_trace()
+					pass
 			except Exception as e:
-				#print("Error in __setTokens__", e, line)
-				#pdb.set_trace()
+				print("Error in __setTokens__", e, line)
+				pdb.set_trace()
 				pass
 	# annotate: Based on _tokens and _codes, annotate the cooresponding tokens with token tags. 
 	def annotate(self):
