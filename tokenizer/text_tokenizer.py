@@ -32,35 +32,24 @@ class TextTokenizer:
     _tokens = None
     _text = None
 
-    def __init__(self, text, special_words=[],answer_flag=False,post_flag=False):
+    def __init__(self, text, answer_flag=False,post_flag=False):
         self._tokens = []
         self._text = text
         self._sb = StringBuilder()
-        self.tokenizer(text, special_words)
         self.answer_flag = answer_flag
         self.post_flag = post_flag
+        self.tokenizer(text)
 
-    def tokenizer(self, text, special_words=[]):
+    def tokenizer(self, text):
         # Split on whitespace
         sentenceList = text.splitlines()
-        """ This function needs rework
-		if(len(special_words) > 0):
-			_temp = []
-			for special_word in special_words:
-				for item in wordList:
-					#item = list(filter(None, item.split(special_word)))
-					if(special_word in item):
-						_temp.extend(list(filter(None, item.split(special_word))))
-					else:
-						_temp.append(item)
-				wordList = _temp
-				_temp = []
-		"""
         notSPFlag = False
         # For names and special pronouns
         specialPronounFlag = False
         # Combine equal sign with previous and next words
         equalSignFlag = False
+        # Counter for how long the flag is effective
+        counter = 0 
         # For Money (e.g. 550,5500.00)
         moneyPattern = re.compile(r'[0-9]*\.[0-9]+')
         for sentence in sentenceList:
@@ -82,11 +71,10 @@ class TextTokenizer:
                     lastWord = ' '
                 # if (word=='RESTful'):
                 # pdb.set_trace()
+                if (not word[-1].isalnum()):
+                    notSPFlag = True
+                    counter += 1
                 if (lastWord[0].isupper() and word[0].isupper() and notSPFlag == False):
-                    #if (word == "Epoch"):
-                        #pdb.set_trace()
-                    if (not word[-1].isalnum()):
-                        notSPFlag = True
                     tokenList = tokenList[:-1]  # Delete last token (ground step to form special pronoun)
                     lastWord = lastWord + ' ' + word  # Form current special pronoun
                     specialPronounFlag = True
@@ -96,7 +84,10 @@ class TextTokenizer:
                     lastWord = lastWord + ' ' + word  # Concatenate previous word with '='
                     equalSignFlag = True
                 else:
-                    notSPFlag = False
+                    if (counter > 0):
+                        counter -= 1
+                    else:
+                        notSPFlag = False
                     if (specialPronounFlag == True):
                         tokenList.append(lastWord.strip('.,?!:'))  # Append finalized special noun
                         specialPronounFlag = False
@@ -135,12 +126,15 @@ class TextTokenizer:
             return self._text
         try:
             for token in self._tokens:
-                search = re.compile(re.escape(token)).search(self._text, text_anchor)
-                search_start = search.start()
-                search_end = search.end()
-                self._sb.Append(self._text[text_anchor: search_start])
-                self._sb.Append('<t>' + token + '</t>')
-                text_anchor = search_end
+                try:
+                    search = re.compile(re.escape(token)).search(self._text, text_anchor)
+                    search_start = search.start()
+                    search_end = search.end()
+                    self._sb.Append(self._text[text_anchor: search_start])
+                    self._sb.Append('<t>' + token + '</t>')
+                    text_anchor = search_end
+                except:
+                    continue
             self._sb.Append(self._text[text_anchor:])
         except Exception as e:
             print(e, "code: \n", self._text, "tokens: \n", self._tokens)
