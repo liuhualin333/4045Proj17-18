@@ -127,16 +127,17 @@ class TextTokenizer:
             for token in self._tokens:
                 try:
                     search = re.compile(re.escape(token)).search(self._text, text_anchor)
-                    search1 = re.compile('[0-9]*' + re.escape(token) + '[0-9]*\|').search(self._text, text_anchor)
                     search_start = search.start()
                     search_end = search.end()
-                    try:
-                        if (search_start >= search1.start() and search_end <= search1.end()):
-                            search = re.compile(re.escape(token)).search(self._text, search1.end())
-                            search_start = search.start()
-                            search_end = search.end()
-                    except:
-                        pass
+                    if (token.isdigit()):
+                        search1 = re.compile('\n[0-9]*' + re.escape(token) + '[0-9]*\|').search(self._text, text_anchor)
+                        try:
+                            if (search_start >= search1.start() and search_end <= search1.end()):
+                                search = re.compile(re.escape(token)).search(self._text, search1.end())
+                                search_start = search.start()
+                                search_end = search.end()
+                        except:
+                            pass
                     self._sb.Append(self._text[text_anchor: search_start])
                     self._sb.Append('<t>' + token + '</t>')
                     text_anchor = search_end
