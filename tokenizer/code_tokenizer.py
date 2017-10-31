@@ -20,6 +20,7 @@ import codecs
 import re
 import sys, os
 import pdb
+sys.path.insert(0, '../utilities')
 from utilities import *
 import hashlib
 code_tag = ['<c>', '</c>']
