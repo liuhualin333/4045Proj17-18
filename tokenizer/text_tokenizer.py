@@ -32,7 +32,7 @@ class TextTokenizer:
     _tokens = None
     _text = None
 
-    def __init__(self, text, answer_flag=False,post_flag=False):
+    def __init__(self, text, answer_flag=False, post_flag=False):
         self._tokens = []
         self._text = text
         self._sb = StringBuilder()
@@ -49,7 +49,7 @@ class TextTokenizer:
         # Combine equal sign with previous and next words
         equalSignFlag = False
         # Counter for how long the flag is effective
-        counter = 0 
+        counter = 0
         # For Money (e.g. 550,5500.00)
         moneyPattern = re.compile(r'[0-9]*\.[0-9]+')
         for sentence in sentenceList:
@@ -57,7 +57,7 @@ class TextTokenizer:
             lastWord = ' '
             wordList = []
             try:
-                if(self.post_flag == True):
+                if (self.post_flag == True):
                     wordList.extend(sentence.split('|')[-2].split())
                     wordList.extend(sentence.split('|')[-1].split())
                 else:
@@ -107,15 +107,15 @@ class TextTokenizer:
                     for elm in word:
                         elm = elm.strip('()\"\':?!')
                         if (elm == ""):
-                        	lastWord = elm
-                        	continue
+                            lastWord = elm
+                            continue
                         tokenList.append(elm)
                         lastWord = elm
             # print(tokenList[:-1])
             if (specialPronounFlag == True or equalSignFlag == True):
-            	tokenList.append(lastWord)
-            	specialPronounFlag = False
-            	equalSignFlag = False
+                tokenList.append(lastWord)
+                specialPronounFlag = False
+                equalSignFlag = False
             self._tokens.extend(tokenList)
 
     def annotate(self):
@@ -127,11 +127,11 @@ class TextTokenizer:
             for token in self._tokens:
                 try:
                     search = re.compile(re.escape(token)).search(self._text, text_anchor)
-                    search1 = re.compile('[0-9]*'+re.escape(token)+'[0-9]*\|').search(self._text, text_anchor)
+                    search1 = re.compile('[0-9]*' + re.escape(token) + '[0-9]*\|').search(self._text, text_anchor)
                     search_start = search.start()
                     search_end = search.end()
                     try:
-                        if(search_start>=search1.start() and search_end <= search1.end()):
+                        if (search_start >= search1.start() and search_end <= search1.end()):
                             search = re.compile(re.escape(token)).search(self._text, search1.end())
                             search_start = search.start()
                             search_end = search.end()
@@ -175,7 +175,7 @@ def main(file):
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]
-        tt = TextTokenizer(text,answer_flag=answer_flag,post_flag=post_flag)
+        tt = TextTokenizer(text, answer_flag=answer_flag, post_flag=post_flag)
         annotated_text = tt.annotate()
         # Add annotated_text
         sb_file.Append(annotated_text)

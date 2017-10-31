@@ -11,7 +11,7 @@ from nltk import word_tokenize, SnowballStemmer
 import sys
 from collections import defaultdict
 
-class findOriginalWord():
+class findOriginalWord:
     def __init__(self,*args):
         self.file = args[0]
         self.text = open(self.file).read()
