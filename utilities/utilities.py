@@ -81,15 +81,18 @@ def anno2charsTokens(annoText, annoTag):
 
 # from mixed annotated text to clean text(remove <c></c> <t></t> tag) and output the corresponding tag
 def MixAnno2charsTokens(annoText):
-	origin_txt = StringBuilder()
-	origin_label = StringBuilder()
+	#origin_txt = StringBuilder()
+	#origin_label = StringBuilder()
+	origin_txt, origin_label = [], []
 	anno_anchor = 0
 	code_tag = ['<c>', '</c>']
 	text_tag = ['<t>', '</t>']
 	code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(annoText)
 	def Appendtxtlabel(_txt, _label):
-		origin_txt.Append(_txt)
-		origin_label.Append(_label)
+		#origin_txt.Append(_txt)
+		#origin_label.Append(_label)
+		origin_txt.append(_txt)
+		origin_label.append(_label)
 	# iterate all codes area, defined by <code> ... </code>
 	#pdb.set_trace()
 	for code_sec in code_secs:
@@ -103,9 +106,8 @@ def MixAnno2charsTokens(annoText):
 		anno_anchor = code_sec.end()
 
 	Appendtxtlabel(*anno2charsTokens(annoText[anno_anchor : ], text_tag))
-	return origin_txt.__str__(), origin_label.__str__()
-
-#def crfAnno2text()
+	#return origin_txt.__str__(), origin_label.__str__()
+	return origin_txt, origin_label
 
 def get_data(filepath):
 	X, Y = [], []
@@ -124,20 +126,85 @@ def get_data(filepath):
 		#pdb.set_trace()
 		def post2XY(post):
 			_text, _label = MixAnno2charsTokens(post.group(1))
-			_x = _text
-			_y = _label
+			X.extend(_text)
+			Y.extend(_label)
 			if(flag == 'post'):
 				_text, _label = MixAnno2charsTokens(post.group(2))
-				_x += _text
-				_y += _label
-			X.append(_x)
-			Y.append(_y)
+				X.extend(_text)
+				Y.extend(_label)
 		for post in pattern.finditer(file_text):
 			post2XY(post)
 		last_post = end_pattern.search(file_text, post.end())
 		post2XY(last_post)
 	Y = [list(str) for str in Y]
 	return X, Y
+
+# X, Y: strings
+# X contains block of text
+# Y contains block tag (U,E,I,T,O)
+def crfTokens2Anno(X, Y):
+	assert len(X) == len(Y)
+	text = StringBuilder()
+	for x,y in zip(X, Y):
+		if(y == 'T'):
+			text.Append('<t>'+x)
+		elif(y == 'E'):
+			text.Append(x+'</t>')
+		elif(y == 'U'):
+			text.Append('<t>'+x+'</t>')
+		else:
+			text.Append(x)
+	#pdb.set_trace()
+	return text.__str__()
+
+def crfFile2File(crf, filepath):
+	new_file_text = StringBuilder()
+	with open(filepath) as f:
+		file_text = f.read()
+		if(r'Id|Body' in file_text[:15]):
+			flag = 'answer'
+			new_file_text.Append(file_text[:8])
+			file_text = file_text[8:]
+			pattern = re.compile(r'^(\d+)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+			end_pattern = re.compile(r'^(\d+)\|\"(.*)\"$', flags = re.S|re.M)
+		else:
+			flag = 'post'
+			new_file_text.Append(file_text[:14])
+			file_text = file_text[14:]
+			pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+			end_pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
+		
+		def predictMixed(txt):
+			code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(txt)
+			predcit_label = []
+			pred_anchor = 0
+			for code_sec in code_secs:
+				# +6 and -7 to exclude <code> & </code> tags
+				#pdb.set_trace()
+				predcit_label.extend(crf.predict([txt[pred_anchor : code_sec.start()]])[0])
+				code_start = code_sec.start() + 6
+				code_end = code_sec.end() - 7
+				predcit_label.extend(['O']*6 + crf.predict([txt[code_start : code_end]])[0] + ['O']*7)
+				pred_anchor = code_sec.end()
+
+			predcit_label.extend(crf.predict([txt[pred_anchor : ]])[0])
+			return predcit_label
+
+		def post2txt(post):
+			_txt = StringBuilder()
+			_txt.Append(post.group(1)+'|')
+			if(flag == 'post'):
+				_txt.Append(crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '|')
+				_txt.Append('"' + crfTokens2Anno(post.group(3), predictMixed(post.group(2)) ) + '"\n')
+			else:
+				_txt.Append('"' + crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '"\n')
+			new_file_text.Append(_txt.__str__())
+
+		for post in pattern.finditer(file_text):
+			post2txt(post)
+		last_post = end_pattern.search(file_text, post.end())
+		post2txt(last_post)
+	return new_file_text.__str__()
 
 def is_number(s):
 	try:

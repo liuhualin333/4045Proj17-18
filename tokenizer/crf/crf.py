@@ -7,6 +7,8 @@ from io import BytesIO, StringIO
 import re
 sys.path.insert(0, '../../utilities')
 from utilities import *
+sys.path.insert(0, '../../evaluate')
+from evaluation import *
 
 def get_char_feature(char, index):
     return {
@@ -31,73 +33,8 @@ def chars2features(chars):
         chars_features.append(char_features)
     return chars_features
 
-    
-
-def word2features(sentence, i):
-    word = sentence[i][0]
-    token = sentence[i][1]
-
-    features = {
-        'bias': 1.0,
-        'lower': word.lower(),
-        'isUpper': word.isupper(),
-        'isTitle': word.istitle(),
-        'isDigit': word.isdigit(),
-    }
-
-    if i > 0:
-        word1 = sentence[i-1][0]
-        token1 = sentence[i-1][1]
-        features.update({
-            'preLower': word1.lower(),
-            'preIsUpper': word1.isupper(),
-            'preIsTitle': word1.istitle(),
-            'preIsDigit':word1.isdigit(),
-        })
-    else:
-        features['BOS'] = True
-
-    if i < len(sentence)-1:
-        word1 = sentence[i - 1][0]
-        token1 = sentence[i - 1][1]
-        features.update({
-            'nextLower': word1.lower(),
-            'nextIsUpper': word1.isupper(),
-            'nextIsTitle': word1.istitle(),
-            'nextIsDigit': word1.isdigit(),
-        })
-    else:
-        features['EOS'] = True
-
-    return features
-
-
-def sentence2features(sentence):
-    return [word2features(sentence, i) for i in range(len(sentence))]
-
-
-def sentence2tokens(sentence):
-    return [token for word, token in sentence]
-
-
-def sentence2words(sentence):
-    return [word for word, token in sentence]
-
-
 def main():
     # read data
-    # rules defined in training data
-    '''
-    train_sentence = [[('I','U'),('love','U'),('New','B'),('York.','E')],[('Bei','B'),('Jing','E'),('is','U'),('far','U')],[('Machine','B'),('Learning','E'),('tools','U'),('Are','U'),('great.','U')]]
-    test_sentence = [[('This','U'),('is','U'),('Shang','B'),('Hai','E'),('city.','U')]]
-
-    x_train_ = [sentence2features(s) for s in train_sentence]
-    y_train = [sentence2tokens(s) for s in train_sentence]
-
-    x_test = [sentence2features(s) for s in test_sentence]
-    y_test = [sentence2tokens(s) for s in test_sentence]
-    #pdb.set_trace()
-    '''
     x_train = []
     y_train = []
     x_test = []
@@ -126,15 +63,10 @@ def main():
     x_test = [chars2features(x_test)]
     y_test = [y_test]
     '''
-    x_test, y_test = get_data('../../posts/posts_training_clean_codeAnno_textAnno.txt') 
-    x_train, y_train = get_data("../../Training/posts_annotated.txt")
+    x_train, y_train = get_data("training.txt")
+    x_test, y_test = get_data('testing.txt') 
     #x_train = [chars2features(block) for block in x_train]
     #x_test = [chars2features(block) for block in x_test]
-
-    pdb.set_trace()
-
-    metrics.flat_f1_score(y_train, y_test,
-                          average='weighted')
 
     #pdb.set_trace()
     # build model
@@ -153,8 +85,9 @@ def main():
 
     # predict model
     y_pred = crf.predict(x_test)
-    print(y_pred)
-
+    #print(y_pred)
+    #pdb.set_trace()
+    evaluate_nested(y_pred, y_test)
     # show metrics
     metrics.flat_f1_score(y_test, y_pred,
                           average='weighted', labels=labels)
@@ -166,6 +99,9 @@ def main():
     print(metrics.flat_classification_report(
         y_test, y_pred, labels=sorted_labels, digits=3
     ))
+    with open('output.txt','w') as f:
+        f.write(crfFile2File(crf, 'testing_clean.txt'))
+    return crf
 
 if __name__ == '__main__':
     main()

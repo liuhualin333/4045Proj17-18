@@ -60,24 +60,24 @@ Id|Body
 
 <t>meta</t> <t>class</t> <t>are</t> <t>used</t> <t>to</t> <t>apply</t> <t>some</t> <t>rule</t> <t>to</t> <t>an</t> <t>entire</t> <t>set</t> <t>of</t> <t>classes</t>. <t>For</t> <t>example</t>, <t>suppose</t> <t>you're</t> <t>building</t> <t>an</t> <t>ORM</t> <t>to</t> <t>access</t> <t>a</t> <t>database</t>, <t>and</t> <t>you</t> <t>want</t> <t>records</t> <t>from</t> <t>each</t> <t>table</t> <t>to</t> <t>be</t> <t>of</t> <t>a</t> <t>class</t> <t>mapped</t> <t>to</t> <t>that</t> <t>table</t> (<t>based</t> <t>on</t> <t>fields</t>, <t>business</t> <t>rules</t>, <t>etc</t>...f) <t>a</t> <t>possible</t> <t>use</t> <t>of</t> <t>metaclass</t> <t>is</t> <t>for</t> <t>instance</t>, <t>connection</t> <t>pool</t> <t>logic</t>, <t>which</t> <t>is</t> <t>share</t> <t>by</t> <t>all</t> <t>classes</t> <t>of</t> <t>record</t> <t>from</t> <t>all</t> <t>tables</t>. <t>Another</t> <t>use</t> <t>is</t> <t>logic</t> <t>to</t> <t>to</t> <t>support</t> <t>foreign</t> <t>keys</t>, <t>which</t> <t>involves</t> <t>multiple</t> <t>classes</t> <t>of</t> <t>records</t>. 
 
-<t>when</t> <t>you</t> <t>define</t> <t>metaclass</t>, <t>you</t> <t>subclass</t> <t>type</t>, <t>and</t> <t>can</t> <t>overrided</t> <t>the</t> <t>following</t> <t>magic</t> <t>methods</t> <t>to</t> <t>insert</t> <t>your</t> <t>logic</t>.
+<t>when</t> <t>you</t> <t>define</t> <t>metaclass</t>, <t>you</t> <t>subclass</t> <t>type</t>, <t>and</t> <t>can</t> <t>overrided</t> <t>the</t> <t>following</t> <t>magic</t> <t>methods</t> <t>to</t> <t>insert</t> <t>your</t> <t>logic</t>. 
 
 <code><c>class</c> <c>somemeta(</c><c>type</c>):
     <c>__new__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>):
       """"""
   <t>mcs</t>: <t>is</t> <t>the</t> <t>base</t> <t>metaclass</t>, <t>in</t> <t>this</t> <t>case</t> <t>type</t><t>.</t>
-  <t>name</t>: <t>name</t> <t>of</t> <t>the</t> <t>new</t> <t>class</t>, <c>as</t> <t>provided</t> <t>by</t> <t>the</t> <t>user</t><t>.</t>
-  <t>bases</t>: <t>tuple</t> <t>of</t> <t>base</t> <t>classes</t>
+  <t>name</t>: <t>name</t> <t>of</t> <t>the</t> <t>new</t> <t>class</t>, <t>as</t> <t>provided</t> <t>by</t> <t>the</t> <t>user</t><t>.</t>
+  <t>bases</t>: <t>tuple</t> <t>of</t> <t>base</t> <t>classes</t> 
   <t>clsdict</t>: <t>a</t> <t>dictionary</t> <t>containing</t> <t>all</t> <t>methods</t> <t>and</t> <t>attributes</t> <t>defined</t> <t>on</t> <t>class</t>
 
-  <t>you</t> <t>must</t> <t>return</t> <t>a</t> <t>class</t> <t>object</t> <t>by</t> <t>invoking</t> <t>the</t> <t>__new__</t> <t>constructor</t> <t>on</t> <t>the</t> <t>base</t> <t>metaclass</t><t>.</t>
+  <t>you</t> <t>must</t> <t>return</t> <t>a</t> <t>class</t> <t>object</t> <t>by</t> <t>invoking</t> <t>the</t> <t>__new__</t> <t>constructor</t> <t>on</t> <t>the</t> <t>base</t> <t>metaclass</t>. 
  <t>ie</t>:
     <c>return</c> <c>type</c><c>.</c><c>__call__(</c><c>mcs</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>)<c>.</c>
 
   <t>in</t> <t>the</t> <t>following</t> <t>case</t>:
 
   <c>class</c> <c>foo(</c><c>baseclass</c>):
-        <c>__metaclass__</c> <c>=</c> <c>somemeta</c>
+         <c>__metaclass__</c> <c>=</c> <c>somemeta</c>
 
   <c>an_attr</c> <c>=</c> <c>12</c>
 
@@ -96,7 +96,7 @@ Id|Body
 
 
     <c>def</c> <c>__init__(</c><c>self</c>, <c>name</c>, <c>bases</c>, <c>clsdict</c>):
-      """"""
+      """""" 
       <t>called</t> <t>after</t> <t>type</t> <t>has</t> <t>been</t> <t>created</t><t>.</t> <t>unlike</t> <t>in</t> <t>standard</t> <t>classes</t>, <t>__init__</t> <t>method</t> <t>cannot</t> <t>modify</t> <t>the</t> <t>instance</t> (<t>cls</t>) <t>-</t> <t>and</t> <t>should</t> <t>be</t> <t>used</t> <t>for</t> <t>class</t> <t>validaton</t><t>.</t>
       """"""
       <c>pass</c>
@@ -119,7 +119,7 @@ Id|Body
         <c>pass</c>
 </code>
 
-<t>anyhow</t>, <t>those</t> <t>two</t> <t>are</t> <t>the</t> <t>most</t> <t>commonly</t> <t>used</t> <t>hooks</t>. <t>metaclassing</t> <t>is</t> <t>powerful</t>, <t>and</t> <t>above</t> <t>is</t> <t>nowhere</t> <t>near</t> <t>and</t> <t>exhaustive</t> <t>list</t> <t>of</t> <t>uses</t> <t>for</t> <t>metaclassing</t>.
+<t>anyhow</t>, <t>those</t> <t>two</t> <t>are</t> <t>the</t> <t>most</t> <t>commonly</t> <t>used</t> <t>hooks</t>. <t>metaclassing</t> <t>is</t> <t>powerful</t>, <t>and</t> <t>above</t> <t>is</t> <t>nowhere</t> <t>near</t> <t>and</t> <t>exhaustive</t> <t>list</t> <t>of</t> <t>uses</t> <t>for</t> <t>metaclassing</t>. 
 "
 13891070|"<t>The</t> <code><c>time</c><c>.</c><c>time(</c>)</code> <t>function</t> <t>returns</t> <t>the</t> <t>number</t> <t>of</t> <t>seconds</t> <t>since</t> <t>the</t> <t>epoch</t> <t>as</t> <t>seconds</t> <t>in</t> <t>UTC</t>.
 
@@ -139,7 +139,7 @@ Id|Body
 &gt;&gt;&gt;
 </code>
 
-<t>The</t> <code><c>ts</c></code> <t>variable</t> <t>is</t> <t>the</t> <t>time</t> <t>returned</t> <t>in</t> <t>seconds</t>.  <t>I</t> <t>then</t> <t>converted</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>using</t> <t>the</t> <code><c>datetime</c></code> <t>library</t> <t>making</t> <t>it</t> <t>a</t> <t>string</t> <t>that</t> <t>is</t> <t>human</t> <t>readable</t>.
+<t>The</t> <code><c>ts</c></code> <t>variable</t> <t>is</t> <t>the</t> <t>time</t> <t>returned</t> <t>in</t> <t>seconds</t>.  <t>I</t> <t>then</t> <t>converted</t> <t>it</t> <t>to</t> <t>a</t> <t>string</t> <t>using</t> <t>the</t> <code><c>datetime</c></code> <t>library</t> <t>making</t> <t>it</t> <t>a</t> <t>string</t> <t>that</t> <t>is</t> <t>human</t> <t>readable</t>. 
 "
 37403193|"<t>Here's</t> <t>a</t> <t>fast</t> <t>generator</t> <t>that</t> <t>uses</t> <t>a</t> <t>dict</t> <t>to</t> <t>store</t> <t>each</t> <t>element</t> <t>as</t> <t>a</t> <t>key</t> <t>with</t> <t>a</t> <t>boolean</t> <t>value</t> <t>for</t> <t>checking</t> <t>if</t> <t>the</t> <t>duplicate</t> <t>item</t> <t>has</t> <t>already</t> <t>been</t> <t>yielded</t>.
 
@@ -205,10 +205,10 @@ Id|Body
 
 &gt;&gt;&gt; <c>list(</c><c>sorted(</c> <c>combs(</c><c>range(</c><c>5</c>)), <c>key</c><c>=</c><c>len</c>))
 [(), 
- (<c>0</c>,), (<c>1</c>,), (<c>2</c>,), (<c>3</c>,), (<c>4</c>,),
- (<c>1</c>, <c>0</c>), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>),
- (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>),
- (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>),
+ (<c>0</c>,), (<c>1</c>,), (<c>2</c>,), (<c>3</c>,), (<c>4</c>,), 
+ (<c>1</c>, <c>0</c>), (<c>2</c>, <c>0</c>), (<c>2</c>, <c>1</c>), (<c>3</c>, <c>0</c>), (<c>3</c>, <c>1</c>), (<c>3</c>, <c>2</c>), (<c>4</c>, <c>0</c>), (<c>4</c>, <c>1</c>), (<c>4</c>, <c>2</c>), (<c>4</c>, <c>3</c>), 
+ (<c>2</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>1</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>0</c>), (<c>3</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>), (<c>4</c>, <c>3</c>, <c>2</c>), 
+ (<c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>2</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>1</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>0</c>), (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>), 
  (<c>4</c>, <c>3</c>, <c>2</c>, <c>1</c>, <c>0</c>)]
 
 &gt;&gt;&gt; <c>len(</c><c>set(</c><c>combs(</c><c>range(</c><c>5</c>))))
@@ -842,21 +842,21 @@ q
 
 <t>SOLUTION</t>
 
-<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code>.  
+<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><c>%PATH%</c></code>.  
 
 
-<t>To</t> <t>set</t> <t>your</t> <code><c>%</c><c>PATH</c><c>%</c></code>:
-<t>*You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><c>%</c><c>PATH</c><c>%</c></code>
+<t>To</t> <t>set</t> <t>your</t> <code><c>%PATH%</c></code>:
+<t>*You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><c>%PATH%</c></code>
 
 
 <t>Run</t> <t>Command Line*</t> <t>and</t> <t>enter</t> <t>this</t> <t>command</t>: <t>*needs</t> <t>to</t> <t>be</t> <t>run</t> <t>as</t> <t>administrator</t>
-<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
-<t>for</t> <t>example</t>: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
+<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%PATH%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
+<t>for</t> <t>example</t>: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%PATH%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
 <t>OR</t> <t>manually</t>: (<t>preferable</t>)
 <t>Add</t> <code>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c></code> <t>at</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>string</t>.
   
 
-<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
+<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><c>%PATH%</c></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
 
 "
 28811205|"<t>Simply</t> <t>call</t> <t>del</t> <t>d['key']</t>.
