@@ -94,6 +94,8 @@ class TextTokenizer:
                     elif (equalSignFlag == True):
                         tokenList.append(
                             (lastWord + ' ' + word).strip('.,?!:'))  # Append finalized formula (with current word)
+                        equalSignFlag = False
+                        continue
                     # Handle Ph.D. and case like science.[7][8]
                     if (not moneyPattern.match(word)):
                         if (word.count('.') < 2):
@@ -107,10 +109,7 @@ class TextTokenizer:
                         if (elm == ""):
                         	lastWord = elm
                         	continue
-                        if (not equalSignFlag):
-                            tokenList.append(elm)
-                        else:
-                            equalSignFlag = False
+                        tokenList.append(elm)
                         lastWord = elm
             # print(tokenList[:-1])
             if (specialPronounFlag == True or equalSignFlag == True):
@@ -128,8 +127,16 @@ class TextTokenizer:
             for token in self._tokens:
                 try:
                     search = re.compile(re.escape(token)).search(self._text, text_anchor)
+                    search1 = re.compile('[0-9]*'+re.escape(token)+'[0-9]*\|').search(self._text, text_anchor)
                     search_start = search.start()
                     search_end = search.end()
+                    try:
+                        if(search_start>=search1.start() and search_end <= search1.end()):
+                            search = re.compile(re.escape(token)).search(self._text, search1.end())
+                            search_start = search.start()
+                            search_end = search.end()
+                    except:
+                        pass
                     self._sb.Append(self._text[text_anchor: search_start])
                     self._sb.Append('<t>' + token + '</t>')
                     text_anchor = search_end
