@@ -11,23 +11,23 @@ import re
 from collections import Counter
 import pdb
 
-def evaluate(test, train):
+def evaluate(truth, predict):
     true_positive = 0
     pdb.set_trace()
-    for token in train:
-        if token not in test:
+    for token in predict:
+        if token not in truth:
             continue
         else:
-            true_positive += min(train[token], test[token])
-    false_positive = sum(train.values()) - true_positive
-    false_negative = sum(test.values()) - true_positive
+            true_positive += min(predict[token], truth[token])
+    false_positive = sum(predict.values()) - true_positive
+    false_negative = sum(truth.values()) - true_positive
     return true_positive / (true_positive+false_positive), true_positive / (true_positive + false_negative)
 
 
-def main(test_path="../Training/posts_annotated.txt", train_path='../posts/posts_training_clean_codeAnno_textAnno.txt'):
+def main(truth_path="../Training/posts_annotated.txt", predict_path='../posts/posts_training_clean_codeAnno_textAnno.txt'):
 
-    test_source = codecs.open(test_path, encoding='UTF-8').read()
-    train_source = codecs.open(train_path, encoding='UTF-8').read()
+    test_source = codecs.open(truth_path, encoding='UTF-8').read()
+    train_source = codecs.open(predict_path, encoding='UTF-8').read()
 
 
     # regular expression to extract code and text token
