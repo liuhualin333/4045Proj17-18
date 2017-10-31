@@ -2,7 +2,7 @@
 Author : SHI ZIJI
 
 Use an off-the-shelf tool to stem the tokens.
-Based on the comparison from nltk.org, snowball stemming is preferred over porter stemming for higher accuracy
+Based on the comparison from nltk.org, snowball stemmer , a variant of porter stemmer, is used here for higher accuracy.
 
 Tested input : /post/post_training_clean.txt
 Cannot directly apply on xml file.
@@ -12,8 +12,8 @@ import sys
 import re
 from io import StringIO
 
-from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from collections import Counter
 
 # StringBuilder class, using StringIO() to struct python string fast
@@ -41,13 +41,12 @@ def Tokenize(text):
 
 def main(file):
     # Create an English stemmer insatnce
-    stemmer = SnowballStemmer("english")
     source = open(file).read()
+    # Escape tokenizing on code section
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
     tokens_file=StringBuilder()
-    sortedTokens_file=StringBuilder()
-    reducedSortedTokens_file=StringBuilder()
-    stemmedTokens_file=StringBuilder()
+    sortedTokens_file=StringBuilder()        # sort the tokens
+    reducedSortedTokens_file=StringBuilder() # sorted tokens without duplicates
     # file_anchor mark the current position in current file, before which has been processed already
     # Skip the first line
     anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
@@ -59,27 +58,23 @@ def main(file):
     else:
         file_anchor = 0
     # Define text as "not code"
+    tokenList=[]
+
     for code_sec in code_secs:
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]
-        tokenList = Tokenize(text)
-
-        # Sort the token list based on occurance
-        sortedTokens = sorted(tokenList, key=Counter(tokenList).get, reverse=True)
-        reducedTokens= removeDuplicate(sortedTokens)
-
-        stemmedTokens = []
-        for token in tokenList:
-            stemmedTokens.append(stemmer.stem(token))
-
-        # Add to file for output
-        tokens_file.Append(str(tokenList))
-        sortedTokens_file.Append(str(sortedTokens))
-        reducedSortedTokens_file.Append(str(reducedTokens))
-        stemmedTokens_file.Append(str(stemmedTokens))
-
+        tokenList += Tokenize(text)
         file_anchor = code_end
+
+    # Sort the token list based on occurance
+    sortedTokens =sorted(tokenList, key=Counter(tokenList).get, reverse=True)
+    reducedTokens = removeDuplicate(sortedTokens)
+
+    # Add to file for output
+    tokens_file.Append(str(tokenList))
+    sortedTokens_file.Append(str(sortedTokens))
+    reducedSortedTokens_file.Append(str(reducedTokens))
 
     # Write to output
     with open("Tokens.txt", "w+") as t_file:
@@ -88,8 +83,6 @@ def main(file):
         s_file.write(sortedTokens_file.__str__())
     with open("rSortedTokens.txt", "w+") as rs_file:
         rs_file.write(reducedSortedTokens_file.__str__())
-    with open("stemmedTokens.txt", "w+") as st_file:
-        st_file.write(stemmedTokens_file.__str__())
 
 if __name__ == "__main__":
     for file in sys.argv[1:]:
