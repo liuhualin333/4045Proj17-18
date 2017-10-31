@@ -55,7 +55,7 @@ try:
 			predict_tokens += 1
 		# if this char is start of a token 
 		elif(Y_regex[i] == 'T'):
-			while(i < len(Y_anno) and Y_anno[i] != 'E'):
+			while(i < len(Y_regex) and Y_regex[i] != 'E'):
 				i += 1
 			if(i < len(Y_regex) and Y_regex[i] == 'E'):
 				predict_tokens += 1
@@ -77,7 +77,7 @@ precision_token = true_positive / predict_tokens
 recall_token = true_positive / true_tokens
 f1_token = 2 * (precision_token * recall_token) / (precision_token + recall_token)
 print("Precision score: ", precision_token)
-print("Recall score: ", recall_token)
-print("F1 score: ", f1_token)
+print("Recall score:    ", recall_token)
+print("F1 score:        ", f1_token)
 #'''
 
