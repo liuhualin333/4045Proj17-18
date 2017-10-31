@@ -20,22 +20,10 @@ import codecs
 import re
 import sys, os
 import pdb
+sys.path.insert(0, '../utilities')
 from utilities import *
 import hashlib
 code_tag = ['<c>', '</c>']
-
-# StringBuilder class, using StringIO() to struct python string fast
-class StringBuilder:
-     _file_str = None
-
-     def __init__(self):
-         self._file_str = StringIO()
-
-     def Append(self, str):
-         self._file_str.write(str)
-
-     def __str__(self):
-         return self._file_str.getvalue()
 
 # Main Tokenizer
 class CodesTokenizer:

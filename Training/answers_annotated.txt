@@ -133,7 +133,7 @@ Id|Body
 &gt;&gt;&gt; <c>print</c> <c>ts</c>
 <c>1355563265.81</c>
 &gt;&gt;&gt; <c>import</c> <c>datetime</c>
-&gt;&gt;&gt; <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%</c><c>Y</c><c>-</c><c>%</c><c>m</c><c>-</c><c>%</c><c>d</c> <c>%</c><c>H</c>:<c>%</c><c>M</c>:<c>%</c><c>S</c>')
+&gt;&gt;&gt; <c>st</c> <c>=</c> <c>datetime</c><c>.</c><c>datetime</c><c>.</c><c>fromtimestamp(</c><c>ts</c>)<c>.</c><c>strftime(</c>'<c>%Y</c><c>-</c><c>%m</c><c>-</c><c>%d</c> <c>%H</c>:<c>%M</c>:<c>%S</c>')
 &gt;&gt;&gt; <c>print</c> <c>st</c>
 <c>2012-12-15</c> <c>0</c><c>1</c>:<c>21</c>:<c>0</c><c>5</c>
 &gt;&gt;&gt;
@@ -183,7 +183,7 @@ Id|Body
 # <c>=</c><c>&gt;</c> [<c>2</c>, [<c>1</c>, <c>2</c>], <c>6</c>]
 </code>
 "
-32555515|"<t>Below</t> <t>is</t> <t>a</t> ""<t>standard</t> <t>recursive</t> <t>answer</t>"", <t>similar</t> <t>to</t> <t>the</t> <t>other</t> <t>similar</t> <t>answer</t> <t>https</t>:<t>//stackoverflow</t>.<t>com/a/23743696/711085</t> . (<t>We</t> <t>don't</t> <t>realistically</t> <t>have</t> <t>to</t> <t>worry</t> <t>about</t> <t>running</t> <t>out</t> <t>of</t> <t>stack</t> <t>space</t> <t>since</t> <t>there's</t> <t>no</t> <t>way</t> <t>we</t> <t>could</t> <t>process</t> <t>all</t> <t>N</t>! <t>permutations</t>.)
+32555515|"<t>Below</t> <t>is</t> <t>a</t> ""<t>standard</t> <t>recursive</t> <t>answer</t>"", <t>similar</t> <t>to</t> <t>the</t> <t>other</t> <t>similar</t> <t>answer</t> <t>https://stackoverflow.com/a/23743696/711085</t> . (<t>We</t> <t>don't</t> <t>realistically</t> <t>have</t> <t>to</t> <t>worry</t> <t>about</t> <t>running</t> <t>out</t> <t>of</t> <t>stack</t> <t>space</t> <t>since</t> <t>there's</t> <t>no</t> <t>way</t> <t>we</t> <t>could</t> <t>process</t> <t>all</t> <t>N</t>! <t>permutations</t>.)
 
 <t>It</t> <t>visits</t> <t>every</t> <t>element</t> <t>in</t> <t>turn</t>, <t>and</t> <t>either</t> <t>takes</t> <t>it</t> <t>or</t> <t>leaves</t> <t>it</t> (<t>we</t> <t>can</t> <t>directly</t> <t>see</t> <t>the</t> <t>2^N</t> <t>cardinality</t> <t>from</t> <t>this</t> <t>algorithm</t>).
 
@@ -243,7 +243,7 @@ Id|Body
     <c>end</c> <c>=</c> <c>time</c><c>.</c><c>time(</c>)
     <c>m</c>, <c>s</c> <c>=</c> <c>divmod(</c><c>end</c> <c>-</c> <c>self</c><c>.</c><c>start</c>, <c>60</c>)
     <c>h</c>, <c>m</c> <c>=</c> <c>divmod(</c><c>m</c>, <c>60</c>)
-    <c>time_str</c> <c>=</c> ""<c>%</c><c>0</c><c>2</c><c>d</c>:<c>%</c><c>0</c><c>2</c><c>d</c>:<c>%</c><c>0</c><c>2</c><c>d</c>"" <c>%</c> (<c>h</c>, <c>m</c>, <c>s</c>)
+    <c>time_str</c> <c>=</c> ""<c>%02</c><c>d</c>:<c>%02</c><c>d</c>:<c>%02</c><c>d</c>"" <c>%</c> (<c>h</c>, <c>m</c>, <c>s</c>)
     <c>return</c> <c>time_str</c>
 </code>
 
@@ -256,7 +256,7 @@ Id|Body
 
 # <c>Get</c> <c>time</c> <c>string</c>:
 <c>time_hhmmss</c> <c>=</c> <c>my_timer</c><c>.</c><c>get_time_hhmmss(</c>)
-<c>print(</c>""<c>Time</c> <c>elapsed</c>: <c>%</c><c>s</c>"" <c>%</c> <c>time_hhmmss</c> )
+<c>print(</c>""<c>Time</c> <c>elapsed</c>: <c>%s</c>"" <c>%</c> <c>time_hhmmss</c> )
 
 # ... <c>use</c> <c>the</c> <c>timer</c> <c>again</c>
 <c>my_timer</c><c>.</c><c>restart(</c>)
