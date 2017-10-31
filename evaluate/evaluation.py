@@ -28,15 +28,14 @@ X_regex = [item for sublist in x_regex for item in sublist]
 Y_anno = [item for sublist in y_anno for item in sublist]
 X_anno = [item for sublist in x_anno for item in sublist]
 
-Y_regex_key = []
-Y_anno_key = []
-i = staart = 0
+true_positive = predict_tokens = true_tokens = 0
 try:
+	i = staart = 0
 	while(i < len(Y_anno)):
 		# if this char is single char token
 		if(Y_anno[i] == 'U'):
-			Y_anno_key.append(True)
-			Y_regex_key.append(Y_regex[i] == Y_anno[i])
+			true_positive += (Y_regex[i] == Y_anno[i])
+			true_tokens += 1
 		# if this char is start of a token 
 		elif(Y_anno[i] == 'T'):
 			staart = i
@@ -46,9 +45,22 @@ try:
 				i += 1
 			if(i < len(Y_anno) and Y_anno[i] == 'E'):
 				match &= Y_anno[i] == Y_regex[i]
-				Y_anno_key.append(True)
-				Y_regex_key.append(match)
+				true_positive += match
+				true_tokens += 1
 		i += 1
+	
+	i = 0
+	while(i < len(Y_regex)):
+		if(Y_regex[i] == 'U'):
+			predict_tokens += 1
+		# if this char is start of a token 
+		elif(Y_regex[i] == 'T'):
+			while(i < len(Y_anno) and Y_anno[i] != 'E'):
+				i += 1
+			if(i < len(Y_regex) and Y_regex[i] == 'E'):
+				predict_tokens += 1
+		i += 1
+
 except Exception as e:
 	pdb.set_trace()
 	pass
@@ -59,6 +71,13 @@ print("Precision score for regex: ", precision_score(Y_anno, Y_regex, average=No
 print("Recall score for regex:    ", recall_score(Y_anno, Y_regex, average=None, labels=['U','T','E','O','I']))
 print("F1 score for regex:        ", f1_score(Y_anno, Y_regex, average=None, labels=['U','T','E','O','I']))
 print("Weighted F1 score for regex:        ", f1_score(Y_anno, Y_regex, average='weighted'))
-print("F1 score for regex in terms whether matched true tokens: ", f1_score(Y_anno_key, Y_regex_key))
+
+print("statistics on regex, for overall token matching:")
+precision_token = true_positive / predict_tokens
+recall_token = true_positive / true_tokens
+f1_token = 2 * (precision_token * recall_token) / (precision_token + recall_token)
+print("Precision score: ", precision_token)
+print("Recall score: ", recall_token)
+print("F1 score: ", f1_token)
 #'''
 
