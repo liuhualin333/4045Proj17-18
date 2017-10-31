@@ -24,12 +24,12 @@ import operator
 import sys
 
 
-def tf(word,doc):
+def tf(word, doc):
     all_num = sum([doc[key] for key in doc])
     return float(doc[word])/all_num
 
 
-def idf(word,doc_list):
+def idf(word, doc_list):
     all_num = len(doc_list)
     word_count = 0
     for doc in doc_list:
@@ -43,7 +43,7 @@ def tfidf(word, doc, doc_list):
     return word_score
 
 
-def main(post_path="../posts/posts_training_clean_codeAnno_textAnno.txt"):
+def main(post_path="../posts/all_posts_clean_codeAnno_textAnno.txt"):
 
     # top n keywords
     N = 3
