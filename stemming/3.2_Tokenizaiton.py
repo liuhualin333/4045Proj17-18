@@ -48,15 +48,7 @@ def main(file):
     sortedTokens_file=StringBuilder()        # sort the tokens
     reducedSortedTokens_file=StringBuilder() # sorted tokens without duplicates
     # file_anchor mark the current position in current file, before which has been processed already
-    # Skip the first line
-    anchor_answer = re.compile(re.escape('Id|Body')).search(source, 0)
-    anchor_post = re.compile(re.escape('Id|Title|Body')).search(source, 0)
-    if (anchor_answer != None):
-        file_anchor = anchor_answer.end()
-    elif (anchor_post != None):
-        file_anchor = anchor_post.end()
-    else:
-        file_anchor = 0
+    file_anchor = 0
     # Define text as "not code"
     tokenList=[]
 
