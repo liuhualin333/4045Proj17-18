@@ -126,7 +126,7 @@ def main():
     x_test = [chars2features(x_test)]
     y_test = [y_test]
     '''
-    x_test, y_test = get_data('../../posts/posts_training_clean_codeAnno_textAnno.txt')
+    x_test, y_test = get_data('../../posts/posts_training_clean_codeAnno_textAnno.txt') 
     x_train, y_train = get_data("../../Training/posts_annotated.txt")
     #x_train = [chars2features(block) for block in x_train]
     #x_test = [chars2features(block) for block in x_test]
@@ -134,7 +134,7 @@ def main():
     pdb.set_trace()
 
     metrics.flat_f1_score(y_train, y_test,
-                          average='weighted', labels=labels)
+                          average='weighted')
 
     #pdb.set_trace()
     # build model

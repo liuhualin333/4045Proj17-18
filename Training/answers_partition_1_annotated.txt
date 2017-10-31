@@ -37,7 +37,7 @@ Id|Body
 
 <code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c>: <c>a</c><c>.</c><c>remove(</c><c>0</c>)'
 </code>
-
+ 
   <t>With</t>:
 
 <code><c>python</c> <c>-</c><c>m</c> <c>timeit</c> '<c>a</c> <c>=</c> [<c>0</c>] <c>*</c> <c>100000</c>' '<c>while</c> <c>a</c>: <c>a</c><c>.</c><c>pop(</c>)'
@@ -446,7 +446,7 @@ q
 <t>Copying</t> <t>the</t> <t>list</t> <t>using</t> <code><c>remove</c></code> <t>might</t> <t>make</t> <t>your</t> <t>code</t> <t>look</t> <t>a</t> <t>little</t> <t>cleaner</t>, <t>as</t> <t>described</t> <t>in</t> <t>one</t> <t>of</t> <t>the</t> <t>answers</t> <t>below</t>.  <t>You</t> <t>should</t> <t>definitely</t> <t>not</t> <t>do</t> <t>this</t> <t>for</t> <t>extremely</t> <t>large</t> <t>lists</t>, <t>since</t> <t>this</t> <t>involves</t> <t>first</t> <t>copying</t> <t>the</t> <t>entire</t> <t>list</t>, <t>and</t> <t>also</t> <t>performing</t> <t>an</t> <code><c>O(</c><c>n</c>)</code> <code><c>remove</c></code> <t>operation</t> <t>for</t> <t>each</t> <t>element</t> <t>being</t> <t>removed</t>, <t>making</t> <t>this</t> <t>an</t> <t>O(</t><t>n^2</t>) <t>algorithm</t>.
 
 <code><c>for</c> <c>tup</c> <c>in</c> <c>somelist</c>[:]:
-    # <t>lots</t> <t>of</t> <t>code</t> <t>here</t>, <t>possibly</t> <t>setting</t> <t>things</t> <t>up</t> <t>for</t> <t>calling</t> <t>determine</t>
+    # <c>lots</c> <c>of</c> <c>code</c> <c>here</c>, <c>possibly</c> <c>setting</c> <c>things</c> <c>up</c> <c>for</c> <c>calling</c> <c>determine</c>
     <c>if</c> <c>determine(</c><c>tup</c>):
         <c>newlist</c><c>.</c><c>append(</c><c>tup</c>)
 </code>

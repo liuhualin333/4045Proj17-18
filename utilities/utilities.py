@@ -19,7 +19,8 @@ class StringBuilder:
 # annoText, annoTag: [<c>,</c>] or [<t>,</t>],
 # return: [tokens]
 def anno2Tokens(annoText, annoTag):
-	tokens = re.compile(annoTag[0]+".*?"+annoTag[1], flags=re.S | re.M).finditer(annoText)
+	#tokens = re.compile(annoTag[0]+".*?"+annoTag[1], flags=re.S | re.M).finditer(annoText)
+	tokens = re.compile(r"(<t>.*?</t>)|(<c>.*?</c>)", flags=re.S | re.M).finditer(annoText)
 	token_list = []
 	for token in tokens:
 		token_start = token.start() + 3
@@ -49,29 +50,33 @@ def MixAnno2Tokens(annoText):
 	return token_list
 
 
-
-
 # annoText, annoTag: [<c>,</c>] or [<t>,</t>],
 # return: original_text, original_label
 def anno2charsTokens(annoText, annoTag):
 	origin_text = StringBuilder()
 	origin_label = StringBuilder()
-	tokens = re.compile(annoTag[0]+".*?"+annoTag[1], flags=re.S | re.M).finditer(annoText)
+	#tokens = re.compile(annoTag[0]+".*?"+annoTag[1], flags=re.S | re.M).finditer(annoText)
+	tokens = re.compile(r"(<t>.*?</t>)|(<c>.*?</c>)", flags=re.S | re.M).finditer(annoText)
 	anno_anchor = 0
 	def Appendtxtlabel(_txt, _label):
 		origin_text.Append(_txt)
 		origin_label.Append(_label)
 	for token in tokens:
-		pdb.set_trace()
 		token_start = token.start() + 3
 		token_end = token.end() - 4
 		Appendtxtlabel(annoText[anno_anchor:token.start()],'O'*(token.start() - anno_anchor))
-		Appendtxtlabel(annoText[token_start],'T')
-		if(token_end - token_start >= 3):
+		if(token_end == token_start + 1):
+			Appendtxtlabel(annoText[token_start],'U')
+		else:
+			if(token_end > token_start + 1):
+				Appendtxtlabel(annoText[token_start],'T')
+			if(token_end - token_start >= 3):
 				Appendtxtlabel(annoText[token_start+1:token_end-1],'I'*(token_end-token_start-2))
-		if(token_end - token_start >= 2):
-			Appendtxtlabel(annoText[token_end-1],'E')
+			if(token_end - token_start >= 2):
+				Appendtxtlabel(annoText[token_end-1],'E')
 		anno_anchor = token.end()
+	Appendtxtlabel(annoText[anno_anchor:],'O'*(len(annoText) - anno_anchor))
+	#pdb.set_trace()
 	return origin_text.__str__(), origin_label.__str__()
 
 # from mixed annotated text to clean text(remove <c></c> <t></t> tag) and output the corresponding tag
@@ -81,11 +86,12 @@ def MixAnno2charsTokens(annoText):
 	anno_anchor = 0
 	code_tag = ['<c>', '</c>']
 	text_tag = ['<t>', '</t>']
-	code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(annoText)
+	code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(annoText)
 	def Appendtxtlabel(_txt, _label):
 		origin_txt.Append(_txt)
 		origin_label.Append(_label)
 	# iterate all codes area, defined by <code> ... </code>
+	#pdb.set_trace()
 	for code_sec in code_secs:
 		# +6 and -7 to exclude <code> & </code> tags
 		code_start = code_sec.start() + 6
@@ -108,13 +114,15 @@ def get_data(filepath):
 		if(r'Id|Body' in file_text[:15]):
 			flag = 'answer'
 			file_text = file_text[8:]
-			pattern = re.compile(r'^\d+\|\"(.*?)\"(\n(?=\d+\|)|($))', flags = re.S|re.M)
+			pattern = re.compile(r'^\d+\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+			end_pattern = re.compile(r'^\d+\|\"(.*)\"$', flags = re.S|re.M)
 		else:
 			flag = 'post'
 			file_text = file_text[14:]
-			pattern = re.compile(r'^\d+\|([^\n\|]*?)\|\"(.*?)\"(\n(?=\d+\|)|($))', flags = re.S|re.M)
+			pattern = re.compile(r'^\d+\|([^\n\|]*?)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+			end_pattern = re.compile(r'^\d+\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
 		#pdb.set_trace()
-		for post in pattern.finditer(file_text):
+		def post2XY(post):
 			_text, _label = MixAnno2charsTokens(post.group(1))
 			_x = _text
 			_y = _label
@@ -124,6 +132,10 @@ def get_data(filepath):
 				_y += _label
 			X.append(_x)
 			Y.append(_y)
+		for post in pattern.finditer(file_text):
+			post2XY(post)
+		last_post = end_pattern.search(file_text, post.end())
+		post2XY(last_post)
 	Y = [list(str) for str in Y]
 	return X, Y
 
