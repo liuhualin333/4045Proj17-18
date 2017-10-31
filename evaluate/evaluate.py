@@ -9,10 +9,11 @@ import sys
 import codecs
 import re
 from collections import Counter
-
+import pdb
 
 def evaluate(test, train):
     true_positive = 0
+    pdb.set_trace()
     for token in train:
         if token not in test:
             continue

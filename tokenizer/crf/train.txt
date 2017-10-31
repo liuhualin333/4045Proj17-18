@@ -1,1 +1,28 @@
-[I,U] [love,U] [New,B] [York,E]
+I T
+  O
+l T
+o I
+v I
+e I
+  O
+y T
+o I
+u I
+. O
+  O
+M T
+s T
+. O
+  O
+H T
+a I
+n I
+
+B T
+i I
+n I
+  I
+Y I
+a I
+o I
+! O
