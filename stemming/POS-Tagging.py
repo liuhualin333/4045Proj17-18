@@ -1,6 +1,6 @@
 from nltk import word_tokenize, pos_tag
 
-with open ("./processed_result/POS-tagging_source.txt","r") as infile:
+with open ("/Users/StevenShi/PycharmProjects/NTUNLP/stemming/processed_result/3.4_POS-tagging_source","r") as infile:
     content=infile.readlines()
 
     sentenseList = [x.strip('\n') for x in content]

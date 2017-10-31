@@ -110,3 +110,27 @@ Most frequent tokens (after joining code and text tokens, in the format of (toke
 ('print(', 1500)
 ('by', 1489)
 ('which', 1484)
+
+Sentense that contains irrgular tokens selected for POS-tagging:
+
+&gt;&gt;&gt; l = list(1, 2, 3)
+def uniq(input):
+if value == None and conditionMet:
+Just as a side note how would the implementation change if there is a dependency between foo and bar.
+I am hoping it is possible to do without tinkering with sys.path.
+I have a script named test1.py which is not in a module.
+while len(alist) &gt; 0 : alist.pop()
+Python datetime to string without microsecond component
+Actually, don't show, just save to foo.png
+plt.plot(x, np.sin(x**2))
+
+[('&', 'CC'), ('gt', 'NN'), (';', ':'), ('&', 'CC'), ('gt', 'NN'), (';', ':'), ('&', 'CC'), ('gt', 'NN'), (';', ':'), ('l', 'CC'), ('=', 'JJ'), ('list', 'NN'), ('(', '('), ('1', 'CD'), (',', ','), ('2', 'CD'), (',', ','), ('3', 'CD'), (')', ')')]
+[('def', 'NN'), ('uniq', 'NN'), ('(', '('), ('input', 'NN'), (')', ')'), (':', ':')]
+[('if', 'IN'), ('value', 'NN'), ('==', 'NNP'), ('None', 'NNP'), ('and', 'CC'), ('conditionMet', 'NN'), (':', ':')]
+[('Just', 'RB'), ('as', 'IN'), ('a', 'DT'), ('side', 'NN'), ('note', 'NN'), ('how', 'WRB'), ('would', 'MD'), ('the', 'DT'), ('implementation', 'NN'), ('change', 'NN'), ('if', 'IN'), ('there', 'EX'), ('is', 'VBZ'), ('a', 'DT'), ('dependency', 'NN'), ('between', 'IN'), ('foo', 'NN'), ('and', 'CC'), ('bar', 'NN'), ('.', '.')]
+[('I', 'PRP'), ('am', 'VBP'), ('hoping', 'VBG'), ('it', 'PRP'), ('is', 'VBZ'), ('possible', 'JJ'), ('to', 'TO'), ('do', 'VB'), ('without', 'IN'), ('tinkering', 'VBG'), ('with', 'IN'), ('sys.path', 'NN'), ('.', '.')]
+[('I', 'PRP'), ('have', 'VBP'), ('a', 'DT'), ('script', 'NN'), ('named', 'VBN'), ('test1.py', 'NN'), ('which', 'WDT'), ('is', 'VBZ'), ('not', 'RB'), ('in', 'IN'), ('a', 'DT'), ('module', 'NN'), ('.', '.')]
+[('while', 'IN'), ('len', 'VBN'), ('(', '('), ('alist', 'NN'), (')', ')'), ('&', 'CC'), ('gt', 'NN'), (';', ':'), ('0', 'CD'), (':', ':'), ('alist.pop', 'NN'), ('(', '('), (')', ')')]
+[('Python', 'NNP'), ('datetime', 'NN'), ('to', 'TO'), ('string', 'VBG'), ('without', 'IN'), ('microsecond', 'NN'), ('component', 'NN')]
+[('Actually', 'RB'), (',', ','), ('do', 'VBP'), ("n't", 'RB'), ('show', 'VB'), (',', ','), ('just', 'RB'), ('save', 'VB'), ('to', 'TO'), ('foo.png', 'VB')]
+[('plt.plot', 'NN'), ('(', '('), ('x', 'UH'), (',', ','), ('np.sin', 'JJ'), ('(', '('), ('x**2', 'NNP'), (')', ')'), (')', ')')]
