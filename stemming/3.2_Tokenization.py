@@ -50,21 +50,23 @@ def main(file):
     # file_anchor mark the current position in current file, before which has been processed already
     file_anchor = 0
     # Define text as "not code"
-    tokenList=[]
+    filteredTokenList=[]
 
     for code_sec in code_secs:
         code_start = code_sec.start()
         code_end = code_sec.end()
         text = source[file_anchor:code_start]
-        tokenList += Tokenize(text)
+        tokenList = Tokenize(text)
+        #remove stop words
+        filteredTokenList += [word for word in tokenList if word not in stopwords.words('english')]
         file_anchor = code_end
 
     # Sort the token list based on occurance
-    sortedTokens =sorted(tokenList, key=Counter(tokenList).get, reverse=True)
+    sortedTokens =sorted(filteredTokenList, key=Counter(filteredTokenList).get, reverse=True)
     reducedTokens = removeDuplicate(sortedTokens)
 
     # Add to file for output
-    tokens_file.Append(str(tokenList))
+    tokens_file.Append(str(filteredTokenList))
     sortedTokens_file.Append(str(sortedTokens))
     reducedSortedTokens_file.Append(str(reducedTokens))
 
