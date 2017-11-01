@@ -17,21 +17,21 @@ Id|Body
 
 <t>SOLUTION</t>
 
-<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code>.  
+<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><c>%PATH%</c></code>.  
 
 
-<t>To</t> <t>set</t> <t>your</t> <code><c>%</c><c>PATH</c><c>%</c></code>:
-<t>*You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><c>%</c><c>PATH</c><c>%</c></code>
+<t>To</t> <t>set</t> <t>your</t> <code><c>%PATH%</c></code>:
+<t>*You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><c>%PATH%</c></code>
 
 
 <t>Run</t> <t>Command Line*</t> <t>and</t> <t>enter</t> <t>this</t> <t>command</t>: <t>*needs</t> <t>to</t> <t>be</t> <t>run</t> <t>as</t> <t>administrator</t>
-<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
-<t>for</t> <t>example</t>: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%</c><c>PATH</c><c>%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
+<code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%PATH%</c>;<c>&lt;</c><c>python_folder</c><c>&gt;</c>""</code>
+<t>for</t> <t>example</t>: <code><c>SETX</c> <c>/M</c> <c>PATH</c> ""<c>%PATH%</c>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c>""</code>  
 <t>OR</t> <t>manually</t>: (<t>preferable</t>)
 <t>Add</t> <code>;<c>C:\Python27</c>;<c>C:\Python27\Scripts</c></code> <t>at</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>string</t>.
   
 
-<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><c>%</c><c>PATH</c><c>%</c></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
+<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><c>%PATH%</c></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
 
 "
 28811205|"<t>Simply</t> <t>call</t> <t>del</t> <t>d['key']</t>.

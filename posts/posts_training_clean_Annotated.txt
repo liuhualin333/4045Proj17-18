@@ -7,7 +7,7 @@ Id|Title|Body
 "
 12836128|<t>Convert</t> <t>list</t> <t>to</t> <t>tuple</t> <t>in</t> <t>Python</t>|"<t>I'm</t> <t>trying</t> <t>to</t> <t>convert</t> <t>a</t> <t>list</t> <t>to</t> <t>a</t> <t>tuple</t>. 
 
-<t>When</t> <t>I</t> <t>google</t> <t>it</t>, <t>I</t> <t>find</t> <t>a</t> <t>lot</t> <t>of</t> <t>answers</t> <t>similar</t> <t>to</t>:
+<t>When I</t> <t>google</t> <t>it</t>, <t>I</t> <t>find</t> <t>a</t> <t>lot</t> <t>of</t> <t>answers</t> <t>similar</t> <t>to</t>:
 
 <code><c>l</c> <c>=</c> [<c>4</c>,<c>5</c>,<c>6</c>]
 <c>tuple(</c><c>l</c>)
@@ -27,12 +27,12 @@ Id|Title|Body
 
 <t>For</t> <t>example</t>, <t>suppose</t> <t>my</t> <t>list</t> <t>has</t> <t>the</t> <t>following</t> <t>integers</t>
 
-<code>&gt;&gt;&gt; <c>a</c> <c>=</c> [<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,<c>5</c>,<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,<c>5</c>,<c>1</c>]
+<code><c>&gt;&gt;&gt;</c> <c>a</c> <c>=</c> [<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,<c>5</c>,<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,<c>5</c>,<c>1</c>]
 </code>
 
 <t>and</t> <t>I</t> <t>need</t> <t>to</t> <t>replace</t> <t>all</t> <t>occurrences</t> <t>of</t> <t>the</t> <t>number</t> <t>1</t> <t>with</t> <t>the</t> <t>value</t> <t>10</t> <t>so</t> <t>the</t> <t>output</t> <t>I</t> <t>need</t> <t>is</t> 
 
-<code>&gt;&gt;&gt; <c>a</c> <c>=</c> [<c>10</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, <c>10</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, <c>10</c>]
+<code><c>&gt;&gt;&gt;</c> <c>a</c> <c>=</c> [<c>10</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, <c>10</c>, <c>2</c>, <c>3</c>, <c>4</c>, <c>5</c>, <c>10</c>]
 </code>
 
 <t>Thus</t> <t>my</t> <t>goal</t> <t>is</t> <t>to</t> <t>replace</t> <t>all</t> <t>instances</t> <t>of</t> <t>the</t> <t>number</t> <t>1</t> <t>with</t> <t>the</t> <t>number</t> <t>10</t>.
@@ -69,7 +69,7 @@ Id|Title|Body
 
 <t>It</t> <t>looks</t> <t>kind</t> <t>of</t> <t>weird</t> <t>to</t> <t>have</t> <t>the</t> <t>string</t> <t>hanging</t> <t>outside</t> <t>the</t> <t>function</t> <t>in</t> <t>the</t> <t>first</t> <t>example</t>.
 "
-27341064|<t>How</t> <t>do</t> <t>I</t> <t>fix</t> '<t>ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?|"<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
+27341064|<t>How</t> <t>do</t> <t>I</t> <t>fix</t> '<t>ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?|"<t>When I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
 
 <code><c>$</c> <c>sudo</c> <c>pip3</c> <c>install</c> <c>python3-tk</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
@@ -96,13 +96,13 @@ Id|Title|Body
 "
 4978787|<t>How</t> <t>to</t> <t>split</t> <t>a</t> <t>string</t> <t>into</t> <t>array</t> <t>of</t> <t>characters</t> <t>with</t> <t>Python</t>?|"<t>I've</t> <t>tried</t> <t>to</t> <t>look</t> <t>around</t> <t>the</t> <t>web</t> <t>for</t> <t>answers</t> <t>to</t> <t>splitting</t> <t>a</t> <t>string</t> <t>into</t> <t>an</t> <t>array</t> <t>of</t> <t>characters</t> <t>but</t> <t>I</t> <t>can't</t> <t>seem</t> <t>to</t> <t>find</t> <t>a</t> <t>simple</t> <t>method</t>
 
-<code><c>str</c><c>.</c><c>split(</c>//)</code> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>work</t> <t>like</t> <t>Ruby</t> <t>does</t>. <t>Is</t> <t>there</t> <t>a</t> <t>simple</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t> <t>without</t> <t>looping</t>?
+<code><c>str</c><c>.</c><c>split(</c><c>//)</c></code> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>work</t> <t>like</t> <t>Ruby</t> <t>does</t>. <t>Is</t> <t>there</t> <t>a</t> <t>simple</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t> <t>without</t> <t>looping</t>?
 "
-713847|<t>Recommendations</t> <t>of</t> <t>Python</t> <t>REST</t> (<t>web</t> <t>services</t>) <t>framework</t>?|"<t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t> <t>of</t> <t>recommendations</t> <t>of</t> <t>different</t> <t>Python-based</t> <t>REST</t> <t>frameworks</t> <t>for</t> <t>use</t> <t>on</t> <t>the</t> <t>serverside</t> <t>to</t> <t>write</t> <t>your</t> <t>own</t> <t>RESTful APIs</t>? <t>Preferably</t> <t>with</t> <t>pros</t> <t>and</t> <t>cons</t>.
+713847|<t>Recommendations</t> <t>of</t> <t>Python REST</t> (<t>web</t> <t>services</t>) <t>framework</t>?|"<t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t> <t>of</t> <t>recommendations</t> <t>of</t> <t>different</t> <t>Python-based REST</t> <t>frameworks</t> <t>for</t> <t>use</t> <t>on</t> <t>the</t> <t>serverside</t> <t>to</t> <t>write</t> <t>your</t> <t>own</t> <t>RESTful</t> <t>APIs</t>? <t>Preferably</t> <t>with</t> <t>pros</t> <t>and</t> <t>cons</t>.
 
 <t>Please</t> <t>feel</t> <t>free</t> <t>to</t> <t>add</t> <t>recommendations</t> <t>here</t>. :)
 "
-454854|<t>No</t> <t>module</t> <t>named</t> <t>MySQLdb</t>|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>version</t> <t>2.5.4</t> <t>and</t> <t>install</t> <t>MySQL</t> <t>version</t> <t>5.0</t> <t>and</t> <t>Django</t>. <t>Django</t> <t>is</t> <t>working</t> <t>fine</t> <t>with</t> <t>Python</t>, <t>but</t> <t>not</t> <t>MySQL</t>. <t>I</t> <t>am</t> <t>using</t> <t>it</t> <t>in</t> <t>Windows Vista</t>.
+454854|<t>No</t> <t>module</t> <t>named</t> <t>MySQLdb</t>|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>version</t> <t>2.5.4</t> <t>and</t> <t>install</t> <t>MySQL</t> <t>version</t> <t>5.0</t> <t>and</t> <t>Django</t>. <t>Django</t> <t>is</t> <t>working</t> <t>fine</t> <t>with</t> <t>Python</t>, <t>but</t> <t>not</t> <t>MySQL</t>. <t>I</t> <t>am</t> <t>using</t> <t>it</t> <t>in</t> <t>Windows</t> <t>Vista</t>.
 "
 123198|<t>How</t> <t>do</t> <t>I</t> <t>copy</t> <t>a</t> <t>file</t> <t>in</t> <t>python</t>?|"<t>How</t> <t>do</t> <t>I</t> <t>copy</t> <t>a</t> <t>file</t> <t>in</t> <t>Python</t>? <t>I</t> <t>couldn't</t> <t>find</t> <t>anything</t> <t>under</t> <code><c>os</c></code>.
 "
@@ -112,12 +112,12 @@ Id|Title|Body
 <c>print</c> <c>os</c><c>.</c><c>getcwd(</c>)
 </code>
 
-<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When</t> <t>I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</c></code>.
+<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</c></code>.
 
 <t>How</t> <t>can</t> <t>I</t> <t>get</t> <t>the</t> <t>path</t> <t>to</t> <t>the</t> <t>script</t> <t>from</t> <t>within</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>a</t> <t>Django</t> <t>view</t>?
 
 <t>UPDATE</t>:
-<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> - <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c>__file__</c></code> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
+<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> <t>-</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c>__file__</c></code> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
 
 <t>Isn't</t> <t>there</t> <t>any</t> <t>way</t> <t>in</t> <t>Python</t> <t>to</t> (<t>always</t>) <t>be</t> <t>able</t> <t>to</t> <t>receive</t> <t>the</t> <t>path</t> <t>in</t> <t>which</t> <t>the</t> <t>script</t> <t>resides</t>?
 "
@@ -127,7 +127,7 @@ Id|Title|Body
 
 <t>Currently</t>, <t>I</t> <t>am</t> <t>trying</t> <t>this</t>:
 
-<code><c>obj</c> <c>=</c> <c>open(</c>'<c>data.txt</c>', '<c>wb</c>')
+<code><c>obj</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>', '<c>wb</c>')
 <c>obj</c><c>.</c><c>write(</c><c>data</c>)
 <c>obj</c><c>.</c><c>close</c>
 </code>
@@ -142,7 +142,7 @@ Id|Title|Body
 
 <t>Can</t> <t>it</t> <t>be</t> <t>used</t> <t>to</t> <t>create</t> <t>dictionaries</t> <t>too</t>? <t>For</t> <t>example</t>, <t>by</t> <t>iterating</t> <t>over</t> <t>pairs</t> <t>of</t> <t>keys</t> <t>and</t> <t>values</t>:
 
-<code><c>mydict</c> <c>=</c> {(<c>k</c>,<c>v</c>) <c>for</c> (<c>k</c>,<c>v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah</c>}  # <c>doesn't</c> <c>work</c>
+<code><c>mydict</c> <c>=</c> {(<c>k</c>,<c>v</c>) <c>for</c> (<c>k</c>,<c>v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah</c>}  # <c>doesn</c>'<c>t</c> <c>work</c>
 </code>
 "
 865115|<t>How</t> <t>do</t> <t>I</t> <t>correctly</t> <t>clean</t> <t>up</t> <t>a</t> <t>Python</t> <t>object</t>?|"<code><c>class</c> <c>Package</c>:
@@ -189,13 +189,13 @@ Id|Title|Body
 
 <code><c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
 <c>class</c> <c>Physics</c>:
-    #<c>physics</c> <c>class</c> <c>gets</c> <c>an</c> <c>entity</c> <c>and</c> <c>does</c> <c>physics</c> <c>calculations</c> <c>on</c> <c>it</c>.
+    #<c>physics</c> <c>class</c> <c>gets</c> <c>an</c> <c>entity</c> <c>and</c> <c>does</c> <c>physics</c> <c>calculations</c> <c>on</c> <c>it</c><c>.</c>
 </code>
 
 <t>I</t> <t>then</t> <t>run</t> <t>from</t> <t>main</t>.<t>py</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
-<c>File</c> ""<c>main.py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+<c>File</c> ""<c>main</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
     <c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
 <c>File</c> ""...<c>/entity.py</c>"", <c>line</c> <c>5</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
     <c>from</c> <c>physics</c> <c>import</c> <c>Physics</c>
@@ -218,12 +218,12 @@ Id|Title|Body
 <c>print</c> (<c>names</c>)
 </code>
 
-<t>Will</t> <t>give</t> <t>the</t> <t>output</t> <t>as</t>;
+<t>Will</t> <t>give</t> <t>the</t> <t>output</t> <t>as;</t>
 
 <code>[""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 </code>
 
-<t>That</t> <t>is</t> <t>not</t> <t>the</t> <t>format</t> <t>I</t> <t>want</t> <t>instead</t> <t>I</t> <t>want</t> <t>it</t> <t>to</t> <t>be</t> <t>like</t> <t>this</t>;
+<t>That</t> <t>is</t> <t>not</t> <t>the</t> <t>format</t> <t>I</t> <t>want</t> <t>instead</t> <t>I</t> <t>want</t> <t>it</t> <t>to</t> <t>be</t> <t>like</t> <t>this;</t>
 
 <code><c>Sam</c>, <c>Peter</c>, <c>James</c>, <c>Julian</c>, <c>Ann</c>
 </code>
@@ -234,8 +234,8 @@ Id|Title|Body
 
 <code><c>/*</c> 
 
-<c>*/</c>
-</code>
+<c>*</c><c>/
+</c></code>
 
 <t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
 "
@@ -249,29 +249,29 @@ Id|Title|Body
 
 <t>What</t> <t>should</t> <t>I</t> <t>do</t> <t>to</t> <t>fix</t> <t>this</t>?
 "
-4142151|<t>How</t> <t>to</t> <t>import</t> <t>the</t> <t>class</t> <t>within</t> <t>the</t> <t>same</t> <t>directory</t> <t>or</t> <t>sub</t> <t>directory</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>directory</t> <t>that</t> <t>stores</t> <t>all</t> <t>the</t> <t>.py</t> <t>files</t>.
+4142151|<t>How</t> <t>to</t> <t>import</t> <t>the</t> <t>class</t> <t>within</t> <t>the</t> <t>same</t> <t>directory</t> <t>or</t> <t>sub</t> <t>directory</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>directory</t> <t>that</t> <t>stores</t> <t>all</t> <t>the</t> .<t>py</t> <t>files</t>.
 
-<code><c>bin/</c>
-   <c>main.py</c>
-   <c>user.py</c> # <c>where</c> <c>class</c> <c>User</c> <c>resides</c>
-   <c>dir.py</c> # <c>where</c> <c>class</c> <c>Dir</c> <c>resides</c>
+<code><c>bin</c><c>/
+</c>   <c>main</c><c>.</c><c>py</c>
+   <c>user</c><c>.</c><c>py</c> # <c>where</c> <c>class</c> <c>User</c> <c>resides</c>
+   <c>dir</c><c>.</c><c>py</c> # <c>where</c> <c>class</c> <c>Dir</c> <c>resides</c>
 </code>
 
-<t>I</t> <t>want</t> <t>to</t> <t>use</t> <t>classes</t> <t>from</t> <t>user.py</t> <t>and</t> <t>dir.py</t> <t>in</t> <t>main.py</t>.
-<t>How</t> <t>can</t> <t>I</t> <t>import</t> <t>these</t> <t>Python</t> <t>classes</t> <t>into</t> <t>main.py</t>?
-<t>Furthermore</t>, <t>how</t> <t>can</t> <t>I</t> <t>import</t> <t>class</t> <code><c>User</c></code> <t>if</t> <t>user.py</t> <t>is</t> <t>in</t> <t>a</t> <t>sub</t> <t>directory</t>?
+<t>I</t> <t>want</t> <t>to</t> <t>use</t> <t>classes</t> <t>from</t> <t>user</t>.<t>py</t> <t>and</t> <t>dir</t>.<t>py</t> <t>in</t> <t>main.py.</t>
+<t>How</t> <t>can</t> <t>I</t> <t>import</t> <t>these</t> <t>Python</t> <t>classes</t> <t>into</t> <t>main</t>.<t>py</t>?
+<t>Furthermore</t>, <t>how</t> <t>can</t> <t>I</t> <t>import</t> <t>class</t> <code><c>User</c></code> <t>if</t> <t>user</t>.<t>py</t> <t>is</t> <t>in</t> <t>a</t> <t>sub</t> <t>directory</t>?
 
-<code><c>bin/</c>
-    <c>dir.py</c>
-    <c>main.py</c>
-    <c>usr/</c>
-        <c>user.py</c>
+<code><c>bin</c><c>/
+</c>    <c>dir</c><c>.</c><c>py</c>
+    <c>main</c><c>.</c><c>py</c>
+    <c>usr</c><c>/
+</c>        <c>user</c><c>.</c><c>py</c>
 </code>
 "
-1934675|<t>How</t> <t>to</t> <t>execute</t> <t>Python</t> <t>scripts</t> <t>in</t> <t>Windows</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>simple</t> <t>script</t> <t>blah.py</t> (<t>using</t> <t>Python</t> <t>2</t>):
+1934675|<t>How</t> <t>to</t> <t>execute</t> <t>Python</t> <t>scripts</t> <t>in</t> <t>Windows</t>?|"<t>I</t> <t>have</t> <t>a</t> <t>simple</t> <t>script</t> <t>blah</t>.<t>py</t> (<t>using</t> <t>Python</t> <t>2</t>):
 
 <code><c>import</c> <c>sys</c>
-<c>print</c> <c>sys</c><c>.</c><c>argv</c><c>[1]</c>
+<c>print</c> <c>sys</c><c>.</c><c>argv</c>[<c>1</c>]
 </code>
 
 <t>If I</t> <t>execute</t> <t>my</t> <t>script</t> <t>by</t>:
@@ -281,7 +281,7 @@ Id|Title|Body
 
 <t>It</t> <t>prints</t> <t>argument</t> <t>but</t> <t>if</t> <t>I</t> <t>execute</t> <t>script</t> <t>by</t>:
 
-<code><c>blah.py</c> <c>argument</c>
+<code><c>blah</c><c>.</c><c>py</c> <c>argument</c>
 </code>
 
 <t>error</t> <t>occurs</t>:
@@ -342,7 +342,7 @@ Id|Title|Body
 <code><c>print(</c><c>p</c>) <c>for</c> <c>p</c> <c>in</c> <c>myList</c>
 </code>
 
-<t>If</t> <t>not</t>, <t>my</t> <t>question</t> <t>is</t>... <t>why</t> ? <t>If</t> <t>we</t> <t>can</t> <t>do</t> <t>this</t> <t>kind</t> <t>of</t> <t>stuff</t> <t>with</t> <t>comprehensive</t> <t>lists</t>, <t>why</t> <t>not</t> <t>as</t> <t>a</t> <t>simple</t> <t>statement</t> <t>outside</t> <t>a</t> <t>list</t> ?
+<t>If</t> <t>not</t>, <t>my</t> <t>question</t> <t>is...</t> <t>why</t> ? <t>If</t> <t>we</t> <t>can</t> <t>do</t> <t>this</t> <t>kind</t> <t>of</t> <t>stuff</t> <t>with</t> <t>comprehensive</t> <t>lists</t>, <t>why</t> <t>not</t> <t>as</t> <t>a</t> <t>simple</t> <t>statement</t> <t>outside</t> <t>a</t> <t>list</t> ?
 "
 627435|<t>How</t> <t>to</t> <t>remove</t> <t>an</t> <t>element</t> <t>from</t> <t>a</t> <t>list</t> <t>by</t> <t>index</t> <t>in</t> <t>Python</t>?|"<t>How</t> <t>to</t> <t>remove</t> <t>an</t> <t>element</t> <t>from</t> <t>a</t> <t>list</t> <t>by</t> <t>index</t> <t>in</t> <t>Python</t>?
 
@@ -351,38 +351,38 @@ Id|Title|Body
 1483429|<t>How</t> <t>to</t> <t>print</t> <t>an</t> <t>error</t> <t>in</t> <t>Python</t>?|"<code><c>try</c>:
     <c>something</c> <c>here</c>
 <c>except</c>:
-    <c>print</c> '<c>the</c> <c>whatever</c> <c>error</c> <c>occurred</c>.'
+    <c>print</c> '<c>the</c> <c>whatever</c> <c>error</c> <c>occurred</c><c>.</c>'
 </code>
 
 <t>How</t> <t>can</t> <t>I</t> <t>print</t> <t>the</t> <t>error</t> <t>in</t> <t>my</t> <code><c>except</c>:</code> <t>block</t>?
 "
-9733638|<t>Post</t> <t>JSON</t> <t>using</t> <t>Python</t> <t>Requests</t>|"<t>I</t> <t>need</t> <t>to</t> <t>POST</t> <t>a</t> <t>JSON</t> <t>from</t> <t>a</t> <t>client</t> <t>to</t> <t>a</t> <t>server</t>. <t>I'm</t> <t>using</t> <t>Python</t> <t>2.7.1</t> <t>and</t> <t>simplejson</t>. <t>The</t> <t>client</t> <t>is</t> <t>using</t> <t>Requests</t>. <t>The</t> <t>server</t> <t>is</t> <t>CherryPy</t>. <t>I</t> <t>can</t> <t>GET</t> <t>a</t> <t>hard-coded</t> <t>JSON</t> <t>from</t> <t>the</t> <t>server</t> (<t>code</t> <t>not</t> <t>shown</t>), <t>but</t> <t>when</t> <t>I</t> <t>try</t> <t>to</t> <t>POST</t> <t>a</t> <t>JSON</t> <t>to</t> <t>the</t> <t>server</t>, <t>I</t> <t>get</t> ""<t>400</t> <t>Bad</t> <t>Request</t>"".
+9733638|<t>Post JSON</t> <t>using</t> <t>Python Requests</t>|"<t>I</t> <t>need</t> <t>to</t> <t>POST</t> <t>a</t> <t>JSON</t> <t>from</t> <t>a</t> <t>client</t> <t>to</t> <t>a</t> <t>server</t>. <t>I'm</t> <t>using</t> <t>Python</t> <t>2.7.1</t> <t>and</t> <t>simplejson</t>. <t>The</t> <t>client</t> <t>is</t> <t>using</t> <t>Requests</t>. <t>The</t> <t>server</t> <t>is</t> <t>CherryPy</t>. <t>I</t> <t>can</t> <t>GET</t> <t>a</t> <t>hard-coded</t> <t>JSON</t> <t>from</t> <t>the</t> <t>server</t> (<t>code</t> <t>not</t> <t>shown</t>), <t>but</t> <t>when</t> <t>I</t> <t>try</t> <t>to</t> <t>POST</t> <t>a</t> <t>JSON</t> <t>to</t> <t>the</t> <t>server</t>, <t>I</t> <t>get</t> ""<t>400</t> <t>Bad</t> <t>Request</t>"".
 
 <t>Here</t> <t>is</t> <t>my</t> <t>client</t> <t>code</t>:
 
 <code><c>data</c> <c>=</c> {'<c>sender</c>':   '<c>Alice</c>',
-    '<c>receiver</c>'<c>:</c> '<c>Bob</c>',
-    '<c>message</c>'<c>:</c>  '<c>We</c> <c>did</c> <c>it</c><c>!</c>'}
-<c>data_json</c> <c>=</c> <c>simplejson</c><c>.</c><c>dumps</c>(<c>data</c>)
-<c>payload</c> <c>=</c> {'<c>json_payload</c>'<c>:</c> <c>data_json</c>}
+    '<c>receiver</c>': '<c>Bob</c>',
+    '<c>message</c>':  '<c>We</c> <c>did</c> <c>it</c><c>!</c>'}
+<c>data_json</c> <c>=</c> <c>simplejson</c><c>.</c><c>dumps(</c><c>data</c>)
+<c>payload</c> <c>=</c> {'<c>json_payload</c>': <c>data_json</c>}
 <c>r</c> <c>=</c> <c>requests</c><c>.</c><c>post(</c>""<c>htt</c><c>p://localhost:8080</c>"", <c>data</c><c>=</c><c>payload</c>)
 </code>
 
 <t>Here</t> <t>is</t> <t>the</t> <t>server</t> <t>code</t>.
 
-<code><c>class</c> <c>Root(</c><c>object</c>)<c>:</c>
+<code><c>class</c> <c>Root(</c><c>object</c>):
 
-    <c>def</c> <c>__init__(</c><c>self</c>, <c>content</c>)<c>:</c>
+    <c>def</c> <c>__init__(</c><c>self</c>, <c>content</c>):
         <c>self</c><c>.</c><c>content</c> <c>=</c> <c>content</c>
-        <c>print</c> <c>self</c><c>.</c><c>content</c>  <c>#</c> <c>this</c> <c>works</c>
+        <c>print</c> <c>self</c><c>.</c><c>content</c>  # <c>this</c> <c>works</c>
 
     <c>exposed</c> <c>=</c> <c>True</c>
 
-    <c>def</c> <c>GET(</c><c>self</c>)<c>:</c>
+    <c>def</c> <c>GET(</c><c>self</c>):
         <c>cherrypy</c><c>.</c><c>response</c><c>.</c><c>headers</c>['<c>Content-Type</c>'] <c>=</c> '<c>application</c><c>/json</c>'
         <c>return</c> <c>simplejson</c><c>.</c><c>dumps(</c><c>self</c><c>.</c><c>content</c>)
 
-    <c>def</c> <c>POST(</c><c>self</c>)<c>:</c>
+    <c>def</c> <c>POST(</c><c>self</c>):
         <c>self</c><c>.</c><c>content</c> <c>=</c> <c>simplejson</c><c>.</c><c>loads(</c><c>cherrypy</c><c>.</c><c>request</c><c>.</c><c>body</c><c>.</c><c>read(</c>))
 </code>
 
@@ -400,35 +400,35 @@ Id|Title|Body
 960733|<t>Python</t> <t>creating</t> <t>a</t> <t>dictionary</t> <t>of</t> <t>lists</t>|"<t>I</t> <t>want</t> <t>to</t> <t>create</t> <t>a</t> <t>dictionary</t> <t>whose</t> <t>values</t> <t>are</t> <t>lists</t>.  <t>For</t> <t>example</t>: 
 
 <code>{
-  <c>1</c><c>:</c> ['<c>1</c>'],
-  <c>2</c><c>:</c> ['<c>1</c>','<c>2</c>'],
-  <c>3</c><c>:</c> ['<c>2</c>']
+  <c>1</c>: ['<c>1</c>'],
+  <c>2</c>: ['<c>1</c>','<c>2</c>'],
+  <c>3</c>: ['<c>2</c>']
 }
 </code>
 
-<t>If</t> <t>I</t> <t>do</t>:
+<t>If I</t> <t>do</t>:
 
 <code><c>d</c> <c>=</c> <c>dict(</c>)
 <c>a</c> <c>=</c> ['<c>1</c>', '<c>2</c>']
-<c>for</c> <c>i</c> <c>in</c> <c>a</c><c>:</c>
-    <c>for</c> <c>j</c> <c>in</c> <c>range(</c><c>int(</c><c>i</c>), <c>int(</c><c>i</c>) <c>+</c> <c>2</c>)<c>:</c> 
+<c>for</c> <c>i</c> <c>in</c> <c>a</c>:
+    <c>for</c> <c>j</c> <c>in</c> <c>range(</c><c>int(</c><c>i</c>), <c>int(</c><c>i</c>) <c>+</c> <c>2</c>): 
         <c>d</c>[<c>j</c>]<c>.</c><c>append(</c><c>i</c>)
 </code>
 
 <t>I</t> <t>get</t> <t>a</t> <t>KeyError</t>, <t>because</t> <t>d[...]</t> <t>isn't</t> <t>a</t> <t>list</t>.  <t>In</t> <t>this</t> <t>case</t>, <t>I</t> <t>can</t> <t>add</t> <t>the</t> <t>following</t> <t>code</t> <t>after</t> <t>the</t> <t>assignment</t> <t>of</t> <t>a</t> <t>to</t> <t>initialize</t> <t>the</t> <t>dictionary</t>. 
 
-<code><c>for</c> <c>x</c> <c>in</c> <c>range(</c><c>1</c>, <c>4</c>)<c>:</c>
+<code><c>for</c> <c>x</c> <c>in</c> <c>range(</c><c>1</c>, <c>4</c>):
     <c>d</c>[<c>x</c>] <c>=</c> <c>list(</c>)
 </code>
 
 <t>Is</t> <t>there</t> <t>a</t> <t>better</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t>?  <t>Lets</t> <t>say</t> <t>I</t> <t>don't</t> <t>know</t> <t>the</t> <t>keys</t> <t>I</t> <t>am</t> <t>going</t> <t>to</t> <t>need</t> <t>until</t> <t>I</t> <t>am</t> <t>in</t> <t>the</t> <t>second</t> <code><c>for</c></code> <t>loop</t>.  <t>For</t> <t>example</t>:
 
-<code><c>class</c> <c>relation</c><c>:</c>
+<code><c>class</c> <c>relation</c>:
     <c>scope_list</c> <c>=</c> <c>list(</c>)
 ...
 <c>d</c> <c>=</c> <c>dict(</c>)
-<c>for</c> <c>relation</c> <c>in</c> <c>relation_list</c><c>:</c>
-    <c>for</c> <c>scope_item</c> <c>in</c> <c>relation</c><c>.</c><c>scope_list</c><c>:</c>
+<c>for</c> <c>relation</c> <c>in</c> <c>relation_list</c>:
+    <c>for</c> <c>scope_item</c> <c>in</c> <c>relation</c><c>.</c><c>scope_list</c>:
         <c>d</c>[<c>scope_item</c>]<c>.</c><c>append(</c><c>relation</c>)
 </code>
 
@@ -439,9 +439,9 @@ Id|Title|Body
 
 <t>with</t> 
 
-<code><c>if</c> <c>d</c><c>.</c><c>has_key(</c><c>scope_item</c>)<c>:</c>
+<code><c>if</c> <c>d</c><c>.</c><c>has_key(</c><c>scope_item</c>):
     <c>d</c>[<c>scope_item</c>]<c>.</c><c>append(</c><c>relation</c>)
-<c>else</c><c>:</c>
+<c>else</c>:
     <c>d</c>[<c>scope_item</c>] <c>=</c> [<c>relation</c>,]
 </code>
 
@@ -458,7 +458,7 @@ Id|Title|Body
 
 <code># <c>python</c> <c>example</c>
 <c>this_is_my_variable</c> <c>=</c> '<c>a</c>'
-<c>def</c> <c>this_is_my_function(</c>)<c>:</c>
+<c>def</c> <c>this_is_my_function(</c>):
 </code>
 
 <t>Is</t> <t>there</t> <t>a</t> <t>more</t> <t>preferable</t>, <t>definitive</t> <t>coding</t> <t>style</t> <t>for</t> <t>Python</t>?
@@ -478,7 +478,7 @@ Id|Title|Body
 
 <t>I</t> <t>want</t> <t>to</t> <t>do</t> <t>something</t> <t>like</t> <t>the</t> <t>following</t>:
 
-<code><c>for</c> <c>line</c> <c>in</c> <c>inputString</c><c>:</c>
+<code><c>for</c> <c>line</c> <c>in</c> <c>inputString</c>:
     <c>doStuff(</c>)
 </code>
 "
@@ -487,14 +487,14 @@ Id|Title|Body
 <t>This</t> <t>is</t> <t>the</t> <t>sequence</t> <t>that</t> <t>I've</t> <t>typed</t> <t>into</t> <t>my</t> <t>command</t> <t>line</t>:
 
 <code><c>C:\Python34&gt;</c><c>python</c> <c>get-pip</c><c>.</c><c>py</c>
-<c>Requirement</c> <c>already</c> <c>up-to-date</c><c>:</c> <c>pip</c> <c>in</c> <c>c:\python34\lib\site-packages
+<c>Requirement</c> <c>already</c> <c>up-to-date</c>: <c>pip</c> <c>in</c> <c>c:\python34\lib\site-packages
 Cleaning</c> <c>up</c>...
 
 <c>C:\Python34&gt;</c><c>pip</c> <c>install</c> <c>Django</c>
 '<c>pip</c>' <c>is</c> <c>not</c> <c>recognized</c> <c>as</c> <c>an</c> <c>internal</c> <c>or</c> <c>external</c> <c>command</c>,
 <c>operable</c> <c>program</c> <c>or</c> <c>batch</c> <c>file</c><c>.</c>
 
-<c>C:\Python34&gt;</c><c>lib\site-packages\pip</c> <c>install</c> <c>Django</c>
+<c>C:\Python34&gt;</c><c>lib</c><c>\site-packages\pip</c> <c>install</c> <c>Django</c>
 '<c>lib</c><c>\site-packages\pip</c>' <c>is</c> <c>not</c> <c>recognized</c> <c>as</c> <c>an</c> <c>internal</c> <c>or</c> <c>external</c> <c>command</c>,
 <c>operable</c> <c>program</c> <c>or</c> <c>batch</c> <c>file</c><c>.</c> 
 </code>
@@ -506,16 +506,16 @@ Cleaning</c> <c>up</c>...
 <t>As</t> <t>requested</t> <t>this</t> <t>is</t> <t>what</t> <t>I</t> <t>get</t> <t>when</t> <t>I</t> <t>type</t> <t>in</t> <t>echo</t> <t>%PATH%</t>
 
 <code><c>C:\Python34&gt;</c><c>echo</c> <c>%</c><c>PATH</c><c>%</c>
-<c>C:\Program Files\ImageMagick-6.8.8-Q16</c>;<c>C:\Program Files (x86)\Intel\iCLS Client\</c>
-;<c>C:\Program Files\Intel\iCLS Client\</c>;<c>C:\Windows\system32</c>;<c>C:\Windows</c>;<c>C:\Windows\S
-ystem32\Wbem</c>;<c>C:\Windows\System32\WindowsPowerShell\v1.0\</c>;<c>C:\Program Files (x86)\
-Windows Live\Shared</c>;<c>C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86</c>;<c>C:\Progr
-am Files (x86)\Intel\OpenCL SDK\2.0\bin\x64</c>;<c>C:\Program Files\Intel\Intel(R) Mana
-gement Engine Components\DAL</c>;<c>C:\Program Files\Intel\Intel(R) Management Engine C
-omponents\IPT</c>;<c>C:\Program Files (x86)\Intel\Intel(R) Management Engine Components
-\DAL</c>;<c>C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT</c>;<c>C:\P
-rogram Files (x86)\nodejs\</c>;<c>C:\Program Files (x86)\Heroku\bin</c>;<c>C:\Program Files (x
-86)\git\cmd</c>;<c>C:\RailsInstaller\Ruby2.0.0\bin</c>;<c>C:\RailsInstaller\Git\cmd</c>;<c>C:\RailsIn
+<c>C:\Program</c> <c>Files</c><c>\ImageMagick-6.8.8-Q16</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\iCLS</c> <c>Client</c><c>\
+</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\iCLS</c> <c>Client</c><c>\</c>;<c>C:\Windows\system32</c>;<c>C:\Windows</c>;<c>C:\Windows\S
+ystem32\Wbem</c>;<c>C:\Windows\System32\WindowsPowerShell\v1.0\</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\
+Windows</c> <c>Live</c><c>\Shared</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\OpenCL</c> <c>SDK</c><c>\2.0\bin\x86</c>;<c>C:\Progr
+am</c> <c>Files</c> (<c>x86</c>)<c>\Intel\OpenCL</c> <c>SDK</c><c>\2.0\bin\x64</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\Intel(R)</c> <c>Mana</c>
+<c>gement</c> <c>Engine</c> <c>Components</c><c>\DAL</c>;<c>C:\Program</c> <c>Files</c><c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>C</c>
+<c>omponents</c><c>\IPT</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>Components</c>
+<c>\DAL</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Intel\Intel(R)</c> <c>Management</c> <c>Engine</c> <c>Components</c><c>\IPT</c>;<c>C:\P
+rogram</c> <c>Files</c> (<c>x86</c>)<c>\nodejs\</c>;<c>C:\Program</c> <c>Files</c> (<c>x86</c>)<c>\Heroku\bin</c>;<c>C:\Program</c> <c>Files</c> (<c>x</c>
+<c>86</c>)<c>\git\cmd</c>;<c>C:\RailsInstaller\Ruby2.0.0\bin</c>;<c>C:\RailsInstaller\Git\cmd</c>;<c>C:\RailsIn
 staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 </c></code>
 "
@@ -523,7 +523,7 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>Specifically</t>, <t>suppose</t> <t>I</t> <t>have</t>:
 
-<code><c>for</c> <c>item</c> <c>in</c> <c>range(</c><c>1</c>,<c>100</c>)<c>:</c>
+<code><c>for</c> <c>item</c> <c>in</c> <c>range(</c><c>1</c>,<c>100</c>):
     <c>print</c> <c>item</c>
 </code>
 
@@ -551,14 +551,14 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>Why</t> <t>does</t> <t>Python</t> <t>deviate</t> <t>from</t> <t>the</t> <t>behavior</t> <t>of</t> <t>these</t> <t>operators</t> <t>seen</t> <t>in</t> <t>C/C++</t>?
 "
-7818811|<t>Import Error</t>: <t>No</t> <t>module</t> <t>named</t> <t>numpy</t>|"<t>I</t> <t>have</t> <t>a</t> <t>very</t> <t>similar</t> <t>question</t> <t>to</t> <t>this</t> <t>question</t>, <t>but</t> <t>still</t> <t>1</t> <t>step</t> <t>behind</t>. 
+7818811|<t>Import</t> <t>Error</t>: <t>No</t> <t>module</t> <t>named</t> <t>numpy</t>|"<t>I</t> <t>have</t> <t>a</t> <t>very</t> <t>similar</t> <t>question</t> <t>to</t> <t>this</t> <t>question</t>, <t>but</t> <t>still</t> <t>1</t> <t>step</t> <t>behind</t>. 
 <t>I</t> <t>have</t> <t>only</t> <t>one</t> <t>version</t> <t>of</t> <t>python</t> <t>3</t> <t>installed</t> <t>on</t> <t>my</t> <t>Windows</t> <t>7(sorry</t>) <t>64-bit</t> <t>system</t>.
 <t>I</t> <t>installed</t> <t>numpy</t> <t>following</t> <t>this</t> <t>link</t> <t>-</t> <t>as</t> <t>suggested</t> <t>in</t> <t>the</t> <t>question</t>. 
 <t>The</t> <t>installation</t> <t>went</t> <t>fine</t> <t>but</t> <t>when</t> <t>I</t> <t>want</t> <t>to</t> <t>import</t>
 
 <code><c>import</c> <c>numpy</c>
 
-<c>Import</c> <c>error</c><c>:</c><c>No</c> <c>module</c> <c>named</c> <c>numpy</c>
+<c>Import</c> <c>error</c>:<c>No</c> <c>module</c> <c>named</c> <c>numpy</c>
 </code>
 
 <t>I</t> <t>know</t> <t>this</t> <t>is</t> <t>probably</t> <t>a</t> <t>super</t> <t>basic</t> <t>question</t>, <t>but</t> <t>I'm</t> <t>still</t> <t>learning...</t>
@@ -579,37 +579,37 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>but</t> <t>I</t> <t>get</t> <t>the</t> <t>error</t>: 
 
-<code><c>ImportError</c><c>:</c> <c>No</c> <c>module</c> <c>named</c> '<c>file</c><c>.</c><c>py</c>'; <c>file</c> <c>is</c> <c>not</c> <c>a</c> <c>package</c>
+<code><c>ImportError</c>: <c>No</c> <c>module</c> <c>named</c> '<c>file</c><c>.</c><c>py</c>'; <c>file</c> <c>is</c> <c>not</c> <c>a</c> <c>package</c>
 </code>
 "
-1641219|<t>Does Python</t> <t>have</t> <t>“private”</t> <t>variables</t> <t>in</t> <t>classes</t>?|"<t>I'm</t> <t>coming</t> <t>from</t> <t>the</t> <t>Java</t> <t>world</t> <t>and</t> <t>reading</t> <t>Bruce Eckels'</t> <t>Python</t> <t>3</t> <t>Patterns</t>, <t>Recipes</t> <t>and</t> <t>Idioms</t>. 
+1641219|<t>Does Python</t> <t>have</t> <t>“private”</t> <t>variables</t> <t>in</t> <t>classes</t>?|"<t>I'm</t> <t>coming</t> <t>from</t> <t>the</t> <t>Java</t> <t>world</t> <t>and</t> <t>reading</t> <t>Bruce</t> <t>Eckels</t>' <t>Python</t> <t>3</t> <t>Patterns</t>, <t>Recipes</t> <t>and</t> <t>Idioms</t>. 
 
 <t>While</t> <t>reading</t> <t>about</t> <t>classes</t>, <t>it</t> <t>goes</t> <t>on</t> <t>to</t> <t>say</t> <t>that</t> <t>in</t> <t>Python</t> <t>there</t> <t>is</t> <t>no</t> <t>need</t> <t>to</t> <t>declare</t> <t>instance</t> <t>variables</t>. <t>You</t> <t>just</t> <t>use</t> <t>them</t> <t>in</t> <t>the</t> <t>constructor</t>, <t>and</t> <t>boom</t>, <t>they</t> <t>are</t> <t>there</t>. 
 
 <t>So</t> <t>for</t> <t>example</t>:
 
-<code><c>class</c> <c>Simple</c><c>:</c>
-    <c>def</c> <c>__init__(</c><c>self1</c>, <c>str</c>)<c>:</c>
+<code><c>class</c> <c>Simple</c>:
+    <c>def</c> <c>__init__(</c><c>self1</c>, <c>str</c>):
         <c>print(</c>""<c>inside</c> <c>the</c> <c>simple</c> <c>constructor</c>"")
         <c>self1</c><c>.</c><c>s</c> <c>=</c> <c>str</c>
-    <c>def</c> <c>show(</c><c>self1</c>)<c>:</c>
+    <c>def</c> <c>show(</c><c>self1</c>):
         <c>print(</c><c>self1</c><c>.</c><c>s</c>)
-    <c>def</c> <c>showMsg</c> (<c>self</c>, <c>msg</c>)<c>:</c>
-        <c>print</c> (<c>msg</c> <c>+</c> '<c>:</c>', <c>self</c><c>.</c><c>show(</c>))
+    <c>def</c> <c>showMsg</c> (<c>self</c>, <c>msg</c>):
+        <c>print</c> (<c>msg</c> <c>+</c> ':', <c>self</c><c>.</c><c>show(</c>))
 </code>
 
 <t>If</t> <t>that’s</t> <t>true</t>, <t>then</t> <t>any</t> <t>object</t> <t>of</t> <t>class</t> <code><c>Simple</c></code> <t>can</t> <t>just</t> <t>change</t> <t>the</t> <t>value</t> <t>of</t> <t>variable</t> <code><c>s</c></code> <t>outside</t> <t>of</t> <t>the</t> <t>class</t>. 
 
 <t>For</t> <t>example</t>: 
 
-<code><c>if</c> <c>__name__</c> <c>==</c> ""<c>__main__</c>""<c>:</c>
+<code><c>if</c> <c>__name__</c> <c>==</c> ""<c>__main__</c>"":
     <c>x</c> <c>=</c> <c>Simple(</c>""<c>constructor</c> <c>argument</c>"")
     <c>x</c><c>.</c><c>s</c> <c>=</c> ""<c>test15</c>"" # <c>this</c> <c>changes</c> <c>the</c> <c>value</c>
     <c>x</c><c>.</c><c>show(</c>)
     <c>x</c><c>.</c><c>showMsg(</c>""<c>A</c> <c>message</c>"")
 </code>
 
-<t>In Java</t>, <t>we</t> <t>have</t> <t>been</t> <t>taught</t> <t>about</t> <t>public/private/protected</t> <t>variables</t>.  <t>Those</t> <t>keywords</t> <t>make</t> <t>sense</t> <t>because</t> <t>at</t> <t>times</t> <t>you</t> <t>want</t> <t>variables</t> <t>in</t> <t>a</t> <t>class</t> <t>to</t> <t>which</t> <t>no</t> <t>one</t> <t>outside</t> <t>the</t> <t>class</t> <t>has</t> <t>access</t> <t>to</t>. 
+<t>In</t> <t>Java</t>, <t>we</t> <t>have</t> <t>been</t> <t>taught</t> <t>about</t> <t>public/private/protected</t> <t>variables</t>.  <t>Those</t> <t>keywords</t> <t>make</t> <t>sense</t> <t>because</t> <t>at</t> <t>times</t> <t>you</t> <t>want</t> <t>variables</t> <t>in</t> <t>a</t> <t>class</t> <t>to</t> <t>which</t> <t>no</t> <t>one</t> <t>outside</t> <t>the</t> <t>class</t> <t>has</t> <t>access</t> <t>to</t>. 
 
 <t>Why</t> <t>is</t> <t>that</t> <t>not</t> <t>required</t> <t>in</t> <t>Python</t>?
 "
@@ -632,7 +632,7 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 "
 4534438|<t>TypeError</t>: '<t>module</t>' <t>object</t> <t>is</t> <t>not</t> <t>callable</t>|"<code><c>File</c> ""<c>C:\Users\Administrator\Documents\Mibot\oops\blinkserv.py</c>"", <c>line</c> <c>82</c>, <c>in</c> <c>__init__</c>
     <c>self</c><c>.</c><c>serv</c> <c>=</c> <c>socket(</c><c>AF_INET</c>,<c>SOCK_STREAM</c>)
-<c>TypeError</c><c>:</c> '<c>module</c>' <c>object</c> <c>is</c> <c>not</c> <c>callable</c>
+<c>TypeError</c>: '<c>module</c>' <c>object</c> <c>is</c> <c>not</c> <c>callable</c>
 </code>
 
 <t>Why</t> <t>am</t> <t>I</t> <t>getting</t> <t>this</t> <t>error</t>?
@@ -645,9 +645,9 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 <code><c>&gt;&gt;&gt;</c> <c>a</c> <c>=</c> <c>SomeClass(</c>)
 <c>&gt;&gt;&gt;</c> <c>a</c><c>.</c><c>someProperty</c> <c>=</c> <c>value</c>
 <c>&gt;&gt;&gt;</c> <c>a</c><c>.</c><c>property</c>
-<c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>)<c>:</c>
+<c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
   <c>File</c> ""<c>&lt;</c><c>stdin</c><c>&gt;</c>"", <c>line</c> <c>1</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
-<c>AttributeError</c><c>:</c> <c>SomeClass</c> <c>instance</c> <c>has</c> <c>no</c> <c>attribute</c> '<c>property</c>'
+<c>AttributeError</c>: <c>SomeClass</c> <c>instance</c> <c>has</c> <c>no</c> <c>attribute</c> '<c>property</c>'
 </code>
 
 <t>How</t> <t>can</t> <t>you</t> <t>tell</t> <t>if</t> <code><c>a</c></code> <t>has</t> <t>the</t> <t>attribute</t> <code><c>property</c></code> <t>before</t> <t>using</t> <t>it</t>?
@@ -691,10 +691,10 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>For</t> <t>example</t>:
 
-<code><c>%</c> <c>formatter</c> <c>something</c> <c>like</c> '{<c>:</c><c>0</c><c>6</c>}'
+<code><c>%</c> <c>formatter</c> <c>something</c> <c>like</c> '{:<c>0</c><c>6</c>}'
 <c>numbers</c> <c>=</c> [<c>23.23</c>, <c>0.123334987</c>, <c>1</c>, <c>4.223</c>, <c>9887.2</c>]
 
-<c>for</c> <c>number</c> <c>in</c> <c>numbers</c><c>:</c>
+<c>for</c> <c>number</c> <c>in</c> <c>numbers</c>:
     <c>print</c> <c>formatter</c><c>.</c><c>format(</c><c>number</c>)
 </code>
 
@@ -709,6 +709,6 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 "
 26053982|<t>error</t>: <t>Setup</t> <t>script</t> <t>exited</t> <t>with</t> <t>error</t>: <t>command</t> '<t>x86_64-linux-gnu-gcc</t>' <t>failed</t> <t>with</t> <t>exit</t> <t>status</t> <t>1</t>|"<t>When I</t> <t>try</t> <t>to</t> <t>install</t> <t>odoo-server</t> <t>I</t> <t>got</t> <t>the</t> <t>following</t> <t>error</t> <t>could</t> <t>anyone</t> <t>help</t> <t>me</t> <t>to</t> <t>resolve</t> <t>this</t>?
 
-<code><c>error</c><c>:</c> <c>Setup</c> <c>script</c> <c>exited</c> <c>with</c> <c>error</c><c>:</c> <c>command</c> '<c>x86_64-linux-gnu-gcc</c>' <c>failed</c> <c>with</c> <c>exit</c> <c>status</c> <c>1</c>
+<code><c>error</c>: <c>Setup</c> <c>script</c> <c>exited</c> <c>with</c> <c>error</c>: <c>command</c> '<c>x86_64-linux-gnu-gcc</c>' <c>failed</c> <c>with</c> <c>exit</c> <c>status</c> <c>1</c>
 </code>
 "

@@ -1,0 +1,105 @@
+Id|Body
+14833803|"<t>To</t> <t>RUN</t> <t>press</t> <t>CtrlB</t> (<t>answer</t> <t>by</t> <t>matiit</t>)
+
+<t>But</t> <t>when</t> <t>CtrlB</t> <t>does</t> <t>not</t> <t>work</t>, <t>Sublime</t> <t>Text</t> <t>probably</t> <t>can't</t> <t>find</t> <t>the</t> <t>Python</t> <t>Interpreter</t>. <t>When</t> <t>trying</t> <t>to</t> <t>run</t> <t>your</t> <t>program</t>, <t>see</t> <t>the</t> <t>log</t> <t>and</t> <t>find</t> <t>the</t> <t>reference</t> <t>to</t> <t>Python</t> <t>in</t> <t>path</t>.
+
+<code>[<t>cmd</t>:  [<t>u'python</t>', <t>u'-u</t>', <t>u'C</t>:<t>\\scripts\\test</t><t>.</t><t>py</t>']]
+[<t>path</t>: ..<t>.</t><t>;C</t>:<t>\Python27</t> <t>32bit</t>;...]
+</code>
+
+<t>The</t> <t>point</t> <t>is</t> <t>that</t> <t>it</t> <t>tries</t> <t>to</t> <t>run</t> <t>python</t> <t>via</t> <t>command</t> <t>line</t>, <t>the</t> <t>cmd</t> <t>looks</t> <t>like</t>:
+
+<code><t>python</t> <t>-u</t> <t>C</t>:<t>\scripts\test</t><t>.</t><t>py</t>
+</code>
+
+<t>If</t> <t>you</t> <t>can't</t> <t>run</t> <t>python</t> <t>from</t> <t>cmd</t>, <t>Sublime</t> <t>Text</t> <t>can't</t> <t>too</t>.
+(<t>Try</t> <t>it</t> <t>yourself</t> <t>in</t> <t>cmd</t>, <t>type</t> <t>python</t> <t>in</t> <t>it</t> <t>and</t> <t>run</t> <t>it</t>, <t>python</t> <t>commandline</t> <t>should</t> <t>appear</t>)
+
+<t>SOLUTION</t>
+
+<t>You</t> <t>can</t> <t>either</t> <t>change</t> <t>the</t> <t>Sublime</t> <t>Text</t> <t>build</t> <t>formula</t> <t>or</t> <t>the</t> <t>System</t> <code><t>%PATH%</t></code>.  
+
+
+<t>To</t> <t>set</t> <t>your</t> <code><t>%PATH%</t></code>:
+<t>*</t><t>You</t> <t>will</t> <t>need</t> <t>to</t> <t>restart</t> <t>your</t> <t>editor</t> <t>to</t> <t>load</t> <t>new</t> <code><t>%PATH%</t></code>
+
+
+<t>Run</t> <t>Command</t> <t>Line*</t> <t>and</t> <t>enter</t> <t>this</t> <t>command</t>: <t>*needs</t> <t>to</t> <t>be</t> <t>run</t> <t>as</t> <t>administrator</t>
+<code><t>SETX</t> <t>/M</t> <t>PATH</t> ""<t>%PATH%;</t>&<t>lt;python_folder</t>&gt;""</code>
+<t>for</t> <t>example</t>: <code><t>SETX</t> <t>/M</t> <t>PATH</t> ""<t>%PATH%;C</t>:<t>\Python27;C</t>:<t>\Python27\Scripts</t>""</code>  
+<t>OR</t> <t>manually</t>: (<t>preferable</t>)
+<t>Add</t> <code><t>;C</t>:<t>\Python27;C</t>:<t>\Python27\Scripts</t></code> <t>at</t> <t>the</t> <t>end</t> <t>of</t> <t>the</t> <t>string</t>.
+  
+
+<t>To</t> <t>set</t> <t>the</t> <t>interpreter's</t> <t>path</t> <t>without</t> <t>messing</t> <t>with</t> <t>System</t> <code><t>%PATH%</t></code> <t>see</t> <t>this</t> <t>answer</t> <t>by</t> <t>ppy</t>.
+
+"
+28811205|"<t>Simply</t> <t>call</t> <t>del</t> <t>d</t>['<t>key</t>'].
+
+<t>However</t>, <t>in</t> <t>production</t>, <t>it</t> <t>is</t> <t>always</t> <t>a</t> <t>good</t> <t>practice</t> <t>to</t> <t>check</t> <t>if</t> '<t>key</t>' <t>exists</t> <t>in</t> <t>d</t>.
+
+<code><t>if</t> '<t>key</t>' <t>in</t> <t>d</t>:
+    <t>del</t> <t>d</t>['<t>key</t>']
+</code>
+"
+34971949|"<code><t>import</t> <t>os</t>;
+<t>print</t> <t>os</t><t>.</t><t>getcwd(</t>); # <t>Prints</t> <t>the</t> <t>working</t> <t>directory</t>
+</code>
+
+<t>To</t> <t>set</t> <t>the</t> <t>working</t> <t>directory</t>:
+
+<code><t>os</t><t>.</t><t>chdir(</t>'<t>c</t>:<t>\\Users\uname\desktop\python</t>') # <t>Provide</t> <t>the</t> <t>path</t> <t>here</t>
+</code>
+"
+29289118|"<code><t>with</t> <t>open(</t><t>fname</t>) <t>as</t> <t>fo</t>:
+        <t>data=fo</t><t>.</t><t>read(</t>)<t>.</t><t>replace(</t>'<t>\n</t>', ' ')<t>.</t><t>replace</t> (',', ' ')
+</code>
+
+<t>This</t> <t>should</t> <t>answer</t> <t>your</t> <t>question</t>. <t>The</t> <t>replace</t> <t>function</t> <t>will</t> <t>act</t> <t>as</t> <t>delimiter</t> <t>to</t> <t>strip</t> <t>the</t> <t>file</t>.
+"
+23102554|"<t>Lets</t> <t>Say</t> <t>I</t> <t>h'v</t> <t>a</t> <t>Dictionary</t> <t>D</t> <t>with</t> <t>elements</t> <t>below</t>. <t>To</t> <t>sort</t> <t>just</t> <t>use</t> <t>key</t> <t>argument</t> <t>in</t> <t>sorted</t> <t>to</t> <t>pass</t> <t>custom</t> <t>function</t> <t>as</t> <t>below</t>
+
+<code><t>D</t> <t>=</t> <t>{'eggs</t>': <t>3</t>, '<t>ham</t>': <t>1</t>, '<t>spam</t>': <t>2}</t>
+
+<t>def</t> <t>get_count(</t><t>tuple</t>):
+    <t>return</t> <t>tuple</t>[<t>1</t>]
+
+<t>sorted(</t><t>D</t><t>.</t><t>items(</t>), <t>key</t> <t>=</t> <t>get_count</t>, <t>reverse=True</t>)
+<t>or</t>
+<t>sorted(</t><t>D</t><t>.</t><t>items(</t>), <t>key</t> <t>=</t> <t>lambda</t> <t>x</t>: <t>x</t>[<t>1</t>], <t>reverse=True</t>)  <t>avoiding</t> <t>get_count</t> <t>function</t> <t>call</t>
+</code>
+
+<t>https</t>:<t>//wiki.python.org/moin/HowTo/Sorting/#Key_Functions</t>
+"
+89267|"<code><t>os</t><t>.</t><t>system</t></code> <t>has</t> <t>been</t> <t>superseded</t> <t>by</t> <t>the</t> <code><t>subprocess</t></code> <t>module</t>. <t>Use</t> <t>subproccess</t> <t>instead</t>.
+"
+2294502|"<t>There</t> <t>are</t> <t>two</t> <t>string</t> <t>methods</t> <t>for</t> <t>this</t>, <code><t>find</t></code> <t>and</t> <code><t>index</code>.
+
+<t>Example</t>:
+
+<code>&gt;&gt;&gt; <t>myString</t> <t>=</t> ""<t>Position</t> <t>of</t> <t>a</t> <t>character</t>""
+&gt;&gt;&gt; <t>myString</t><t>.</t><t>index(</t>'s')
+<t>2</t>
+</code>
+
+<t>The</t> <t>difference</t> <t>is</t> <t>that</t> <code><t>find</t></code> <t>returns</t> <code><t>-1</t></code> <t>when</t> <t>what</t> <t>you're</t> <t>looking</t> <t>for</t> <t>isn't</t> <t>found</t>. <code><t>index</code> <t>throws</t> <t>an</t> <t>exception</t>.
+
+
+  <t>Function</t> <code><t>str</t><t>.</t><t>find(</t><t>sub</t>[, <t>start</t>[, <t>end</t>]])</code>
+  <t>Return</t> <t>the</t> <t>lowest</t> <t>inde</t><t>x</t> <t>in</t> <t>the</t> <t>string</t> <t>where</t> <t>substring</t> <t>sub</t> <t>is</t> <t>found</t>, <t>such</t> <t>that</t> <t>sub</t> <t>is</t> <t>contained</t> <t>in</t> <t>the</t> <t>range</t> <code>[<t>start</t>, <t>end]</t></code>. <t>Optional</t> <t>arguments</t> <t>start</t> <t>and</t> <t>end</t> <t>are</t> <t>interpreted</t> <t>as</t> <t>in</t> <t>slice</t> <t>notation</t>. <t>Return</t> <code><t>-1</t></code> <t>if</t> <t>sub</t> <t>is</t> <t>not</t> <t>found</t>. 
+
+
+<t>And</t>:
+
+
+  <t>Function</t> <code><t>str</t><t>.</t><t>index(</t><t>sub</t>[, <t>start</t>[, <t>end</t>]])</code>
+  <t>Like</t> <code><t>find(</t>)</code>, <t>but</t> <code><t>raise</t> <t>ValueError</t></code> <t>when</t> <t>the</t> <t>substring</t> <t>is</t> <t>not</t> <t>found</t>.
+
+"
+28867664|"<t>I</t> <t>usually</t> <t>use</t>: 
+
+<code><t>if</t> ((<t>cond1</t> <t>=</t><t>=</t> '<t>val1</t>' <t>and</t> <t>cond2</t> <t>=</t><t>=</t> '<t>val2</t>' <t>and</t>
+     <t>cond3</t> <t>=</t><t>=</t> '<t>val3</t>' <t>and</t> <t>cond4</t> <t>=</t><t>=</t> '<t>val4</t>')):
+    <t>do_something(</t>)
+</code>
+"

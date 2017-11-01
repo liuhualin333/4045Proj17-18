@@ -1,0 +1,105 @@
+Id|Body
+14833803|"To RUN press CtrlB (answer by matiit)
+
+But when CtrlB does not work, Sublime Text probably can't find the Python Interpreter. When trying to run your program, see the log and find the reference to Python in path.
+
+<code>[cmd:  [u'python', u'-u', u'C:\\scripts\\test.py']]
+[path: ...;C:\Python27 32bit;...]
+</code>
+
+The point is that it tries to run python via command line, the cmd looks like:
+
+<code>python -u C:\scripts\test.py
+</code>
+
+If you can't run python from cmd, Sublime Text can't too.
+(Try it yourself in cmd, type python in it and run it, python commandline should appear)
+
+SOLUTION
+
+You can either change the Sublime Text build formula or the System <code>%PATH%</code>.  
+
+
+To set your <code>%PATH%</code>:
+*You will need to restart your editor to load new <code>%PATH%</code>
+
+
+Run Command Line* and enter this command: *needs to be run as administrator
+<code>SETX /M PATH ""%PATH%;&lt;python_folder&gt;""</code>
+for example: <code>SETX /M PATH ""%PATH%;C:\Python27;C:\Python27\Scripts""</code>  
+OR manually: (preferable)
+Add <code>;C:\Python27;C:\Python27\Scripts</code> at the end of the string.
+  
+
+To set the interpreter's path without messing with System <code>%PATH%</code> see this answer by ppy.
+
+"
+28811205|"Simply call del d['key'].
+
+However, in production, it is always a good practice to check if 'key' exists in d.
+
+<code>if 'key' in d:
+    del d['key']
+</code>
+"
+34971949|"<code>import os;
+print os.getcwd(); # Prints the working directory
+</code>
+
+To set the working directory:
+
+<code>os.chdir('c:\\Users\uname\desktop\python') # Provide the path here
+</code>
+"
+29289118|"<code>with open(fname) as fo:
+        data=fo.read().replace('\n', ' ').replace (',', ' ')
+</code>
+
+This should answer your question. The replace function will act as delimiter to strip the file.
+"
+23102554|"Lets Say I h'v a Dictionary D with elements below. To sort just use key argument in sorted to pass custom function as below
+
+<code>D = {'eggs': 3, 'ham': 1, 'spam': 2}
+
+def get_count(tuple):
+    return tuple[1]
+
+sorted(D.items(), key = get_count, reverse=True)
+or
+sorted(D.items(), key = lambda x: x[1], reverse=True)  avoiding get_count function call
+</code>
+
+https://wiki.python.org/moin/HowTo/Sorting/#Key_Functions
+"
+89267|"<code>os.system</code> has been superseded by the <code>subprocess</code> module. Use subproccess instead.
+"
+2294502|"There are two string methods for this, <code>find</code> and <code>index</code>.
+
+Example:
+
+<code>&gt;&gt;&gt; myString = ""Position of a character""
+&gt;&gt;&gt; myString.index('s')
+2
+</code>
+
+The difference is that <code>find</code> returns <code>-1</code> when what you're looking for isn't found. <code>index</code> throws an exception.
+
+
+  Function <code>str.find(sub[, start[, end]])</code>
+  Return the lowest index in the string where substring sub is found, such that sub is contained in the range <code>[start, end]</code>. Optional arguments start and end are interpreted as in slice notation. Return <code>-1</code> if sub is not found. 
+
+
+And:
+
+
+  Function <code>str.index(sub[, start[, end]])</code>
+  Like <code>find()</code>, but <code>raise ValueError</code> when the substring is not found.
+
+"
+28867664|"I usually use: 
+
+<code>if ((cond1 == 'val1' and cond2 == 'val2' and
+     cond3 == 'val3' and cond4 == 'val4')):
+    do_something()
+</code>
+"
