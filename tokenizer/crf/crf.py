@@ -247,8 +247,8 @@ if __name__ == '__main__':
                   help="change validation ratio, default 0.2")
     (options, args) = parser.parse_args()
     if(options.mode == 'sample'):
-        sample_output(options.filename, options.ratio)
+        sample_output(options.filename, float(options.ratio))
     elif(options.mode == 'cv'):
-        cross_validation(options.ratio)
+        cross_validation(float(options.ratio))
     elif(options.mode == 'hyper_search'):
         hyperParameter_search()
