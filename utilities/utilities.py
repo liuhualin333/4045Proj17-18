@@ -139,6 +139,64 @@ def get_data(filepath):
 	Y = [list(str) for str in Y]
 	return X, Y
 
+class rpost:
+	ptype = None
+	pid = None
+	ptitle = []
+	ptitle_label = []
+	pbody = []
+	pbody_label = []
+	
+	def __init__(self, ptype, pid):
+		self.ptype = ptype
+		if(ptype == 'answer'):
+			self.ptitle = None
+		self.pid = pid
+	
+	def addTitle(self, ptitle, label):
+		self.ptitle = ptitle
+		self.ptitle_label = [list(str) for str in label]
+
+	def addBody(self, pbody, label):
+		self.pbody = pbody
+		self.pbody_label = [list(str) for str in label]
+
+def split_train_text(file_text):
+	rpost_list = []
+	if(r'Id|Body' in file_text[:15]):
+		ptype = 'answer'
+		file_text = file_text[8:]
+		pattern = re.compile(r'^(\d+)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+		end_pattern = re.compile(r'^(\d+)\|\"(.*)\"$', flags = re.S|re.M)
+	else:
+		ptype = 'post'
+		file_text = file_text[14:]
+		pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+		end_pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
+	#pdb.set_trace()
+	def post2rpost(post):
+		# initialize the post
+		p = rpost(ptype, post.group(1))
+		_text, _label = MixAnno2charsTokens(post.group(2))
+		if(ptype == 'post'):
+			p.addTitle(_text, _label)
+			_text, _label = MixAnno2charsTokens(post.group(3))
+			p.addBody(_text, _label)
+		else:
+			p.addBody(_text, _label)
+		rpost_list.append(p)
+		#pdb.set_trace()
+
+	for post in pattern.finditer(file_text):
+		post2rpost(post)
+	last_post = end_pattern.search(file_text, post.end())
+	post2rpost(last_post)
+	return rpost_list
+
+
+
+
+
 # X, Y: strings
 # X contains block of text
 # Y contains block tag (U,E,I,T,O)
@@ -157,53 +215,52 @@ def crfTokens2Anno(X, Y):
 	#pdb.set_trace()
 	return text.__str__()
 
-def crfFile2File(crf, filepath):
+# receive a raw text and annotate
+def crfText2Anno(crf, file_text):
 	new_file_text = StringBuilder()
-	with open(filepath) as f:
-		file_text = f.read()
-		if(r'Id|Body' in file_text[:15]):
-			flag = 'answer'
-			new_file_text.Append(file_text[:8])
-			file_text = file_text[8:]
-			pattern = re.compile(r'^(\d+)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
-			end_pattern = re.compile(r'^(\d+)\|\"(.*)\"$', flags = re.S|re.M)
+	if(r'Id|Body' in file_text[:15]):
+		flag = 'answer'
+		new_file_text.Append(file_text[:8])
+		file_text = file_text[8:]
+		pattern = re.compile(r'^(\d+)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+		end_pattern = re.compile(r'^(\d+)\|\"(.*)\"$', flags = re.S|re.M)
+	else:
+		flag = 'post'
+		new_file_text.Append(file_text[:14])
+		file_text = file_text[14:]
+		pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
+		end_pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
+	
+	def predictMixed(txt):
+		code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(txt)
+		predcit_label = []
+		pred_anchor = 0
+		for code_sec in code_secs:
+			# +6 and -7 to exclude <code> & </code> tags
+			#pdb.set_trace()
+			predcit_label.extend(crf.predict([txt[pred_anchor : code_sec.start()]])[0])
+			code_start = code_sec.start() + 6
+			code_end = code_sec.end() - 7
+			predcit_label.extend(['O']*6 + crf.predict([txt[code_start : code_end]])[0] + ['O']*7)
+			pred_anchor = code_sec.end()
+
+		predcit_label.extend(crf.predict([txt[pred_anchor : ]])[0])
+		return predcit_label
+
+	def post2txt(post):
+		_txt = StringBuilder()
+		_txt.Append(post.group(1)+'|')
+		if(flag == 'post'):
+			_txt.Append(crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '|')
+			_txt.Append('"' + crfTokens2Anno(post.group(3), predictMixed(post.group(2)) ) + '"\n')
 		else:
-			flag = 'post'
-			new_file_text.Append(file_text[:14])
-			file_text = file_text[14:]
-			pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*?)\"\n(?=\d+\|)', flags = re.S|re.M)
-			end_pattern = re.compile(r'^(\d+)\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
-		
-		def predictMixed(txt):
-			code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(txt)
-			predcit_label = []
-			pred_anchor = 0
-			for code_sec in code_secs:
-				# +6 and -7 to exclude <code> & </code> tags
-				#pdb.set_trace()
-				predcit_label.extend(crf.predict([txt[pred_anchor : code_sec.start()]])[0])
-				code_start = code_sec.start() + 6
-				code_end = code_sec.end() - 7
-				predcit_label.extend(['O']*6 + crf.predict([txt[code_start : code_end]])[0] + ['O']*7)
-				pred_anchor = code_sec.end()
+			_txt.Append('"' + crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '"\n')
+		new_file_text.Append(_txt.__str__())
 
-			predcit_label.extend(crf.predict([txt[pred_anchor : ]])[0])
-			return predcit_label
-
-		def post2txt(post):
-			_txt = StringBuilder()
-			_txt.Append(post.group(1)+'|')
-			if(flag == 'post'):
-				_txt.Append(crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '|')
-				_txt.Append('"' + crfTokens2Anno(post.group(3), predictMixed(post.group(2)) ) + '"\n')
-			else:
-				_txt.Append('"' + crfTokens2Anno(post.group(2), predictMixed(post.group(2)) ) + '"\n')
-			new_file_text.Append(_txt.__str__())
-
-		for post in pattern.finditer(file_text):
-			post2txt(post)
-		last_post = end_pattern.search(file_text, post.end())
-		post2txt(last_post)
+	for post in pattern.finditer(file_text):
+		post2txt(post)
+	last_post = end_pattern.search(file_text, post.end())
+	post2txt(last_post)
 	return new_file_text.__str__()
 
 def is_number(s):
