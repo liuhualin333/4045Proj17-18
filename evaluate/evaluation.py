@@ -32,12 +32,7 @@ def test_correctness():
 #test_correctness()
 #'''
 
-'''
-arguments:
-	Y_truth, Y_predict: a list of char, each char in ['U','T','E','O','I']
-	shape of Y_truth == shape of Y_predict
-'''
-def evaluate(Y_truth, Y_predict):
+def count_tp_tokens(Y_truth, Y_predict):
 	true_positive = predict_tokens = true_tokens = 0
 	try:
 		i = staart = 0
@@ -74,18 +69,30 @@ def evaluate(Y_truth, Y_predict):
 	except Exception as e:
 		print("Error in evaluate: ", e)
 		pass
+	precision_token = true_positive / predict_tokens
+	recall_token = true_positive / true_tokens
+	f1_token = 2 * (precision_token * recall_token) / (precision_token + recall_token)
+	return precision_token, recall_token, f1_token
+
+
+'''
+arguments:
+	Y_truth, Y_predict: a list of char, each char in ['U','T','E','O','I']
+	shape of Y_truth == shape of Y_predict
+'''
+def print_evaluation(Y_truth, Y_predict):
+	
 	#'''
 	#'''
+	'''
 	print("statistics on regex, in order of (U, T, E, O, I) :")
 	print("Precision score for regex: ", precision_score(Y_truth, Y_predict, average=None, labels=['U','T','E','O','I']))
 	print("Recall score for regex:    ", recall_score(Y_truth, Y_predict, average=None, labels=['U','T','E','O','I']))
 	print("F1 score for regex:        ", f1_score(Y_truth, Y_predict, average=None, labels=['U','T','E','O','I']))
 	print("Weighted F1 score for regex:        ", f1_score(Y_truth, Y_predict, average='weighted'))
-
+	'''
 	print("statistics on regex, for overall token matching:")
-	precision_token = true_positive / predict_tokens
-	recall_token = true_positive / true_tokens
-	f1_token = 2 * (precision_token * recall_token) / (precision_token + recall_token)
+	precision_token, recall_token, f1_token = count_tp_tokens(Y_truth, Y_predict)
 	print("Precision score: ", precision_token)
 	print("Recall score:    ", recall_token)
 	print("F1 score:        ", f1_token)
@@ -99,4 +106,9 @@ arguments:
 def evaluate_nested(y_truth, y_predict):
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
-	evaluate(Y_truth, Y_predict)
+	print_evaluation(Y_truth, Y_predict)
+
+def evaluate_nested_score(y_truth, y_predict):
+	Y_predict = [item for sublist in y_predict for item in sublist]
+	Y_truth = [item for sublist in y_truth for item in sublist]
+	return count_tp_tokens(Y_truth, Y_predict)[2]
