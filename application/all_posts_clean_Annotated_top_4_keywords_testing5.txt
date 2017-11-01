@@ -1,5 +1,5 @@
 3061,function's,go,name,bar(
-19151,Build,iterative,iterator,create
+19151,Build,Basic Python,iterative,iterator
 22617,pm,numbers,Hours,str(
 22676,download,file,utility,MP3
 25665,PDF,text,converting,modules
@@ -47,12 +47,12 @@
 159720,naming,convention,names,ThisIsMyMethod(
 166506,IP,addresses,local,stdlib
 172439,multi-line,literal,operation,doStuff(
-176011,1d,Lists,circumstance,optimization
+176011,1d,Python List,Lists,circumstance
 176918,index,item,Finding,cleanest
 179369,script,abort,Essentially,behaves
 181530,conditions,very,Styling,onto
-183853,benefit,division,results,both
-185936,*nix,project,contents,delete
+183853,In Python,benefit,division,results
+185936,Delete Folder Contents,*nix,project,local
 191010,attributes,complete,object's,dir(
 192109,PHP's,print_r,debug,state
 204017,fails,program,execute,system(
@@ -73,11 +73,11 @@
 275018,chomp,Perl's,removes,newline
 279237,relative,contains,path,wishes
 279561,level,static,equivalent,foo(
-280243,linked,lists,scheme,constant-time
+280243,lists,Python Linked,scheme,constant-time
 285289,codes,mean,important,ones
 287871,terminal,colors,colored,symbol
 303200,attempt,empty,remove/delete,remove(
-306400,item,randomly,select,retrieve
+306400,item,randomly,Assume,select
 307305,easiest,Sound,wav,independent
 311627,2008-11-22,prints,BUT....I,today(
 312443,chunks,useful,split,length
@@ -94,7 +94,7 @@
 372042,abstract,interface,class,between
 372885,connect,MySQL Database,program,using
 378927,preferred,variable,case,type(
-379906,parse,string,Float,separately
+379906,Parse String,Float,separately,numeric
 394809,ternary,conditional,operator,simulate
 402504,bit,type,variable's,unsigned
 403421,objects,sort,attribute,list
@@ -121,7 +121,7 @@
 492387,IndentationError,unindent,match,Factorial(
 493386,space,I'd,Don't,xrange(
 493819,nicer,confused,reason,join(list
-494594,numbers,between,coded,fib(
+494594,numbers,between,Fibonacci Sequence,fib(
 509211,notation,slice,Explain,references
 510348,delay,time,put,make
 510972,class,instance,name,inspect
@@ -129,15 +129,15 @@
 518021,strange,Getting,length,__len__(
 521674,Initializing,known,expecting,Right
 522563,index,Accessing,loops,itself
-525592,simplest,replace,writting,IronPython
+525592,simplest,Replace Inside,Text File,writting
 529424,Traverse,forgot,Sorry,len(
 538346,over,Iterating,C++,length(
 541390,extension,filename,Extracting,function
 543309,execution,stop,script,quit(
 568962,NumPy,empty,array/matrix,hstack(
 574730,continue,exception,block,try...except
-576169,classes,curious,fine,__init__(
-582336,profile,contests,boast,approaches
+576169,classes,Understanding Python,curious,__init__(
+582336,profile,Project Euler,contests,boast
 600268,functionality,mkdir,-p,less
 604802,array,element,sorted,specify
 606191,bytes,array,binascii,communicate(
@@ -169,10 +169,10 @@
 740287,items,short,Besides,check
 743164,do-while,loop,emulate,next(
 743806,sentence,store,splits,split_line(
-750136,something,output,hints,autoparts(
+750136,something,output,Andrew Jaffe,autoparts(
 761804,Trimming,trailing,leading,whitespace
 773814,logarithmic,matplotlib,graph,add_subplot(
-805066,parent,Foo,deep,qw(
+805066,parent,In Perl,Foo,qw(
 817087,modify,argument,won't,wrapper(
 842059,under,Windows,portable,getuid(
 843277,exists,Now I'm,check,variable
@@ -203,9 +203,9 @@
 1024847,dictionary,keys,created,add(
 1027714,interpreter,execute,within,file
 1035340,byte,binary,over,file
-1038824,expected,substring,end,rsplit(
-1059559,punctuation,words,Multiple,split(
-1093322,version,interpreting,check,script
+1038824,expected,substring,Now,rsplit(
+1059559,punctuation,words,Split Strings,split(
+1093322,version,Python Interpreter,interpreting,check
 1098549,default,resources,People,get(
 1112343,SIGINT,connections,Ctrl+C,signal
 1155617,character,Count,number,simplest
@@ -238,7 +238,7 @@
 1485841,operators,pre-increment/decrement,behavior,compiles
 1504717,comparison,succeeds,comparing,conditional
 1514553,declare,arrays,reference,documentation
-1522564,actual,So I'm,erm...running,Lol
+1522564,Komodo Edit,actual,So I'm,erm...running
 1523427,header,format,guidelines,files
 1534210,virtualenv,version,compiled,overwrite
 1535327,objects,ropes,members,print(
@@ -253,8 +253,8 @@
 1623039,debugging,tips,discusses,minimizing
 1641219,variables,outside,Java,show(
 1663807,iterate,over,unpythonic,some_iterator(
-1679384,calculations,it...,dictionary,append(
-1702586,developing,Notepad++,prefer,execute
+1679384,Converting Python Dictionary,calculations,it...,append(
+1702586,Python File,developing,Notepad++,prefer
 1712227,size,elements,list,append(
 1720421,concatenate,Expected,lists,outcome
 1747817,comprehension,pairs,iterating,dictionaries
@@ -264,7 +264,7 @@
 1810743,current,set,working,directory
 1835018,ascertain,stumbled,bugs,isinstance(
 1841565,reads,next,lines,readline(
-1876191,concatenating,Shouldn't,completely,join(
+1876191,Explain Python,concatenating,Shouldn't,join(
 1912434,rows,many,xml,instances
 1934675,execute,blah,PATH,IndexError...
 1945920,os.path.join,debugged,entry,join(
@@ -285,7 +285,7 @@
 2325923,ImportError,fix,instantly,directory
 2349991,import,specific,load,gap(
 2356501,.5,Example,down,round(number
-2365411,Unicode,scrapes,wrongly-formed,encode(
+2365411,Convert Unicode,scrapes,wrongly-formed,encode(
 2395160,syntax,leap,gone,function(
 2397141,two-dimensional,easier/shorter/more,up,append(
 2428092,Django,Ajax,server-side,get(
@@ -300,20 +300,20 @@
 2600191,occurrences,count,item,Given
 2612802,clone,copy,options,modifies
 2632677,incrementing,myself,laughed,VB6
-2682745,constant,create,manner,declaration
+2682745,constant,In Java,create,manner
 2709821,purpose,understand,refers,myFunc(
 2710940,`if,None`,clear,Google's
 2711579,strings,concatenate,form,python
 2720014,packages,Upgrading,tracker,official
 2759067,rename,resulting,manipulations,successful
-2775864,minutes,future,supply,expires(
+2775864,minutes,future,Python Create,expires(
 2792650,Python3,urllib2,Import,urlopen(
 2793324,shows,simpler,delete,index(
 2802726,if-then,writing,syntax,statement
 2817869,package,Unable,vcvarsall,bat
 2835559,file,Parsing,values,pprint(
 2846653,examples,frankly,overly,sophisticated
-2847386,appended,concatenation,concatenate,type(
+2847386,Python String,appended,concatenation,type(
 2915471,package,can't/don't,reasons,virtualenvwrapper
 2918362,time,newline,easiest,write(
 2952187,64bit,MySQLdb,installed,import_module(
@@ -338,13 +338,13 @@
 3387655,functions,integer,floating,floor(
 3394835,arguments,*args,**kwargs,become
 3402168,PYTHONPATH,directory,close,revert
-3437059,method,substring,looking,contains(
-3459098,varying,repeated,n = length,xrange(
+3437059,method,substring,Does Python,contains(
+3459098,Create List,Single Item Repeated,varying,xrange(
 3462143,aren't,cycles,lists,third
 3501382,integer,whether,Checking,variable
 3503879,screen,output,being,system(
 3518778,R's,array,data,table(
-3528146,decimal,reverse,myself,int('[binary_value]
+3528146,decimal,Thank You,reverse,int('[binary_value]
 3545331,value,searching,text/name,get(
 3559559,character,middle,shifting,creation
 3561691,SyntaxError,EOL,scanning,mentioned
@@ -416,9 +416,9 @@
 5142418,usage,assert,places,source
 5178292,mysql-python,resolve,fails,get_config(
 5188792,characters,Python2,dollar,Specifically
-5214578,document,text,TotalAmount,close(
+5214578,document,Python Print String To Text,TotalAmount,close(
 5226311,specific,adaptor,fresh,PyPi
-5319922,word,v2,identifying,find(
+5319922,Check If Word Is In A,v2,identifying,find(
 5404068,nothing,keyboard-input,eclipse,InputStreamReader(
 5420789,psycopg2,messages,install,need
 5424716,number,user's,check,print(
@@ -469,7 +469,7 @@
 7716331,arithmetic,average,mean,Calculating
 7771011,Parse JSON,bits,generating,opposite
 7818811,question,numpy,still,7(sorry
-7899732,machine,gedit,indentations,Python IDEs
+7899732,machine,Python For,gedit,indentations
 7961363,Pretty,werent,duplicated/removed,remove_duplicates(
 7999935,microsecond,UTC,strings,now(
 8009882,line,entire,file,do_something(
@@ -478,19 +478,19 @@
 8214932,exists,dictionary,value,existed
 8237647,tree,implementing,variable,node
 8248397,directory,shell,current,know/change
-8266529,Colorado,states = {Alaska,Alabama,Arkansas
+8266529,Alabama Arkansas American Samoa Arizona California,Colorado,states = {Alaska,....}
 8270092,whitespace,both,remove,my_handle(
 8369219,file,data,segment,readlines(
 8384737,paths,matter,format,os/path
 8424942,dictionary,instantiating,..,new
-8551735,Python IDE,run,editor,complete
+8551735,Sublime Text,Python IDE,run,editor
 8777753,Converting,timestamps,Javascript,mktime(
 8858008,move,locate,unable,looked
 8885663,width,fixed,decimal,zero(s
 8917885,version,updating,latest,thinking
 8930915,dictionaries,dictionary,wish,big...
 8933237,directory,find,module,direxists(
-8949252,NoneType,gist,scenarios,Usually
+8949252,NoneType,Attribute Error,gist,scenarios
 9001509,posts,checked,sorted,nice
 9039961,average,adds,divide,reduce(
 9252543,post,mostly,Main,tick(
@@ -509,11 +509,11 @@
 10017147,characters,remove,Removing,replace(
 10116518,Key,getting,happening,strip(
 10147455,Gmail,email,provider,login(
-10434599,data,raw,Flask,parse_request(
+10434599,data,raw,received,parse_request(
 10561923,0xef,UnicodeDecodeError,ascii,range(128
 10588317,global,copy,uses,func_B(
 10660435,long,split,several,sentences
-10667960,CAS,requests,SSLError,get(
+10667960,CAS,Python Requests,SSLError,get(
 10712002,empty,hold,generates,list(
 10715965,pandas,one,empty,set_value(
 10763440,version,via,package,both
@@ -521,13 +521,13 @@
 11060506,equal,replacement,means,operator
 11094718,gcc,eventlet,Herd,software
 11178061,single,row,as;,this;
-11200137,installer,//sourceforge,net/projects/numpy/files/NumPy/,strikes
+11200137,Installing Numpy,installer,//sourceforge,net/projects/numpy/files/NumPy/
 11266068,line,recognise,prints,test2(
 11277432,key,dictionary,delete,remove
 11285613,save,columns,Selecting,df1
 11346283,names,table,labels,original
 11425106,pip,manner,fails,warn(
-11497376,specify,First Line\r\nSecond,purposes,saving
+11497376,specify,First Line\r\nSecond,So How,purposes
 11520492,del,between,three,pop(
 11536764,relative,__init__,py,path
 11552320,pause,Correct,formal,print(
@@ -548,7 +548,7 @@
 12897374,unique,values,require,append(
 12934190,see,gather,quick,contains(
 12943819,JSON,mess,prettyprint--,in--
-13411544,DataFrame I,column/Series,Delete,deleting
+13411544,DataFrame,column/Series,Delete,deleting
 13413590,whose,Pandas DataFrame,records,drop(
 13437727,values,program,csv,write(
 13628791,whether,numbers,between,check
@@ -577,7 +577,7 @@
 17140886,abcd,ram,hi,input(
 17153779,born,years,variable,children
 17271319,macOS,spent,yesterday,manager
-17309288,consistently,requests,saying,ImportError
+17309288,Whenever,consistently,requests,saying
 17330160,arguments,function,built-in,C(
 17886647,package,error,I'm,warn(
 18053500,same,names,length,len(
@@ -588,19 +588,19 @@
 19410042,inline,notebook,graphics,linspace(
 19482970,headers,pandas,The DataFrame,list
 19747371,commands,many,choices,_exit(
-20060096,Installing PIL,Library,message,exec(
+20060096,Installing PIL,Python Imaging,Library,exec(
 20180543,modules,programmatically,check,python
 20199126,file,Reading JSON,headache,loads(
 20309456,seen,I've,call,function(
 20449427,integers,inputs,renamed,print(
 20646822,static,files,serve,root_dir(
-21122540,scripts,guess,folder,dude
+21122540,scripts,Python Launcher,guess,folder
 21129020,Chinese,published,post,Engine(
 21492214,terminal,gameover,/User/luca/Documents/python,script
 21530577,fatal,file,problem,such
 21903842,two,breaking,strings,compare
 23708898,___________________,requested,%PATH%,\Intel\Intel(R)
-23842713,virtualenv,version,sudo,envPython3
+23842713,virtualenv,version,Using Python,sudo
 25865270,pip,Python MySQLdb,install,module
 26053982,error,Setup,exited,x86_64-linux-gnu-gcc
 27341064,fix,IncompleteRead,Ubuntu,load_entry_point(
