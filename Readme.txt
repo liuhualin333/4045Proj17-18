@@ -82,4 +82,4 @@ CZ4045 Natural Language Processing Project 1 README
                                   3.4
   tokeniser.py                    take a “clean“ version of dataset and tokenise both code
                                   and text
-  utilities.py
+  utilities.py                    utility functions which can be used among scripts
