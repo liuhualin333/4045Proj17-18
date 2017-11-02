@@ -2,10 +2,13 @@
 This is the controller for 3.2 Stemming and POS-tagging and 3.4 Further Analysis.
 '''
 import sys
+import os.path
 sys.path.insert(0, './Stemming_and_POStagging')
 sys.path.insert(0, './utilities')
 import utilities
 import Root.SourceCode.Stemming_and_POStagging.Tokenization_And_Stemming as ts
+import Root.SourceCode.tokenizer as nlp
+import Root.SourceCode.Stemming_and_POStagging.Analyser as analyser
 
 
 def doNLTK():
@@ -41,11 +44,20 @@ def doNLTK():
         doPOSTag()
     return
 
+
 def doIrregularCheck():
     print("We will first tokenize the dataset using our own tokenizer, ")
     print("followed by selecting 10 existing sentences that contains the irregular tokens.")
 
-
+    def doTokenize():
+        nlp.main("../Data/all_posts_clean.txt")
+        print("Question tokenization finished.")
+        nlp.main("../Data/all_answers_clean.txt")
+        print("Answers tokenization finished.")
+        myTokens= analyser.Analyser("all_posts_clean_predict_tokenized.txt","all_answers_clean_predict_tokenized.txt")
+        tops=int(input("How many tokens do you want to see? [Suggested number : 50 ]"))
+        myTokens.doRanking(top=tops)
+    doTokenize()
     return
 
 if __name__ == "__main__":
@@ -53,6 +65,7 @@ if __name__ == "__main__":
         print()
         choice = int(input(
             ">>> Please select whether you wish to (1): Perform tokenization using off nltk tokenizer (assignment 3.2); or (2) using our tokenizer (assignment3.4) ? [1/2]:"))
+        print()
         if choice == 1:  # Perform tokenization using nltk
             doNLTK()
         elif choice == 2:
