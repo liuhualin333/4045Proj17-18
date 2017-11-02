@@ -38,7 +38,7 @@ def tfidf(word, doc, doc_list):
     return word_score
 
 
-def main(post_path="..data/all_posts_clean_annotated.csv"):
+def main(post_path="..data/all_posts_clean_annotated.txt"):
 
     # top n keywords
     N = 4
