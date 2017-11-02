@@ -41,8 +41,8 @@ CZ4045 Natural Language Processing Project 1 README
   1. Download third party libraries according to previous instruction.
   2. Download datasets to data/ folder according to previous instruction.
   3. Navigate to code/ folder:
-  4. Run the following command to:
-        python 
+  4. Run the following command to tokenize all sentences in dataset:
+        python tokenizer.py ../data/all_post_clean.csv ../data/all_answers_clean.csv
   5. Run the following command to:
         python 
   6. Run the following command to compute the top 4 keywords in all question posts data:
@@ -53,8 +53,8 @@ CZ4045 Natural Language Processing Project 1 README
   all_posts.csv:                  contains data from all question posts
   all_answers.csv:                contains data from all answers posts
   
-  all_posts_cleaned.csv:          contains all question posts which remove tags        
-  all_answers_cleaned.csv:        contains all answers posts which remove tags
+  all_posts_clean.csv:          contains all question posts which remove tags        
+  all_answers_clean.csv:        contains all answers posts which remove tags
   
   posts_training.csv:             contains training data from question posts
   answers_training.csv:           contains training data from answers posts
