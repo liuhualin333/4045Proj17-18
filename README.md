@@ -8,3 +8,15 @@ Chen Hailin \
 Deng Yue  
 Liu Hualin \
 Shi Ziji
+
+
+# Project Map
+```
+README.txt
+
+SurceCode
+    |-
+Data
+
+
+```
