@@ -10,7 +10,8 @@ def main(file):
     finalfile = file_sep[0] + "_codeAnno" + "_textAnno" + file_sep[1]
     text.main(newfile)
     os.remove(newfile)
-    os.rename(finalfile, file_sep[0] + "_Annotated" + file_sep[1])
+    os.rename(finalfile, file_sep[0] + "_annotated" + file_sep[1])
+    print("Tokenized file is stored in", finalfile)
 
 
 if __name__ == '__main__':
