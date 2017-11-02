@@ -1,0 +1,714 @@
+Id|Title|Body
+509211|Explain slice notation|"<p>I need a good explanation (references are a plus) on Python's slice notation. </p>
+
+<p>To me, this notation needs a bit of picking up. </p>
+
+<p>It looks extremely powerful, but I haven't quite got my head around it.</p>
+"
+12836128|Convert list to tuple in Python|"<p>I'm trying to convert a list to a tuple. </p>
+
+<p>When I google it, I find a lot of answers similar to:</p>
+
+<pre><code>l = [4,5,6]
+tuple(l)
+</code></pre>
+
+<p>But if I do that I get this error message:</p>
+
+<blockquote>
+  <p>TypeError: 'tuple' object is not callable</p>
+</blockquote>
+
+<p>How can I fix this problem?</p>
+"
+6996603|How to delete a file or folder?|"<p>How do I delete a file or folder in Python?</p>
+"
+2582138|finding and replacing elements in a list (python)|"<p>I have to search through a list and replace all occurrences of one element with another. So far my attempts in code are getting me nowhere, what is the best way to do this?</p>
+
+<p>For example, suppose my list has the following integers</p>
+
+<pre><code>&gt;&gt;&gt; a = [1,2,3,4,5,1,2,3,4,5,1]
+</code></pre>
+
+<p>and I need to replace all occurrences of the number 1 with the value 10 so the output I need is </p>
+
+<pre><code>&gt;&gt;&gt; a = [10, 2, 3, 4, 5, 10, 2, 3, 4, 5, 10]
+</code></pre>
+
+<p>Thus my goal is to replace all instances of the number 1 with the number 10.</p>
+"
+4289331|Python: Extract numbers from a string|"<p>I would extract all the numbers contained in a string. Which is the better suited for the purpose, regular expressions or the <code>isdigit()</code> method?</p>
+
+<p>Example:</p>
+
+<pre><code>line = ""hello 12 hi 89""
+</code></pre>
+
+<p>Result:</p>
+
+<pre><code>[12, 89]
+</code></pre>
+"
+2504411|Proper indentation for Python multiline strings|"<p>What is the proper indentation for Python multiline strings within a function?</p>
+
+<pre><code>    def method():
+        string = """"""line one
+line two
+line three""""""
+</code></pre>
+
+<p>or</p>
+
+<pre><code>    def method():
+        string = """"""line one
+        line two
+        line three""""""
+</code></pre>
+
+<p>or something else?</p>
+
+<p>It looks kind of weird to have the string hanging outside the function in the first example.</p>
+"
+27341064|How do I fix 'ImportError: cannot import name IncompleteRead'?|"<p>When I try to install anything with <code>pip</code> or <code>pip3</code>, I get:</p>
+
+<pre><code>$ sudo pip3 install python3-tk
+Traceback (most recent call last):
+  File ""/usr/bin/pip3"", line 9, in &lt;module&gt;
+    load_entry_point('pip==1.5.6', 'console_scripts', 'pip3')()
+  File ""/usr/lib/python3/dist-packages/pkg_resources.py"", line 356, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File ""/usr/lib/python3/dist-packages/pkg_resources.py"", line 2476, in load_entry_point
+    return ep.load()
+  File ""/usr/lib/python3/dist-packages/pkg_resources.py"", line 2190, in load
+    ['__name__'])
+  File ""/usr/lib/python3/dist-packages/pip/__init__.py"", line 61, in &lt;module&gt;
+    from pip.vcs import git, mercurial, subversion, bazaar  # noqa
+  File ""/usr/lib/python3/dist-packages/pip/vcs/mercurial.py"", line 9, in &lt;module&gt;
+    from pip.download import path_to_url
+  File ""/usr/lib/python3/dist-packages/pip/download.py"", line 25, in &lt;module&gt;
+    from requests.compat import IncompleteRead
+ImportError: cannot import name 'IncompleteRead'
+</code></pre>
+
+<p>I have a Ubuntu 14.10 system.</p>
+
+<p>How can I fix this problem?</p>
+"
+4978787|How to split a string into array of characters with Python?|"<p>I've tried to look around the web for answers to splitting a string into an array of characters but I can't seem to find a simple method</p>
+
+<p><code>str.split(//)</code> does not seem to work like Ruby does. Is there a simple way of doing this without looping?</p>
+"
+713847|Recommendations of Python REST (web services) framework?|"<p>Is there a list somewhere of recommendations of different Python-based REST frameworks for use on the serverside to write your own RESTful APIs? Preferably with pros and cons.</p>
+
+<p>Please feel free to add recommendations here. :)</p>
+"
+454854|No module named MySQLdb|"<p>I am using Python version 2.5.4 and install MySQL version 5.0 and Django. Django is working fine with Python, but not MySQL. I am using it in Windows Vista.</p>
+"
+123198|How do I copy a file in python?|"<p>How do I copy a file in Python? I couldn't find anything under <a href=""https://docs.python.org/2/library/os.html"" rel=""noreferrer""><code>os</code></a>.</p>
+"
+4934806|How can I find script's directory with Python?|"<p>Consider the following Python code:</p>
+
+<pre><code>import os
+print os.getcwd()
+</code></pre>
+
+<p>I use <code>os.getcwd()</code> to <a href=""http://www.faqs.org/docs/diveintopython/regression_path.html"" rel=""noreferrer"">get the script file's directory location</a>. When I run the script from the command line it gives me the correct path whereas when I run it from a script run by code in a Django view it prints <code>/</code>.</p>
+
+<p>How can I get the path to the script from within a script run by a Django view?</p>
+
+<p><strong>UPDATE:</strong><br>
+Summing up the answers thus far - <code>os.getcwd()</code> and <code>os.path.abspath()</code> both give the current working directory which may or may not be the directory where the script resides. In my web host setup <code><code>__file__</code></code> gives only the filename without the path.</p>
+
+<p>Isn't there any way in Python to (always) be able to receive the path in which the script resides?</p>
+"
+12309269|How do I write JSON data to a file?|"<p>I have JSON data stored in the variable <code>data</code>.</p>
+
+<p>I want to write this to a text file for testing so I don't have to grab the data from the server each time.</p>
+
+<p>Currently, I am trying this:</p>
+
+<pre><code>obj = open('data.txt', 'wb')
+obj.write(data)
+obj.close
+</code></pre>
+
+<p>And am receiving the error: </p>
+
+<p><code>TypeError: must be string or buffer, not dict</code></p>
+
+<p>How to fix this?</p>
+"
+1747817|Create a dictionary with list comprehension in Python|"<p>I like the Python list comprehension syntax.</p>
+
+<p>Can it be used to create dictionaries too? For example, by iterating over pairs of keys and values:</p>
+
+<pre><code>mydict = {(k,v) for (k,v) in blah blah blah}  # doesn't work
+</code></pre>
+"
+865115|How do I correctly clean up a Python object?|"<pre><code>class Package:
+    def __init__(self):
+        self.files = []
+
+    # ...
+
+    def __del__(self):
+        for file in self.files:
+            os.unlink(file)
+</code></pre>
+
+<p><code>__del__(self)</code> above fails with an AttributeError exception.  I understand <a href=""http://docs.python.org/reference/datamodel.html#customization"" rel=""noreferrer"">Python doesn't guarantee</a> the existence of ""global variables"" (member data in this context?) when <code>__del__()</code> is invoked.  If that is the case and this is the reason for the exception, how do I make sure the object destructs properly?</p>
+"
+9252543|ImportError: Cannot import name X|"<p>I have four different files named: main, vector, entity, and physics. I will not post all the code, mostly just the imports, because I think that's where the error is. But if you want, I can post more.</p>
+
+<p>Main:</p>
+
+<pre><code>import time
+from entity import Ent
+from vector import Vect
+#the rest just creates an entity and prints the result of movement
+</code></pre>
+
+<p>Entity:</p>
+
+<pre><code>from vector import Vect
+from physics import Physics
+class Ent:
+    #holds vector information and id
+def tick(self, dt):
+    #this is where physics changes the velocity and position vectors
+</code></pre>
+
+<p>Vector:</p>
+
+<pre><code>from math import *
+class Vect:
+    #holds i, j, k, and does vector math
+</code></pre>
+
+<p>Physics:</p>
+
+<pre><code>from entity import Ent
+class Physics:
+    #physics class gets an entity and does physics calculations on it.
+</code></pre>
+
+<p>I then run from main.py and I get the following error:</p>
+
+<pre><code>Traceback (most recent call last):
+File ""main.py"", line 2, in &lt;module&gt;
+    from entity import Ent
+File "".../entity.py"", line 5, in &lt;module&gt;
+    from physics import Physics
+File "".../physics.py"", line 2, in &lt;module&gt;
+    from entity import Ent
+ImportError: cannot import name Ent
+</code></pre>
+
+<p>I am very new to python, but have worked with C++ for a long time. I am guessing that the cause is from importing entity twice, once in main, and later in physics, but I don't know a workaround. Anyone help?</p>
+"
+11178061|Print list without brackets in a single row|"<p>I have a list in Python
+e.g.</p>
+
+<pre><code>names = [""Sam"", ""Peter"", ""James"", ""Julian"", ""Ann""]
+</code></pre>
+
+<p>I want to print the array in a single line without the normal "" []</p>
+
+<pre><code>names = [""Sam"", ""Peter"", ""James"", ""Julian"", ""Ann""]
+print (names)
+</code></pre>
+
+<p>Will give the output as;</p>
+
+<pre><code>[""Sam"", ""Peter"", ""James"", ""Julian"", ""Ann""]
+</code></pre>
+
+<p>That is not the format I want instead I want it to be like this;</p>
+
+<pre><code>Sam, Peter, James, Julian, Ann
+</code></pre>
+
+<p>Note: It must be in a single row.</p>
+"
+7696924|Way to create multiline comments in Python?|"<p>I have recently started studying <a href=""http://en.wikipedia.org/wiki/Python_%28programming_language%29"" rel=""noreferrer"">Python</a>, but I couldn't find how to implement multi-line comments. Most languages have block comment symbols like </p>
+
+<pre><code>/* 
+
+*/
+</code></pre>
+
+<p>I tried this in Python, but it throws an error, so this probably is not the correct way. Does Python actually have a multiline comment feature?</p>
+"
+954834|How do I use raw_input in Python 3|"<pre><code>import sys
+print (sys.platform)
+print (2 ** 100)
+raw_input( )
+</code></pre>
+
+<p>I am using Python 3.1 and can't get the raw_input to ""freeze"" the dos pop-up. The book I'm reading is for 2.5 and I'm using 3.1</p>
+
+<p>What should I do to fix this?</p>
+"
+4142151|How to import the class within the same directory or sub directory?|"<p>I have a directory that stores all the <strong>.py</strong> files.</p>
+
+<pre><code>bin/
+   main.py
+   user.py # where class User resides
+   dir.py # where class Dir resides
+</code></pre>
+
+<p>I want to use classes from <strong>user.py</strong> and <strong>dir.py</strong> in <strong>main.py</strong>.<br>
+How can I import these Python classes into <strong>main.py</strong>?<br>
+Furthermore, how can I import class <code>User</code> if <strong>user.py</strong> is in a sub directory?</p>
+
+<pre><code>bin/
+    dir.py
+    main.py
+    usr/
+        user.py
+</code></pre>
+"
+1934675|How to execute Python scripts in Windows?|"<p>I have a simple script blah.py (using Python 2):</p>
+
+<pre><code>import sys
+print sys.argv[1]
+</code></pre>
+
+<p>If I execute my script by:</p>
+
+<pre><code>python c:/..../blah.py argument
+</code></pre>
+
+<p>It prints argument but if I execute script by:</p>
+
+<pre><code>blah.py argument
+</code></pre>
+
+<p>error occurs:</p>
+
+<blockquote>
+  <p>IndexError...</p>
+</blockquote>
+
+<p>So arguments do not pass to script.</p>
+
+<p>python.exe in PATH. Folder with blah.py also in PATH.<br>
+python.exe is default program to execute *.py files.</p>
+
+<p>What is the problem?</p>
+"
+273192|How can I create a directory if it does not exist?|"<p>What is the most elegant way to check if the directory a file is going to be written to exists, and if not, create the directory using Python? Here is what I tried:</p>
+
+<pre><code>import os
+
+file_path = ""/my/directory/filename.txt""
+directory = os.path.dirname(file_path)
+
+try:
+    os.stat(directory)
+except:
+    os.mkdir(directory)       
+
+f = file(filename)
+</code></pre>
+
+<p>Somehow, I missed <code>os.path.exists</code> (thanks kanja, Blair, and Douglas). This is what I have now:</p>
+
+<pre><code>def ensure_dir(file_path):
+    directory = os.path.dirname(file_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+</code></pre>
+
+<p>Is there a flag for ""open"", that makes this happen automatically?</p>
+"
+15769246|Pythonic way to print list items|"<p>I would like to know if there is a better way to print all objects in a Python list than this :</p>
+
+<pre><code>myList = [Person(""Foo""), Person(""Bar"")]
+print(""\n"".join(map(str, myList)))
+Foo
+Bar
+</code></pre>
+
+<p>I read this way is not really good :</p>
+
+<pre><code>myList = [Person(""Foo""), Person(""Bar"")]
+for p in myList:
+    print(p)
+</code></pre>
+
+<p>Isn't there something like :</p>
+
+<pre><code>print(p) for p in myList
+</code></pre>
+
+<p>If not, my question is... why ? If we can do this kind of stuff with comprehensive lists, why not as a simple statement outside a list ?</p>
+"
+627435|How to remove an element from a list by index in Python?|"<p>How to remove an element from a list by index in Python?</p>
+
+<p>I found the <code>list.remove</code> method, but say I want to remove the last element, how do I do this? It seems like the default remove searches the list, but I don't want any search to be performed.</p>
+"
+1483429|How to print an error in Python?|"<pre><code>try:
+    something here
+except:
+    print 'the whatever error occurred.'
+</code></pre>
+
+<p>How can I print the error in my <code>except:</code> block?</p>
+"
+9733638|Post JSON using Python Requests|"<p>I need to POST a JSON from a client to a server. I'm using Python 2.7.1 and simplejson. The client is using Requests. The server is CherryPy. I can GET a hard-coded JSON from the server (code not shown), but when I try to POST a JSON to the server, I get ""400 Bad Request"".</p>
+
+<p>Here is my client code:</p>
+
+<pre><code>data = {'sender':   'Alice',
+    'receiver': 'Bob',
+    'message':  'We did it!'}
+data_json = simplejson.dumps(data)
+payload = {'json_payload': data_json}
+r = requests.post(""http://localhost:8080"", data=payload)
+</code></pre>
+
+<p>Here is the server code.</p>
+
+<pre><code>class Root(object):
+
+    def __init__(self, content):
+        self.content = content
+        print self.content  # this works
+
+    exposed = True
+
+    def GET(self):
+        cherrypy.response.headers['Content-Type'] = 'application/json'
+        return simplejson.dumps(self.content)
+
+    def POST(self):
+        self.content = simplejson.loads(cherrypy.request.body.read())
+</code></pre>
+
+<p>Any ideas?</p>
+"
+2915471|Install a Python package into a different directory using pip?|"<p>I know the obvious answer is to use virtualenv and virtualenvwrapper, but for various reasons I can't/don't want to do that.</p>
+
+<p>So how do I modify the command</p>
+
+<pre><code>pip install package_name
+</code></pre>
+
+<p>to make <code>pip</code> install the package somewhere other than the default <code>site-packages</code>?</p>
+"
+960733|Python creating a dictionary of lists|"<p>I want to create a dictionary whose values are lists.  For example: </p>
+
+<pre><code>{
+  1: ['1'],
+  2: ['1','2'],
+  3: ['2']
+}
+</code></pre>
+
+<p>If I do:</p>
+
+<pre><code>d = dict()
+a = ['1', '2']
+for i in a:
+    for j in range(int(i), int(i) + 2): 
+        d[j].append(i)
+</code></pre>
+
+<p>I get a KeyError, because d[...] isn't a list.  In this case, I can add the following code after the assignment of a to initialize the dictionary. </p>
+
+<pre><code>for x in range(1, 4):
+    d[x] = list()
+</code></pre>
+
+<p>Is there a better way to do this?  Lets say I don't know the keys I am going to need until I am in the second <code>for</code> loop.  For example:</p>
+
+<pre><code>class relation:
+    scope_list = list()
+...
+d = dict()
+for relation in relation_list:
+    for scope_item in relation.scope_list:
+        d[scope_item].append(relation)
+</code></pre>
+
+<p>An alternative would then be replacing </p>
+
+<pre><code>d[scope_item].append(relation)
+</code></pre>
+
+<p>with </p>
+
+<pre><code>if d.has_key(scope_item):
+    d[scope_item].append(relation)
+else:
+    d[scope_item] = [relation,]
+</code></pre>
+
+<p>What is the best way to handle this?  Ideally, appending would ""just work"".  Is there some way to express that I want a dictionary of empty lists, even if I don't know every key when I first create the list?</p>
+"
+159720|What is the naming convention in Python for variable and function names?|"<p>Coming from a C# background the naming convention for variables and method names are usually either CamelCase or Pascal Case:</p>
+
+<pre><code>// C# example
+string thisIsMyVariable = ""a""
+public void ThisIsMyMethod()
+</code></pre>
+
+<p>In Python, I have seen the above but I have also seen underscores being used:</p>
+
+<pre><code># python example
+this_is_my_variable = 'a'
+def this_is_my_function():
+</code></pre>
+
+<p>Is there a more preferable, definitive coding style for Python?</p>
+"
+4426663|How do I remove the first Item from a Python list?|"<p>I have the list <code>[0, 1, 2, 3, 4]</code> I'd like to make it into <code>[1, 2, 3, 4]</code>. How do I go about this? </p>
+"
+122327|How do I find the location of my Python site-packages directory?|"<p>How do I find the location of my site-packages directory?</p>
+"
+89228|Calling an external command in Python|"<p>How can I call an external command (as if I'd typed it at the Unix shell or Windows command prompt) from within a Python script?</p>
+"
+172439|How do I split a multi-line string into multiple lines?|"<p>I have a multi-line string literal that I want to do an operation on each line, like so:</p>
+
+<pre><code>inputString = """"""Line 1
+Line 2
+Line 3""""""
+</code></pre>
+
+<p>I want to do something like the following:</p>
+
+<pre><code>for line in inputString:
+    doStuff()
+</code></pre>
+"
+23708898|'pip' is not recognized as an internal or external command|"<p>I'm running into a weird error trying to install Django on my computer.</p>
+
+<p>This is the sequence that I've typed into my command line:</p>
+
+<pre><code>C:\Python34&gt;python get-pip.py
+Requirement already up-to-date: pip in c:\python34\lib\site-packages
+Cleaning up...
+
+C:\Python34&gt;pip install Django
+'pip' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Python34&gt;lib\site-packages\pip install Django
+'lib\site-packages\pip' is not recognized as an internal or external command,
+operable program or batch file. 
+</code></pre>
+
+<p>What could be causing this?</p>
+
+<p>EDIT <strong>___________________</strong></p>
+
+<p>As requested this is what I get when I type in echo %PATH%</p>
+
+<pre><code>C:\Python34&gt;echo %PATH%
+C:\Program Files\ImageMagick-6.8.8-Q16;C:\Program Files (x86)\Intel\iCLS Client\
+;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\S
+ystem32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\
+Windows Live\Shared;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Progr
+am Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\Intel(R) Mana
+gement Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine C
+omponents\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components
+\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\P
+rogram Files (x86)\nodejs\;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x
+86)\git\cmd;C:\RailsInstaller\Ruby2.0.0\bin;C:\RailsInstaller\Git\cmd;C:\RailsIn
+staller\Ruby1.9.3\bin;C:\Users\Javi\AppData\Roaming\npm
+</code></pre>
+"
+3249524|Print in one line dynamically|"<p>I would like to make several statements that give standard output without seeing newlines in between statements.</p>
+
+<p>Specifically, suppose I have:</p>
+
+<pre><code>for item in range(1,100):
+    print item
+</code></pre>
+
+<p>The result is:</p>
+
+<pre><code>1
+2
+3
+4
+.
+.
+.
+</code></pre>
+
+<p>How get this to instead look like:</p>
+
+<pre><code>1 2 3 4 5 ...
+</code></pre>
+
+<p>Even better, is it possible to print the single number <em>over</em> the last number, so only one number is on the screen at a time?</p>
+"
+1485841|Behaviour of increment and decrement operators in Python|"<p>I notice that a pre-increment/decrement operator can be applied on a variable (like <code>++count</code>). It compiles, but it does not actually change the value of the variable!</p>
+
+<p>What is the behavior of the pre-increment/decrement operators (++/--) in Python? </p>
+
+<p>Why does Python deviate from the behavior of these operators seen in C/C++?</p>
+"
+7818811|Import Error: No module named numpy|"<p>I have a very similar question to <a href=""https://stackoverflow.com/questions/1517129/python-how-do-i-install-scipy-on-64-bit-windows"">this question</a>, but still 1 step behind. 
+I have only one version of python 3 installed on my Windows 7(<em>sorry</em>) 64-bit system.
+I installed numpy following this <a href=""http://sourceforge.net/projects/numpy/files/NumPy/1.3.0/numpy-1.3.0.win-amd64-py2.6.msi/download?use_mirror=ufpr"" rel=""noreferrer"">link</a> - as suggested in the question. 
+The installation went fine but when I want to import</p>
+
+<pre><code>import numpy
+
+Import error:No module named numpy
+</code></pre>
+
+<p>I know this is probably a super basic question, but I'm still learning...
+Thanks</p>
+"
+5563089|raw_input function in Python|"<p>What is the <code>raw_input</code> function? Is it a user interface? When do we use it?</p>
+"
+20309456|How to call a function from another file in Python?|"<p>I've seen this topic here covered numerous times, but none of the answers I've seen seem to work for me, so I'll try to be as specific to my problem as possible.</p>
+
+<p>Set_up: I have a .py file for each function I need to use in a program. </p>
+
+<p>In this program, I need to call the function from the external files.  </p>
+
+<p>I've tried:</p>
+
+<pre><code>from file.py import function(a,b)
+</code></pre>
+
+<p>but I get the error: </p>
+
+<pre><code>ImportError: No module named 'file.py'; file is not a package
+</code></pre>
+"
+1641219|Does Python have “private” variables in classes?|"<p>I'm coming from the Java world and reading Bruce Eckels' <em>Python 3 Patterns, Recipes and Idioms</em>. </p>
+
+<p>While reading about classes, it goes on to say that in Python there is no need to declare instance variables. You just use them in the constructor, and boom, they are there. </p>
+
+<p>So for example:</p>
+
+<pre><code>class Simple:
+    def __init__(self1, str):
+        print(""inside the simple constructor"")
+        self1.s = str
+    def show(self1):
+        print(self1.s)
+    def showMsg (self, msg):
+        print (msg + ':', self.show())
+</code></pre>
+
+<p>If that’s true, then any object of class <code>Simple</code> can just change the value of variable <code>s</code> outside of the class. </p>
+
+<p>For example: </p>
+
+<pre><code>if __name__ == ""__main__"":
+    x = Simple(""constructor argument"")
+    x.s = ""test15"" # this changes the value
+    x.show()
+    x.showMsg(""A message"")
+</code></pre>
+
+<p>In Java, we have been taught about public/private/protected variables.  Those keywords make sense because at times you want variables in a class to which no one outside the class has access to. </p>
+
+<p>Why is that not required in Python?</p>
+"
+2972212|Creating an empty list in Python|"<p>What is the best way to create a new empty list in Python?</p>
+
+<pre><code>l = [] 
+</code></pre>
+
+<p>or</p>
+
+<pre><code>l = list()
+</code></pre>
+
+<p>I am asking this because of two reasons:</p>
+
+<ol>
+<li>Technical reasons, as to which is faster. (creating a class causes overhead?)<br/></li>
+<li>Code readability - which one is the standard convention.</li>
+</ol>
+"
+4534438|TypeError: 'module' object is not callable|"<pre><code>File ""C:\Users\Administrator\Documents\Mibot\oops\blinkserv.py"", line 82, in __init__
+    self.serv = socket(AF_INET,SOCK_STREAM)
+TypeError: 'module' object is not callable
+</code></pre>
+
+<p>Why am I getting this error?
+I'm confused.</p>
+
+<p>What do you need to know to answer my question?</p>
+"
+610883|How to know if an object has an attribute in Python|"<p>Is there a way in Python to determine if an object has some attribute?  For example:</p>
+
+<pre><code>&gt;&gt;&gt; a = SomeClass()
+&gt;&gt;&gt; a.someProperty = value
+&gt;&gt;&gt; a.property
+Traceback (most recent call last):
+  File ""&lt;stdin&gt;"", line 1, in &lt;module&gt;
+AttributeError: SomeClass instance has no attribute 'property'
+</code></pre>
+
+<p>How can you tell if <code>a</code> has the attribute <code>property</code> before using it?</p>
+"
+1093322|How do I check what version of Python is running my script?|"<p>How can I check what version of the Python Interpreter is interpreting my script?</p>
+"
+675442|Comment out a Python code block|"<p>Is there a mechanism to comment out large blocks of Python code?</p>
+
+<p>Right now, the only ways I can see of commenting out code are to either start every line with a <code>#</code>, or to enclose the code in triple quotes: <code>""""""</code>.</p>
+
+<p>The problem with these is that inserting <code>#</code> before every line is cumbersome and <code>""""""</code> makes the string I want to use as a comment show up in generated documentation.</p>
+
+<p>After reading all comments, the answer seems to be ""No"".</p>
+"
+4990718|Python: about catching ANY exception|"<p>How can I write a <code>try</code>/<code>except</code> block that catches all exceptions?</p>
+"
+2257441|Random string generation with upper case letters and digits in Python|"<p>I want to generate a string of size N.</p>
+
+<p>It should be made up of numbers and uppercase English letters such as:</p>
+
+<ul>
+<li>6U1S75</li>
+<li>4Z4UKK</li>
+<li>U911K4</li>
+</ul>
+
+<p>How can I achieve this in a <a href=""https://en.wikipedia.org/wiki/Python_%28programming_language%29#Features_and_philosophy"">pythonic</a> way?</p>
+"
+1514553|How to declare an array in Python?|"<p>How do I declare an array in <a href=""http://en.wikipedia.org/wiki/Python_%28programming_language%29"" rel=""noreferrer"">Python</a>?</p>
+
+<p>I can't find any reference to arrays in the documentation. </p>
+"
+8885663|How to format a floating number to fixed width in Python|"<p>How do I format a floating number to a fixed width with the following requirements:</p>
+
+<ol>
+<li>Leading zero if n &lt; 1</li>
+<li>Add trailing decimal zero(s) to fill up fixed width</li>
+<li>Truncate decimal digits past fixed width</li>
+<li>Align all decimal points</li>
+</ol>
+
+<p>For example:</p>
+
+<pre><code>% formatter something like '{:06}'
+numbers = [23.23, 0.123334987, 1, 4.223, 9887.2]
+
+for number in numbers:
+    print formatter.format(number)
+</code></pre>
+
+<p>The output would be like</p>
+
+<pre><code>  23.2300
+   0.1233
+   1.0000
+   4.2230
+9887.2000
+</code></pre>
+"
+26053982|error: Setup script exited with error: command 'x86_64-linux-gnu-gcc' failed with exit status 1|"<p>When I try to install odoo-server I got the following error could anyone help me to resolve this?</p>
+
+<pre><code>error: Setup script exited with error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+</code></pre>
+"

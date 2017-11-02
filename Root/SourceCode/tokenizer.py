@@ -21,8 +21,8 @@ def regex2File(file):
 if __name__ == '__main__':
     # take in 1+ file(s) for processing
     root = '../Data/'
-    for file in ['posts_training_clean.txt','answers_training_clean.txt']:
+    for file in ['posts_training_clean_old.txt','answers_training_clean.txt']:
         regex2File(root+file)
-    eva.evaluate_regex_output('../Data/')
-    crf.sample_output_dual(root+'val_predict.txt', 0.2, '../Data/val_true.txt')
-    crf.cross_validation_dual(0.2)
+    eva.evaluate_regex_output('../Data/', 'Regex Performance')
+    #crf.sample_output_dual(root+'val_predict.txt', 0.2, '../Data/val_true.txt')
+    #crf.cross_validation_dual(0.2)
