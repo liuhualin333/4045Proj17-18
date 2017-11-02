@@ -91,7 +91,6 @@ def print_evaluation(Y_truth, Y_predict):
 	print("F1 score for regex:        ", f1_score(Y_truth, Y_predict, average=None, labels=['U','T','E','O','I']))
 	print("Weighted F1 score for regex:        ", f1_score(Y_truth, Y_predict, average='weighted'))
 	'''
-	print("statistics on regex, for overall token matching:")
 	precision_token, recall_token, f1_token = count_tp_tokens(Y_truth, Y_predict)
 	print("Precision score: ", precision_token)
 	print("Recall score:    ", recall_token)
@@ -103,12 +102,20 @@ arguments:
 	Y_truth, Y_predict: a list of string, each char in string is in ['U','T','E','O','I']
 	shape of Y_truth == shape of Y_predict
 '''
-def evaluate_nested(y_truth, y_predict):
+def evaluate_nested(y_predict, y_truth):
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
 	print_evaluation(Y_truth, Y_predict)
 
-def evaluate_nested_score(y_truth, y_predict):
+def evaluate_nested_dual(yt_predict, yt_truth, yc_predict, yc_truth):
+	Y_predict = [item for sublist in yt_predict for item in sublist]
+	Y_truth = [item for sublist in yt_truth for item in sublist]
+	Y_predict.extend([item for sublist in yc_predict for item in sublist])
+	Y_truth.extend([item for sublist in yc_truth for item in sublist])
+	print_evaluation(Y_truth, Y_predict)
+	return count_tp_tokens(Y_truth, Y_predict)
+
+def evaluate_nested_score(y_predict, y_truth):
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
-	return count_tp_tokens(Y_truth, Y_predict)[2]
+	return count_tp_tokens(Y_truth, Y_predict)

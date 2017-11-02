@@ -98,7 +98,7 @@ Id|Title|Body
 
 <code><c>str</c><c>.</c><c>split(</c>//)</code> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>work</t> <t>like</t> <t>Ruby</t> <t>does</t>. <t>Is</t> <t>there</t> <t>a</t> <t>simple</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t> <t>without</t> <t>looping</t>?
 "
-713847|<t>Recommendations</t> <t>of</t> <t>Python</t> <t>REST</t> (<t>web</t> <t>services</t>) <t>framework</t>?|"<t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t> <t>of</t> <t>recommendations</t> <t>of</t> <t>different</t> <t>Python-based</t> <t>REST</t> <t>frameworks</t> <t>for</t> <t>use</t> <t>on</t> <t>the</t> <t>serverside</t> <t>to</t> <t>write</t> <t>your</t> <t>own</t> <t>RESTful APIs</t>? <t>Preferably</t> <t>with</t> <t>pros</t> <t>and</t> <t>cons</t>.
+713847|<t>Recommendations</t> <t>of</t> <t>Python</t> <t>REST</t> (<t>web</t> <t>services</t>) <t>framework</t>?|"<t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t> <t>of</t> <t>recommendations</t> <t>of</t> <t>different</t> <t>Python-based</t> <t>REST</t> <t>frameworks</t> <t>for</t> <t>use</t> <t>on</t> <t>the</t> <t>serverside</t> <t>to</t> <t>write</t> <t>your</t> <t>own</t> <t>RESTful</t> <t>APIs</t>? <t>Preferably</t> <t>with</t> <t>pros</t> <t>and</t> <t>cons</t>.
 
 <t>Please</t> <t>feel</t> <t>free</t> <t>to</t> <t>add</t> <t>recommendations</t> <t>here</t>. :)
 "
@@ -551,7 +551,7 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>Why</t> <t>does</t> <t>Python</t> <t>deviate</t> <t>from</t> <t>the</t> <t>behavior</t> <t>of</t> <t>these</t> <t>operators</t> <t>seen</t> <t>in</t> <t>C/C++</t>?
 "
-7818811|<t>Import Error</t>: <t>No</t> <t>module</t> <t>named</t> <t>numpy</t>|"<t>I</t> <t>have</t> <t>a</t> <t>very</t> <t>similar</t> <t>question</t> <t>to</t> <t>this</t> <t>question</t>, <t>but</t> <t>still</t> <t>1</t> <t>step</t> <t>behind</t>. 
+7818811|<t>Import</t> <t>Error</t>: <t>No</t> <t>module</t> <t>named</t> <t>numpy</t>|"<t>I</t> <t>have</t> <t>a</t> <t>very</t> <t>similar</t> <t>question</t> <t>to</t> <t>this</t> <t>question</t>, <t>but</t> <t>still</t> <t>1</t> <t>step</t> <t>behind</t>. 
 <t>I</t> <t>have</t> <t>only</t> <t>one</t> <t>version</t> <t>of</t> <t>python</t> <t>3</t> <t>installed</t> <t>on</t> <t>my</t> <t>Windows</t> <t>7(sorry</t>) <t>64-bit</t> <t>system</t>.
 <t>I</t> <t>installed</t> <t>numpy</t> <t>following</t> <t>this</t> <t>link</t> <t>-</t> <t>as</t> <t>suggested</t> <t>in</t> <t>the</t> <t>question</t>. 
 <t>The</t> <t>installation</t> <t>went</t> <t>fine</t> <t>but</t> <t>when</t> <t>I</t> <t>want</t> <t>to</t> <t>import</t>
@@ -609,7 +609,7 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
     <c>x</c><c>.</c><c>showMsg(</c>""<c>A</c> <c>message</c>"")
 </code>
 
-<t>In Java</t>, <t>we</t> <t>have</t> <t>been</t> <t>taught</t> <t>about</t> <t>public/private/protected</t> <t>variables</t>.  <t>Those</t> <t>keywords</t> <t>make</t> <t>sense</t> <t>because</t> <t>at</t> <t>times</t> <t>you</t> <t>want</t> <t>variables</t> <t>in</t> <t>a</t> <t>class</t> <t>to</t> <t>which</t> <t>no</t> <t>one</t> <t>outside</t> <t>the</t> <t>class</t> <t>has</t> <t>access</t> <t>to</t>. 
+<t>In</t> <t>Java</t>, <t>we</t> <t>have</t> <t>been</t> <t>taught</t> <t>about</t> <t>public/private/protected</t> <t>variables</t>.  <t>Those</t> <t>keywords</t> <t>make</t> <t>sense</t> <t>because</t> <t>at</t> <t>times</t> <t>you</t> <t>want</t> <t>variables</t> <t>in</t> <t>a</t> <t>class</t> <t>to</t> <t>which</t> <t>no</t> <t>one</t> <t>outside</t> <t>the</t> <t>class</t> <t>has</t> <t>access</t> <t>to</t>. 
 
 <t>Why</t> <t>is</t> <t>that</t> <t>not</t> <t>required</t> <t>in</t> <t>Python</t>?
 "

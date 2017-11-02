@@ -16,6 +16,9 @@ from sklearn.metrics import make_scorer
 from sklearn.model_selection import RandomizedSearchCV
 from optparse import OptionParser
 
+CONFIG = {'single':{'c1':0.1093, 'c2':0.0018}, 'code':{'c1':0.17152979310101085,'c2':0.0033942419604758856}, 'text':{'c1':0.25, 'c2':0.22}}
+# default configuration
+#CONFIG = {'single':{'c1':0.1, 'c2':0.1}, 'code':{'c1':0.1,'c2':0.1}, 'text':{'c1':0.1, 'c2':0.1}}
 def get_char_feature(char, index):
     return {
         index+'bias': 1.0,
@@ -39,6 +42,47 @@ def chars2features(chars):
         chars_features.append(char_features)
     return chars_features
 
+def list2xy(tlist, x, y):
+    for p in tlist:
+        if(p.ptype == 'post'):
+            x.extend(p.ptitle)
+            y.extend(p.ptitle_label)
+        x.extend(p.pbody)
+        y.extend(p.pbody_label)
+
+def list2D(tlist, D):
+    for p in tlist:
+        if(p.ptype == 'post'):
+            assert len(p.ptitle) == len(p.ptitle_label) == len(p.ptitle_block_type)
+            for title, label, btype in zip(p.ptitle, p.ptitle_label, p.ptitle_block_type):
+                if(btype == 'c'):
+                    D['x_code'].append(title)
+                    D['y_code'].append(label)
+                else:
+                    D['x_text'].append(title)
+                    D['y_text'].append(label)
+        assert len(p.pbody) == len(p.pbody_label) == len(p.pbody_block_type)
+        for title, label, btype in zip(p.pbody, p.pbody_label, p.pbody_block_type):
+            if(btype == 'c'):
+                D['x_code'].append(title)
+                D['y_code'].append(label)
+            else:
+                D['x_text'].append(title)
+                D['y_text'].append(label)
+
+def hyperParameter_search_dual():
+    with open('../../Training/posts_annotated.txt') as f:
+        post_list = split_train_text(f.read())
+    with open('../../Training/answers_annotated.txt') as f:
+        post_list.extend(split_train_text(f.read()))
+    shuffle(post_list)
+    Train = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
+    list2D(post_list, Train)
+    print("Code crf hyper parameter search: ")
+    __hyperParameter_search(Train['x_code'], Train['y_code'])
+    print("Text crf hyper parameter search: ")
+    __hyperParameter_search(Train['x_text'], Train['y_text'])
+
 def hyperParameter_search():
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
@@ -46,14 +90,10 @@ def hyperParameter_search():
         post_list.extend(split_train_text(f.read()))
     shuffle(post_list)
     x_train, y_train = [], []
-    def list2xy(tlist, x, y):
-        for p in tlist:
-            if(p.ptype == 'post'):
-                x.extend(p.ptitle)
-                y.extend(p.ptitle_label)
-            x.extend(p.pbody)
-            y.extend(p.pbody_label)
     list2xy(post_list, x_train, y_train)
+    __hyperParameter_search(x_train, y_train)
+
+def __hyperParameter_search(x_train, y_train):
     # build model
     crf = sklearn_crfsuite.CRF(
         algorithm='lbfgs',
@@ -65,7 +105,7 @@ def hyperParameter_search():
         'c2': scipy.stats.expon(scale=0.1),
     }
     # use the same metric for evaluation
-    f1_scorer = make_scorer(evaluate_nested_score)
+    f1_scorer = make_scorer(evaluate_nested_score[2])
     # search
     rs = RandomizedSearchCV(crf, params_space,
                             cv=5,
@@ -97,7 +137,7 @@ def hyperParameter_search():
 
     print("Dark blue => {:0.4}, dark red => {:0.4}".format(min(_c), max(_c)))
     fig.show()
-    input()
+    input("enter key to continue")
 
 def predictTofile(filepath, post_list, crf):
     with open(filepath, 'w') as f:
@@ -114,33 +154,88 @@ def predictTofile(filepath, post_list, crf):
             file_text.Append('"\n')
         f.write(file_text.__str__())
 
-def sample_output(filename, val_ratio=0.2):
+def predictTofile_dual(filepath, post_list, crf_text, crf_code):
+    with open(filepath, 'w') as f:
+        file_text = StringBuilder()
+        text_tag = ['<t>','</t>']
+        code_tag = ['<c>','</c>']
+        for post in post_list:
+            file_text.Append(post.pid+"|")
+            if(post.ptype == 'post'):
+                for title_block, btype in zip(post.ptitle, post.ptitle_block_type):
+                    if(btype == 'c'):
+                        file_text.Append('<code>' + crfTokens2Anno(title_block, crf_code.predict([title_block])[0], code_tag)+'</code>')
+                    else:
+                        file_text.Append(crfTokens2Anno(title_block, crf_text.predict([title_block])[0]))
+                file_text.Append('|')
+            file_text.Append('"')
+            for body_block, btype in zip(post.pbody, post.pbody_block_type):
+                if(btype == 'c'):
+                    file_text.Append('<code>' + crfTokens2Anno(body_block, crf_code.predict([body_block])[0], code_tag)+'</code>')
+                else:
+                    file_text.Append(crfTokens2Anno(body_block, crf_text.predict([body_block])[0]))
+            file_text.Append('"\n')
+        f.write(file_text.__str__())
+
+def sample_output_dual(filename, val_ratio=0.2):
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    shuffle(post_list)
+    #shuffle(post_list)
     val_length = int(val_ratio*len(post_list))
     staart = 0
     ennd = val_length - 1
     train_list = post_list[:staart] + post_list[ennd:]
     val_list = post_list[staart:ennd]
+    Train = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
+    Val = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
+    list2D(train_list, Train)
+    list2D(val_list, Val)
+    # build model
+    crf_code = sklearn_crfsuite.CRF(
+        algorithm='lbfgs',
+        c1=CONFIG['code']['c1'],
+        c2=CONFIG['code']['c2'],
+        max_iterations=100,
+        all_possible_transitions=True
+    )
+    crf_text = sklearn_crfsuite.CRF(
+        algorithm='lbfgs',
+        c1=CONFIG['text']['c1'],
+        c2=CONFIG['text']['c2'],
+        max_iterations=100,
+        all_possible_transitions=True
+    )
+    # train model
+    crf_code.fit(Train['x_code'], Train['y_code'])
+    crf_text.fit(Train['x_text'], Train['y_text'])
+    y_pred_code = crf_code.predict(Val['x_code'])
+    y_pred_text = crf_text.predict(Val['x_text'])
+    evaluate_nested(y_pred_code, Val['y_code'])
+    evaluate_nested(y_pred_text, Val['y_text'])
+    predictTofile_dual(filename, val_list, crf_text, crf_code)
+
+def sample_output(filename, val_ratio=0.2):
+    with open('../../Training/posts_annotated.txt') as f:
+        post_list = split_train_text(f.read())
+    with open('../../Training/answers_annotated.txt') as f:
+        post_list.extend(split_train_text(f.read()))
+    #shuffle(post_list)
+    val_length = int(val_ratio*len(post_list))
+    staart = 0
+    ennd = val_length
+    train_list = post_list[:staart] + post_list[ennd:]
+    val_list = post_list[staart:ennd]
     x_train, y_train = [], []
     x_val, y_val = [], []
-    def list2xy(tlist, x, y):
-        for p in tlist:
-            if(p.ptype == 'post'):
-                x.extend(p.ptitle)
-                y.extend(p.ptitle_label)
-            x.extend(p.pbody)
-            y.extend(p.pbody_label)
     list2xy(train_list, x_train, y_train)
     list2xy(val_list, x_val, y_val)
     # build model
     crf = sklearn_crfsuite.CRF(
         algorithm='lbfgs',
-        c1=0.1093,
-        c2=0.0018,
+        c1=CONFIG['single']['c1'],
+        c2=CONFIG['single']['c2'],
         max_iterations=100,
         all_possible_transitions=True
     )
@@ -167,8 +262,7 @@ def sample_output(filename, val_ratio=0.2):
     ))
     predictTofile(filename, val_list, crf)
 
-
-def cross_validation(val_ratio=0.2):
+def cross_validation_dual(val_ratio=0.2):
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
@@ -178,27 +272,72 @@ def cross_validation(val_ratio=0.2):
     staart = 0
     ennd = val_length - 1
     cross_round = 1
-    f1_all = []
+    score_all = []
+    while(ennd <= len(post_list)):
+        train_list = post_list[:staart] + post_list[ennd:]
+        val_list = post_list[staart:ennd]
+        Train = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
+        Val = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
+        list2D(train_list, Train)
+        list2D(val_list, Val)
+        # build model
+        crf_code = sklearn_crfsuite.CRF(
+            algorithm='lbfgs',
+            c1=CONFIG['code']['c1'],
+            c2=CONFIG['code']['c2'],
+            max_iterations=100,
+            all_possible_transitions=True
+        )
+        crf_text = sklearn_crfsuite.CRF(
+            algorithm='lbfgs',
+            c1=CONFIG['text']['c1'],
+            c2=CONFIG['text']['c2'],
+            max_iterations=100,
+            all_possible_transitions=True
+        )
+        # train model
+        crf_code.fit(Train['x_code'], Train['y_code'])
+        crf_text.fit(Train['x_text'], Train['y_text'])
+        y_pred_code = crf_code.predict(Val['x_code'])
+        y_pred_text = crf_text.predict(Val['x_text'])
+        print("Cross validation round ", cross_round, " :")
+        print("Code:")
+        evaluate_nested(y_pred_code, Val['y_code'])
+        print("Text:")
+        evaluate_nested(y_pred_text, Val['y_text'])
+        print("Dual:")
+        score_all.append(evaluate_nested_dual(y_pred_text, Val['y_text'], y_pred_code, Val['y_code']))
+        staart += val_length
+        ennd += val_length
+        cross_round += 1
+    print("average precision of CRF tokenization in {}-fold corss validation: {:0.4}".format(int(1/val_ratio), sum([score[0] for score in score_all])/len(score_all)))
+    print("average recall of CRF tokenization in {}-fold corss validation:    {:0.4}".format(int(1/val_ratio), sum([score[1] for score in score_all])/len(score_all)))
+    print("average f1 score of CRF tokenization in {}-fold corss validation:  {:0.4}".format(int(1/val_ratio), sum([score[2] for score in score_all])/len(score_all)))
+
+def cross_validation(val_ratio=0.2):
+    with open('../../Training/posts_annotated.txt') as f:
+        post_list = split_train_text(f.read())
+    with open('../../Training/answers_annotated.txt') as f:
+        post_list.extend(split_train_text(f.read()))
+    shuffle(post_list)
+    val_length = int(val_ratio*len(post_list))
+    staart = 0
+    ennd = val_length
+    cross_round = 1
+    score_all = []
     #pdb.set_trace()
-    while(ennd < len(post_list)):
+    while(ennd <= len(post_list)):
         train_list = post_list[:staart] + post_list[ennd:]
         val_list = post_list[staart:ennd]
         x_train, y_train = [], []
         x_val, y_val = [], []
-        def list2xy(tlist, x, y):
-            for p in tlist:
-                if(p.ptype == 'post'):
-                    x.extend(p.ptitle)
-                    y.extend(p.ptitle_label)
-                x.extend(p.pbody)
-                y.extend(p.pbody_label)
         list2xy(train_list, x_train, y_train)
         list2xy(val_list, x_val, y_val)
         # build model
         crf = sklearn_crfsuite.CRF(
             algorithm='lbfgs',
-            c1=0.1093,
-            c2=0.0018,
+            c1=CONFIG['single']['c1'],
+            c2=CONFIG['single']['c2'],
             max_iterations=100,
             all_possible_transitions=True
         )
@@ -215,40 +354,35 @@ def cross_validation(val_ratio=0.2):
         #pdb.set_trace()
         print("Cross validation round ", cross_round, " :")
         evaluate_nested(y_pred, y_val)
-        f1_all.append(evaluate_nested_score(y_pred, y_val))
-        '''
-        # show metrics
-        metrics.flat_f1_score(y_val, y_pred,
-                              average='weighted', labels=labels)
-
-        sorted_labels = sorted(
-            labels,
-            key=lambda name: (name[1:], name[0])
-        )
-        print(metrics.flat_classification_report(
-            y_val, y_pred, labels=sorted_labels, digits=3
-        ))
-        '''
+        score_all.append(evaluate_nested_score(y_pred, y_val))
         staart += val_length
         ennd += val_length
         cross_round += 1
-    print("average f1 score of CRF tokenization in {}-fold corss validation: {:0.4}".format(int(1/val_ratio), sum(f1_all)/len(f1_all)))
+    print("average precision of CRF tokenization in {}-fold corss validation: {:0.4}".format(int(1/val_ratio), sum([score[0] for score in score_all])/len(score_all)))
+    print("average recall of CRF tokenization in {}-fold corss validation:    {:0.4}".format(int(1/val_ratio), sum([score[1] for score in score_all])/len(score_all)))
+    print("average f1 score of CRF tokenization in {}-fold corss validation:  {:0.4}".format(int(1/val_ratio), sum([score[2] for score in score_all])/len(score_all)))
 
 if __name__ == '__main__':
     parser = OptionParser()
-    parser.add_option("-f", "--outfile", dest="filename",
+    parser.add_option("-f", dest="filename",
                   default='val_predict.txt',
-                  help="write sample output to FILENAME, if mode is sample")
-    parser.add_option("-m", "--mode",
-                  dest="mode", default='sample',
-                  help="change mode: cv/sample/hyper_search")
-    parser.add_option("-r", "--ratio",
+                  help="(default val_predict.txt) write sample output to FILENAME, if mode is sample")
+    parser.add_option("-m",
+                  dest="mode", default='sample_dual',
+                  help="(default sample_dual) change mode: cv/cv_dual/sample/sample_dual/hyper_search/hyper_search_dual")
+    parser.add_option("-r",
                   dest="ratio", default=0.2,
-                  help="change validation ratio, default 0.2")
+                  help="(default 0.2) change validation ratio, default 0.2")
     (options, args) = parser.parse_args()
     if(options.mode == 'sample'):
         sample_output(options.filename, float(options.ratio))
+    if(options.mode == 'sample_dual'):
+        sample_output_dual(options.filename, float(options.ratio))
     elif(options.mode == 'cv'):
         cross_validation(float(options.ratio))
+    elif(options.mode == 'cv_dual'):
+        cross_validation_dual(float(options.ratio))
     elif(options.mode == 'hyper_search'):
         hyperParameter_search()
+    elif(options.mode == 'hyper_search_dual'):
+        hyperParameter_search_dual()
