@@ -241,6 +241,16 @@ def split_train_text(file_text):
 	post2rpost(last_post)
 	return rpost_list
 
+def TextFromRpost(filepath):
+	text = StringBuilder()
+	rpost_list = split_train_text(open(filepath).read())
+	for p in rpost_list:
+		if(p.ptype == 'post'):
+			text.Append(' '.join([tb for tb in p.ptitle]))
+		text.Append(' '.join([tb for tb in p.pbody]))
+	return text.__str__()
+
+
 
 
 
