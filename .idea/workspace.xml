@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad7d6408-3b7b-4e57-89c8-23a7e0e8c5f3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/posts/posts_training.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/Data/All_Posts.txt" afterPath="$PROJECT_DIR$/Root/Data/All_Posts.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/nltk_controller.py" afterPath="$PROJECT_DIR$/Root/SourceCode/nltk_controller.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean_old.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean_old_predicted.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Root/Data/posts_traning_old.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Root/SourceCode/Tokenizer/text_tokenizer_new.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/Data/posts_training_clean.txt" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/Data/posts_training_clean_predicted.txt" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean_predicted.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/Tokenizer/crf.py" afterPath="$PROJECT_DIR$/Root/SourceCode/Tokenizer/crf.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/evaluation.py" afterPath="$PROJECT_DIR$/Root/SourceCode/evaluation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/tokenizer.py" afterPath="$PROJECT_DIR$/Root/SourceCode/tokenizer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/evaluate/evaluation.py" afterPath="$PROJECT_DIR$/evaluate/evaluation.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/stemming/Summary">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="392">
-              <caret line="134" column="128" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="134" selection-end-column="128" />
+              <caret line="134" column="128" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="134" selection-end-column="128" />
               <folding />
             </state>
           </provider>
@@ -63,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/Root/Data/all_posts_clean.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -87,16 +95,6 @@
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="All_Posts.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Root/Data/All_Posts.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1351,7 +1349,7 @@
     <entry file="file://$PROJECT_DIR$/stemming/Summary">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
-          <caret line="134" column="128" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="134" selection-end-column="128" />
+          <caret line="134" column="128" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="134" selection-end-column="128" />
           <folding />
         </state>
       </provider>
@@ -1359,7 +1357,7 @@
     <entry file="file://$PROJECT_DIR$/Root/Data/all_posts_clean.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
