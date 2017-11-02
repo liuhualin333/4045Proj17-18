@@ -9,14 +9,7 @@
         python application.py file1 ...
 
 """
-
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy import stats
-from sklearn.cluster import KMeans
-import codecs
 import re
-from collections import OrderedDict
 from collections import Counter
 from math import log
 import csv
@@ -63,13 +56,6 @@ def main(post_path="../posts/all_posts_clean_Annotated.csv"):
 
     # regular expression to split each post
     re_post = re.compile('(\d+)\|(.*?)\n"', flags = re.S|re.M)
-
-    # find all tokens, used for k means
-    # post_tokens = set(re_text.findall(post_source) + re_code.findall(post_source))
-    # answer_tokens = set(re_text.findall(answer_source) + re_code.findall(answer_source))
-    # all_tokens = list(post_tokens | answer_tokens)
-    # all_tokens.sort()
-    # token_num = len(all_tokens)
 
     # list to store all posts' token mapping [(id, {word1:n1, word2:n2,...})...]
     post_token_count_list = []
@@ -173,30 +159,4 @@ if __name__ == '__main__':
         for file in sys.argv[1:]:
             main(file)
 
-
-# k means application
-
-# for p in post_list:
-#     p_tokens = re_text.findall(p[1]) + re_code.findall(p[1])
-#     p_token_map = OrderedDict((ele, 0) for ele in all_tokens)
-#     for t in p_tokens:
-#         p_token_map[t] += 1
-#     post_token_vector_map[p[0]] = p_token_map.values()
-# print(type(post_token_vector_map.values()))
-#
-# post_vectors = []
-#
-# for vector in post_token_vector_map.values():
-#     post_vectors.append([int(x) for x in vector])
-#
-# post_vectors = np.array(post_vectors)
-#
-# kmeans = KMeans(n_clusters=5, random_state=0).fit(post_vectors)
-#
-# index = 0
-# for post_id in post_token_vector_map.keys():
-#     print(post_id, kmeans.labels_[index])
-#     index += 1
-#
-# print(Counter(kmeans.labels_))
 
