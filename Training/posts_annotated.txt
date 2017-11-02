@@ -237,7 +237,7 @@ Id|Title|Body
 <c>*/</c>
 </code>
 
-<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
+<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does</t> <t>Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
 "
 954834|<t>How</t> <t>do</t> <t>I</t> <t>use</t> <t>raw_input</t> <t>in</t> <t>Python</t> <t>3</t>|"<code><c>import</c> <c>sys</c>
 <c>print</c> (<c>sys</c><c>.</c><c>platform</c>)
@@ -642,9 +642,9 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 "
 610883|<t>How</t> <t>to</t> <t>know</t> <t>if</t> <t>an</t> <t>object</t> <t>has</t> <t>an</t> <t>attribute</t> <t>in</t> <t>Python</t>|"<t>Is</t> <t>there</t> <t>a</t> <t>way</t> <t>in</t> <t>Python</t> <t>to</t> <t>determine</t> <t>if</t> <t>an</t> <t>object</t> <t>has</t> <t>some</t> <t>attribute</t>?  <t>For</t> <t>example</t>:
 
-<code><c>&gt;&gt;&gt;</c> <c>a</c> <c>=</c> <c>SomeClass(</c>)
-<c>&gt;&gt;&gt;</c> <c>a</c><c>.</c><c>someProperty</c> <c>=</c> <c>value</c>
-<c>&gt;&gt;&gt;</c> <c>a</c><c>.</c><c>property</c>
+<code>&gt;&gt;&gt; <c>a</c> <c>=</c> <c>SomeClass(</c>)
+&gt;&gt;&gt; <c>a</c><c>.</c><c>someProperty</c> <c>=</c> <c>value</c>
+&gt;&gt;&gt; <c>a</c><c>.</c><c>property</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>)<c>:</c>
   <c>File</c> ""<c>&lt;</c><c>stdin</c><c>&gt;</c>"", <c>line</c> <c>1</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
 <c>AttributeError</c><c>:</c> <c>SomeClass</c> <c>instance</c> <c>has</c> <c>no</c> <c>attribute</c> '<c>property</c>'

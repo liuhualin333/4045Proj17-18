@@ -40,7 +40,7 @@
 
 <t>Example</t>:
 
-<code><c>line</c> <c>=</c> ""<c>hello</c> <c>12</c> <c>hi 89</c>""
+<code><c>line</c> <c>=</c> ""<c>hello</c> <c>12</c> <c>hi</c> <c>89</c>""
 </code>
 
 <t>Result</t>:
@@ -68,23 +68,23 @@
 
 <t>It</t> <t>looks</t> <t>kind</t> <t>of</t> <t>weird</t> <t>to</t> <t>have</t> <t>the</t> <t>string</t> <t>hanging</t> <t>outside</t> <t>the</t> <t>function</t> <t>in</t> <t>the</t> <t>first</t> <t>example</t>.
 "
-27341064|<t>How</t> <t>do</t> <t>I</t> <t>fix</t> <t>'ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?|"<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
+27341064|<t>How</t> <t>do</t> <t>I</t> <t>fix</t> '<t>ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?|"<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
 
 <code><c>$</c> <c>sudo</c> <c>pip3</c> <c>install</c> <c>python3-tk</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
-  <c>File</c> ""<c>/usr/bin/pip3</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;module&gt;</c>
-    <c>load_entry_point(</c>'<c>pip</c><c>=</c><c>=1.5</c><c>.</c><c>6</c>', '<c>console_scripts</c>', '<c>pip3</c>')()
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources</c><c>.</c><c>py</c>"", <c>line</c> <c>356</c>, <c>in</c> <c>load_entry_point</c>
-    <c>return</c> <c>get_distribution(</c><c>dist</c>)<c>.</c><c>load_entry_point(</c>g<c>roup</c>, <c>name</c>)
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources</c><c>.</c><c>py</c>"", <c>line</c> <c>2476</c>, <c>in</c> <c>load_entry_point</c>
+  <c>File</c> ""<c>/usr/bin/pip3</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+    <c>load_entry_point(</c>'<c>pip</c><c>==</c><c>1.5.6</c>', '<c>console_scripts</c>', '<c>pip3</c>')()
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources.py</c>"", <c>line</c> <c>356</c>, <c>in</c> <c>load_entry_point</c>
+    <c>return</c> <c>get_distribution(</c><c>dist</c>)<c>.</c><c>load_entry_point(</c><c>group</c>, <c>name</c>)
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources.py</c>"", <c>line</c> <c>2476</c>, <c>in</c> <c>load_entry_point</c>
     <c>return</c> <c>ep</c><c>.</c><c>load(</c>)
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources</c><c>.</c><c>py</c>"", <c>line</c> <c>2190</c>, <c>in</c> <c>load</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources.py</c>"", <c>line</c> <c>2190</c>, <c>in</c> <c>load</c>
     ['<c>__name__</c>'])
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/__init__</c><c>.</c><c>py</c>"", <c>line</c> <c>6</c><c>1</c>, <c>in</c> <c>&lt;module&gt;</c>
-    <c>from</c> <c>pip</c><c>.</c><c>vcs</c> <c>import</c> g<c>it</c>, <c>mercurial</c>, <c>subversion</c>, <c>bazaar</c>  # <c>noqa</c>
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/vcs/mercurial</c><c>.</c><c>py</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/__init__.py</c>"", <c>line</c> <c>61</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+    <c>from</c> <c>pip</c><c>.</c><c>vcs</c> <c>import</c> <c>git</c>, <c>mercurial</c>, <c>subversion</c>, <c>bazaar</c>  # <c>noqa</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/vcs/mercurial.py</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
     <c>from</c> <c>pip</c><c>.</c><c>download</c> <c>import</c> <c>path_to_url</c>
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/download</c><c>.</c><c>py</c>"", <c>line</c> <c>25</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/download.py</c>"", <c>line</c> <c>25</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
     <c>from</c> <c>requests</c><c>.</c><c>compat</c> <c>import</c> <c>IncompleteRead</c>
 <c>ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> '<c>IncompleteRead</c>'
 </code>
@@ -95,13 +95,13 @@
 "
 4978787|<t>How</t> <t>to</t> <t>split</t> <t>a</t> <t>string</t> <t>into</t> <t>array</t> <t>of</t> <t>characters</t> <t>with</t> <t>Python</t>?|"<t>I've</t> <t>tried</t> <t>to</t> <t>look</t> <t>around</t> <t>the</t> <t>web</t> <t>for</t> <t>answers</t> <t>to</t> <t>splitting</t> <t>a</t> <t>string</t> <t>into</t> <t>an</t> <t>array</t> <t>of</t> <t>characters</t> <t>but</t> <t>I</t> <t>can't</t> <t>seem</t> <t>to</t> <t>find</t> <t>a</t> <t>simple</t> <t>method</t>
 
-<code><c>str</c><c>.</c><c>split(</c><c>//</c>)</code> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>work</t> <t>like</t> <t>Ruby</t> <t>does</t>. <t>Is</t> <t>there</t> <t>a</t> <t>simple</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t> <t>without</t> <t>looping</t>?
+<code><c>str</c><c>.</c><c>split(</c>//)</code> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>work</t> <t>like</t> <t>Ruby</t> <t>does</t>. <t>Is</t> <t>there</t> <t>a</t> <t>simple</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t> <t>without</t> <t>looping</t>?
 "
 713847|<t>Recommendations</t> <t>of</t> <t>Python</t> <t>REST</t> (<t>web</t> <t>services</t>) <t>framework</t>?|"<t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t> <t>of</t> <t>recommendations</t> <t>of</t> <t>different</t> <t>Python-based</t> <t>REST</t> <t>frameworks</t> <t>for</t> <t>use</t> <t>on</t> <t>the</t> <t>serverside</t> <t>to</t> <t>write</t> <t>your</t> <t>own</t> <t>RESTful</t> <t>APIs</t>? <t>Preferably</t> <t>with</t> <t>pros</t> <t>and</t> <t>cons</t>.
 
 <t>Please</t> <t>feel</t> <t>free</t> <t>to</t> <t>add</t> <t>recommendations</t> <t>here</t>. :)
 "
-454854|<t>No</t> <t>module</t> <t>named</t> <t>MySQLdb|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>version</t> <t>2.5.4</t> <t>and</t> <t>install</t> <t>MySQL</t> <t>version</t> <t>5.0</t> <t>and</t> <t>Django</t>. <t>Django</t> <t>is</t> <t>working</t> <t>fine</t> <t>with</t> <t>Python</t>, <t>but</t> <t>not</t> <t>MySQL</t>. <t>I</t> <t>am</t> <t>using</t> <t>it</t> <t>in</t> <t>Windows</t> <t>Vista</t>.
+454854|<t>No</t> <t>module</t> <t>named</t> <t>MySQLdb</t>|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>version</t> <t>2.5.4</t> <t>and</t> <t>install</t> <t>MySQL</t> <t>version</t> <t>5.0</t> <t>and</t> <t>Django</t>. <t>Django</t> <t>is</t> <t>working</t> <t>fine</t> <t>with</t> <t>Python</t>, <t>but</t> <t>not</t> <t>MySQL</t>. <t>I</t> <t>am</t> <t>using</t> <t>it</t> <t>in</t> <t>Windows Vista</t>.
 "
 123198|<t>How</t> <t>do</t> <t>I</t> <t>copy</t> <t>a</t> <t>file</t> <t>in</t> <t>python</t>?|"<t>How</t> <t>do</t> <t>I</t> <t>copy</t> <t>a</t> <t>file</t> <t>in</t> <t>Python</t>? <t>I</t> <t>couldn't</t> <t>find</t> <t>anything</t> <t>under</t> <code><c>os</c></code>.
 "
@@ -111,12 +111,12 @@
 <c>print</c> <c>os</c><c>.</c><c>getcwd(</c>)
 </code>
 
-<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When</t> <t>I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</code>.
+<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When</t> <t>I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</c></code>.
 
 <t>How</t> <t>can</t> <t>I</t> <t>get</t> <t>the</t> <t>path</t> <t>to</t> <t>the</t> <t>script</t> <t>from</t> <t>within</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>a</t> <t>Django</t> <t>view</t>?
 
 <t>UPDATE</t>:
-<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> <t>-</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c>__file__</c></code> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
+<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> - <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c>__file__</c></code> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
 
 <t>Isn't</t> <t>there</t> <t>any</t> <t>way</t> <t>in</t> <t>Python</t> <t>to</t> (<t>always</t>) <t>be</t> <t>able</t> <t>to</t> <t>receive</t> <t>the</t> <t>path</t> <t>in</t> <t>which</t> <t>the</t> <t>script</t> <t>resides</t>?
 "
@@ -126,7 +126,7 @@
 
 <t>Currently</t>, <t>I</t> <t>am</t> <t>trying</t> <t>this</t>:
 
-<code><c>obj</c> <c>=</c> <c>open(</c>'<c>data</c><c>.</c><c>txt</c>', '<c>wb</c>')
+<code><c>obj</c> <c>=</c> <c>open(</c>'<c>data.txt</c>', '<c>wb</c>')
 <c>obj</c><c>.</c><c>write(</c><c>data</c>)
 <c>obj</c><c>.</c><c>close</c>
 </code>
@@ -141,14 +141,14 @@
 
 <t>Can</t> <t>it</t> <t>be</t> <t>used</t> <t>to</t> <t>create</t> <t>dictionaries</t> <t>too</t>? <t>For</t> <t>example</t>, <t>by</t> <t>iterating</t> <t>over</t> <t>pairs</t> <t>of</t> <t>keys</t> <t>and</t> <t>values</t>:
 
-<code><c>mydict</c> <c>=</c> <c>{(</c><c>k</c>,<c>v</c>) <c>for</c> (<c>k,v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah}</c>  # <c>doesn</c>'t <c>work</c>
+<code><c>mydict</c> <c>=</c> {(<c>k</c>,<c>v</c>) <c>for</c> (<c>k</c>,<c>v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah</c>}  # <c>doesn't</c> <c>work</c>
 </code>
 "
 865115|<t>How</t> <t>do</t> <t>I</t> <t>correctly</t> <t>clean</t> <t>up</t> <t>a</t> <t>Python</t> <t>object</t>?|"<code><c>class</c> <c>Package</c>:
     <c>def</c> <c>__init__(</c><c>self</c>):
         <c>self</c><c>.</c><c>files</c> <c>=</c> []
 
-    # <c>.</c>.<c>.</c>
+    # ...
 
     <c>def</c> <c>__del__(</c><c>self</c>):
         <c>for</c> <c>file</c> <c>in</c> <c>self</c><c>.</c><c>files</c>:
@@ -157,14 +157,14 @@
 
 <code><c>__del__(</c><c>self</c>)</code> <t>above</t> <t>fails</t> <t>with</t> <t>an</t> <t>AttributeError</t> <t>exception</t>.  <t>I</t> <t>understand</t> <t>Python</t> <t>doesn't</t> <t>guarantee</t> <t>the</t> <t>existence</t> <t>of</t> ""<t>global</t> <t>variables</t>"" (<t>member</t> <t>data</t> <t>in</t> <t>this</t> <t>context</t>?) <t>when</t> <code><c>__del__(</c>)</code> <t>is</t> <t>invoked</t>.  <t>If</t> <t>that</t> <t>is</t> <t>the</t> <t>case</t> <t>and</t> <t>this</t> <t>is</t> <t>the</t> <t>reason</t> <t>for</t> <t>the</t> <t>exception</t>, <t>how</t> <t>do</t> <t>I</t> <t>make</t> <t>sure</t> <t>the</t> <t>object</t> <t>destructs</t> <t>properly</t>?
 "
-9252543|<t>ImportError</t>: <t>Cannot</t> <t>import</t> <t>name</t> X|"<t>I</t> <t>have</t> <t>four</t> <t>different</t> <t>files</t> <t>named</t>: <t>main</t>, <t>vector</t>, <t>entity</t>, <t>and</t> <t>physics</t>. <t>I</t> <t>will</t> <t>not</t> <t>post</t> <t>all</t> <t>the</t> <t>code</t>, <t>mostly</t> <t>just</t> <t>the</t> <t>imports</t>, <t>because</t> <t>I</t> <t>think</t> <t>that's</t> <t>where</t> <t>the</t> <t>error</t> <t>is</t>. <t>But</t> <t>if</t> <t>you</t> <t>want</t>, <t>I</t> <t>can</t> <t>post</t> <t>more</t>.
+9252543|<t>ImportError</t>: <t>Cannot</t> <t>import</t> <t>name</t> <t>X</t>|"<t>I</t> <t>have</t> <t>four</t> <t>different</t> <t>files</t> <t>named</t>: <t>main</t>, <t>vector</t>, <t>entity</t>, <t>and</t> <t>physics</t>. <t>I</t> <t>will</t> <t>not</t> <t>post</t> <t>all</t> <t>the</t> <t>code</t>, <t>mostly</t> <t>just</t> <t>the</t> <t>imports</t>, <t>because</t> <t>I</t> <t>think</t> <t>that's</t> <t>where</t> <t>the</t> <t>error</t> <t>is</t>. <t>But</t> <t>if</t> <t>you</t> <t>want</t>, <t>I</t> <t>can</t> <t>post</t> <t>more</t>.
 
 <t>Main</t>:
 
 <code><c>import</c> <c>time</c>
-<c>from</c> <c>entity</c> <c>import Ent</c>
-<c>from</c> <c>vector</c> <c>import</c> <c>Vect
-#the</c> <c>rest</c> <c>just</c> <c>creates</c> <c>an</c> <c>entity</c> <c>and</c> <c>prints</c> <c>the</c> <c>result</c> <c>of</c> <c>movement</c>
+<c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
+<c>from</c> <c>vector</c> <c>import</c> <c>Vect</c>
+#<c>the</c> <c>rest</c> <c>just</c> <c>creates</c> <c>an</c> <c>entity</c> <c>and</c> <c>prints</c> <c>the</c> <c>result</c> <c>of</c> <c>movement</c>
 </code>
 
 <t>Entity</t>:
@@ -172,57 +172,57 @@
 <code><c>from</c> <c>vector</c> <c>import</c> <c>Vect</c>
 <c>from</c> <c>physics</c> <c>import</c> <c>Physics</c>
 <c>class</c> <c>Ent</c>:
-    <c>#holds</c> <c>vector</c> <c>information</c> <c>and</c> <c>id</c>
+    #<c>holds</c> <c>vector</c> <c>information</c> <c>and</c> <c>id</c>
 <c>def</c> <c>tick(</c><c>self</c>, <c>dt</c>):
-    <c>#this</c> <c>is</c> <c>where</c> <c>physics</c> <c>changes</c> <c>the</c> <c>velocity</c> <c>and</c> <c>position</c> <c>vectors</c>
+    #<c>this</c> <c>is</c> <c>where</c> <c>physics</c> <c>changes</c> <c>the</c> <c>velocity</c> <c>and</c> <c>position</c> <c>vectors</c>
 </code>
 
 <t>Vector</t>:
 
 <code><c>from</c> <c>math</c> <c>import</c> <c>*</c>
 <c>class</c> <c>Vect</c>:
-    <c>#holds</c> <c>i</c>, <c>j</c>, <c>k</c>, <c>and</c> <c>does</c> <c>vector</c> <c>math</c>
+    #<c>holds</c> <c>i</c>, <c>j</c>, <c>k</c>, <c>and</c> <c>does</c> <c>vector</c> <c>math</c>
 </code>
 
 <t>Physics</t>:
 
-<code><c>from</c> <c>entity</c> <c>import Ent</c>
+<code><c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
 <c>class</c> <c>Physics</c>:
-    <c>#physics</c> <c>class</c> <c>gets</c> <c>an</c> <c>entity</c> <c>and</c> <c>does</c> <c>physics</c> <c>calculations</c> <c>on</c> <c>it</c><c>.</c>
+    #<c>physics</c> <c>class</c> <c>gets</c> <c>an</c> <c>entity</c> <c>and</c> <c>does</c> <c>physics</c> <c>calculations</c> <c>on</c> <c>it</c>.
 </code>
 
-<t>I</t> <t>then</t> <t>run</t> <t>from</t> <t>main.py</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t>:
+<t>I</t> <t>then</t> <t>run</t> <t>from</t> <t>main</t>.<t>py</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
-<c>File</c> ""<c>main</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;module&gt;</c>
-    <c>from</c> <c>entity</c> <c>import Ent
-File</c> ""<c>.</c>.<c>.</c><c>/entity</c><c>.</c><c>py</c>"", <c>line</c> <c>5</c>, <c>in</c> <c>&lt;module&gt;</c>
-    <c>from</c> <c>physics</c> <c>import</c> <c>Physics
-File</c> ""<c>.</c>.<c>.</c><c>/physics</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;module&gt;</c>
-    <c>from</c> <c>entity</c> <c>import Ent
-ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
+<c>File</c> ""<c>main.py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+    <c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
+<c>File</c> ""...<c>/entity.py</c>"", <c>line</c> <c>5</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+    <c>from</c> <c>physics</c> <c>import</c> <c>Physics</c>
+<c>File</c> ""...<c>/physics.py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
+    <c>from</c> <c>entity</c> <c>import</c> <c>Ent</c>
+<c>ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
 </code>
 
 <t>I</t> <t>am</t> <t>very</t> <t>new</t> <t>to</t> <t>python</t>, <t>but</t> <t>have</t> <t>worked</t> <t>with</t> <t>C++</t> <t>for</t> <t>a</t> <t>long</t> <t>time</t>. <t>I</t> <t>am</t> <t>guessing</t> <t>that</t> <t>the</t> <t>cause</t> <t>is</t> <t>from</t> <t>importing</t> <t>entity</t> <t>twice</t>, <t>once</t> <t>in</t> <t>main</t>, <t>and</t> <t>later</t> <t>in</t> <t>physics</t>, <t>but</t> <t>I</t> <t>don't</t> <t>know</t> <t>a</t> <t>workaround</t>. <t>Anyone</t> <t>help</t>?
 "
 11178061|<t>Print</t> <t>list</t> <t>without</t> <t>brackets</t> <t>in</t> <t>a</t> <t>single</t> <t>row</t>|"<t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>in</t> <t>Python</t>
-<t>e.g</t>.
+<t>e.g.</t>
 
 <code><c>names</c> <c>=</c> [""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 </code>
 
-<t>I</t> <t>want</t> <t>to</t> <t>print</t> <t>the</t> <t>array</t> <t>in</t> <t>a</t> <t>single</t> <t>line</t> <t>without</t> <t>the</t> <t>normal</t> "" []
+<t>I</t> <t>want</t> <t>to</t> <t>print</t> <t>the</t> <t>array</t> <t>in</t> <t>a</t> <t>single</t> <t>line</t> <t>without</t> <t>the</t> <t>normal</t> "" <t>[]</t>
 
 <code><c>names</c> <c>=</c> [""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 <c>print</c> (<c>names</c>)
 </code>
 
-<t>Will</t> <t>give</t> <t>the</t> <t>output</t> <t>as;</t>
+<t>Will</t> <t>give</t> <t>the</t> <t>output</t> <t>as</t>;
 
 <code>[""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 </code>
 
-<t>That</t> <t>is</t> <t>not</t> <t>the</t> <t>format</t> <t>I</t> <t>want</t> <t>instead</t> <t>I</t> <t>want</t> <t>it</t> <t>to</t> <t>be</t> <t>like</t> <t>this;</t>
+<t>That</t> <t>is</t> <t>not</t> <t>the</t> <t>format</t> <t>I</t> <t>want</t> <t>instead</t> <t>I</t> <t>want</t> <t>it</t> <t>to</t> <t>be</t> <t>like</t> <t>this</t>;
 
 <code><c>Sam</c>, <c>Peter</c>, <c>James</c>, <c>Julian</c>, <c>Ann</c>
 </code>
@@ -236,7 +236,7 @@ ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
 <c>*/</c>
 </code>
 
-<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does</t> <t>Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
+<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
 "
 954834|<t>How</t> <t>do</t> <t>I</t> <t>use</t> <t>raw_input</t> <t>in</t> <t>Python</t> <t>3</t>|"<code><c>import</c> <c>sys</c>
 <c>print</c> (<c>sys</c><c>.</c><c>platform</c>)

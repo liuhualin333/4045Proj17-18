@@ -1,2 +1,5 @@
-<code>      # coding= &lt;encoding name&gt;
+<code>bin/
+   main.py
+   user.py # where class User resides
+   dir.py # where class Dir resides
 </code>
