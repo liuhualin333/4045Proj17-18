@@ -72,7 +72,7 @@
 
 <code><c>$</c> <c>sudo</c> <c>pip3</c> <c>install</c> <c>python3-tk</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
-  <c>File</c> ""<c>/usr/bin/pip3</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/bin/pip3</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>load_entry_point(</c>'<c>pip</c><c>=</c><c>=1.5</c><c>.</c><c>6</c>', '<c>console_scripts</c>', '<c>pip3</c>')()
   <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources</c><c>.</c><c>py</c>"", <c>line</c> <c>356</c>, <c>in</c> <c>load_entry_point</c>
     <c>return</c> <c>get_distribution(</c><c>dist</c>)<c>.</c><c>load_entry_point(</c>g<c>roup</c>, <c>name</c>)
@@ -80,11 +80,11 @@
     <c>return</c> <c>ep</c><c>.</c><c>load(</c>)
   <c>File</c> ""<c>/usr/lib/python3/dist-packages/pkg_resources</c><c>.</c><c>py</c>"", <c>line</c> <c>2190</c>, <c>in</c> <c>load</c>
     ['<c>__name__</c>'])
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/__init__</c><c>.</c><c>py</c>"", <c>line</c> <c>6</c><c>1</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/__init__</c><c>.</c><c>py</c>"", <c>line</c> <c>61</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>pip</c><c>.</c><c>vcs</c> <c>import</c> g<c>it</c>, <c>mercurial</c>, <c>subversion</c>, <c>bazaar</c>  # <c>noqa</c>
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/vcs/mercurial</c><c>.</c><c>py</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/vcs/mercurial</c><c>.</c><c>py</c>"", <c>line</c> <c>9</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>pip</c><c>.</c><c>download</c> <c>import</c> <c>path_to_url</c>
-  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/download</c><c>.</c><c>py</c>"", <c>line</c> <c>25</c>, <c>in</c> <c>&lt;module&gt;</c>
+  <c>File</c> ""<c>/usr/lib/python3/dist-packages/pip/download</c><c>.</c><c>py</c>"", <c>line</c> <c>25</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>requests</c><c>.</c><c>compat</c> <c>import</c> <c>IncompleteRead</c>
 <c>ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> '<c>IncompleteRead</c>'
 </code>
@@ -141,14 +141,14 @@
 
 <t>Can</t> <t>it</t> <t>be</t> <t>used</t> <t>to</t> <t>create</t> <t>dictionaries</t> <t>too</t>? <t>For</t> <t>example</t>, <t>by</t> <t>iterating</t> <t>over</t> <t>pairs</t> <t>of</t> <t>keys</t> <t>and</t> <t>values</t>:
 
-<code><c>mydict</c> <c>=</c> <c>{(</c><c>k</c>,<c>v</c>) <c>for</c> (<c>k,v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah}</c>  # <c>doesn</c>'t <c>work</c>
+<code><c>mydict</c> <c>=</c> <c>{(</c><c>k</c>,<c>v</c>) <c>for</c> (<c>k,v</c>) <c>in</c> <c>blah</c> <c>blah</c> <c>blah</c>}  # <c>doesn</c>'t <c>work</c>
 </code>
 "
 865115|<t>How</t> <t>do</t> <t>I</t> <t>correctly</t> <t>clean</t> <t>up</t> <t>a</t> <t>Python</t> <t>object</t>?|"<code><c>class</c> <c>Package</c>:
     <c>def</c> <c>__init__(</c><c>self</c>):
         <c>self</c><c>.</c><c>files</c> <c>=</c> []
 
-    # <c>.</c>.<c>.</c>
+    # ...
 
     <c>def</c> <c>__del__(</c><c>self</c>):
         <c>for</c> <c>file</c> <c>in</c> <c>self</c><c>.</c><c>files</c>:
@@ -194,11 +194,11 @@
 <t>I</t> <t>then</t> <t>run</t> <t>from</t> <t>main.py</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
-<c>File</c> ""<c>main</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;module&gt;</c>
+<c>File</c> ""<c>main</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>entity</c> <c>import Ent
-File</c> ""<c>.</c>.<c>.</c><c>/entity</c><c>.</c><c>py</c>"", <c>line</c> <c>5</c>, <c>in</c> <c>&lt;module&gt;</c>
+File</c> ""..<c>.</c><c>/entity</c><c>.</c><c>py</c>"", <c>line</c> <c>5</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>physics</c> <c>import</c> <c>Physics
-File</c> ""<c>.</c>.<c>.</c><c>/physics</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;module&gt;</c>
+File</c> ""..<c>.</c><c>/physics</c><c>.</c><c>py</c>"", <c>line</c> <c>2</c>, <c>in</c> <c>&lt;</c><c>module</c>&gt;
     <c>from</c> <c>entity</c> <c>import Ent
 ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
 </code>
@@ -211,7 +211,7 @@ ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
 <code><c>names</c> <c>=</c> [""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 </code>
 
-<t>I</t> <t>want</t> <t>to</t> <t>print</t> <t>the</t> <t>array</t> <t>in</t> <t>a</t> <t>single</t> <t>line</t> <t>without</t> <t>the</t> <t>normal</t> "" []
+<t>I</t> <t>want</t> <t>to</t> <t>print</t> <t>the</t> <t>array</t> <t>in</t> <t>a</t> <t>single</t> <t>line</t> <t>without</t> <t>the</t> <t>normal</t> "" <t>[]</t>
 
 <code><c>names</c> <c>=</c> [""<c>Sam</c>"", ""<c>Peter</c>"", ""<c>James</c>"", ""<c>Julian</c>"", ""<c>Ann</c>""]
 <c>print</c> (<c>names</c>)
@@ -233,14 +233,14 @@ ImportError</c>: <c>cannot</c> <c>import</c> <c>name</c> <c>Ent</c>
 
 <code><c>/*</c> 
 
-<c>*/</c>
-</code>
+<c>*</c><c>/
+</c></code>
 
 <t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does</t> <t>Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
 "
 954834|<t>How</t> <t>do</t> <t>I</t> <t>use</t> <t>raw_input</t> <t>in</t> <t>Python</t> <t>3</t>|"<code><c>import</c> <c>sys</c>
 <c>print</c> (<c>sys</c><c>.</c><c>platform</c>)
-<c>print</c> (<c>2</c> <c>**</c> <c>100</c>)
+<c>print (</c><c>2</c> <c>**</c> <c>100</c>)
 <c>raw_input(</c> )
 </code>
 

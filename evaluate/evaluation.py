@@ -33,65 +33,89 @@ def test_correctness(y_truth, y_predict, x_predict):
 		if(len(y_predict[i]) != len(x_predict[i])):
 			diff.append(i)
 	return diff
-#test_correctness()
-#'''
+
 class state:
-	last_starting_pos = None
+	last_T_pos = None
+	T_pos = None
+	output = False
+	def updateFlag(self, label, i):
+		self.output = False
+		self.last_T_pos = False
+		if(label  == 'E'):
+			self.last_T_pos = self.T_pos
+		elif(label  in ['U','O']):
+			self.T_pos = None
+		elif(label == 'T'):
+			self.T_pos = i
+		if(label in ['U','E']):
+			self.output = True
 
 
-def get_tp_tokens(Y_truth, Y_predict):
-	true_positive = Set()
-	false_positive = Set()
-	false_negative = Set()
+
+def get_tp_tokens(Y_truth, X_truth, Y_predict, X_predict):
+	true_positive = set()
+	false_positive = set()
+	false_negative = set()
 	truth_state = state()
 	predict_state = state()
-	try:
-		i = staart = 0
-		match = False
-		while(i < len(Y_truth) or i < len(Y_predict)):
-			if(Y_truth[i] == 'U' == Y_predict[i]):
-				truth_state.last_starting_pos = None
-				is_in = False
-				match = True
-			if((Y_truth[i] == 'E' == Y_predict[i]) and truth_state.last_starting_pos == predict_state.last_starting_pos)
-			i += 1
 
+	#try:
+	i = staart = 0
+	while(i < len(Y_truth) and i < len(Y_predict)):
+		truth_state.updateFlag(Y_truth[i], i)
+		predict_state.updateFlag(Y_predict[i], i)
+		if(Y_truth[i] == 'U' == Y_predict[i]):
+			true_positive.add(X_truth[i])
+		elif((Y_truth[i] == 'E' == Y_predict[i]) and truth_state.last_T_pos == predict_state.last_T_pos):
+			true_positive.add(X_truth[truth_state.last_T_pos : i+1])
+		else:
+			if(truth_state.output):
+				if(Y_truth[i] == 'U'):
+					false_negative.add(X_truth[i])
+				else:
 
+					false_negative.add(X_truth[truth_state.last_T_pos : i+1])
+			if(predict_state.output):
+				if(Y_predict[i] == 'U'):
+					false_positive.add(X_predict[i])
+				else:
+					false_positive.add(X_predict[predict_state.last_T_pos : i+1])
+		i += 1
+	if(i < len(Y_truth)):
 		while(i < len(Y_truth)):
-			# if this char is single char token
+			truth_state.updateFlag(Y_truth[i], i)
 			if(Y_truth[i] == 'U'):
-				true_positive += (Y_predict[i] == Y_truth[i])
-				true_tokens += 1
-			# if this char is start of a token 
-			elif(Y_truth[i] == 'T'):
-				staart = i
-				match = True
-				while(i < len(Y_truth) and Y_truth[i] != 'E'):
-					match &= (Y_truth[i] == Y_predict[i])
-					i += 1
-				if(i < len(Y_truth) and Y_truth[i] == 'E'):
-					match &= Y_truth[i] == Y_predict[i]
-					true_positive += match
-					true_tokens += 1
+				false_negative.add(X_truth[i])
+			elif(Y_truth[i] == 'E' and truth_state.last_T_pos):
+				false_negative.add(X_truth[truth_state.last_T_pos : i+1])
 			i += 1
-			if(Y_predict == 'U'):
-
-		
-		i = 0
+	elif(i < len(Y_predict)):
 		while(i < len(Y_predict)):
+			pdb.set_trace()
+			predict_state.updateFlag(Y_predict[i], i)
 			if(Y_predict[i] == 'U'):
-				predict_tokens += 1
-			# if this char is start of a token 
-			elif(Y_predict[i] == 'T'):
-				while(i < len(Y_predict) and Y_predict[i] != 'E'):
-					i += 1
-				if(i < len(Y_predict) and Y_predict[i] == 'E'):
-					predict_tokens += 1
+				false_positive.add(X_predict[i])
+			elif(Y_predict[i] == 'E' and predict_state.last_T_pos):
+				false_positive.add(X_predict[predict_state.last_T_pos : i+1])
 			i += 1
 
-	except Exception as e:
-		print("Error in evaluate: ", e)
-		pass
+
+	#except Exception as e:
+	#	print("Error in evaluate: ", e)
+	#	pdb.set_trace()
+	#	pass
+	return true_positive, false_positive, false_negative
+
+
+
+def getTPfromFile(truthfile='../tokenizer/crf/val_true.txt', predictfile='../tokenizer/crf/val_predict.txt'):
+	x_predict, y_predict = CRFAnno2Tokens(open(predictfile).read()) 
+	x_truth, y_truth = CRFAnno2Tokens(open(truthfile).read())
+	Y_predict = [item for sublist in y_predict for item in sublist]
+	Y_truth = [item for sublist in y_truth for item in sublist]
+	X_predict = ''.join([item for sublist in x_predict for item in sublist])
+	X_truth = ''.join([item for sublist in x_truth for item in sublist])
+	return get_tp_tokens(Y_truth, X_truth, Y_predict, X_predict)
 
 
 def count_tp_tokens(Y_truth, Y_predict):

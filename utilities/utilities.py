@@ -29,6 +29,42 @@ def anno2Tokens(annoText, annoTag):
 			token_list.append(annoText[token_start:token_end])
 	return token_list
 
+def CRFAnno2Tokens(annoText):
+	tags = re.compile(r"<t>|<c>|</t>|", flags=re.S | re.M).finditer(annoText)
+	anno_anchor = 0
+	is_in = False
+	origin_text = StringBuilder()
+	origin_label = StringBuilder()
+	def Appendtxtlabel(_txt, _label):
+		origin_text.Append(_txt)
+		origin_label.Append(_label)
+	while(anno_anchor < len(annoText)):
+		if(anno_anchor < len(annoText) - 4):
+			if((anno_anchor < len(annoText) - 7) and annoText[anno_anchor:anno_anchor+3] in ['<t>','<c>'] and annoText[anno_anchor+4:anno_anchor+8] in ['</t>','</c>']):
+				is_in = False
+				Appendtxtlabel(annoText[anno_anchor+3], 'U')
+				anno_anchor += 8
+			elif(annoText[anno_anchor:anno_anchor+3] in ['<t>','<c>']):
+				is_in = True
+				Appendtxtlabel(annoText[anno_anchor+3], 'T')
+				anno_anchor += 4
+			elif(annoText[anno_anchor+1:anno_anchor+5] in ['</t>','</c>']):
+				is_in = False
+				Appendtxtlabel(annoText[anno_anchor], 'E')
+				anno_anchor += 5
+			else:
+				if(is_in):
+					Appendtxtlabel(annoText[anno_anchor], 'I')
+				else:
+					Appendtxtlabel(annoText[anno_anchor], 'O')
+				anno_anchor += 1
+		else:
+			if(is_in):
+				Appendtxtlabel(annoText[anno_anchor], 'I')
+			else:
+				Appendtxtlabel(annoText[anno_anchor], 'O')
+			anno_anchor += 1
+	return origin_text.__str__(), origin_label.__str__()
 # from mixed annotated text to clean text(remove <c></c> <t></t> tag) and output the corresponding tag
 def MixAnno2Tokens(annoText):
 	token_list = []
@@ -135,7 +171,10 @@ def get_data(filepath):
 				Y.extend(_label)
 		for post in pattern.finditer(file_text):
 			post2XY(post)
-		last_post = end_pattern.search(file_text, post.end())
+		if(post):
+			last_post = end_pattern.search(file_text, post.end())
+		else:
+			last_post = end_pattern.search(file_text)
 		post2XY(last_post)
 	Y = [list(str) for str in Y]
 	return X, Y

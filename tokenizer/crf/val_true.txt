@@ -236,7 +236,7 @@
 <c>*/</c>
 </code>
 
-<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
+<t>I</t> <t>tried</t> <t>this</t> <t>in</t> <t>Python</t>, <t>but</t> <t>it</t> <t>throws</t> <t>an</t> <t>error</t>, <t>so</t> <t>this</t> <t>probably</t> <t>is</t> <t>not</t> <t>the</t> <t>correct</t> <t>way</t>. <t>Does</t> <t>Python</t> <t>actually</t> <t>have</t> <t>a</t> <t>multiline</t> <t>comment</t> <t>feature</t>?
 "
 954834|<t>How</t> <t>do</t> <t>I</t> <t>use</t> <t>raw_input</t> <t>in</t> <t>Python</t> <t>3</t>|"<code><c>import</c> <c>sys</c>
 <c>print</c> (<c>sys</c><c>.</c><c>platform</c>)
