@@ -53,8 +53,8 @@ CZ4045 Natural Language Processing Project 1 README
   all_posts.csv:                  contains data from all question posts
   all_answers.csv:                contains data from all answers posts
   
-  all_posts_clean.csv:          contains all question posts which remove tags        
-  all_answers_clean.csv:        contains all answers posts which remove tags
+  all_posts_clean.csv:            contains all question posts which remove tags        
+  all_answers_clean.csv:          contains all answers posts which remove tags
   
   posts_training.csv:             contains training data from question posts
   answers_training.csv:           contains training data from answers posts
