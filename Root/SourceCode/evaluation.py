@@ -9,16 +9,29 @@ import re
 sys.path.insert(0, '../utilities')
 from utilities import *
 
-def evaluate_regex_output(Data_Root):
+def evaluate_regex_output(Data_Root, msg):
 	x_predict, y_predict = get_data(Data_Root+'posts_training_clean_Predicted.txt') 
 	x_truth, y_truth = get_data(Data_Root+"posts_manual_tokenized.txt")
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
-
+	test_correctness(y_truth, y_predict, x_predict)
 	x_predict, y_predict = get_data(Data_Root+'answers_training_clean_Predicted.txt') 
 	x_truth, y_truth = get_data(Data_Root+"answers_manual_tokenized.txt")
 	Y_predict.extend([item for sublist in y_predict for item in sublist])
 	Y_truth.extend([item for sublist in y_truth for item in sublist])
+	print(msg)
+	print_evaluation(Y_truth, Y_predict)
+
+def check_test():
+	x_predict, y_predict = get_data('../../posts/posts_training_clean_Annotated.txt') 
+	x_truth, y_truth = get_data("../../Training/posts_annotated.txt")
+	Y_predict = [item for sublist in y_predict for item in sublist]
+	Y_truth = [item for sublist in y_truth for item in sublist]
+	pdb.set_trace()
+	#x_predict, y_predict = get_data('../../posts/answers_training_clean_Annotated.txt') 
+	#x_truth, y_truth = get_data("../../Training/answers_annotated.txt")
+	#Y_predict.extend([item for sublist in y_predict for item in sublist])
+	#Y_truth.extend([item for sublist in y_truth for item in sublist])
 	#pdb.set_trace()
 	print_evaluation(Y_truth, Y_predict)
 
@@ -98,7 +111,6 @@ def get_tp_tokens(Y_truth, X_truth, Y_predict, X_predict):
 			elif(Y_predict[i] == 'E' and predict_state.last_T_pos):
 				false_positive.add(X_predict[predict_state.last_T_pos : i+1])
 			i += 1
-
 
 	#except Exception as e:
 	#	print("Error in evaluate: ", e)

@@ -191,7 +191,7 @@ def predictTofile_dual(filepath, post_list, crf_text, crf_code):
 def predictTofile(filepath, post_list, crf):
     predictTofile_dual(filepath, post_list, crf, crf)
 
-def sample_output_dual(filename, val_ratio, truefile):
+def sample_output_dual(filename, val_ratio, truefile, verbose=False):
     with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
     with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
@@ -226,14 +226,16 @@ def sample_output_dual(filename, val_ratio, truefile):
     crf_text.fit(Train['x_text'], Train['y_text'])
     y_pred_code = crf_code.predict(Val['x_code'])
     y_pred_text = crf_text.predict(Val['x_text'])
-    #print("Code eval:")
-    #evaluate_nested(y_pred_code, Val['y_code'])
-    #print("Text eval:")
-    #evaluate_nested(y_pred_text, Val['y_text'])
+    if(verbose):
+        print("Code eval:")
+        evaluate_nested(y_pred_code, Val['y_code'])
+        print("Text eval:")
+        evaluate_nested(y_pred_text, Val['y_text'])
+    print("Validation truth file stored at ", truefile, ", predication file stored at ", filename)
     predictTofile_dual(filename, val_list, crf_text, crf_code)
     postslistTofile(truefile, val_list)
 
-def sample_output(filename, val_ratio, truefile):
+def sample_output(filename, val_ratio, truefile, verbose=False):
     with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
     with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
@@ -268,6 +270,7 @@ def sample_output(filename, val_ratio, truefile):
     y_pred = crf.predict(x_val)
     #evaluate_nested(y_pred, y_val)
     # show metrics
+    print("Validation truth file stored at ", truefile, ", predication file stored at ", filename)
     predictTofile(filename, val_list, crf)
     postslistTofile(truefile, val_list)
 
@@ -282,6 +285,7 @@ def cross_validation_dual(val_ratio=0.2, verbose=False):
     ennd = val_length - 1
     cross_round = 1
     score_all = []
+    print("CRF tokenization Performance:")
     while(ennd <= len(post_list)):
         train_list = post_list[:staart] + post_list[ennd:]
         val_list = post_list[staart:ennd]
@@ -324,7 +328,7 @@ def cross_validation_dual(val_ratio=0.2, verbose=False):
     print("average recall of CRF tokenization in {}-fold corss validation:    {:0.4}".format(int(1/val_ratio), sum([score[1] for score in score_all])/len(score_all)))
     print("average f1 score of CRF tokenization in {}-fold corss validation:  {:0.4}".format(int(1/val_ratio), sum([score[2] for score in score_all])/len(score_all)))
 
-def cross_validation(val_ratio=0.2):
+def cross_validation(val_ratio=0.2, verbose=False):
     with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
     with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
@@ -363,7 +367,8 @@ def cross_validation(val_ratio=0.2):
         #print(y_pred)
         #pdb.set_trace()
         print("Cross validation round ", cross_round, " :")
-        evaluate_nested(y_pred, y_val)
+        if(verbose):
+            evaluate_nested(y_pred, y_val)
         score_all.append(evaluate_nested_score(y_pred, y_val))
         staart += val_length
         ennd += val_length
@@ -383,15 +388,18 @@ if __name__ == '__main__':
     parser.add_option("-r",
                   dest="ratio", default=0.2,
                   help="(default 0.2) change validation ratio, default 0.2")
+    parser.add_option("-v",
+                  dest="verbose", default=False,
+                  help="default False")
     (options, args) = parser.parse_args()
     if(options.mode == 'sample'):
-        sample_output(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt')
+        sample_output(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt', options.verbose)
     if(options.mode == 'sample_dual'):
-        sample_output_dual(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt')
+        sample_output_dual(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt', options.verbose)
     elif(options.mode == 'cv'):
-        cross_validation(float(options.ratio))
+        cross_validation(float(options.ratio), options.verbose)
     elif(options.mode == 'cv_dual'):
-        cross_validation_dual(float(options.ratio))
+        cross_validation_dual(float(options.ratio), options.verbose)
     elif(options.mode == 'hyper_search'):
         hyperParameter_search()
     elif(options.mode == 'hyper_search_dual'):

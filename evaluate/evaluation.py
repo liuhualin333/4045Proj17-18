@@ -14,7 +14,7 @@ def evaluate_file():
 	x_truth, y_truth = get_data("../Training/posts_annotated.txt")
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
-
+	pdb.set_trace()
 	x_predict, y_predict = get_data('../posts/answers_training_clean_Annotated.txt') 
 	x_truth, y_truth = get_data("../Training/answers_annotated.txt")
 	Y_predict.extend([item for sublist in y_predict for item in sublist])
