@@ -17,12 +17,12 @@ CZ4045 Natural Language Processing Project 1 README
 
 — Third-party Libraries Commands:
 
-  BeautifulSoup 4: pip install bs4
-  nltk: pip install nltk
-  sklearn: pip install sklearn
-  scikit-learn: pip install scikit-learn 
+  BeautifulSoup 4:  pip install bs4
+  nltk:             pip install nltk
+  sklearn:          pip install sklearn
+  scikit-learn:     pip install scikit-learn 
   
-  Or
+  OR
   
   pip install -U -r requirements.txt
 
@@ -39,3 +39,17 @@ CZ4045 Natural Language Processing Project 1 README
 — Installation Guide
 
 - Explainations
+
+  all_posts.csv:                  contains data from all question posts
+  all_answers.csv:                contains data from all answers posts
+  
+  all_posts_cleaned.csv:          contains all question posts which remove tags        
+  all_answers_cleaned.csv:        contains all answers posts which remove tags
+  
+  posts_training.csv:             contains training data from question posts
+  answers_training.csv:           contains training data from answers posts
+  
+  posts_traning_annotated.csv:    contains all annotated training data from question posts
+  answers_training_annotated.csv: contains all annotated training data from answers posts
+  
+  all_posts_top_4_keywords:       contains top 4 keywords of all question posts
