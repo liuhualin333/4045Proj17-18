@@ -36,13 +36,13 @@ CZ4045 Natural Language Processing Project 1 README
 
 - Dataset Download Link
 
-  Dataset post link: https://github.com/liuhualin333/4045Proj17-18/blob/master/posts/all_posts.txt
+  Dataset post link: https://drive.google.com/open?id=190DqYXS8wDPmAB2UM20vHSOKUiRN0fNW
 
-  Dataset answer link: https://github.com/liuhualin333/4045Proj17-18/blob/master/posts/all_answers.txt
+  Dataset answer link: https://drive.google.com/open?id=1CcssLW8sSC-KE_sAflbXk93d6ZbxpYGj
 
-  Annotated post link: https://github.com/liuhualin333/4045Proj17-18/blob/master/posts/posts_training_clean_Annotated.txt
+  Annotated post link: https://drive.google.com/open?id=0B1rcXBqgX69sbGZpUTZobk5hcDQ
 
-  Annotated answer link: https://github.com/liuhualin333/4045Proj17-18/blob/master/posts/answers_training_clean_Annotated.txt
+  Annotated answer link: https://drive.google.com/open?id=0B1rcXBqgX69sbTB3SFVaVXItWFE
 
 — Installation Guide
 
