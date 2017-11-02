@@ -9,16 +9,20 @@ import re
 sys.path.insert(0, '../utilities')
 from utilities import *
 
-def main():
+def evaluate_file():
 	x_predict, y_predict = get_data('../posts/posts_training_clean_Annotated.txt') 
 	x_truth, y_truth = get_data("../Training/posts_annotated.txt")
 	Y_predict = [item for sublist in y_predict for item in sublist]
-	X_predict = [item for sublist in x_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
-	X_truth = [item for sublist in x_truth for item in sublist]
-	evaluate(Y_truth, Y_predict)
 
-def test_correctness():
+	x_predict, y_predict = get_data('../posts/answers_training_clean_Annotated.txt') 
+	x_truth, y_truth = get_data("../Training/answers_annotated.txt")
+	Y_predict.extend([item for sublist in y_predict for item in sublist])
+	Y_truth.extend([item for sublist in y_truth for item in sublist])
+	#pdb.set_trace()
+	print_evaluation(Y_truth, Y_predict)
+
+def test_correctness(y_truth, y_predict, x_predict):
 	diff = []
 	for i in range(len(y_truth)):
 		if(len(y_predict[i]) != len(y_truth[i])):
