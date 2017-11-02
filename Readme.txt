@@ -62,4 +62,4 @@ CZ4045 Natural Language Processing Project 1 README
   posts_traning_annotated.txt:    contains all annotated training data from question posts
   answers_training_annotated.txt: contains all annotated training data from answers posts
   
-  all_posts_top_4_keywords:       contains top 4 keywords of all question posts
+  all_posts_top_4_keywords.txt:       contains top 4 keywords of all question posts
