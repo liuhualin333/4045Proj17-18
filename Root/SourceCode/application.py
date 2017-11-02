@@ -141,7 +141,7 @@ def main(post_path="..data/all_posts_clean_annotated.csv"):
     # store into current folder
 
     rand_ten_list = []
-    store_path = './' + post_path.split('/')[-1].split('.')[0] + '_top_%d_keywords_testing5.txt' % N
+    store_path = './' + post_path.split('/')[-1].split('.')[0] + '_top_%d_keywords.txt' % N
     with open(store_path, 'w') as f:
         for p_id, score_list in post_score_mapping.items():
             try:
