@@ -233,12 +233,14 @@ def split_train_text(file_text):
 		else:
 			p.addBody(_text, _label, _types)
 		rpost_list.append(p)
-		#pdb.set_trace()
-
-	for post in pattern.finditer(file_text):
-		post2rpost(post)
-	last_post = end_pattern.search(file_text, post.end())
-	post2rpost(last_post)
+	try:
+		for post in pattern.finditer(file_text):
+			post2rpost(post)
+		last_post = end_pattern.search(file_text, post.end())
+		post2rpost(last_post)
+	except Exception as e:
+		pdb.set_trace()
+		pass
 	return rpost_list
 
 def TextFromFile(filepath):
