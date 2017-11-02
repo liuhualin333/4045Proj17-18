@@ -248,6 +248,7 @@ def TextFromFile(filepath):
 		if(p.ptype == 'post'):
 			text.Append(' '.join([tb for tb in p.ptitle]))
 		text.Append(' '.join([tb for tb in p.pbody]))
+		text.Append(' ')
 	return text.__str__()
 
 
