@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ad7d6408-3b7b-4e57-89c8-23a7e0e8c5f3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/Data/posts_training_clean.txt" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/Data/posts_training_clean_predicted.txt" afterPath="$PROJECT_DIR$/Root/Data/posts_training_clean_predicted.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py" afterPath="$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Root/SourceCode/nltk_controller.py" afterPath="$PROJECT_DIR$/Root/SourceCode/nltk_controller.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +18,8 @@
       <file leaf-file-name="nltk_controller.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Root/SourceCode/nltk_controller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="54" />
+            <state relative-caret-position="105">
+              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding>
                 <element signature="e#90#100#0" expanded="true" />
               </folding>
@@ -27,11 +27,43 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Tokenization_And_Stemming.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="46" selection-end-column="36" />
+              <folding>
+                <element signature="e#236#245#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="all_answers_clean.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Root/Data/all_answers_clean.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="utilities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Root/SourceCode/utilities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="664">
-              <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
+            <state relative-caret-position="362">
+              <caret line="241" column="23" lean-forward="true" selection-start-line="241" selection-start-column="23" selection-end-line="241" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Summary" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stemming/Summary">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -138,14 +170,14 @@
         <option value="$PROJECT_DIR$/stemming/nltk_controller.py" />
         <option value="$PROJECT_DIR$/Root/SourceCode/__init__.py" />
         <option value="$PROJECT_DIR$/Root/SourceCode/utilities/utilities.py" />
-        <option value="$PROJECT_DIR$/Root/SourceCode/utilities.py" />
-        <option value="$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py" />
         <option value="$PROJECT_DIR$/utilities/utilities.py" />
         <option value="$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Analyser.py" />
         <option value="$PROJECT_DIR$/Root/SourceCode/code_tokenizer.py" />
         <option value="$PROJECT_DIR$/Root/SourceCode/Tokenizer/crf.py" />
         <option value="$PROJECT_DIR$/Readme.txt" />
         <option value="$PROJECT_DIR$/Root/SourceCode/nltk_controller.py" />
+        <option value="$PROJECT_DIR$/Root/SourceCode/utilities.py" />
+        <option value="$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py" />
       </list>
     </option>
   </component>
@@ -188,6 +220,12 @@
               <item name="NTUNLP" type="b2602c69:ProjectViewProjectNode" />
               <item name="NTUNLP" type="462c0819:PsiDirectoryNode" />
               <item name="Root" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NTUNLP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NTUNLP" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="462c0819:PsiDirectoryNode" />
+              <item name="Data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NTUNLP" type="b2602c69:ProjectViewProjectNode" />
@@ -266,6 +304,155 @@
       <recent name="$PROJECT_DIR$/Root/SourceCode" />
       <recent name="$PROJECT_DIR$/stemming" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.DS_Store</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_answers_clean_predicted.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_posts_clean.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_posts_clean_predicted.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/Tokenizer/__pycache__/crf.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/utilities.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/application.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/nltk_controller.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/tokenizer.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/utilities.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/utilities/__pycache__/utilities.cpython-36.pyc</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/4045proj.zip</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Report.pdf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_posts_clean_annotated.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/complete_contents.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/__pycache__/Analyser.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/__pycache__/Tokenization_And_Stemming.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/__pycache__/__init__.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/__init__.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/tokenizer.cpython-36.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/all_posts_clean_annotated_top_4_keywords.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/all_posts_clean_predicted_top_4_keywords.txt</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_answers.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_answers_clean_predict_tokenized.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/all_posts_clean_predict_tokenized.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/answers_training.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/posts_training.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/posts_training_clean_old.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/posts_training_clean_old_predicted.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/posts_traning_old.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/Data/ziji_posts.txt</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/__init__.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/code_tokenizer.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/evaluation.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/text_tokenizer.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/tokenizer.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/__pycache__/utilities.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/data_processing.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/utilities/__pycache__/utilities.cpython-35.pyc</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Root/SourceCode/utilities/utilities.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -705,7 +892,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509638079786</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Before merging with Hailin.">
+      <created>1509643724436</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1509643724436</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TodoView">
@@ -726,7 +920,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3985932" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25058824" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08932039" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19529411" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19529411" sideWeight="0.49722221" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -765,7 +959,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="- Debugged stemmer" />
     <MESSAGE value="- Debugged stemmer&#10;- Stemmer can work on non-xml based doc." />
     <MESSAGE value="- provided sample output for off-the-shelf tokenizer and stemmer" />
     <MESSAGE value="- using nltk to pos-tagged 10 sentenses randomly chosen from corpora&#10;- provided sample output for off-the-shelf pos-tagger" />
@@ -790,7 +983,8 @@
     <MESSAGE value="Corrected nltk_controller.py" />
     <MESSAGE value="Corrected nltk_controller.py. It should work now." />
     <MESSAGE value="Finished with nltk controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished with nltk controller" />
+    <MESSAGE value="Before merging with Hailin." />
+    <option name="LAST_COMMIT_MESSAGE" value="Before merging with Hailin." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1027,13 +1221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Root/Data/all_answers_clean.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stemming/3.4_Analysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1046,20 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stemming/Summary">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="134" column="128" lean-forward="false" selection-start-line="125" selection-start-column="0" selection-end-line="134" selection-end-column="128" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1100,18 +1273,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Root/Data/all_answers_clean.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Root/SourceCode/utilities.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="246" column="24" lean-forward="true" selection-start-line="246" selection-start-column="24" selection-end-line="246" selection-end-column="24" />
+        <state relative-caret-position="362">
+          <caret line="241" column="23" lean-forward="true" selection-start-line="241" selection-start-column="23" selection-end-line="241" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stemming/Summary">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="45" lean-forward="false" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Root/SourceCode/Stemming_and_POStagging/Tokenization_And_Stemming.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="45" column="4" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="46" selection-end-column="36" />
+          <folding>
+            <element signature="e#236#245#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Root/SourceCode/nltk_controller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="54" lean-forward="false" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="54" />
+        <state relative-caret-position="105">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
           <folding>
             <element signature="e#90#100#0" expanded="true" />
           </folding>

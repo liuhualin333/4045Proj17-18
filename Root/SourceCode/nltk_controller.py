@@ -19,8 +19,8 @@ def doNLTK():
     def doStem():
         print()
         print(">>> It may take a few minutes to finish processing :)")
-        stemmed_tkn_list = ts.main("../Data/complete_contents.txt", True)
-        unstemmed_tkn_list = ts.main("../Data/complete_contents.txt", False)
+        stemmed_tkn_list = ts.main("../Data/all_answers.txt","../Data/all_posts.txt", True)
+        unstemmed_tkn_list = ts.main("../Data/all_answers.txt","../Data/all_posts.txt", False)
         # stemmed_tkn_list=[('>', 93016), ('<', 92745), ("''", 52246), ('p', 23261), ('/p', 23249), (',', 18417), (':', 15211), ('.', 12136), ('pre', 11362), ('/pre', 11357), ('use', 6380), ('i', 5953), (')', 5609), ('python', 5575), ('(', 5390), ('/a', 4050), ('href=', 4050), ('rel=', 3046), ("'s", 2688), ('noreferr', 2606)]
         # unstemmed_tkn_list=[('>', 93016), ('<', 92745), ("''", 52246), ('p', 23252), ('/p', 23249), (',', 18417), (':', 15211), ('.', 12136), ('pre', 11362), ('/pre', 11357), ('I', 5953), (')', 5609), ('(', 5390), ('Python', 4067), ('href=', 4050), ('/a', 4050), ('use', 3081), ('rel=', 3046), ("'s", 2688), ('noreferrer', 2606)]
 

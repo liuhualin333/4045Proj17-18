@@ -9,11 +9,15 @@ Tested input : /Root/Data/All_Posts.txt
 
 import re
 from io import StringIO
+import sys
 
 from nltk.stem.snowball import SnowballStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from collections import Counter
+sys.path.insert(0, '..')
+import utilities as ut
+
 
 
 
@@ -38,8 +42,11 @@ def mostCommon(tknlst,top):
 def Tokenize(text):
     return word_tokenize(text)
 
-def main(file, stemFlag):
-    source = open(file, encoding="utf-8").read()
+def main(file1,file2, stemFlag):
+    source1 = ut.TextFromFile(file1)
+    source2 = ut.TextFromFile(file2)
+    source=source1+source2
+
     # Escape tokenizing on code section
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
 
