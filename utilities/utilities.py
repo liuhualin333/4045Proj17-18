@@ -241,7 +241,7 @@ def split_train_text(file_text):
 	post2rpost(last_post)
 	return rpost_list
 
-def TextFromRpost(filepath):
+def TextFromFile(filepath):
 	text = StringBuilder()
 	rpost_list = split_train_text(open(filepath).read())
 	for p in rpost_list:
