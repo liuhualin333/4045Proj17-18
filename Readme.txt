@@ -40,12 +40,13 @@ CZ4045 Natural Language Processing Project 1 README
 
   1. Download third party libraries according to previous instruction.
   2. Download datasets to data/ folder according to previous instruction.
-  3. Run the command to:
+  3. Navigate to code/ folder:
+  4. Run the following command to:
         python 
-  4. Run the command to:
+  5. Run the following command to:
         python 
-  5. Run the command to:
-        python
+  6. Run the following command to compute the top 4 keywords in all question posts data:
+        python application.py
 
 - Explainations
 
