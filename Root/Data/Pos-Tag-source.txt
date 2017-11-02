@@ -1,0 +1,10 @@
+&gt;&gt;&gt; l = list(1, 2, 3)
+def uniq(input):
+if value == None and conditionMet:
+Just as a side note how would the implementation change if there is a dependency between foo and bar.
+I am hoping it is possible to do without tinkering with sys.path.
+I have a script named test1.py which is not in a module.
+while len(alist) &gt; 0 : alist.pop()
+Python datetime to string without microsecond component
+Actually, don't show, just save to foo.png
+plt.plot(x, np.sin(x**2))

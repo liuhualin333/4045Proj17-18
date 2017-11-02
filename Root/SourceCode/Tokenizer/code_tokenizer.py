@@ -185,7 +185,7 @@ class CodesTokenizer:
 
 
 def main(file):
-    source = codecs.open(file, encoding='UTF-8').read()
+    source = codecs.open(file, encoding='utf-8').read()
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
     sb_file = StringBuilder()
     # file_anchor mark the current position in current file, before which has been processed already
