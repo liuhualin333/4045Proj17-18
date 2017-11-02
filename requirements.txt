@@ -1,5 +1,5 @@
-  Python 3.6
-  BeautifulSoup 4
+  py
+  bs4
   nltk
   sklearn
   scikit-learn
