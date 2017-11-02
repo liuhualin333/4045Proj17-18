@@ -1,5 +1,12 @@
 CZ4045 Natural Language Processing Project 1 README
 
+- Contributors:
+  
+  Chen Hailin
+  Deng Yue
+  Liu Hualin
+  Shi Ziji
+
 — Dependencies:
 
   Python 3.6
@@ -14,6 +21,10 @@ CZ4045 Natural Language Processing Project 1 README
   nltk: pip install nltk
   sklearn: pip install sklearn
   scikit-learn: pip install scikit-learn 
+  
+  Or
+  
+  pip install -U -r requirements.txt
 
 - Dataset Download Link
 
@@ -25,4 +36,6 @@ CZ4045 Natural Language Processing Project 1 README
 
   Annotated answer link: https://github.com/liuhualin333/4045Proj17-18/blob/master/posts/answers_training_clean_Annotated.txt
 
-— E
+— Installation Guide
+
+- Explainations
