@@ -46,7 +46,14 @@ CZ4045 Natural Language Processing Project 1 README
 
 — Installation Guide
 
-  1. Download third party libraries according to previous instruction.
+  1. Download python3 and third party libraries according to previous instruction.
+  2. Run the following command open python interpreter:
+        python
+     Then, run the following commands to download nltk resources:
+        import nltk
+        nltk.download('stopwords')
+        nltk.download('averaged_perceptron_tagger')
+     Last, press ctrl + Z to exit.
   2. Download datasets to data/ folder according to previous instruction.
   3. Navigate to SourceCode/ folder:
   4. Run the following command to tokenize all sentences in dataset:
