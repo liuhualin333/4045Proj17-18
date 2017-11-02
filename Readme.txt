@@ -57,13 +57,13 @@ CZ4045 Natural Language Processing Project 1 README
   3. Download datasets and put it into Data/ folder according to link given.
   4. Navigate to SourceCode/ folder:
   5. Run the following command to preprocess data:
-        python data_processing.py
+        python3 data_processing.py
   5. Run the following command to tokenize all sentences in dataset:
-        python tokenizer.py 
+        python3 tokenizer.py
   6. Run the following command and follow program instruction to run stemmer and POS tagging:
-        python nltk_controller.py
+        python3 nltk_controller.py
   7. Run the following command to compute the top 4 keywords in all question posts data:
-        python application.py
+        python3 application.py
 
 - Explanations of data
 
