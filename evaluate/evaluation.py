@@ -35,6 +35,64 @@ def test_correctness(y_truth, y_predict, x_predict):
 	return diff
 #test_correctness()
 #'''
+class state:
+	last_starting_pos = None
+
+
+def get_tp_tokens(Y_truth, Y_predict):
+	true_positive = Set()
+	false_positive = Set()
+	false_negative = Set()
+	truth_state = state()
+	predict_state = state()
+	try:
+		i = staart = 0
+		match = False
+		while(i < len(Y_truth) or i < len(Y_predict)):
+			if(Y_truth[i] == 'U' == Y_predict[i]):
+				truth_state.last_starting_pos = None
+				is_in = False
+				match = True
+			if((Y_truth[i] == 'E' == Y_predict[i]) and truth_state.last_starting_pos == predict_state.last_starting_pos)
+			i += 1
+
+
+		while(i < len(Y_truth)):
+			# if this char is single char token
+			if(Y_truth[i] == 'U'):
+				true_positive += (Y_predict[i] == Y_truth[i])
+				true_tokens += 1
+			# if this char is start of a token 
+			elif(Y_truth[i] == 'T'):
+				staart = i
+				match = True
+				while(i < len(Y_truth) and Y_truth[i] != 'E'):
+					match &= (Y_truth[i] == Y_predict[i])
+					i += 1
+				if(i < len(Y_truth) and Y_truth[i] == 'E'):
+					match &= Y_truth[i] == Y_predict[i]
+					true_positive += match
+					true_tokens += 1
+			i += 1
+			if(Y_predict == 'U'):
+
+		
+		i = 0
+		while(i < len(Y_predict)):
+			if(Y_predict[i] == 'U'):
+				predict_tokens += 1
+			# if this char is start of a token 
+			elif(Y_predict[i] == 'T'):
+				while(i < len(Y_predict) and Y_predict[i] != 'E'):
+					i += 1
+				if(i < len(Y_predict) and Y_predict[i] == 'E'):
+					predict_tokens += 1
+			i += 1
+
+	except Exception as e:
+		print("Error in evaluate: ", e)
+		pass
+
 
 def count_tp_tokens(Y_truth, Y_predict):
 	true_positive = predict_tokens = true_tokens = 0
