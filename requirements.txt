@@ -1,5 +1,9 @@
   py
   bs4
+  matplotlib
   nltk
-  sklearn
+  numpy
+  scipy
   scikit-learn
+  sklearn
+  sklearn_crfsuite
