@@ -1,6 +1,6 @@
 from evaluation import *
-x_predict, y_predict = get_data('../posts/answers_training_clean_Annotated.txt') 
-x_truth, y_truth = get_data("../Training/answers_annotated.txt")
+x_predict, y_predict = get_data('../tokenizer/crf/val_predict.txt') 
+x_truth, y_truth = get_data("../tokenizer/crf/val_true.txt")
 X_predict = [item for sublist in x_predict for item in sublist]
 X_truth = [item for sublist in x_truth for item in sublist]
 def test_correctness():
