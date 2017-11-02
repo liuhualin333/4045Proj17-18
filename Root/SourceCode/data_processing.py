@@ -13,14 +13,18 @@ def cleanhtml(raw_html):
     return cleantext
 
 
-def main():
-    for file in sys.argv[1:]:
-        data = open(file).read()
+def main(root='../Data/'):
+    for file in ['all_posts.txt', 'all_answers.txt', 'posts_training.txt', 'answers_training.txt']:
+        filepath = root + file
+        data = open(filepath).read()
         cleandata = cleanhtml(data)
-        file_sep = os.path.splitext(file)
+        file_sep = os.path.splitext(filepath)
         with open(file_sep[0] + "_clean" + file_sep[1], 'w') as new_file:
             new_file.write(cleandata)
 
 
 if __name__ == '__main__':
-    main()
+    if(len(sys.argv) > 1):
+        main(sys.argv[1])
+    else:
+        main()
