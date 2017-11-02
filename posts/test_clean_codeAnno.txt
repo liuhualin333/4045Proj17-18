@@ -1,2 +1,5 @@
-<code>      # <c>coding</c><c>=</c> <c>&lt;</c><c>encoding</c> <c>name</c><c>&gt;</c>
+<code><c>bin</c><c>/
+</c>   <c>main</c><c>.</c><c>py</c>
+   <c>user</c><c>.</c><c>py</c> # <c>where</c> <c>class</c> <c>User</c> <c>resides</c>
+   <c>dir</c><c>.</c><c>py</c> # <c>where</c> <c>class</c> <c>Dir</c> <c>resides</c>
 </code>

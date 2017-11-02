@@ -19,6 +19,7 @@ from optparse import OptionParser
 CONFIG = {'single':{'c1':0.1093, 'c2':0.0018}, 'code':{'c1':0.17152979310101085,'c2':0.0033942419604758856}, 'text':{'c1':0.25, 'c2':0.22}}
 # default configuration
 #CONFIG = {'single':{'c1':0.1, 'c2':0.1}, 'code':{'c1':0.1,'c2':0.1}, 'text':{'c1':0.1, 'c2':0.1}}
+DATA_SEQ = [7, 87, 97, 57, 82, 1, 43, 91, 78, 9, 75, 93, 63, 62, 49, 5, 58, 88, 21, 73, 15, 70, 0, 47, 84, 13, 28, 64, 60, 68, 4, 22, 76, 54, 39, 24, 30, 89, 85, 77, 92, 46, 99, 10, 86, 20, 90, 31, 12, 2, 48, 38, 44, 14, 37, 25, 34, 16, 32, 53, 71, 36, 27, 33, 95, 94, 8, 17, 98, 81, 3, 72, 19, 52, 26, 67, 23, 56, 50, 66, 42, 40, 61, 69, 80, 29, 18, 41, 65, 79, 59, 55, 74, 35, 83, 6, 51, 96, 45, 11]
 def get_char_feature(char, index):
     return {
         index+'bias': 1.0,
@@ -75,7 +76,7 @@ def hyperParameter_search_dual():
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    shuffle(post_list)
+    post_list = [post_list[i] for i in DATA_SEQ]
     Train = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
     list2D(post_list, Train)
     print("Code crf hyper parameter search: ")
@@ -88,7 +89,7 @@ def hyperParameter_search():
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    shuffle(post_list)
+    post_list = [post_list[i] for i in DATA_SEQ]
     x_train, y_train = [], []
     list2xy(post_list, x_train, y_train)
     __hyperParameter_search(x_train, y_train)
@@ -139,18 +140,26 @@ def __hyperParameter_search(x_train, y_train):
     fig.show()
     input("enter key to continue")
 
-def predictTofile(filepath, post_list, crf):
+def postslistTofile(filepath, post_list):
     with open(filepath, 'w') as f:
         file_text = StringBuilder()
+        text_tag = ['<t>','</t>']
+        code_tag = ['<c>','</c>']
         for post in post_list:
             file_text.Append(post.pid+"|")
             if(post.ptype == 'post'):
-                for title_block in post.ptitle:
-                    file_text.Append(crfTokens2Anno(title_block, crf.predict([title_block])[0]))
+                for title_block, btype, label in zip(post.ptitle, post.ptitle_block_type, post.ptitle_label):
+                    if(btype == 'c'):
+                        file_text.Append('<code>' + crfTokens2Anno(title_block, label, code_tag)+'</code>')
+                    else:
+                        file_text.Append(crfTokens2Anno(title_block, label))
                 file_text.Append('|')
             file_text.Append('"')
-            for body_block in post.pbody:
-                file_text.Append(crfTokens2Anno(body_block, crf.predict([body_block])[0]))
+            for body_block, btype, label in zip(post.pbody, post.pbody_block_type, post.pbody_label):
+                if(btype == 'c'):
+                    file_text.Append('<code>' + crfTokens2Anno(body_block, label, code_tag)+'</code>')
+                else:
+                    file_text.Append(crfTokens2Anno(body_block, label))
             file_text.Append('"\n')
         f.write(file_text.__str__())
 
@@ -177,12 +186,15 @@ def predictTofile_dual(filepath, post_list, crf_text, crf_code):
             file_text.Append('"\n')
         f.write(file_text.__str__())
 
-def sample_output_dual(filename, val_ratio=0.2):
+def predictTofile(filepath, post_list, crf):
+    predictTofile_dual(filepath, post_list, crf, crf)
+
+def sample_output_dual(filename, val_ratio, truefile):
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    #shuffle(post_list)
+    #post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
     staart = 0
     ennd = val_length - 1
@@ -212,16 +224,20 @@ def sample_output_dual(filename, val_ratio=0.2):
     crf_text.fit(Train['x_text'], Train['y_text'])
     y_pred_code = crf_code.predict(Val['x_code'])
     y_pred_text = crf_text.predict(Val['x_text'])
+    print("Code eval:")
     evaluate_nested(y_pred_code, Val['y_code'])
+    print("Text eval:")
     evaluate_nested(y_pred_text, Val['y_text'])
     predictTofile_dual(filename, val_list, crf_text, crf_code)
+    postslistTofile(truefile, val_list)
 
-def sample_output(filename, val_ratio=0.2):
+def sample_output(filename, val_ratio, truefile):
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    #shuffle(post_list)
+    #post_list = [post_list[i] for i in DATA_SEQ]
+    post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
     staart = 0
     ennd = val_length
@@ -261,13 +277,14 @@ def sample_output(filename, val_ratio=0.2):
         y_val, y_pred, labels=sorted_labels, digits=3
     ))
     predictTofile(filename, val_list, crf)
+    postslistTofile(truefile, val_list)
 
 def cross_validation_dual(val_ratio=0.2):
     with open('../../Training/posts_annotated.txt') as f:
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    shuffle(post_list)
+    post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
     staart = 0
     ennd = val_length - 1
@@ -319,7 +336,7 @@ def cross_validation(val_ratio=0.2):
         post_list = split_train_text(f.read())
     with open('../../Training/answers_annotated.txt') as f:
         post_list.extend(split_train_text(f.read()))
-    shuffle(post_list)
+    post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
     staart = 0
     ennd = val_length
@@ -375,9 +392,9 @@ if __name__ == '__main__':
                   help="(default 0.2) change validation ratio, default 0.2")
     (options, args) = parser.parse_args()
     if(options.mode == 'sample'):
-        sample_output(options.filename, float(options.ratio))
+        sample_output(options.filename, float(options.ratio), 'val_true.txt')
     if(options.mode == 'sample_dual'):
-        sample_output_dual(options.filename, float(options.ratio))
+        sample_output_dual(options.filename, float(options.ratio), 'val_true.txt')
     elif(options.mode == 'cv'):
         cross_validation(float(options.ratio))
     elif(options.mode == 'cv_dual'):
