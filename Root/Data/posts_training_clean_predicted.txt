@@ -117,7 +117,7 @@ Id|Title|Body
 <t>How</t> <t>can</t> <t>I</t> <t>get</t> <t>the</t> <t>path</t> <t>to</t> <t>the</t> <t>script</t> <t>from</t> <t>within</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>a</t> <t>Django</t> <t>view</t>?
 
 <t>UPDATE</t>:
-<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> <t>-</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c><</c><c>code</c><c>></c><c>__file__</c></code><t></code></t> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
+<t>Summing</t> <t>up</t> <t>the</t> <t>answers</t> <t>thus</t> <t>far</t> <t>-</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>and</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>abspath(</c>)</code> <t>both</t> <t>give</t> <t>the</t> <t>current</t> <t>working</t> <t>directory</t> <t>which</t> <t>may</t> <t>or</t> <t>may</t> <t>not</t> <t>be</t> <t>the</t> <t>directory</t> <t>where</t> <t>the</t> <t>script</t> <t>resides</t>. <t>In</t> <t>my</t> <t>web</t> <t>host</t> <t>setup</t> <code><c>__file__</c></code> <t>gives</t> <t>only</t> <t>the</t> <t>filename</t> <t>without</t> <t>the</t> <t>path</t>.
 
 <t>Isn't</t> <t>there</t> <t>any</t> <t>way</t> <t>in</t> <t>Python</t> <t>to</t> (<t>always</t>) <t>be</t> <t>able</t> <t>to</t> <t>receive</t> <t>the</t> <t>path</t> <t>in</t> <t>which</t> <t>the</t> <t>script</t> <t>resides</t>?
 "

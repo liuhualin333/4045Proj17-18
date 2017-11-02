@@ -15,11 +15,10 @@ def evaluate_regex_output(Data_Root, msg):
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
 	test_correctness(y_truth, y_predict, x_predict)
-	#x_predict, y_predict = get_data(Data_Root+'answers_training_clean_Predicted.txt') 
-	#x_truth, y_truth = get_data(Data_Root+"answers_manual_tokenized.txt")
-	#Y_predict.extend([item for sublist in y_predict for item in sublist])
-	#Y_truth.extend([item for sublist in y_truth for item in sublist])
-	pdb.set_trace()
+	x_predict, y_predict = get_data(Data_Root+'answers_training_clean_Predicted.txt') 
+	x_truth, y_truth = get_data(Data_Root+"answers_manual_tokenized.txt")
+	Y_predict.extend([item for sublist in y_predict for item in sublist])
+	Y_truth.extend([item for sublist in y_truth for item in sublist])
 	print(msg)
 	print_evaluation(Y_truth, Y_predict)
 

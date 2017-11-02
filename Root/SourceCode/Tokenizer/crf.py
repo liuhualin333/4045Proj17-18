@@ -231,6 +231,7 @@ def sample_output_dual(filename, val_ratio, truefile, verbose=False):
         evaluate_nested(y_pred_code, Val['y_code'])
         print("Text eval:")
         evaluate_nested(y_pred_text, Val['y_text'])
+    print("Validation truth file stored at ", truefile, ", predication file stored at ", filename)
     predictTofile_dual(filename, val_list, crf_text, crf_code)
     postslistTofile(truefile, val_list)
 
@@ -269,6 +270,7 @@ def sample_output(filename, val_ratio, truefile, verbose=False):
     y_pred = crf.predict(x_val)
     #evaluate_nested(y_pred, y_val)
     # show metrics
+    print("Validation truth file stored at ", truefile, ", predication file stored at ", filename)
     predictTofile(filename, val_list, crf)
     postslistTofile(truefile, val_list)
 
