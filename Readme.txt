@@ -35,6 +35,8 @@ CZ4045 Natural Language Processing Project 1 README
   pip install -U -r requirements.txt
 
 - Dataset Download Link
+  
+  Data folder: https://drive.google.com/open?id=1Na1gK7uqZkhbiwmi1DWThBBmUhrkzNwH
 
   Dataset post link: https://drive.google.com/open?id=190DqYXS8wDPmAB2UM20vHSOKUiRN0fNW
 
