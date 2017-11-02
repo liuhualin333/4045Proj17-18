@@ -35,7 +35,7 @@ def idf(word, doc_list):
     for doc in doc_list:
         if word in doc:
             word_count += 1
-    return log(1 + all_num/word_count)
+    return log(all_num/word_count)
 
 
 def tfidf(word, doc, doc_list):

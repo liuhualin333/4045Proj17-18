@@ -64,6 +64,8 @@ def main(truth_path="../Training/posts_annotated.txt", predict_path='../posts/po
 
     # print(len(train_tokens))
     # print(len(test_tokens))
+    # print("False Positive: ", set(predict_tokens) - set(truth_tokens))
+    # print("False Negative: ", set(truth_tokens) - set(predict_tokens))
 
     # count token
     predict_tokens_count = Counter(predict_tokens)
