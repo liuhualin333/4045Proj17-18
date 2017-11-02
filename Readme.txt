@@ -40,7 +40,7 @@ CZ4045 Natural Language Processing Project 1 README
 
   1. Download third party libraries according to previous instruction.
   2. Download datasets to data/ folder according to previous instruction.
-  3. Navigate to code/ folder:
+  3. Navigate to SourceCode/ folder:
   4. Run the following command to tokenize all sentences in dataset:
         python tokenizer.py ../data/all_post_clean.txt ../data/all_answers_clean.txt
   5. Run the following command to:
