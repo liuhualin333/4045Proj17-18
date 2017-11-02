@@ -5,9 +5,9 @@ import os
 import sys
 from io import BytesIO, StringIO
 import re
-sys.path.insert(0, '../../utilities')
+sys.path.insert(0, '../../')
+sys.path.insert(0, '../')
 from utilities import *
-sys.path.insert(0, '../../evaluate')
 from evaluation import *
 from random import shuffle
 import matplotlib.pyplot as plt
@@ -20,6 +20,8 @@ CONFIG = {'single':{'c1':0.1093, 'c2':0.0018}, 'code':{'c1':0.17152979310101085,
 # default configuration
 #CONFIG = {'single':{'c1':0.1, 'c2':0.1}, 'code':{'c1':0.1,'c2':0.1}, 'text':{'c1':0.1, 'c2':0.1}}
 DATA_SEQ = [7, 87, 97, 57, 82, 1, 43, 91, 78, 9, 75, 93, 63, 62, 49, 5, 58, 88, 21, 73, 15, 70, 0, 47, 84, 13, 28, 64, 60, 68, 4, 22, 76, 54, 39, 24, 30, 89, 85, 77, 92, 46, 99, 10, 86, 20, 90, 31, 12, 2, 48, 38, 44, 14, 37, 25, 34, 16, 32, 53, 71, 36, 27, 33, 95, 94, 8, 17, 98, 81, 3, 72, 19, 52, 26, 67, 23, 56, 50, 66, 42, 40, 61, 69, 80, 29, 18, 41, 65, 79, 59, 55, 74, 35, 83, 6, 51, 96, 45, 11]
+DATA_ROOT = '../../Data/'
+
 def get_char_feature(char, index):
     return {
         index+'bias': 1.0,
@@ -72,9 +74,9 @@ def list2D(tlist, D):
                 D['y_text'].append(label)
 
 def hyperParameter_search_dual():
-    with open('../../Training/posts_annotated.txt') as f:
+    with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
-    with open('../../Training/answers_annotated.txt') as f:
+    with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
         post_list.extend(split_train_text(f.read()))
     post_list = [post_list[i] for i in DATA_SEQ]
     Train = {'x_code':[],'y_code':[],'x_text':[],'y_text':[]}
@@ -190,9 +192,9 @@ def predictTofile(filepath, post_list, crf):
     predictTofile_dual(filepath, post_list, crf, crf)
 
 def sample_output_dual(filename, val_ratio, truefile):
-    with open('../../Training/posts_annotated.txt') as f:
+    with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
-    with open('../../Training/answers_annotated.txt') as f:
+    with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
         post_list.extend(split_train_text(f.read()))
     #post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
@@ -224,17 +226,17 @@ def sample_output_dual(filename, val_ratio, truefile):
     crf_text.fit(Train['x_text'], Train['y_text'])
     y_pred_code = crf_code.predict(Val['x_code'])
     y_pred_text = crf_text.predict(Val['x_text'])
-    print("Code eval:")
-    evaluate_nested(y_pred_code, Val['y_code'])
-    print("Text eval:")
-    evaluate_nested(y_pred_text, Val['y_text'])
+    #print("Code eval:")
+    #evaluate_nested(y_pred_code, Val['y_code'])
+    #print("Text eval:")
+    #evaluate_nested(y_pred_text, Val['y_text'])
     predictTofile_dual(filename, val_list, crf_text, crf_code)
     postslistTofile(truefile, val_list)
 
 def sample_output(filename, val_ratio, truefile):
-    with open('../../Training/posts_annotated.txt') as f:
+    with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
-    with open('../../Training/answers_annotated.txt') as f:
+    with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
         post_list.extend(split_train_text(f.read()))
     #post_list = [post_list[i] for i in DATA_SEQ]
     post_list = [post_list[i] for i in DATA_SEQ]
@@ -264,25 +266,15 @@ def sample_output(filename, val_ratio, truefile):
     # labels.remove('I')
     # predict model
     y_pred = crf.predict(x_val)
-    evaluate_nested(y_pred, y_val)
+    #evaluate_nested(y_pred, y_val)
     # show metrics
-    metrics.flat_f1_score(y_val, y_pred,
-                          average='weighted', labels=labels)
-
-    sorted_labels = sorted(
-        labels,
-        key=lambda name: (name[1:], name[0])
-    )
-    print(metrics.flat_classification_report(
-        y_val, y_pred, labels=sorted_labels, digits=3
-    ))
     predictTofile(filename, val_list, crf)
     postslistTofile(truefile, val_list)
 
-def cross_validation_dual(val_ratio=0.2):
-    with open('../../Training/posts_annotated.txt') as f:
+def cross_validation_dual(val_ratio=0.2, verbose=False):
+    with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
-    with open('../../Training/answers_annotated.txt') as f:
+    with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
         post_list.extend(split_train_text(f.read()))
     post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
@@ -317,13 +309,14 @@ def cross_validation_dual(val_ratio=0.2):
         crf_text.fit(Train['x_text'], Train['y_text'])
         y_pred_code = crf_code.predict(Val['x_code'])
         y_pred_text = crf_text.predict(Val['x_text'])
-        print("Cross validation round ", cross_round, " :")
-        print("Code:")
-        evaluate_nested(y_pred_code, Val['y_code'])
-        print("Text:")
-        evaluate_nested(y_pred_text, Val['y_text'])
-        print("Dual:")
-        score_all.append(evaluate_nested_dual(y_pred_text, Val['y_text'], y_pred_code, Val['y_code']))
+        if(verbose):
+            print("Cross validation round ", cross_round, " :")
+            print("Code:")
+            evaluate_nested(y_pred_code, Val['y_code'])
+            print("Text:")
+            evaluate_nested(y_pred_text, Val['y_text'])
+            print("Dual:")
+        score_all.append(evaluate_nested_dual(y_pred_text, Val['y_text'], y_pred_code, Val['y_code'], verbose))
         staart += val_length
         ennd += val_length
         cross_round += 1
@@ -332,9 +325,9 @@ def cross_validation_dual(val_ratio=0.2):
     print("average f1 score of CRF tokenization in {}-fold corss validation:  {:0.4}".format(int(1/val_ratio), sum([score[2] for score in score_all])/len(score_all)))
 
 def cross_validation(val_ratio=0.2):
-    with open('../../Training/posts_annotated.txt') as f:
+    with open(DATA_ROOT + 'posts_manual_tokenized.txt') as f:
         post_list = split_train_text(f.read())
-    with open('../../Training/answers_annotated.txt') as f:
+    with open(DATA_ROOT + 'answers_manual_tokenized.txt') as f:
         post_list.extend(split_train_text(f.read()))
     post_list = [post_list[i] for i in DATA_SEQ]
     val_length = int(val_ratio*len(post_list))
@@ -382,7 +375,7 @@ def cross_validation(val_ratio=0.2):
 if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option("-f", dest="filename",
-                  default='val_predict.txt',
+                  default=DATA_ROOT+'val_predict.txt',
                   help="(default val_predict.txt) write sample output to FILENAME, if mode is sample")
     parser.add_option("-m",
                   dest="mode", default='sample_dual',
@@ -392,9 +385,9 @@ if __name__ == '__main__':
                   help="(default 0.2) change validation ratio, default 0.2")
     (options, args) = parser.parse_args()
     if(options.mode == 'sample'):
-        sample_output(options.filename, float(options.ratio), 'val_true.txt')
+        sample_output(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt')
     if(options.mode == 'sample_dual'):
-        sample_output_dual(options.filename, float(options.ratio), 'val_true.txt')
+        sample_output_dual(options.filename, float(options.ratio), DATA_ROOT+'val_true.txt')
     elif(options.mode == 'cv'):
         cross_validation(float(options.ratio))
     elif(options.mode == 'cv_dual'):

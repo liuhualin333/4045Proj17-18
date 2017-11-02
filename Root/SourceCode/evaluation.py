@@ -9,14 +9,14 @@ import re
 sys.path.insert(0, '../utilities')
 from utilities import *
 
-def evaluate_file():
-	x_predict, y_predict = get_data('../posts/posts_training_clean_Annotated.txt') 
-	x_truth, y_truth = get_data("../Training/posts_annotated.txt")
+def evaluate_regex_output(Data_Root):
+	x_predict, y_predict = get_data(Data_Root+'posts_training_clean_Predicted.txt') 
+	x_truth, y_truth = get_data(Data_Root+"posts_manual_tokenized.txt")
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
 
-	x_predict, y_predict = get_data('../posts/answers_training_clean_Annotated.txt') 
-	x_truth, y_truth = get_data("../Training/answers_annotated.txt")
+	x_predict, y_predict = get_data(Data_Root+'answers_training_clean_Predicted.txt') 
+	x_truth, y_truth = get_data(Data_Root+"answers_manual_tokenized.txt")
 	Y_predict.extend([item for sublist in y_predict for item in sublist])
 	Y_truth.extend([item for sublist in y_truth for item in sublist])
 	#pdb.set_trace()
@@ -109,8 +109,8 @@ def get_tp_tokens(Y_truth, X_truth, Y_predict, X_predict):
 
 
 def getTPfromFile(truthfile='../tokenizer/crf/val_true.txt', predictfile='../tokenizer/crf/val_predict.txt'):
-	x_predict, y_predict = CRFAnno2Tokens(open(predictfile).read()) 
-	x_truth, y_truth = CRFAnno2Tokens(open(truthfile).read())
+	x_predict, y_predict = RawMixedAnno2Tokens(open(predictfile).read()) 
+	x_truth, y_truth = RawMixedAnno2Tokens(open(truthfile).read())
 	Y_predict = [item for sublist in y_predict for item in sublist]
 	Y_truth = [item for sublist in y_truth for item in sublist]
 	X_predict = ''.join([item for sublist in x_predict for item in sublist])
@@ -193,12 +193,13 @@ def evaluate_nested(y_predict, y_truth):
 	Y_truth = [item for sublist in y_truth for item in sublist]
 	print_evaluation(Y_truth, Y_predict)
 
-def evaluate_nested_dual(yt_predict, yt_truth, yc_predict, yc_truth):
+def evaluate_nested_dual(yt_predict, yt_truth, yc_predict, yc_truth, verbose):
 	Y_predict = [item for sublist in yt_predict for item in sublist]
 	Y_truth = [item for sublist in yt_truth for item in sublist]
 	Y_predict.extend([item for sublist in yc_predict for item in sublist])
 	Y_truth.extend([item for sublist in yc_truth for item in sublist])
-	print_evaluation(Y_truth, Y_predict)
+	if(verbose):
+		print_evaluation(Y_truth, Y_predict)
 	return count_tp_tokens(Y_truth, Y_predict)
 
 def evaluate_nested_score(y_predict, y_truth):

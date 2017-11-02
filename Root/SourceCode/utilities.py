@@ -29,7 +29,7 @@ def anno2Tokens(annoText, annoTag):
 			token_list.append(annoText[token_start:token_end])
 	return token_list
 
-def CRFAnno2Tokens(annoText):
+def RawMixedAnno2Tokens(annoText):
 	tags = re.compile(r"<t>|<c>|</t>|", flags=re.S | re.M).finditer(annoText)
 	anno_anchor = 0
 	is_in = False
