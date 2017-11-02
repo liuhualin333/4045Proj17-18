@@ -38,6 +38,15 @@ CZ4045 Natural Language Processing Project 1 README
 
 — Installation Guide
 
+  1. Download third party libraries according to previous instruction.
+  2. Download datasets to data/ folder according to previous instruction.
+  3. Run the command to:
+        python 
+  4. Run the command to:
+        python 
+  5. Run the command to:
+        python
+
 - Explainations
 
   all_posts.csv:                  contains data from all question posts
