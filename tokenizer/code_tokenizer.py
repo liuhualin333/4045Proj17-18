@@ -4,7 +4,6 @@
 	Code Token Definition: literals with only [] / {} / ' / " / , are not tokens
 							XXX( is token denoting function/method call
 							.	is token for special meaning
-							Use normal word token for COMMENT / STRING (TODO: still use code tokenizer)
 							Error messega path -> one token
 							1.4.6 -> one token
 	Usage:
@@ -70,6 +69,7 @@ class CodesTokenizer:
         # get all &lt; and &gt;
         for lt_gt in re.finditer(re.compile(r"&(lt|gt);"), self._codes):
             lts_gts.append([lt_gt.start(), lt_gt.end()])
+        
         # get tokenizer cookie
         for cookie in re.finditer(re.compile(r'[A-Za-z]*coding[:=]', re.ASCII), self._codes):
             cookies.append([cookie.start(), cookie.end() - 1])
@@ -110,8 +110,7 @@ class CodesTokenizer:
                         chop_end = len(tokval) - 1
                         # pdb.set_trace()
                         # if the token type is NAME / OP / NUMBER and not only consists of [,)\-\"';\[\]|..+]+
-                        if (toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile(
-                                r"^(?<![a-zA-Z])([\ ,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
+                        if (toknum in [NAME, OP, NUMBER, ERRORTOKEN] and re.compile( r"^(?<![a-zA-Z])([\ ,):\"';\[\]}\{]+|\.\.+)(?![a-zA-Z])$").search(tokval) == None):
                             # pdb.set_trace()
                             # Take xx( / &lt / &gt as one token, instead of two, eg. xx and (
                             if (((prev_num == NAME and tokval == '(') or (

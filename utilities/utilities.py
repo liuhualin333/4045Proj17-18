@@ -83,16 +83,17 @@ def anno2charsTokens(annoText, annoTag):
 def MixAnno2charsTokens(annoText):
 	#origin_txt = StringBuilder()
 	#origin_label = StringBuilder()
-	origin_txt, origin_label = [], []
+	origin_txt, origin_label, original_types = [], [], []
 	anno_anchor = 0
 	code_tag = ['<c>', '</c>']
 	text_tag = ['<t>', '</t>']
 	code_secs = re.compile("<code>(.*?)</code>", flags=re.S | re.M).finditer(annoText)
-	def Appendtxtlabel(_txt, _label):
+	def Appendtxtlabel(_txt, _label, _btypes):
 		#origin_txt.Append(_txt)
 		#origin_label.Append(_label)
 		origin_txt.append(_txt)
 		origin_label.append(_label)
+		original_types.append(_btypes)
 	# iterate all codes area, defined by <code> ... </code>
 	#pdb.set_trace()
 	for code_sec in code_secs:
@@ -100,14 +101,14 @@ def MixAnno2charsTokens(annoText):
 		code_start = code_sec.start() + 6
 		code_end = code_sec.end() - 7
 		# Append the origin text, orinal label from anno_anchor to code_start
-		Appendtxtlabel(*anno2charsTokens(annoText[anno_anchor : code_sec.start()], text_tag))
+		Appendtxtlabel(*anno2charsTokens(annoText[anno_anchor : code_sec.start()], text_tag), 't')
 		# Init a new CodesTokenizer with codes, append the annotated codes to sb_file
-		Appendtxtlabel(*anno2charsTokens(annoText[code_start : code_end], code_tag))
+		Appendtxtlabel(*anno2charsTokens(annoText[code_start : code_end], code_tag), 'c')
 		anno_anchor = code_sec.end()
 
-	Appendtxtlabel(*anno2charsTokens(annoText[anno_anchor : ], text_tag))
+	Appendtxtlabel(*anno2charsTokens(annoText[anno_anchor : ], text_tag), 't')
 	#return origin_txt.__str__(), origin_label.__str__()
-	return origin_txt, origin_label
+	return origin_txt, origin_label, original_types
 
 def get_data(filepath):
 	X, Y = [], []
@@ -125,11 +126,11 @@ def get_data(filepath):
 			end_pattern = re.compile(r'^\d+\|([^\n\|]*?)\|\"(.*)\"$', flags = re.S|re.M)
 		#pdb.set_trace()
 		def post2XY(post):
-			_text, _label = MixAnno2charsTokens(post.group(1))
+			_text, _label, _ = MixAnno2charsTokens(post.group(1))
 			X.extend(_text)
 			Y.extend(_label)
 			if(flag == 'post'):
-				_text, _label = MixAnno2charsTokens(post.group(2))
+				_text, _label, _ = MixAnno2charsTokens(post.group(2))
 				X.extend(_text)
 				Y.extend(_label)
 		for post in pattern.finditer(file_text):
@@ -144,22 +145,27 @@ class rpost:
 	pid = None
 	ptitle = []
 	ptitle_label = []
+	ptitle_block_type = []
 	pbody = []
 	pbody_label = []
+	pbody_block_type = []
 	
 	def __init__(self, ptype, pid):
 		self.ptype = ptype
 		if(ptype == 'answer'):
 			self.ptitle = None
+			self.ptitle_block_type = None
 		self.pid = pid
 	
-	def addTitle(self, ptitle, label):
+	def addTitle(self, ptitle, label, block_type):
 		self.ptitle = ptitle
 		self.ptitle_label = [list(str) for str in label]
+		self.ptitle_block_type = block_type
 
-	def addBody(self, pbody, label):
+	def addBody(self, pbody, label, block_type):
 		self.pbody = pbody
 		self.pbody_label = [list(str) for str in label]
+		self.pbody_block_type = block_type
 
 def split_train_text(file_text):
 	rpost_list = []
@@ -177,13 +183,13 @@ def split_train_text(file_text):
 	def post2rpost(post):
 		# initialize the post
 		p = rpost(ptype, post.group(1))
-		_text, _label = MixAnno2charsTokens(post.group(2))
+		_text, _label, _types = MixAnno2charsTokens(post.group(2))
 		if(ptype == 'post'):
-			p.addTitle(_text, _label)
-			_text, _label = MixAnno2charsTokens(post.group(3))
-			p.addBody(_text, _label)
+			p.addTitle(_text, _label, _types)
+			_text, _label, _types = MixAnno2charsTokens(post.group(3))
+			p.addBody(_text, _label, _types)
 		else:
-			p.addBody(_text, _label)
+			p.addBody(_text, _label, _types)
 		rpost_list.append(p)
 		#pdb.set_trace()
 
@@ -200,16 +206,16 @@ def split_train_text(file_text):
 # X, Y: strings
 # X contains block of text
 # Y contains block tag (U,E,I,T,O)
-def crfTokens2Anno(X, Y):
+def crfTokens2Anno(X, Y, tag=['<t>','</t>']):
 	assert len(X) == len(Y)
 	text = StringBuilder()
 	for x,y in zip(X, Y):
 		if(y == 'T'):
-			text.Append('<t>'+x)
+			text.Append(tag[0]+x)
 		elif(y == 'E'):
-			text.Append(x+'</t>')
+			text.Append(x+tag[1])
 		elif(y == 'U'):
-			text.Append('<t>'+x+'</t>')
+			text.Append(tag[0]+x+tag[1])
 		else:
 			text.Append(x)
 	#pdb.set_trace()
