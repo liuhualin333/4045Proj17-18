@@ -11,6 +11,7 @@ def main(file):
     text.main(newfile)
     os.remove(newfile)
     os.rename(finalfile, file_sep[0] + "_annotated" + file_sep[1])
+    print("Tokenized file is stored in", finalfile)
 
 
 if __name__ == '__main__':
