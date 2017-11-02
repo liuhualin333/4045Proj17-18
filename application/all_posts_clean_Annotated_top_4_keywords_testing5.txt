@@ -480,7 +480,7 @@
 8248397,directory,shell,current,know/change
 8266529,Alabama Arkansas American Samoa Arizona California,Colorado,states = {Alaska,....}
 8270092,whitespace,both,remove,my_handle(
-8369219,data,segment,file,readlines(
+8369219,data,segment,\n,readlines(
 8384737,paths,matter,format,os/path
 8424942,dictionary,instantiating,..,new
 8551735,Sublime Text,Python IDE,editor,run

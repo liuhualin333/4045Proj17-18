@@ -3,7 +3,10 @@
 
         1. read data
         2. tokenize read data
-        3. computer keywords based on tfidf. You may refer to: https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+        3. remove stop words
+        4. computer keywords based on tfidf. You may refer to: https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+        5. choose top 3 keywords from text section, and 1 function name from code section.
+            if there is no function name in code section, replace it with a token from text section
 
     Usage:
         python application.py file1 ...
@@ -12,10 +15,9 @@
 import re
 from collections import Counter
 from math import log
-import csv
 import operator
 import sys
-
+import random
 
 def tf(word, doc):
     all_num = sum([doc[key] for key in doc])
@@ -46,9 +48,11 @@ def main(post_path="../posts/all_posts_clean_Annotated.csv"):
         post_source = f.read()
 
     # read stop words
-    with open('stop_words.csv', newline='') as f:
-        reader = csv.reader(f)
-        stop_words = reader.__next__()
+    # with open('stop_words.csv', newline='') as f:
+    #     reader = csv.reader(f)
+    #     stop_words = reader.__next__()
+    stop_words = ", ,/,%,:,.,-,__,_,=,==,$,*,**,//,...,[],[,],<<,>>,\n,a,able,about,across,after,all,almost,also,am,among,an,and,any,are,as,at,be,because,been,but,by,can,cannot,could,dear,did,do,does,either,else,ever,every,for,from,get,got,had,has,have,he,her,hers,him,his,how,however,i,if,in,into,is,it,its,just,least,let,like,likely,may,me,might,most,must,my,neither,no,nor,not,of,off,often,on,only,or,other,our,own,rather,said,say,says,she,should,since,so,some,than,that,the,their,them,then,there,these,they,this,tis,to,too,twas,us,wants,was,we,were,what,when,where,which,while,who,whom,why,will,with,would,yet,you,your,you're".split(',')
+
 
     # regular expression to extract code and text token
     re_code = re.compile("<c>(.*?)</c>", flags = re.S|re.M)
@@ -136,6 +140,7 @@ def main(post_path="../posts/all_posts_clean_Annotated.csv"):
 
     # store into current folder
 
+    rand_ten_list = []
     store_path = './' + post_path.split('/')[-1].split('.')[0] + '_top_%d_keywords_testing5.txt' % N
     with open(store_path, 'w') as f:
         for p_id, score_list in post_score_mapping.items():
@@ -147,8 +152,17 @@ def main(post_path="../posts/all_posts_clean_Annotated.csv"):
                         top_n_keywords[-1] = i[0]
                         break
                 f.write(p_id+','+','.join(top_n_keywords)+'\n')
+                rand_ten_list.append(p_id+': '+', '.join(top_n_keywords))
             except UnicodeEncodeError:
                 continue
+
+    random.shuffle(rand_ten_list)
+    print("Top 4 keywords in question posts:")
+    for x in rand_ten_list[:10]:
+        print("     Question post", x)
+
+    print("     ......")
+    print("Top 4 keywords for all posts have been stored in\n", store_path)
 
 
 
