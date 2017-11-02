@@ -54,13 +54,15 @@ CZ4045 Natural Language Processing Project 1 README
         nltk.download('stopwords')
         nltk.download('averaged_perceptron_tagger')
      Last, press ctrl + Z to exit.
-  2. Download datasets to data/ folder according to previous instruction.
-  3. Navigate to SourceCode/ folder:
-  4. Run the following command to tokenize all sentences in dataset:
-        python tokenizer.py ../data/all_post_clean.txt ../data/all_answers_clean.txt
-  5. Run the following command to:
-        python 
-  6. Run the following command to compute the top 4 keywords in all question posts data:
+  3. Download datasets to data/ folder according to previous instruction.
+  4. Navigate to SourceCode/ folder:
+  5. Run the following command to preprocess data:
+        python data_processing.py
+  5. Run the following command to tokenize all sentences in dataset:
+        python tokenizer.py 
+  6. Run the following command and follow program instruction to run stemmer and POS tagging:
+        python nltk_controller.py
+  7. Run the following command to compute the top 4 keywords in all question posts data:
         python application.py
 
 - Explanations of data
