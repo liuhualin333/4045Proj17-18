@@ -74,7 +74,7 @@ class TextTokenizer:
                 if (not word[-1].isalnum()):
                     notSPFlag = True
                     counter += 1
-                if (lastWord[0].isupper() and word[0].isupper() and notSPFlag == False):
+                if (lastWord[0].isupper() and word[0].isupper() and notSPFlag == False and word != "I"):
                     tokenList = tokenList[:-1]  # Delete last token (ground step to form special pronoun)
                     lastWord = lastWord + ' ' + word  # Form current special pronoun
                     specialPronounFlag = True

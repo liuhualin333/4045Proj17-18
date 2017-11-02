@@ -75,7 +75,7 @@ Id|Title|Body
 
 <t>I</t> <t>usually</t> <t>end</t> <t>up</t> <t>using</t> <t>something</t> <t>like</t> <code>''<c>.</c><c>join(</c><c>map(</c><c>lambda</c> <c>x</c>: <c>x</c><c>+</c>',',<c>l</c>))[:<c>-</c><c>1</c>]</code>, <t>but</t> <t>also</t> <t>feeling</t> <t>somewhat</t> <t>unsatisfied</t>.
 
-<t>Edit</t>: <t>I'm</t> <t>both</t> <t>ashamed</t> <t>and</t> <t>happy</t> <t>that</t> <t>the</t> <t>solution</t> <t>is</t> <t>so</t> <t>simple</t>. <t>Obviously I</t> <t>have</t> <t>hardly</t> <t>a</t> <t>clue</t> <t>as</t> <t>to</t> <t>what</t> <t>I'm</t> <t>doing</t>. (<t>I</t> <t>probably</t> <t>needed</t> ""<t>simple</t>"" <t>concatenation</t> <t>in</t> <t>the</t> <t>past</t> <t>and</t> <t>somehow</t> <t>memorised</t> <code><c>s</c><c>.</c><c>join(</c>[<c>e1</c>,<c>e2</c>,...])</code> <t>as</t> <t>a</t> <t>shorthand</t> <t>for</t> <code><c>s</c><c>+</c><c>e1</c><c>+</c><c>e2</c><c>+</c>...</code>.)
+<t>Edit</t>: <t>I'm</t> <t>both</t> <t>ashamed</t> <t>and</t> <t>happy</t> <t>that</t> <t>the</t> <t>solution</t> <t>is</t> <t>so</t> <t>simple</t>. <t>Obviously</t> <t>I</t> <t>have</t> <t>hardly</t> <t>a</t> <t>clue</t> <t>as</t> <t>to</t> <t>what</t> <t>I'm</t> <t>doing</t>. (<t>I</t> <t>probably</t> <t>needed</t> ""<t>simple</t>"" <t>concatenation</t> <t>in</t> <t>the</t> <t>past</t> <t>and</t> <t>somehow</t> <t>memorised</t> <code><c>s</c><c>.</c><c>join(</c>[<c>e1</c>,<c>e2</c>,...])</code> <t>as</t> <t>a</t> <t>shorthand</t> <t>for</t> <code><c>s</c><c>+</c><c>e1</c><c>+</c><c>e2</c><c>+</c>...</code>.)
 "
 50499|"<t>How</t> <t>do</t> <t>I</t> <t>get</t> <t>the</t> <t>path</t> <t>and</t> <t>name</t> <t>of</t> <t>the</t> <t>file</t> <t>that</t> <t>is</t> <t>currently</t> <t>executing</t>?"|"<t>I</t> <t>have</t> <t>scripts</t> <t>calling</t> <t>other</t> <t>script</t> <t>files</t> <t>but</t> <t>I</t> <t>need</t> <t>to</t> <t>get</t> <t>the</t> <t>filepath</t> <t>of</t> <t>the</t> <t>file</t> <t>that</t> <t>is</t> <t>currently</t> <t>running</t> <t>within</t> <t>the</t> <t>process</t>. 
 
@@ -156,7 +156,7 @@ Id|Title|Body
 <c>>></c><c>></c> <c>obj</c> <c>=</c> <c>MyClass(</c>)
 </code>
 
-<t>What I</t> <t>did</t> <t>there</t> <t>is</t> <t>create</t> <t>a</t> <t>class</t> <t>with</t> <t>a</t> <t>public</t> <t>method</t> <t>and</t> <t>a</t> <t>private</t> <t>method</t> <t>and</t> <t>instantiate</t> <t>it</t>.
+<t>What</t> <t>I</t> <t>did</t> <t>there</t> <t>is</t> <t>create</t> <t>a</t> <t>class</t> <t>with</t> <t>a</t> <t>public</t> <t>method</t> <t>and</t> <t>a</t> <t>private</t> <t>method</t> <t>and</t> <t>instantiate</t> <t>it</t>.
 
 <t>Next</t>, <t>I</t> <t>call</t> <t>its</t> <t>public</t> <t>method</t>.
 
@@ -398,7 +398,7 @@ Id|Title|Body
 
 (<t>using</t> <t>windows</t> <t>if</t> <t>this</t> <t>matters</t>)
 "
-151199|"<t>How</t> <t>do</t> <t>I</t> <t>calculate</t> <t>number</t> <t>of</t> <t>days</t> <t>betwen</t> <t>two</t> <t>dates</t> <t>using</t> <t>Python</t>?"|"<t>If I</t> <t>have</t> <t>two</t> <t>dates</t> (<t>ex</t>. <code>'<c>8</c><c>/18/2008</c>'</code> <t>and</t> <code>'<c>9</c><c>/26/2008</c>'</code>) <t>what</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>get</t> <t>the</t> <t>difference</t> <t>measured</t> <t>in</t> <t>days</t>?
+151199|"<t>How</t> <t>do</t> <t>I</t> <t>calculate</t> <t>number</t> <t>of</t> <t>days</t> <t>betwen</t> <t>two</t> <t>dates</t> <t>using</t> <t>Python</t>?"|"<t>If</t> <t>I</t> <t>have</t> <t>two</t> <t>dates</t> (<t>ex</t>. <code>'<c>8</c><c>/18/2008</c>'</code> <t>and</t> <code>'<c>9</c><c>/26/2008</c>'</code>) <t>what</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>get</t> <t>the</t> <t>difference</t> <t>measured</t> <t>in</t> <t>days</t>?
 "
 152580|"<t>What's</t> <t>the</t> <t>canonical</t> <t>way</t> <t>to</t> <t>check</t> <t>for</t> <t>type</t> <t>in</t> <t>python</t>?"|"<t>What</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>check</t> <t>whether</t> <t>a</t> <t>given</t> <t>object</t> <t>is</t> <t>of</t> <t>a</t> <t>given</t> <t>type</t>? <t>How</t> <t>about</t> <t>checking</t> <t>whether</t> <t>the</t> <t>object</t> <t>inherits</t> <t>from</t> <t>a</t> <t>given</t> <t>type</t>?
 
@@ -463,7 +463,7 @@ else:
 
 <t>Essentially</t>, <t>I</t> <t>am</t> <t>looking</t> <t>for</t> <t>something</t> <t>that</t> <t>behaves</t> <t>equivalently</t> <t>to</t> <t>the</t> '<t>return</t>' <t>keyword</t> <t>in</t> <t>the</t> <t>body</t> <t>of</t> <t>a</t> <t>function</t> <t>which</t> <t>allows</t> <t>the</t> <t>flow</t> <t>of</t> <t>the</t> <t>code</t> <t>to</t> <t>exit</t> <t>the</t> <t>function</t> <t>and</t> <t>not</t> <t>execute</t> <t>the</t> <t>remaining</t> <t>code</t>.
 "
-181530|"<t>Styling</t> <t>multi-line</t> <t>conditions</t> <t>in</t> '<t>if</t>' <t>statements</t>?"|"<t>Sometimes I</t> <t>break</t> <t>long</t> <t>conditions</t> <t>in</t> <code><c>if</c></code><t>s</t> <t>onto</t> <t>several</t> <t>lines</t>. <t>The</t> <t>most</t> <t>obvious</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t> <t>is</t>:
+181530|"<t>Styling</t> <t>multi-line</t> <t>conditions</t> <t>in</t> '<t>if</t>' <t>statements</t>?"|"<t>Sometimes</t> <t>I</t> <t>break</t> <t>long</t> <t>conditions</t> <t>in</t> <code><c>if</c></code><t>s</t> <t>onto</t> <t>several</t> <t>lines</t>. <t>The</t> <t>most</t> <t>obvious</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t> <t>is</t>:
 
 <code>  <c>if</c> (<c>cond1</c> <c>==</c> '<c>val1</c>' <c>and</c> <c>cond2</c> <c>==</c> '<c>val2</c>' <c>and</c>
       <c>cond3</c> <c>==</c> '<c>val3</c>' <c>and</c> <c>cond4</c> <c>==</c> '<c>val4</c>'):
@@ -528,7 +528,7 @@ else:
 "
 204017|"<t>How</t> <t>do</t> <t>I</t> <t>execute</t> <t>a</t> <t>program</t> <t>from</t> <t>python</t>? <t>os</t>.<t>system</t> <t>fails</t> <t>due</t> <t>to</t> <t>spaces</t> <t>in</t> <t>path</t>"|"<t>I</t> <t>have</t> <t>a</t> <t>python</t> <t>script</t> <t>that</t> <t>needs</t> <t>to</t> <t>execute</t> <t>an</t> <t>external</t> <t>program</t>, <t>but</t> <t>for</t> <t>some</t> <t>reason</t> <t>fails</t>.
 
-<t>If I</t> <t>have</t> <t>the</t> <t>following</t> <t>script</t>:
+<t>If</t> <t>I</t> <t>have</t> <t>the</t> <t>following</t> <t>script</t>:
 
 <code><c>import</c> <c>os</c>;
 <c>os</c><c>.</c><c>system(</c>""<c>C:\\Temp\\a</c> <c>b</c> <c>c</c><c>\\Notepad.exe</c>"");
@@ -540,7 +540,7 @@ else:
 <code>'<c>C:\Temp\a</c>' <c>is</c> <c>not</c> <c>recognized</c> <c>as</c> <c>an</c> <c>internal</c> <c>or</c> <c>external</c> <c>command</c>, <c>operable</c> <c>program</c> <c>or</c> <c>batch</c> <c>file</c><c>.</c>
 </code>
 
-<t>If I</t> <t>escape</t> <t>the</t> <t>program</t> <t>with</t> <t>quotes</t>:
+<t>If</t> <t>I</t> <t>escape</t> <t>the</t> <t>program</t> <t>with</t> <t>quotes</t>:
 
 <code><c>import</c> <c>os</c>;
 <c>os</c><c>.</c><c>system(</c>'""<c>C:\\Temp\\a</c> <c>b</c> <c>c</c><c>\\Notepad.exe</c>""');
@@ -752,7 +752,7 @@ else:
 
 <t>What</t> <t>is</t> <t>the</t> <t>most</t> <t>effective</t> <t>way</t> <t>of</t> <t>removing/deleting</t> <t>a</t> <t>folder/directory</t> <t>that</t> <t>is</t> <t>not</t> <t>empty</t>?
 "
-306400|"<t>How</t> <t>to</t> <t>randomly</t> <t>select</t> <t>an</t> <t>item</t> <t>from</t> <t>a</t> <t>list</t>?"|"<t>Assume I</t> <t>have</t> <t>the</t> <t>following</t> <t>list</t>:
+306400|"<t>How</t> <t>to</t> <t>randomly</t> <t>select</t> <t>an</t> <t>item</t> <t>from</t> <t>a</t> <t>list</t>?"|"<t>Assume</t> <t>I</t> <t>have</t> <t>the</t> <t>following</t> <t>list</t>:
 
 <code><c>foo</c> <c>=</c> ['<c>a</c>', '<c>b</c>', '<c>c</c>', '<c>d</c>', '<c>e</c>']
 </code>
@@ -832,7 +832,7 @@ else:
 <code><c>from</c> <c>toolkit</c><c>.</c><c>interface</c> <c>import</c> <c>interface</c>
 </code>
 
-<t>And I</t> <t>get</t> <t>the</t> <t>error</t>:
+<t>And</t> <t>I</t> <t>get</t> <t>the</t> <t>error</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
   <c>File</c> ""<c>mountain</c><c>.</c><c>py</c>"", <c>line</c> <c>28</c>, <c>in</c> <c>?</c>
@@ -842,15 +842,15 @@ else:
 
 <t>I</t> <t>have</t> <t>already</t> <t>checked</t> <code><c>sys</c><c>.</c><c>path</c></code> <t>and</t> <t>there</t> <t>I</t> <t>have</t> <t>the</t> <t>directory</t> <code><c>/site-packages</c></code>. <t>Also</t>, <t>I</t> <t>have</t> <t>the</t> <t>file</t> <code><c>__init__</c><c>.</c><c>py</c><c>.</c><c>bin</c></code> <t>in</t> <t>the</t> <t>toolkit</t> <t>folder</t> <t>to</t> <t>indicate</t> <t>to</t> <t>Python</t> <t>that</t> <t>this</t> <t>is</t> <t>a</t> <t>package</t>. <t>I</t> <t>also</t> <t>have</t> <t>a</t> <code><c>__init__</c><c>.</c><c>py</c><c>.</c><c>bin</c></code> <t>in</t> <t>the</t> <t>examples</t> <t>directory</t>.
 
-<t>I</t> <t>do</t> <t>not</t> <t>know</t> <t>why</t> <t>Python</t> <t>cannot</t> <t>find</t> <t>the</t> <t>file</t> <t>when</t> <t>it</t> <t>is</t> <t>in</t> <code><c>sys</c><c>.</c><c>path</c></code>.  <t>Any</t> <t>ideas</t>?  <t>Can</t> <t>it</t> <t>be</t> <t>a</t> <t>permissions</t> <t>problem</t>?  <t>Do I</t> <t>need</t> <t>some</t> <t>execution</t> <t>permission</t>?
+<t>I</t> <t>do</t> <t>not</t> <t>know</t> <t>why</t> <t>Python</t> <t>cannot</t> <t>find</t> <t>the</t> <t>file</t> <t>when</t> <t>it</t> <t>is</t> <t>in</t> <code><c>sys</c><c>.</c><c>path</c></code>.  <t>Any</t> <t>ideas</t>?  <t>Can</t> <t>it</t> <t>be</t> <t>a</t> <t>permissions</t> <t>problem</t>?  <t>Do</t> <t>I</t> <t>need</t> <t>some</t> <t>execution</t> <t>permission</t>?
 "
 339007|"<t>Nicest</t> <t>way</t> <t>to</t> <t>pad</t> <t>zeroes</t> <t>to</t> <t>string</t>"|"<t>What</t> <t>is</t> <t>the</t> <t>most</t> <t>pythonic</t> <t>way</t> <t>to</t> <t>pad</t> <t>a</t> <t>numeric</t> <t>string</t> <t>with</t> <t>zeroes</t> <t>to</t> <t>the</t> <t>left</t>, <t>i.e.,</t> <t>so</t> <t>the</t> <t>numeric</t> <t>string</t> <t>has</t> <t>a</t> <t>specific</t> <t>length</t>?
 "
 348196|"<t>Creating</t> <t>a</t> <t>list</t> <t>of</t> <t>objects</t> <t>in</t> <t>Python</t>"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>create</t> <t>a</t> <t>Python</t> <t>script</t> <t>that</t> <t>opens</t> <t>several</t> <t>databases</t> <t>and</t> <t>compares</t> <t>their</t> <t>contents</t>.  <t>In</t> <t>the</t> <t>process</t> <t>of</t> <t>creating</t> <t>that</t> <t>script</t>, <t>I've</t> <t>run</t> <t>into</t> <t>a</t> <t>problem</t> <t>in</t> <t>creating</t> <t>a</t> <t>list</t> <t>whose</t> <t>contents</t> <t>are</t> <t>objects</t> <t>that</t> <t>I've</t> <t>created</t>.
 
-<t>I've</t> <t>simplified</t> <t>the</t> <t>program</t> <t>to</t> <t>its</t> <t>bare</t> <t>bones</t> <t>for</t> <t>this</t> <t>posting</t>. <t>First I</t> <t>create</t> <t>a</t> <t>new</t> <t>class</t>, <t>create</t> <t>a</t> <t>new</t> <t>instance</t> <t>of</t> <t>it</t>, <t>assign</t> <t>it</t> <t>an</t> <t>attribute</t> <t>and</t> <t>then</t> <t>write</t> <t>it</t> <t>to</t> <t>a</t> <t>list</t>.  <t>Then I</t> <t>assign</t> <t>a</t> <t>new</t> <t>value</t> <t>to</t> <t>the</t> <t>instance</t> <t>and</t> <t>again</t> <t>write</t> <t>it</t> <t>to</t> <t>a</t> <t>list...</t> <t>and</t> <t>again</t> <t>and</t> <t>again...</t>
+<t>I've</t> <t>simplified</t> <t>the</t> <t>program</t> <t>to</t> <t>its</t> <t>bare</t> <t>bones</t> <t>for</t> <t>this</t> <t>posting</t>. <t>First</t> <t>I</t> <t>create</t> <t>a</t> <t>new</t> <t>class</t>, <t>create</t> <t>a</t> <t>new</t> <t>instance</t> <t>of</t> <t>it</t>, <t>assign</t> <t>it</t> <t>an</t> <t>attribute</t> <t>and</t> <t>then</t> <t>write</t> <t>it</t> <t>to</t> <t>a</t> <t>list</t>.  <t>Then</t> <t>I</t> <t>assign</t> <t>a</t> <t>new</t> <t>value</t> <t>to</t> <t>the</t> <t>instance</t> <t>and</t> <t>again</t> <t>write</t> <t>it</t> <t>to</t> <t>a</t> <t>list...</t> <t>and</t> <t>again</t> <t>and</t> <t>again...</t>
 
-<t>Problem</t> <t>is</t>, <t>it's</t> <t>always</t> <t>the</t> <t>same</t> <t>object</t> <t>so</t> <t>I'm</t> <t>really</t> <t>just</t> <t>changing</t> <t>the</t> <t>base</t> <t>object</t>.  <t>When I</t> <t>read</t> <t>the</t> <t>list</t>, <t>I</t> <t>get</t> <t>a</t> <t>repeat</t> <t>of</t> <t>the</t> <t>same</t> <t>object</t> <t>over</t> <t>and</t> <t>over</t>.  
+<t>Problem</t> <t>is</t>, <t>it's</t> <t>always</t> <t>the</t> <t>same</t> <t>object</t> <t>so</t> <t>I'm</t> <t>really</t> <t>just</t> <t>changing</t> <t>the</t> <t>base</t> <t>object</t>.  <t>When</t> <t>I</t> <t>read</t> <t>the</t> <t>list</t>, <t>I</t> <t>get</t> <t>a</t> <t>repeat</t> <t>of</t> <t>the</t> <t>same</t> <t>object</t> <t>over</t> <t>and</t> <t>over</t>.  
 
 <t>So</t> <t>how</t> <t>do</t> <t>you</t> <t>write</t> <t>objects</t> <t>to</t> <t>a</t> <t>list</t> <t>within</t> <t>a</t> <t>loop</t>?
 
@@ -902,7 +902,7 @@ else:
         <c>return</c> <c>False</c>
 </code>
 
-<t>Which</t>, <t>not</t> <t>only</t> <t>is</t> <t>ugly</t> <t>and</t> <t>slow</t>, <t>seems</t> <t>clunky</t>. <t>However I</t> <t>haven't</t> <t>found</t> <t>a</t> <t>better</t> <t>method</t> <t>because</t> <t>calling</t> <code><c>float</c></code> <t>in</t> <t>the</t> <t>main</t> <t>function</t> <t>is</t> <t>even</t> <t>worse</t>. 
+<t>Which</t>, <t>not</t> <t>only</t> <t>is</t> <t>ugly</t> <t>and</t> <t>slow</t>, <t>seems</t> <t>clunky</t>. <t>However</t> <t>I</t> <t>haven't</t> <t>found</t> <t>a</t> <t>better</t> <t>method</t> <t>because</t> <t>calling</t> <code><c>float</c></code> <t>in</t> <t>the</t> <t>main</t> <t>function</t> <t>is</t> <t>even</t> <t>worse</t>. 
 "
 354883|"<t>How</t> <t>do</t> <t>you</t> <t>return</t> <t>multiple</t> <t>values</t> <t>in</t> <t>Python</t>?"|"<t>The</t> <t>canonical</t> <t>way</t> <t>to</t> <t>return</t> <t>multiple</t> <t>values</t> <t>in</t> <t>languages</t> <t>that</t> <t>support</t> <t>it</t> <t>is</t> <t>often</t> <t>tupling</t>. 
 
@@ -1082,8 +1082,8 @@ else:
     <c>thread</c><c>.</c><c>start_new_thread(</c><c>myfunction</c>, (""<c>Thread</c> #: <c>2</c>"", <c>2</c>, <c>lock</c>))
 </code>
 "
-423379|"<t>Using</t> <t>global</t> <t>variables</t> <t>in</t> <t>a</t> <t>function</t> <t>other</t> <t>than</t> <t>the</t> <t>one</t> <t>that</t> <t>created</t> <t>them</t>"|"<t>If I</t> <t>create</t> <t>a</t> <t>global</t> <t>variable</t> <t>in</t> <t>one</t> <t>function</t>, <t>how</t> <t>can</t> <t>I</t> <t>use</t> <t>that</t> <t>variable</t> <t>in</t> <t>another</t> <t>function</t>?
-<t>Do I</t> <t>need</t> <t>to</t> <t>store</t> <t>the</t> <t>global</t> <t>variable</t> <t>in</t> <t>a</t> <t>local</t> <t>variable</t> <t>of</t> <t>the</t> <t>function</t> <t>which</t> <t>needs</t> <t>its</t> <t>access</t>?
+423379|"<t>Using</t> <t>global</t> <t>variables</t> <t>in</t> <t>a</t> <t>function</t> <t>other</t> <t>than</t> <t>the</t> <t>one</t> <t>that</t> <t>created</t> <t>them</t>"|"<t>If</t> <t>I</t> <t>create</t> <t>a</t> <t>global</t> <t>variable</t> <t>in</t> <t>one</t> <t>function</t>, <t>how</t> <t>can</t> <t>I</t> <t>use</t> <t>that</t> <t>variable</t> <t>in</t> <t>another</t> <t>function</t>?
+<t>Do</t> <t>I</t> <t>need</t> <t>to</t> <t>store</t> <t>the</t> <t>global</t> <t>variable</t> <t>in</t> <t>a</t> <t>local</t> <t>variable</t> <t>of</t> <t>the</t> <t>function</t> <t>which</t> <t>needs</t> <t>its</t> <t>access</t>?
 "
 431684|"<t>How</t> <t>do</t> <t>I</t> ""<t>cd</t>"" <t>in</t> <t>Python</t>?"|"<code><c>cd</c></code> <t>as</t> <t>in</t> <t>the</t> <t>shell</t> <t>command</t> <t>to</t> <t>change</t> <t>the</t> <t>working</t> <t>directory</t>.
 
@@ -1132,7 +1132,7 @@ else:
 "
 441147|"<t>How</t> <t>can</t> <t>I</t> <t>subtract</t> <t>a</t> <t>day</t> <t>from</t> <t>a</t> <t>Python</t> <t>date</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>Python</t> <code><c>datetime</c><c>.</c><c>datetime</c></code> <t>object</t>. <t>What</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>subtract</t> <t>one</t> <t>day</t>?
 "
-446052|"<t>How</t> <t>can</t> <t>I</t> <t>check</t> <t>for</t> <t>Python</t> <t>version</t> <t>in</t> <t>a</t> <t>program</t> <t>that</t> <t>uses</t> <t>new</t> <t>language</t> <t>features</t>?"|"<t>If I</t> <t>have</t> <t>a</t> <t>Python</t> <t>script</t> <t>that</t> <t>requires</t> <t>at</t> <t>least</t> <t>a</t> <t>particular</t>
+446052|"<t>How</t> <t>can</t> <t>I</t> <t>check</t> <t>for</t> <t>Python</t> <t>version</t> <t>in</t> <t>a</t> <t>program</t> <t>that</t> <t>uses</t> <t>new</t> <t>language</t> <t>features</t>?"|"<t>If</t> <t>I</t> <t>have</t> <t>a</t> <t>Python</t> <t>script</t> <t>that</t> <t>requires</t> <t>at</t> <t>least</t> <t>a</t> <t>particular</t>
 <t>version</t> <t>of</t> <t>Python</t>, <t>what</t> <t>is</t> <t>the</t> <t>correct</t> <t>way</t> <t>to</t> <t>fail</t> <t>gracefully</t>
 <t>when</t> <t>an</t> <t>earlier</t> <t>version</t> <t>of</t> <t>Python</t> <t>is</t> <t>used</t> <t>to</t> <t>launch</t> <t>the</t> <t>script</t>?
 
@@ -1183,7 +1183,7 @@ else:
 
 <t>Related</t> <t>question</t>: <t>How</t> <t>many</t> <t>bytes</t> <t>per</t> <t>element</t> <t>are</t> <t>there</t> <t>in</t> <t>a</t> <t>Python</t> <t>list</t> (<t>tuple</t>)?
 
-<t>I</t> <t>am</t> <t>using</t> <t>an</t> <t>XML</t> <t>file</t> <t>which</t> <t>contains</t> <t>size</t> <t>fields</t> <t>that</t> <t>specify</t> <t>the</t> <t>size</t> <t>of</t> <t>value</t>. <t>I</t> <t>must</t> <t>parse</t> <t>this</t> <t>XML</t> <t>and</t> <t>do</t> <t>my</t> <t>coding</t>. <t>When I</t> <t>want</t> <t>to</t> <t>change</t> <t>the</t> <t>value</t> <t>of</t> <t>a</t> <t>particular</t> <t>field</t>, <t>I</t> <t>will</t> <t>check</t> <t>the</t> <t>size</t> <t>field</t> <t>of</t> <t>that</t> <t>value</t>. <t>Here I</t> <t>want</t> <t>to</t> <t>compare</t> <t>whether</t> <t>the</t> <t>new</t> <t>value</t> <t>that</t> <t>I'm</t> <t>gong</t> <t>to</t> <t>enter</t> <t>is</t> <t>of</t> <t>the</t> <t>same</t> <t>size</t> <t>as</t> <t>in</t> <t>XML</t>. <t>I</t> <t>need</t> <t>to</t> <t>check</t> <t>the</t> <t>size</t> <t>of</t> <t>new</t> <t>value</t>. <t>In</t> <t>case</t> <t>of</t> <t>a</t> <t>string</t> <t>I</t> <t>can</t> <t>say</t> <t>its</t> <t>the</t> <t>length</t>. <t>But</t> <t>in</t> <t>case</t> <t>of</t> <t>int</t>, <t>float</t>, <t>etc</t>. <t>I</t> <t>am</t> <t>confused</t>.
+<t>I</t> <t>am</t> <t>using</t> <t>an</t> <t>XML</t> <t>file</t> <t>which</t> <t>contains</t> <t>size</t> <t>fields</t> <t>that</t> <t>specify</t> <t>the</t> <t>size</t> <t>of</t> <t>value</t>. <t>I</t> <t>must</t> <t>parse</t> <t>this</t> <t>XML</t> <t>and</t> <t>do</t> <t>my</t> <t>coding</t>. <t>When</t> <t>I</t> <t>want</t> <t>to</t> <t>change</t> <t>the</t> <t>value</t> <t>of</t> <t>a</t> <t>particular</t> <t>field</t>, <t>I</t> <t>will</t> <t>check</t> <t>the</t> <t>size</t> <t>field</t> <t>of</t> <t>that</t> <t>value</t>. <t>Here</t> <t>I</t> <t>want</t> <t>to</t> <t>compare</t> <t>whether</t> <t>the</t> <t>new</t> <t>value</t> <t>that</t> <t>I'm</t> <t>gong</t> <t>to</t> <t>enter</t> <t>is</t> <t>of</t> <t>the</t> <t>same</t> <t>size</t> <t>as</t> <t>in</t> <t>XML</t>. <t>I</t> <t>need</t> <t>to</t> <t>check</t> <t>the</t> <t>size</t> <t>of</t> <t>new</t> <t>value</t>. <t>In</t> <t>case</t> <t>of</t> <t>a</t> <t>string</t> <t>I</t> <t>can</t> <t>say</t> <t>its</t> <t>the</t> <t>length</t>. <t>But</t> <t>in</t> <t>case</t> <t>of</t> <t>int</t>, <t>float</t>, <t>etc</t>. <t>I</t> <t>am</t> <t>confused</t>.
 "
 450285|"<t>Executing</t> <t>command</t> <t>line</t> <t>programs</t> <t>from</t> <t>within</t> <t>python</t>"|"
   <t>Possible</t> <t>Duplicate</t>:
@@ -1220,7 +1220,7 @@ else:
 "
 464864|"<t>How</t> <t>to</t> <t>get</t> <t>all</t> <t>possible</t> <t>combinations</t> <t>of</t> <t>a</t> <t>list’s</t> <t>elements</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>with</t> <t>15</t> <t>numbers</t> <t>in</t>, <t>and</t> <t>I</t> <t>need</t> <t>to</t> <t>write</t> <t>some</t> <t>code</t> <t>that</t> <t>produces</t> <t>all</t> <t>32</t>,<t>768</t> <t>combinations</t> <t>of</t> <t>those</t> <t>numbers</t>. 
 
-<t>I've</t> <t>found</t> <t>some</t> <t>code</t> (<t>by</t> <t>Googling</t>) <t>that</t> <t>apparently</t> <t>does</t> <t>what</t> <t>I'm</t> <t>looking</t> <t>for</t>, <t>but</t> <t>I</t> <t>found</t> <t>the</t> <t>code</t> <t>fairly</t> <t>opaque</t> <t>and</t> <t>am</t> <t>wary</t> <t>of</t> <t>using</t> <t>it</t>. <t>Plus I</t> <t>have</t> <t>a</t> <t>feeling</t> <t>there</t> <t>must</t> <t>be</t> <t>a</t> <t>more</t> <t>elegant</t> <t>solution</t>.
+<t>I've</t> <t>found</t> <t>some</t> <t>code</t> (<t>by</t> <t>Googling</t>) <t>that</t> <t>apparently</t> <t>does</t> <t>what</t> <t>I'm</t> <t>looking</t> <t>for</t>, <t>but</t> <t>I</t> <t>found</t> <t>the</t> <t>code</t> <t>fairly</t> <t>opaque</t> <t>and</t> <t>am</t> <t>wary</t> <t>of</t> <t>using</t> <t>it</t>. <t>Plus</t> <t>I</t> <t>have</t> <t>a</t> <t>feeling</t> <t>there</t> <t>must</t> <t>be</t> <t>a</t> <t>more</t> <t>elegant</t> <t>solution</t>.
 
 <t>The</t> <t>only</t> <t>thing</t> <t>that</t> <t>occurs</t> <t>to</t> <t>me</t> <t>would</t> <t>be</t> <t>to</t> <t>just</t> <t>loop</t> <t>through</t> <t>the</t> <t>decimal</t> <t>integers</t> <t>1–32768</t> <t>and</t> <t>convert</t> <t>those</t> <t>to</t> <t>binary</t>, <t>and</t> <t>use</t> <t>the</t> <t>binary</t> <t>representation</t> <t>as</t> <t>a</t> <t>filter</t> <t>to</t> <t>pick</t> <t>out</t> <t>the</t> <t>appropriate</t> <t>numbers</t>. 
 
@@ -1297,7 +1297,7 @@ else:
 '<c>Capit</c><c>\xc3\xa1n\n</c>'
 </code>
 
-<t>So I</t> <t>type</t> <t>in</t> <code><c>Capit</c><c>\xc3\xa1n</c></code> <t>into</t> <t>my</t> <t>favorite</t> <t>editor</t>, <t>in</t> <t>file</t> <t>f2</t>.
+<t>So</t> <t>I</t> <t>type</t> <t>in</t> <code><c>Capit</c><c>\xc3\xa1n</c></code> <t>into</t> <t>my</t> <t>favorite</t> <t>editor</t>, <t>in</t> <t>file</t> <t>f2</t>.
 
 <t>Then</t>:
 
@@ -1313,7 +1313,7 @@ else:
 
 <t>What</t> <t>am</t> <t>I</t> <t>not</t> <t>understanding</t> <t>here</t>? <t>Clearly</t> <t>there</t> <t>is</t> <t>some</t> <t>vital</t> <t>bit</t> <t>of</t> <t>magic</t> (<t>or</t> <t>good</t> <t>sense</t>) <t>that</t> <t>I'm</t> <t>missing</t>. <t>What</t> <t>does</t> <t>one</t> <t>type</t> <t>into</t> <t>text</t> <t>files</t> <t>to</t> <t>get</t> <t>proper</t> <t>conversions</t>?
 
-<t>What I'm</t> <t>truly</t> <t>failing</t> <t>to</t> <t>grok</t> <t>here</t>, <t>is</t> <t>what</t> <t>the</t> <t>point</t> <t>of</t> <t>the</t> <t>UTF-8</t> <t>representation</t> <t>is</t>, <t>if</t> <t>you</t> <t>can't</t> <t>actually</t> <t>get</t> <t>Python</t> <t>to</t> <t>recognize</t> <t>it</t>, <t>when</t> <t>it</t> <t>comes</t> <t>from</t> <t>outside</t>. <t>Maybe I</t> <t>should</t> <t>just</t> <t>JSON</t> <t>dump</t> <t>the</t> <t>string</t>, <t>and</t> <t>use</t> <t>that</t> <t>instead</t>, <t>since</t> <t>that</t> <t>has</t> <t>an</t> <t>asciiable</t> <t>representation</t>! <t>More</t> <t>to</t> <t>the</t> <t>point</t>, <t>is</t> <t>there</t> <t>an</t> <t>ASCII</t> <t>representation</t> <t>of</t> <t>this</t> <t>Unicode</t> <t>object</t> <t>that</t> <t>Python</t> <t>will</t> <t>recognize</t> <t>and</t> <t>decode</t>, <t>when</t> <t>coming</t> <t>in</t> <t>from</t> <t>a</t> <t>file</t>?  <t>If</t> <t>so</t>, <t>how</t> <t>do</t> <t>I</t> <t>get</t> <t>it</t>?
+<t>What I'm</t> <t>truly</t> <t>failing</t> <t>to</t> <t>grok</t> <t>here</t>, <t>is</t> <t>what</t> <t>the</t> <t>point</t> <t>of</t> <t>the</t> <t>UTF-8</t> <t>representation</t> <t>is</t>, <t>if</t> <t>you</t> <t>can't</t> <t>actually</t> <t>get</t> <t>Python</t> <t>to</t> <t>recognize</t> <t>it</t>, <t>when</t> <t>it</t> <t>comes</t> <t>from</t> <t>outside</t>. <t>Maybe</t> <t>I</t> <t>should</t> <t>just</t> <t>JSON</t> <t>dump</t> <t>the</t> <t>string</t>, <t>and</t> <t>use</t> <t>that</t> <t>instead</t>, <t>since</t> <t>that</t> <t>has</t> <t>an</t> <t>asciiable</t> <t>representation</t>! <t>More</t> <t>to</t> <t>the</t> <t>point</t>, <t>is</t> <t>there</t> <t>an</t> <t>ASCII</t> <t>representation</t> <t>of</t> <t>this</t> <t>Unicode</t> <t>object</t> <t>that</t> <t>Python</t> <t>will</t> <t>recognize</t> <t>and</t> <t>decode</t>, <t>when</t> <t>coming</t> <t>in</t> <t>from</t> <t>a</t> <t>file</t>?  <t>If</t> <t>so</t>, <t>how</t> <t>do</t> <t>I</t> <t>get</t> <t>it</t>?
 
 <code><c>&gt;&gt;&gt;</c> <c>print</c> <c>simplejson</c><c>.</c><c>dumps(</c><c>ss</c>)
 '""<c>Capit</c><c>\u00e1n</c>""'
@@ -1322,7 +1322,7 @@ else:
 <c>u</c>'<c>Capit</c><c>\xe1n</c>'
 </code>
 "
-492387|"<t>IndentationError</t>: <t>unindent</t> <t>does</t> <t>not</t> <t>match</t> <t>any</t> <t>outer</t> <t>indentation</t> <t>level</t>"|"<t>When I</t> <t>compile</t> <t>the</t> <t>Python</t> <t>code</t> <t>below</t>, <t>I</t> <t>get</t> 
+492387|"<t>IndentationError</t>: <t>unindent</t> <t>does</t> <t>not</t> <t>match</t> <t>any</t> <t>outer</t> <t>indentation</t> <t>level</t>"|"<t>When</t> <t>I</t> <t>compile</t> <t>the</t> <t>Python</t> <t>code</t> <t>below</t>, <t>I</t> <t>get</t> 
 
 
   <t>IndentationError</t>: <t>unindent</t> <t>does</t> <t>not</t> <t>match</t> <t>any</t> <t>outer</t> <t>indentation</t> <t>level</t>
@@ -1414,7 +1414,7 @@ else:
 
 <t>I'm</t> <t>a</t> <t>learning</t> <t>programmer</t> <t>and</t> <t>I've</t> <t>run</t> <t>into</t> <t>a</t> <t>bit</t> <t>of</t> <t>a</t> <t>jumble</t>. <t>I</t> <t>am</t> <t>asked</t> <t>to</t> <t>write</t> <t>a</t> <t>program</t> <t>that</t> <t>will</t> <t>compute</t> <t>and</t> <t>display</t> <t>Fibonacci's Sequence</t> <t>by</t> <t>a</t> <t>user</t> <t>inputted</t> <t>start</t> <t>number</t> <t>and</t> <t>end</t> <t>number</t> (<t>ie</t>. <t>startNumber = 20</t> <t>endNumber = 100</t> <t>and</t> <t>it</t> <t>will</t> <t>display</t> <t>only</t> <t>the</t> <t>numbers</t> <t>between</t> <t>that</t> <t>range</t>). <t>The</t> <t>trick</t> <t>is</t> <t>to</t> <t>use</t> <t>it</t> <t>inclusively</t> (<t>which</t> <t>I</t> <t>do</t> <t>not</t> <t>know</t> <t>how</t> <t>to</t> <t>do</t> <t>in</t> <t>Python</t>? <t>-</t> <t>I'm</t> <t>assuming</t> <t>this</t> <t>means</t> <t>to</t> <t>use</t> <t>an</t> <t>inclusive</t> <t>range</t>?).
 
-<t>What I</t> <t>have</t> <t>so</t> <t>far</t> <t>is</t> <t>no</t> <t>actual</t> <t>coding</t> <t>but</t> <t>rather</t>:
+<t>What</t> <t>I</t> <t>have</t> <t>so</t> <t>far</t> <t>is</t> <t>no</t> <t>actual</t> <t>coding</t> <t>but</t> <t>rather</t>:
 
 
 <t>Write Fib</t> <t>sequence</t> <t>formula</t> <t>to</t> <t>infinite</t>
@@ -1455,14 +1455,14 @@ else:
 <code><c>verts</c> <c>=</c> <c>list</c> (<c>1000</c>)
 </code>
 
-<t>Should I</t> <t>use</t> <t>array</t> <t>instead</t>?
+<t>Should</t> <t>I</t> <t>use</t> <t>array</t> <t>instead</t>?
 "
 522563|"<t>Accessing</t> <t>the</t> <t>index</t> <t>in</t> <t>Python</t> '<t>for</t>' <t>loops</t>"|"<t>How</t> <t>do</t> <t>I</t> <t>access</t> <t>the</t> <t>index</t> <t>itself</t> <t>for</t> <t>a</t> <t>list</t> <t>like</t> <t>the</t> <t>following</t>?
 
 <code><c>ints</c> <c>=</c> [<c>8</c>, <c>23</c>, <c>45</c>, <c>12</c>, <c>78</c>]
 </code>
 
-<t>When I</t> <t>loop</t> <t>through</t> <t>it</t> <t>using</t> <t>a</t> <code><c>for</c></code> <t>loop</t>, <t>how</t> <t>do</t> <t>I</t> <t>access</t> <t>the</t> <t>loop</t> <t>index</t>, <t>from</t> <t>1</t> <t>to</t> <t>5</t> <t>in</t> <t>this</t> <t>case</t>?
+<t>When</t> <t>I</t> <t>loop</t> <t>through</t> <t>it</t> <t>using</t> <t>a</t> <code><c>for</c></code> <t>loop</t>, <t>how</t> <t>do</t> <t>I</t> <t>access</t> <t>the</t> <t>loop</t> <t>index</t>, <t>from</t> <t>1</t> <t>to</t> <t>5</t> <t>in</t> <t>this</t> <t>case</t>?
 "
 525592|"<t>Find</t> <t>and</t> <t>Replace Inside</t> <t>a</t> <t>Text File</t> <t>from</t> <t>a</t> <t>Bash</t> <t>Command</t>"|"<t>What's</t> <t>the</t> <t>simplest</t> <t>way</t> <t>to</t> <t>do</t> <t>a</t> <t>find</t> <t>and</t> <t>replace</t> <t>for</t> <t>a</t> <t>given</t> <t>input</t> <t>string</t>, <t>say</t> <code><c>abc</c></code>, <t>and</t> <t>replace</t> <t>with</t> <t>another</t> <t>string</t>, <t>say</t> <code><c>XYZ</c></code> <t>in</t> <t>file</t> <code><c>/tmp/file.txt</c></code>?
 
@@ -1470,9 +1470,9 @@ else:
 
 <t>I</t> <t>have</t> <t>heard</t> <t>that</t> <t>Bash</t>, <t>apart</t> <t>from</t> <t>being</t> <t>a</t> <t>command</t> <t>line</t> <t>interface</t>, <t>can</t> <t>be</t> <t>a</t> <t>very</t> <t>powerful</t> <t>scripting</t> <t>language</t>. <t>So</t>, <t>if</t> <t>this</t> <t>is</t> <t>true</t>, <t>I</t> <t>assume</t> <t>you</t> <t>can</t> <t>perform</t> <t>actions</t> <t>like</t> <t>these</t>.
 
-<t>Can I</t> <t>do</t> <t>it</t> <t>with</t> <t>bash</t>, <t>and</t> <t>what's</t> <t>the</t> <t>simplest</t> (<t>one</t> <t>line</t>) <t>script</t> <t>to</t> <t>achieve</t> <t>my</t> <t>goal</t>?
+<t>Can</t> <t>I</t> <t>do</t> <t>it</t> <t>with</t> <t>bash</t>, <t>and</t> <t>what's</t> <t>the</t> <t>simplest</t> (<t>one</t> <t>line</t>) <t>script</t> <t>to</t> <t>achieve</t> <t>my</t> <t>goal</t>?
 "
-529424|"<t>Traverse</t> <t>a</t> <t>list</t> <t>in</t> <t>reverse</t> <t>order</t> <t>in</t> <t>Python</t>"|"<t>So I</t> <t>can</t> <t>start</t> <t>from</t> <code><c>len(</c><c>collection</c>)</code> <t>and</t> <t>end</t> <t>in</t> <code><c>collection</c>[<c>0</c>]</code>.
+529424|"<t>Traverse</t> <t>a</t> <t>list</t> <t>in</t> <t>reverse</t> <t>order</t> <t>in</t> <t>Python</t>"|"<t>So</t> <t>I</t> <t>can</t> <t>start</t> <t>from</t> <code><c>len(</c><c>collection</c>)</code> <t>and</t> <t>end</t> <t>in</t> <code><c>collection</c>[<c>0</c>]</code>.
 
 <t>EDIT</t>: <t>Sorry</t>, <t>I</t> <t>forgot</t> <t>to</t> <t>mention</t> <t>I</t> <t>also</t> <t>want</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>access</t> <t>the</t> <t>loop</t> <t>index</t>.
 "
@@ -1786,7 +1786,7 @@ else:
 "
 699866|"<t>Python</t> <t>int</t> <t>to</t> <t>binary</t>?"|"<t>Are</t> <t>there</t> <t>any</t> <t>canned</t> <t>Python</t> <t>methods</t> <t>to</t> <t>convert</t> <t>an</t> <t>Integer</t> (<t>or</t> <t>Long</t>) <t>into</t> <t>a</t> <t>binary</t> <t>string</t> <t>in</t> <t>Python</t>?
 
-<t>There</t> <t>are</t> <t>a</t> <t>myriad</t> <t>of</t> <t>dec2bin</t>() <t>functions</t> <t>out</t> <t>on</t> <t>Google...</t> <t>But I</t> <t>was</t> <t>hoping</t> <t>I</t> <t>could</t> <t>use</t> <t>a</t> <t>built-in</t> <t>function</t> <t>/</t> <t>library</t>.
+<t>There</t> <t>are</t> <t>a</t> <t>myriad</t> <t>of</t> <t>dec2bin</t>() <t>functions</t> <t>out</t> <t>on</t> <t>Google...</t> <t>But</t> <t>I</t> <t>was</t> <t>hoping</t> <t>I</t> <t>could</t> <t>use</t> <t>a</t> <t>built-in</t> <t>function</t> <t>/</t> <t>library</t>.
 "
 704152|"<t>How</t> <t>can</t> <t>I</t> <t>convert</t> <t>a</t> <t>character</t> <t>to</t> <t>a</t> <t>integer</t> <t>in</t> <t>Python</t>, <t>and</t> <t>viceversa</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>get</t>, <t>given</t> <t>a</t> <t>character</t>, <t>its</t> <code><c>ASCII</c></code> <t>value</t>.
 
@@ -2022,7 +2022,7 @@ else:
 
 <t>Is</t> <t>this</t> <t>an</t> <t>actual</t> <t>limitation</t> <t>in</t> <t>python</t>, <t>a</t> <t>gap</t> <t>in</t> <t>my</t> <t>understanding</t> <t>or</t> <t>both</t>?
 "
-817087|"<t>Call</t> <t>a</t> <t>function</t> <t>with</t> <t>argument</t> <t>list</t> <t>in</t> <t>python</t>"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>call</t> <t>a</t> <t>function</t> <t>inside</t> <t>another</t> <t>function</t> <t>in</t> <t>python</t>, <t>but</t> <t>can't</t> <t>find</t> <t>the</t> <t>right</t> <t>syntax</t>. <t>What I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>something</t> <t>like</t> <t>this</t>:
+817087|"<t>Call</t> <t>a</t> <t>function</t> <t>with</t> <t>argument</t> <t>list</t> <t>in</t> <t>python</t>"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>call</t> <t>a</t> <t>function</t> <t>inside</t> <t>another</t> <t>function</t> <t>in</t> <t>python</t>, <t>but</t> <t>can't</t> <t>find</t> <t>the</t> <t>right</t> <t>syntax</t>. <t>What</t> <t>I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>something</t> <t>like</t> <t>this</t>:
 
 <code><c>def</c> <c>wrapper(</c><c>func</c>, <c>args</c>):
     <c>func(</c><c>args</c>)
@@ -2038,7 +2038,7 @@ else:
 </code>
 
 <t>In</t> <t>this</t> <t>case</t> <t>first</t> <t>call</t> <t>will</t> <t>work</t>, <t>and</t> <t>second</t> <t>won't</t>.
-<t>What I</t> <t>want</t> <t>to</t> <t>modify</t> <t>is</t> <t>the</t> <t>wrapper</t> <t>function</t> <t>and</t> <t>not</t> <t>the</t> <t>called</t> <t>functions</t>.
+<t>What</t> <t>I</t> <t>want</t> <t>to</t> <t>modify</t> <t>is</t> <t>the</t> <t>wrapper</t> <t>function</t> <t>and</t> <t>not</t> <t>the</t> <t>called</t> <t>functions</t>.
 "
 842059|"<t>Is</t> <t>there</t> <t>a</t> <t>portable</t> <t>way</t> <t>to</t> <t>get</t> <t>the</t> <t>current</t> <t>username</t> <t>in</t> <t>Python</t>?"|"<t>Is</t> <t>there</t> <t>a</t> <t>portable</t> <t>way</t> <t>to</t> <t>get</t> <t>the</t> <t>current</t> <t>user's</t> <t>username</t> <t>in</t> <t>Python</t> (<t>i.e.,</t> <t>one</t> <t>that</t> <t>works</t> <t>under</t> <t>both</t> <t>Linux</t> <t>and</t> <t>Windows</t>, <t>at</t> <t>least</t>).  <t>It</t> <t>would</t> <t>work</t> <t>like</t> <code><c>os</c><c>.</c><c>getuid</c></code>:
 
@@ -2169,7 +2169,7 @@ else:
 }
 </code>
 
-<t>If I</t> <t>do</t>:
+<t>If</t> <t>I</t> <t>do</t>:
 
 <code><c>d</c> <c>=</c> <c>dict(</c>)
 <c>a</c> <c>=</c> ['<c>1</c>', '<c>2</c>']
@@ -2225,7 +2225,7 @@ else:
     <c>print</c> <c>j</c>
 </code>
 
-<t>When I</t> <t>try</t> <t>to</t> <t>convert</t> <t>it</t> <t>to</t> <t>string</t>, <t>it's</t> <t>showing</t> <t>an</t> <t>error</t> <t>like</t> <code><c>int</c></code> <t>doesn't</t> <t>have</t> <t>any</t> <t>attribute</t> <t>called</t> <code><c>str</c></code>.
+<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>convert</t> <t>it</t> <t>to</t> <t>string</t>, <t>it's</t> <t>showing</t> <t>an</t> <t>error</t> <t>like</t> <code><c>int</c></code> <t>doesn't</t> <t>have</t> <t>any</t> <t>attribute</t> <t>called</t> <code><c>str</c></code>.
 "
 973473|"<t>Getting</t> <t>a</t> <t>list</t> <t>of</t> <t>all</t> <t>subdirectories</t> <t>in</t> <t>the</t> <t>current</t> <t>directory</t>"|"<t>Is</t> <t>there</t> <t>a</t> <t>way</t> <t>to</t> <t>return</t> <t>a</t> <t>list</t> <t>of</t> <t>all</t> <t>the</t> <t>subdirectories</t> <t>in</t> <t>the</t> <t>current</t> <t>directory</t> <t>in</t> <t>Python</t>?
 
@@ -2337,7 +2337,7 @@ else:
 
 <t>I</t> <t>got</t>: <code><c>abcd</c></code>
 
-<t>Now I</t> <t>do</t> 
+<t>Now</t> <t>I</t> <t>do</t> 
 
 <code><c>url</c><c>.</c><c>rsplit(</c>'<c>.</c><c>com</c>', <c>1</c>)
 </code>
@@ -2354,13 +2354,13 @@ else:
 <code>['<c>hey</c>', '<c>you</c>', '<c>what</c>', '<c>are</c>', '<c>you</c>', '<c>doing</c>', '<c>here</c>']
 </code>
 
-<t>But Python's</t> <code><c>str</c><c>.</c><c>split(</c>)</code> <t>only</t> <t>works</t> <t>with</t> <t>one</t> <t>argument...</t> <t>So I</t> <t>have</t> <t>all</t> <t>words</t> <t>with</t> <t>the</t> <t>punctuation</t> <t>after</t> <t>I</t> <t>split</t> <t>with</t> <t>whitespace</t>. <t>Any</t> <t>ideas</t>?
+<t>But Python's</t> <code><c>str</c><c>.</c><c>split(</c>)</code> <t>only</t> <t>works</t> <t>with</t> <t>one</t> <t>argument...</t> <t>So</t> <t>I</t> <t>have</t> <t>all</t> <t>words</t> <t>with</t> <t>the</t> <t>punctuation</t> <t>after</t> <t>I</t> <t>split</t> <t>with</t> <t>whitespace</t>. <t>Any</t> <t>ideas</t>?
 "
 1093322|"<t>How</t> <t>do</t> <t>I</t> <t>check</t> <t>what</t> <t>version</t> <t>of</t> <t>Python</t> <t>is</t> <t>running</t> <t>my</t> <t>script</t>?"|"<t>How</t> <t>can</t> <t>I</t> <t>check</t> <t>what</t> <t>version</t> <t>of</t> <t>the</t> <t>Python Interpreter</t> <t>is</t> <t>interpreting</t> <t>my</t> <t>script</t>?
 "
 1098549|"<t>Proper</t> <t>way</t> <t>to</t> <t>use</t> <t>**kwargs</t> <t>in</t> <t>Python</t>"|"<t>What</t> <t>is</t> <t>the</t> <t>proper</t> <t>way</t> <t>to</t> <t>use</t> <code><c>**</c><c>kwargs</c></code> <t>in</t> <t>Python</t> <t>when</t> <t>it</t> <t>comes</t> <t>to</t> <t>default</t> <t>values</t>?
 
-<code><c>kwargs</c></code> <t>returns</t> <t>a</t> <t>dictionary</t>, <t>but</t> <t>what</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>set</t> <t>default</t> <t>values</t>, <t>or</t> <t>is</t> <t>there</t> <t>one</t>?  <t>Should I</t> <t>just</t> <t>access</t> <t>it</t> <t>as</t> <t>a</t> <t>dictionary</t>?  <t>Use</t> <t>get</t> <t>function</t>?  
+<code><c>kwargs</c></code> <t>returns</t> <t>a</t> <t>dictionary</t>, <t>but</t> <t>what</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>set</t> <t>default</t> <t>values</t>, <t>or</t> <t>is</t> <t>there</t> <t>one</t>?  <t>Should</t> <t>I</t> <t>just</t> <t>access</t> <t>it</t> <t>as</t> <t>a</t> <t>dictionary</t>?  <t>Use</t> <t>get</t> <t>function</t>?  
 
 <code><c>class</c> <c>ExampleClass</c>:
     <c>def</c> <c>__init__(</c><c>self</c>, <c>**</c><c>kwargs</c>):
@@ -2475,7 +2475,7 @@ else:
   <c>print</c> ""<c>hi</c>""
 </code>
 
-<t>When I</t> <t>run</t> <code><c>a</c><c>.</c><c>py</c></code>, <t>I</t> <t>get</t>:
+<t>When</t> <t>I</t> <t>run</t> <code><c>a</c><c>.</c><c>py</c></code>, <t>I</t> <t>get</t>:
 
 <code><c>AttributeError</c>: '<c>module</c>' <c>object</c> <c>has</c> <c>no</c> <c>attribute</c> '<c>hi</c>'
 </code>
@@ -2566,9 +2566,9 @@ else:
 1380860|"<t>Add Variables</t> <t>to</t> <t>Tuple</t>"|"<t>I</t> <t>am</t> <t>learning</t> <t>Python</t> <t>and</t> <t>creating</t> <t>a</t> <t>database</t> <t>connection</t>.
 <t>While</t> <t>trying</t> <t>to</t> <t>add</t> <t>to</t> <t>the</t> <t>DB</t>, <t>I</t> <t>am</t> <t>thinking</t> <t>of</t> <t>creating</t> <t>tuples</t> <t>out</t> <t>of</t> <t>information</t> <t>and</t> <t>then</t> <t>add</t> <t>them</t> <t>to</t> <t>the</t> <t>DB</t>. 
 
-<t>What I</t> <t>am</t> <t>Doing</t>:
+<t>What</t> <t>I</t> <t>am</t> <t>Doing</t>:
 <t>I</t> <t>am</t> <t>taking</t> <t>information</t> <t>from</t> <t>the</t> <t>user</t> <t>and</t> <t>store</t> <t>it</t> <t>in</t> <t>variables</t>. 
-<t>Can I</t> <t>add</t> <t>these</t> <t>variables</t> <t>into</t> <t>a</t> <t>tuple</t>?  <t>Can</t> <t>you</t> <t>please</t> <t>help</t> <t>me</t> <t>with</t> <t>the</t> <t>syntax</t>?
+<t>Can</t> <t>I</t> <t>add</t> <t>these</t> <t>variables</t> <t>into</t> <t>a</t> <t>tuple</t>?  <t>Can</t> <t>you</t> <t>please</t> <t>help</t> <t>me</t> <t>with</t> <t>the</t> <t>syntax</t>?
 
 <t>Also</t> <t>if</t> <t>there</t> <t>is</t> <t>an</t> <t>efficient</t> <t>way</t> <t>of</t> <t>doing</t> <t>this</t>, <t>please</t> <t>share...</t>
 
@@ -2598,7 +2598,7 @@ else:
 (<c>xb</c>, <c>yb</c>, <c>zb</c>)
 </code>
 
-<t>And I</t> <t>want</t> <t>to</t> <t>calculate</t> <t>the</t> <t>distance</t>:
+<t>And</t> <t>I</t> <t>want</t> <t>to</t> <t>calculate</t> <t>the</t> <t>distance</t>:
 
 <code><c>dist</c> <c>=</c> <c>sqrt(</c>(<c>xa-xb</c>)<c>^</c><c>2</c> <c>+</c> (<c>ya-yb</c>)<c>^</c><c>2</c> <c>+</c> (<c>za-zb</c>)<c>^</c><c>2</c>)
 </code>
@@ -2683,7 +2683,7 @@ else:
 
 <t>I</t> <t>compiled</t> <t>Python</t> <t>2.6.2</t> <t>and</t> <t>would</t> <t>like</t> <t>to</t> <t>use</t> <t>it</t> <t>with</t> <t>some</t> <t>virtualenv</t>. <t>Is</t> <t>it</t> <t>enough</t> <t>to</t> <t>overwrite</t> <t>the</t> <t>binary</t> <t>file</t>? <t>Or</t> <t>do</t> <t>I</t> <t>have</t> <t>to</t> <t>change</t> <t>something</t> <t>in</t> <t>respect</t> <t>to</t> <t>the</t> <t>libraries</t>?
 "
-1535327|"<t>How</t> <t>to</t> <t>print</t> <t>a</t> <t>class</t> <t>or</t> <t>objects</t> <t>of</t> <t>class</t> <t>using</t> <t>print</t>()?"|"<t>I</t> <t>am</t> <t>learning</t> <t>the</t> <t>ropes</t> <t>in</t> <t>Python</t>. <t>When I</t> <t>try</t> <t>to</t> <t>print</t> <t>an</t> <t>object</t> <t>of</t> <t>class</t> <code><c>Foobar</c></code> <t>using</t> <t>the</t> <code><c>print(</c>)</code> <t>function</t>, <t>I</t> <t>get</t> <t>an</t> <t>output</t> <t>like</t> <t>this</t>:
+1535327|"<t>How</t> <t>to</t> <t>print</t> <t>a</t> <t>class</t> <t>or</t> <t>objects</t> <t>of</t> <t>class</t> <t>using</t> <t>print</t>()?"|"<t>I</t> <t>am</t> <t>learning</t> <t>the</t> <t>ropes</t> <t>in</t> <t>Python</t>. <t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>print</t> <t>an</t> <t>object</t> <t>of</t> <t>class</t> <code><c>Foobar</c></code> <t>using</t> <t>the</t> <code><c>print(</c>)</code> <t>function</t>, <t>I</t> <t>get</t> <t>an</t> <t>output</t> <t>like</t> <t>this</t>:
 
 <code><c>&lt;</c><c>__main__</c><c>.</c><c>Foobar</c> <c>instance</c> <c>at</c> 0x7ff2a18c&gt;
 </code>
@@ -2780,7 +2780,7 @@ else:
 "
 1614236|"<t>In</t> <t>Python</t>, <t>how</t> <t>do</t> <t>I</t> <t>convert</t> <t>all</t> <t>of</t> <t>the</t> <t>items</t> <t>in</t> <t>a</t> <t>list</t> <t>to</t> <t>floats</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>script</t> <t>which</t> <t>reads</t> <t>a</t> <t>text</t> <t>file</t>, <t>pulls</t> <t>decimal</t> <t>numbers</t> <t>out</t> <t>of</t> <t>it</t> <t>as</t> <t>strings</t> <t>and</t> <t>places</t> <t>them</t> <t>into</t> <t>a</t> <t>list</t>.
 
-<t>So I</t> <t>have</t> <t>this</t> <t>list</t>: <code>['<c>0.49</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>']</code>
+<t>So</t> <t>I</t> <t>have</t> <t>this</t> <t>list</t>: <code>['<c>0.49</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>', '<c>0.55</c>', '<c>0.55</c>', '<c>0.54</c>']</code>
 
 <t>How</t> <t>do</t> <t>I</t> <t>convert</t> <t>each</t> <t>of</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>from</t> <t>a</t> <t>string</t> <t>to</t> <t>a</t> <t>float</t>?
 
@@ -2950,7 +2950,7 @@ else:
 
 <t>I</t> <t>know</t> <t>you</t> <t>can</t> <t>do</t> <t>an</t> <code><c>objects</c><c>.</c><c>filter</c></code> <t>on</t> <t>a</t> <t>table</t> <t>and</t> <t>pass</t> <t>in</t> <t>a</t> <code><c>**</c><c>kwargs</c></code> <t>argument</t>. <t>&nbsp;</t>
 
-<t>Can I</t> <t>also</t> <t>do</t> <t>this</t> <t>for</t> <t>specifying</t> <t>time</t> <t>deltas</t> <t>i.e.</t> <code><c>timedelta(</c><c>hours</c> <c>=</c> <c>time1</c>)</code>? 
+<t>Can</t> <t>I</t> <t>also</t> <t>do</t> <t>this</t> <t>for</t> <t>specifying</t> <t>time</t> <t>deltas</t> <t>i.e.</t> <code><c>timedelta(</c><c>hours</c> <c>=</c> <c>time1</c>)</code>? 
 
 <t>How</t> <t>exactly</t> <t>does</t> <t>it</t> <t>work</t>? <t>Is</t> <t>it</t> <t>classes</t> <t>as</t> '<t>unpacking</t>'? <t>Like</t> <code><c>a</c>,<c>b</c><c>=</c><c>1</c>,<c>2</c></code>?
 "
@@ -3037,7 +3037,7 @@ else:
 <c>print</c> <c>sys</c><c>.</c><c>argv</c>[<c>1</c>]
 </code>
 
-<t>If I</t> <t>execute</t> <t>my</t> <t>script</t> <t>by</t>:
+<t>If</t> <t>I</t> <t>execute</t> <t>my</t> <t>script</t> <t>by</t>:
 
 <code><c>python</c> <c>c:/..../blah.py</c> <c>argument</c>
 </code>
@@ -3065,14 +3065,14 @@ else:
 <code><c>os</c><c>.</c><c>path</c><c>.</c><c>join(</c>'<c>/home/build/test/sandboxes/</c>', <c>todaystr</c>, '<c>/new_sandbox/</c>')
 </code>
 
-<t>When I</t> <t>test</t> <t>this</t> <t>it</t> <t>only</t> <t>stores</t> <t>the</t> <code><c>/new_sandbox/</c></code> <t>part</t> <t>of</t> <t>the</t> <t>code</t>.
+<t>When</t> <t>I</t> <t>test</t> <t>this</t> <t>it</t> <t>only</t> <t>stores</t> <t>the</t> <code><c>/new_sandbox/</c></code> <t>part</t> <t>of</t> <t>the</t> <t>code</t>.
 "
 1952464|"<t>In</t> <t>Python</t>, <t>how</t> <t>do</t> <t>I</t> <t>determine</t> <t>if</t> <t>an</t> <t>object</t> <t>is</t> <t>iterable</t>?"|"<t>Is</t> <t>there</t> <t>a</t> <t>method</t> <t>like</t> <code><c>isiterable</c></code>? <t>The</t> <t>only</t> <t>solution</t> <t>I</t> <t>have</t> <t>found</t> <t>so</t> <t>far</t> <t>is</t> <t>to</t> <t>call</t>
 
 <code><c>hasattr(</c><c>myObj</c>, '<c>__iter__</c>')
 </code>
 
-<t>But I</t> <t>am</t> <t>not</t> <t>sure</t> <t>how</t> <t>fool-proof</t> <t>this</t> <t>is</t>.
+<t>But</t> <t>I</t> <t>am</t> <t>not</t> <t>sure</t> <t>how</t> <t>fool-proof</t> <t>this</t> <t>is</t>.
 "
 1995615|"<t>How</t> <t>can</t> <t>I</t> <t>format</t> <t>a</t> <t>decimal</t> <t>to</t> <t>always</t> <t>show</t> <t>2</t> <t>decimal</t> <t>places</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>display</t>:
 
@@ -3113,22 +3113,22 @@ else:
 
 <t>Thanks</t>
 "
-2084069|"<t>Create</t> <t>a</t> .<t>csv</t> <t>file</t> <t>with</t> <t>values</t> <t>from</t> <t>a</t> <t>Python</t> <t>list</t>"|"<t>I</t> <t>am</t> <t>trying</t> <t>to</t> <t>create</t> <t>a</t> .<t>csv</t> <t>file</t> <t>with</t> <t>the</t> <t>values</t> <t>from</t> <t>a</t> <t>Python</t> <t>list</t>. <t>When I</t> <t>print</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>they</t> <t>are</t> <t>all</t> <t>unicode</t> (?), <t>i.e.</t> <t>they</t> <t>look</t> <t>something</t> <t>like</t> <t>this</t> 
+2084069|"<t>Create</t> <t>a</t> .<t>csv</t> <t>file</t> <t>with</t> <t>values</t> <t>from</t> <t>a</t> <t>Python</t> <t>list</t>"|"<t>I</t> <t>am</t> <t>trying</t> <t>to</t> <t>create</t> <t>a</t> .<t>csv</t> <t>file</t> <t>with</t> <t>the</t> <t>values</t> <t>from</t> <t>a</t> <t>Python</t> <t>list</t>. <t>When</t> <t>I</t> <t>print</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>they</t> <t>are</t> <t>all</t> <t>unicode</t> (?), <t>i.e.</t> <t>they</t> <t>look</t> <t>something</t> <t>like</t> <t>this</t> 
 
 <code>[<c>u</c>'<c>value</c> <c>1</c>', <c>u</c>'<c>value</c> <c>2</c>', ...]
 </code>
 
-<t>If I</t> <t>iterate</t> <t>through</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>i.e.</t> <code><c>for</c> <c>v</c> <c>in</c> <c>mylist</c>: <c>print</c> <c>v</c></code> <t>they</t> <t>appear</t> <t>to</t> <t>be</t> <t>plain</t> <t>text</t>.
+<t>If</t> <t>I</t> <t>iterate</t> <t>through</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>i.e.</t> <code><c>for</c> <c>v</c> <c>in</c> <c>mylist</c>: <c>print</c> <c>v</c></code> <t>they</t> <t>appear</t> <t>to</t> <t>be</t> <t>plain</t> <t>text</t>.
 
-<t>And I</t> <t>can</t> <t>put</t> <t>a</t> <code>,</code> <t>between</t> <t>each</t> <t>with</t> <code><c>print</c> ','<c>.</c><c>join(</c><c>mylist</c>)</code>
+<t>And</t> <t>I</t> <t>can</t> <t>put</t> <t>a</t> <code>,</code> <t>between</t> <t>each</t> <t>with</t> <code><c>print</c> ','<c>.</c><c>join(</c><c>mylist</c>)</code>
 
-<t>And I</t> <t>can</t> <t>output</t> <t>to</t> <t>a</t> <t>file</t>, <t>i.e.</t> 
+<t>And</t> <t>I</t> <t>can</t> <t>output</t> <t>to</t> <t>a</t> <t>file</t>, <t>i.e.</t> 
 
 <code><c>myfile</c> <c>=</c> <c>open(</c>...)
 <c>print</c> <c>&gt;&gt;</c><c>myfile</c>, ','<c>.</c><c>join(</c><c>mylist</c>)
 </code>
 
-<t>But I</t> <t>want</t> <t>to</t> <t>output</t> <t>to</t> <t>a</t> <t>CSV</t> <t>and</t> <t>have</t> <t>delimiters</t> <t>around</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>e.g.</t>
+<t>But</t> <t>I</t> <t>want</t> <t>to</t> <t>output</t> <t>to</t> <t>a</t> <t>CSV</t> <t>and</t> <t>have</t> <t>delimiters</t> <t>around</t> <t>the</t> <t>values</t> <t>in</t> <t>the</t> <t>list</t> <t>e.g.</t>
 
 <code>""<c>value</c> <c>1</c>"", ""<c>value</c> <c>2</c>"", ... 
 </code>
@@ -3199,7 +3199,7 @@ else:
 /home/bodacydo/work/project/foo
 </c></code>
 
-<t>And I</t> <t>am</t> <t>in</t> <t>the</t> <t>directory</t>
+<t>And</t> <t>I</t> <t>am</t> <t>in</t> <t>the</t> <t>directory</t>
 
 <code><c>/home/bodacydo/work/project
 </c></code>
@@ -3221,7 +3221,7 @@ else:
 
 <t>I</t> <t>can't</t> <t>understand</t> <t>why</t> <t>python</t> <t>won't</t> <t>find</t> <code><c>.</c><c>/foo/tasks.py</c></code> <t>-</t> <t>it's</t> <t>there</t>.
 
-<t>If I</t> <t>do</t> <t>it</t> <t>from</t> <t>the</t> <t>Python</t> <t>shell</t>, <t>then</t> <t>it</t> <t>works</t>:
+<t>If</t> <t>I</t> <t>do</t> <t>it</t> <t>from</t> <t>the</t> <t>Python</t> <t>shell</t>, <t>then</t> <t>it</t> <t>works</t>:
 
 <code><c>python</c>
 <c>&gt;&gt;&gt;</c> <c>from</c> <c>foo</c><c>.</c><c>tasks</c> <c>import</c> <c>my_function</c>
@@ -3260,12 +3260,12 @@ else:
 <code><c>round(</c><c>2.3</c>) <c>=</c> <c>2.0</c> <c>and</c> <c>not</c> <c>3</c>, <c>what</c> <c>I</c> <c>would</c> <c>like</c>
 </code>
 
-<t>The I</t> <t>tried</t> <t>int(number</t> <t>+</t> <t>.5</t>) <t>but</t> <t>it</t> <t>round</t> <t>the</t> <t>number</t> <t>down</t> <t>again</t>! <t>Example</t>:
+<t>The</t> <t>I</t> <t>tried</t> <t>int(number</t> <t>+</t> <t>.5</t>) <t>but</t> <t>it</t> <t>round</t> <t>the</t> <t>number</t> <t>down</t> <t>again</t>! <t>Example</t>:
 
 <code><c>int(</c><c>2.3</c> <c>+</c> .5) = 2
 </code>
 
-<t>Then I</t> <t>tried</t> <t>round(number</t> <t>+</t> <t>.5</t>) <t>but</t> <t>it</t> <t>won't</t> <t>work</t> <t>in</t> <t>edge</t> <t>cases</t>. <t>Example</t>:
+<t>Then</t> <t>I</t> <t>tried</t> <t>round(number</t> <t>+</t> <t>.5</t>) <t>but</t> <t>it</t> <t>won't</t> <t>work</t> <t>in</t> <t>edge</t> <t>cases</t>. <t>Example</t>:
 
 <code><c>WAIT</c><c>!</c> <c>THIS</c> <c>WORKED</c><c>!</c>
 </code>
@@ -3279,7 +3279,7 @@ else:
 <c>self</c><c>.</c><c>response</c><c>.</c><c>out</c><c>.</c><c>write(</c><c>html</c>)
 </code>
 
-<t>But I</t> <t>get</t> <t>a</t> <code><c>UnicodeDecodeError</c></code>:
+<t>But</t> <t>I</t> <t>get</t> <t>a</t> <code><c>UnicodeDecodeError</c></code>:
 
 
 
@@ -3291,7 +3291,7 @@ else:
 <c>UnicodeDecodeError</c>: '<c>ascii</c>' <c>codec</c> <c>can</c>'<c>t</c> <c>decode</c> <c>byte</c> 0xa0 in position 2818: ordinal not in range(128)
 </code>
 
-<t>So I</t> <t>assume</t> <t>that</t> <t>means</t> <t>the</t> <t>HTML</t> <t>contains</t> <t>some</t> <t>wrongly-formed</t> <t>attempt</t> <t>at</t> <t>Unicode</t> <t>somewhere</t>. <t>Can I</t> <t>just</t> <t>drop</t> <t>whatever</t> <t>code</t> <t>bytes</t> <t>are</t> <t>causing</t> <t>the</t> <t>problem</t> <t>instead</t> <t>of</t> <t>getting</t> <t>an</t> <t>error</t>?
+<t>So</t> <t>I</t> <t>assume</t> <t>that</t> <t>means</t> <t>the</t> <t>HTML</t> <t>contains</t> <t>some</t> <t>wrongly-formed</t> <t>attempt</t> <t>at</t> <t>Unicode</t> <t>somewhere</t>. <t>Can</t> <t>I</t> <t>just</t> <t>drop</t> <t>whatever</t> <t>code</t> <t>bytes</t> <t>are</t> <t>causing</t> <t>the</t> <t>problem</t> <t>instead</t> <t>of</t> <t>getting</t> <t>an</t> <t>error</t>?
 "
 2395160|"<t>What</t> <t>is</t> <t>the</t> <t>correct</t> <t>syntax</t> <t>for</t> '<t>else</t> <t>if</t>'?"|"<t>I'm</t> <t>a</t> <t>new</t> <t>Python</t> <t>programmer</t> <t>who</t> <t>is</t> <t>making</t> <t>the</t> <t>leap</t> <t>from</t> <t>2.6.4</t> <t>to</t> <t>3.1.1.</t> <t>Everything</t> <t>has</t> <t>gone</t> <t>fine</t> <t>until</t> <t>I</t> <t>tried</t> <t>to</t> <t>use</t> <t>the</t> '<t>else</t> <t>if</t>' <t>statement</t>. <t>The</t> <t>interpreter</t> <t>gives</t> <t>me</t> <t>a</t> <t>syntax</t> <t>error</t> <t>after</t> <t>the</t> '<t>if</t>' <t>in</t> '<t>else</t> <t>if</t>' <t>for</t> <t>a</t> <t>reason</t> <t>I</t> <t>can't</t> <t>seem</t> <t>to</t> <t>figure</t> <t>out</t>.
 
@@ -3371,7 +3371,7 @@ $arrayToJs</c> <c>=</c> <c>array(</c>);
     <c>return</c> <c>render_to_response(</c>'<c>index</c><c>.</c><c>html</c>',<c>context_instance</c><c>=</c><c>RequestContext(</c><c>request</c>))
 </code>
 
-<t>I'm</t> <t>using</t> <t>simplejson</t> <t>to</t> <t>encode</t> <t>the</t> <t>Python</t> <t>list</t> (<t>so</t> <t>it</t> <t>will</t> <t>return</t> <t>a</t> <t>JSON</t> <t>array</t>). <t>I</t> <t>couldn't</t> <t>figure</t> <t>out</t> <t>the</t> <t>problem</t> <t>yet</t>. <t>But I</t> <t>think</t> <t>that</t> <t>I</t> <t>did</t> <t>something</t> <t>wrong</t> <t>about</t> <t>the</t> '<t>echo</t>'.
+<t>I'm</t> <t>using</t> <t>simplejson</t> <t>to</t> <t>encode</t> <t>the</t> <t>Python</t> <t>list</t> (<t>so</t> <t>it</t> <t>will</t> <t>return</t> <t>a</t> <t>JSON</t> <t>array</t>). <t>I</t> <t>couldn't</t> <t>figure</t> <t>out</t> <t>the</t> <t>problem</t> <t>yet</t>. <t>But</t> <t>I</t> <t>think</t> <t>that</t> <t>I</t> <t>did</t> <t>something</t> <t>wrong</t> <t>about</t> <t>the</t> '<t>echo</t>'.
 "
 2429511|"<t>Why</t> <t>do</t> <t>people</t> <t>write</t> <t>#</t>!<t>/usr/bin/env</t> <t>python</t> <t>on</t> <t>the</t> <t>first</t> <t>line</t> <t>of</t> <t>a</t> <t>Python</t> <t>script</t>?"|"<t>It</t> <t>seems</t> <t>to</t> <t>me</t> <t>like</t> <t>the</t> <t>files</t> <t>run</t> <t>the</t> <t>same</t> <t>without</t> <t>that</t> <t>line</t>.
 "
@@ -3460,7 +3460,7 @@ import</c> <c>subprocess</c>
 "
 2573135|"<t>Python</t> <t>progression</t> <t>path</t> <t>-</t> <t>From</t> <t>apprentice</t> <t>to</t> <t>guru</t>"|"<t>I've</t> <t>been</t> <t>learning</t>, <t>working</t>, <t>and</t> <t>playing</t> <t>with</t> <t>Python</t> <t>for</t> <t>a</t> <t>year</t> <t>and</t> <t>a</t> <t>half</t> <t>now</t>. <t>As</t> <t>a</t> <t>biologist</t> <t>slowly</t> <t>making</t> <t>the</t> <t>turn</t> <t>to</t> <t>bio-informatics</t>, <t>this</t> <t>language</t> <t>has</t> <t>been</t> <t>at</t> <t>the</t> <t>very</t> <t>core</t> <t>of</t> <t>all</t> <t>the</t> <t>major</t> <t>contributions</t> <t>I</t> <t>have</t> <t>made</t> <t>in</t> <t>the</t> <t>lab</t>. <t>I</t> <t>more</t> <t>or</t> <t>less</t> <t>fell</t> <t>in</t> <t>love</t> <t>with</t> <t>the</t> <t>way</t> <t>Python</t> <t>permits</t> <t>me</t> <t>to</t> <t>express</t> <t>beautiful</t> <t>solutions</t> <t>and</t> <t>also</t> <t>with</t> <t>the</t> <t>semantics</t> <t>of</t> <t>the</t> <t>language</t> <t>that</t> <t>allows</t> <t>such</t> <t>a</t> <t>natural</t> <t>flow</t> <t>from</t> <t>thoughts</t> <t>to</t> <t>workable</t> <t>code</t>.
 
-<t>What I</t> <t>would</t> <t>like</t> <t>to</t> <t>know</t> <t>is</t> <t>your</t> <t>answer</t> <t>to</t> <t>a</t> <t>kind</t> <t>of</t> <t>question</t> <t>I</t> <t>have</t> <t>seldom</t> <t>seen</t> <t>in</t> <t>this</t> <t>or</t> <t>other</t> <t>forums</t>. <t>This</t> <t>question</t> <t>seems</t> <t>central</t> <t>to</t> <t>me</t> <t>for</t> <t>anyone</t> <t>on</t> <t>the</t> <t>path</t> <t>to</t> <t>Python</t> <t>improvement</t> <t>but</t> <t>who</t> <t>wonders</t> <t>what</t> <t>his</t> <t>next</t> <t>steps</t> <t>should</t> <t>be</t>.
+<t>What</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>know</t> <t>is</t> <t>your</t> <t>answer</t> <t>to</t> <t>a</t> <t>kind</t> <t>of</t> <t>question</t> <t>I</t> <t>have</t> <t>seldom</t> <t>seen</t> <t>in</t> <t>this</t> <t>or</t> <t>other</t> <t>forums</t>. <t>This</t> <t>question</t> <t>seems</t> <t>central</t> <t>to</t> <t>me</t> <t>for</t> <t>anyone</t> <t>on</t> <t>the</t> <t>path</t> <t>to</t> <t>Python</t> <t>improvement</t> <t>but</t> <t>who</t> <t>wonders</t> <t>what</t> <t>his</t> <t>next</t> <t>steps</t> <t>should</t> <t>be</t>.
 
 <t>Let</t> <t>me</t> <t>sum</t> <t>up</t> <t>what</t> <t>I</t> <t>do</t> <t>NOT</t> <t>want</t> <t>to</t> <t>ask</t> <t>first</t> <t>;</t>)
 
@@ -3470,7 +3470,7 @@ import</c> <c>subprocess</c>
 <t>Finally</t>, <t>I</t> <t>don't</t> <t>want</t> <t>to</t> <t>know</t> <t>a</t> '<t>one</t> <t>trick</t> <t>that</t> <t>does</t> <t>it</t> <t>all</t>' <t>approach</t>.
 
 
-<t>What I</t> <t>do</t> <t>want</t> <t>to</t> <t>know</t> <t>your</t> <t>opinion</t> <t>about</t>, <t>is</t>:
+<t>What</t> <t>I</t> <t>do</t> <t>want</t> <t>to</t> <t>know</t> <t>your</t> <t>opinion</t> <t>about</t>, <t>is</t>:
 
 <t>What</t> <t>are</t> <t>the</t> <t>steps</t> <t>YOU</t> <t>would</t> <t>recommend</t> <t>to</t> <t>a</t> <t>Python</t> <t>journeyman</t>, <t>from</t> <t>apprenticeship</t> <t>to</t> <t>guru</t> <t>status</t> (<t>feel</t> <t>free</t> <t>to</t> <t>stop</t> <t>wherever</t> <t>your</t> <t>expertise</t> <t>dictates</t> <t>it</t>), <t>in</t> <t>order</t> <t>that</t> <t>one</t> <t>IMPROVES</t> <t>CONSTANTLY</t>, <t>becoming</t> <t>a</t> <t>better</t> <t>and</t> <t>better</t> <t>Python</t> <t>coder</t>, <t>one</t> <t>step</t> <t>at</t> <t>a</t> <t>time</t>. <t>Some</t> <t>of</t> <t>the</t> <t>people</t> <t>on</t> <t>SO</t> <t>almost</t> <t>seem</t> <t>worthy</t> <t>of</t> <t>worship</t> <t>for</t> <t>their</t> <t>Python</t> <t>prowess</t>, <t>please</t> <t>enlighten</t> <t>us</t> :)
 
@@ -3525,7 +3525,7 @@ import</c> <c>subprocess</c>
 <code><c>number</c><c>+</c><c>+</c>
 </code>
 
-<t>To</t> <t>my</t> <t>surprise</t>, <t>I</t> <t>can't</t> <t>find</t> <t>anything</t> <t>about</t> <t>this</t> <t>in</t> <t>the</t> <t>Python</t> <t>docs</t>. <t>Must I</t> <t>really</t> <t>subject</t> <t>myself</t> <t>to</t> <code><c>number</c> <c>=</c> <c>number</c> <c>+</c> <c>1</c></code>? <t>Don't</t> <t>people</t> <t>use</t> <t>the</t> <code><c>+</c><c>+</c><c>/--</c></code> <t>notation</t>?
+<t>To</t> <t>my</t> <t>surprise</t>, <t>I</t> <t>can't</t> <t>find</t> <t>anything</t> <t>about</t> <t>this</t> <t>in</t> <t>the</t> <t>Python</t> <t>docs</t>. <t>Must</t> <t>I</t> <t>really</t> <t>subject</t> <t>myself</t> <t>to</t> <code><c>number</c> <c>=</c> <c>number</c> <c>+</c> <c>1</c></code>? <t>Don't</t> <t>people</t> <t>use</t> <t>the</t> <code><c>+</c><c>+</c><c>/--</c></code> <t>notation</t>?
 "
 2682745|"<t>How</t> <t>do</t> <t>I</t> <t>create</t> <t>a</t> <t>constant</t> <t>in</t> <t>Python</t>?"|"<t>Is</t> <t>there</t> <t>a</t> <t>way</t> <t>to</t> <t>declare</t> <t>a</t> <t>constant</t> <t>in</t> <t>Python</t>? <t>In Java</t> <t>we</t> <t>can</t> <t>create</t> <t>constant</t> <t>values</t> <t>in</t> <t>this</t> <t>manner</t>:
 
@@ -3534,7 +3534,7 @@ import</c> <c>subprocess</c>
 
 <t>What</t> <t>is</t> <t>the</t> <t>equivalent</t> <t>of</t> <t>the</t> <t>above</t> <t>Java</t> <t>constant</t> <t>declaration</t> <t>in</t> <t>Python</t>?
 "
-2709821|"<t>What</t> <t>is</t> <t>the</t> <t>purpose</t> <t>of</t> <t>self</t>?"|"<t>What</t> <t>is</t> <t>the</t> <t>purpose</t> <t>of</t> <t>the</t> <code><c>self</c></code> <t>word</t> <t>in</t> <t>Python</t>? <t>I</t> <t>understand</t> <t>it</t> <t>refers</t> <t>to</t> <t>the</t> <t>specific</t> <t>object</t> <t>created</t> <t>from</t> <t>that</t> <t>class</t>, <t>but</t> <t>I</t> <t>can't</t> <t>see</t> <t>why</t> <t>it</t> <t>explicitly</t> <t>needs</t> <t>to</t> <t>be</t> <t>added</t> <t>to</t> <t>every</t> <t>function</t> <t>as</t> <t>a</t> <t>parameter</t>. <t>To</t> <t>illustrate</t>, <t>in</t> <t>Ruby I</t> <t>can</t> <t>do</t> <t>this</t>:
+2709821|"<t>What</t> <t>is</t> <t>the</t> <t>purpose</t> <t>of</t> <t>self</t>?"|"<t>What</t> <t>is</t> <t>the</t> <t>purpose</t> <t>of</t> <t>the</t> <code><c>self</c></code> <t>word</t> <t>in</t> <t>Python</t>? <t>I</t> <t>understand</t> <t>it</t> <t>refers</t> <t>to</t> <t>the</t> <t>specific</t> <t>object</t> <t>created</t> <t>from</t> <t>that</t> <t>class</t>, <t>but</t> <t>I</t> <t>can't</t> <t>see</t> <t>why</t> <t>it</t> <t>explicitly</t> <t>needs</t> <t>to</t> <t>be</t> <t>added</t> <t>to</t> <t>every</t> <t>function</t> <t>as</t> <t>a</t> <t>parameter</t>. <t>To</t> <t>illustrate</t>, <t>in</t> <t>Ruby</t> <t>I</t> <t>can</t> <t>do</t> <t>this</t>:
 
 <code><c>class</c> <c>myClass</c>
     <c>def</c> <c>myFunc(</c><c>name</c>)
@@ -3543,7 +3543,7 @@ import</c> <c>subprocess</c>
 <c>end</c>
 </code>
 
-<t>Which I</t> <t>understand</t>, <t>quite</t> <t>easily</t>. <t>However</t> <t>in</t> <t>Python I</t> <t>need</t> <t>to</t> <t>include</t> <code><c>self</c></code>:
+<t>Which</t> <t>I</t> <t>understand</t>, <t>quite</t> <t>easily</t>. <t>However</t> <t>in</t> <t>Python</t> <t>I</t> <t>need</t> <t>to</t> <t>include</t> <code><c>self</c></code>:
 
 <code><c>class</c> <c>myClass</c>:
     <c>def</c> <c>myFunc(</c><c>self</c>, <c>name</c>):
@@ -3579,7 +3579,7 @@ import</c> <c>subprocess</c>
 "
 2759067|"<t>Rename</t> <t>multiple</t> <t>files</t> <t>in</t> <t>a</t> <t>directory</t> <t>in</t> <t>Python</t>"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>rename</t> <t>some</t> <t>files</t> <t>in</t> <t>a</t> <t>directory</t> <t>using</t> <t>Python</t>.
 
-<t>Say I</t> <t>have</t> <t>a</t> <t>file</t> <t>called</t> <code><c>CHEESE_CHEESE_TYPE</c><c>.</c><c>**</c><c>*</c></code> <t>and</t> <t>want</t> <t>to</t> <t>remove</t> <code><c>CHEESE_</c></code> <t>so</t> <t>my</t> <t>resulting</t> <t>filename</t> <t>would</t> <t>be</t> <code><c>CHEESE_TYPE</c></code>
+<t>Say</t> <t>I</t> <t>have</t> <t>a</t> <t>file</t> <t>called</t> <code><c>CHEESE_CHEESE_TYPE</c><c>.</c><c>**</c><c>*</c></code> <t>and</t> <t>want</t> <t>to</t> <t>remove</t> <code><c>CHEESE_</c></code> <t>so</t> <t>my</t> <t>resulting</t> <t>filename</t> <t>would</t> <t>be</t> <code><c>CHEESE_TYPE</c></code>
 
 <t>I'm</t> <t>trying</t> <t>to</t> <t>use</t> <t>the</t> <code><c>os</c><c>.</c><c>path</c><c>.</c><c>split</c></code> <t>but</t> <t>it's</t> <t>not</t> <t>working</t> <t>properly</t>. <t>I</t> <t>have</t> <t>also</t> <t>considered</t> <t>using</t> <t>string</t> <t>manipulations</t>, <t>but</t> <t>have</t> <t>not</t> <t>been</t> <t>successful</t> <t>with</t> <t>that</t> <t>either</t>.
 "
@@ -3622,7 +3622,7 @@ import</c> <c>subprocess</c>
 <c>ValueError</c>: <c>list</c><c>.</c><c>index(</c><c>x</c>): <c>x</c> <c>not</c> <c>in</c> <c>list</c>
 </code>
 
-<t>So I</t> <t>have</t> <t>to</t> <t>do</t> <t>this</t>:
+<t>So</t> <t>I</t> <t>have</t> <t>to</t> <t>do</t> <t>this</t>:
 
 <code><c>a</c><c>=</c>[<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>]
 <c>try</c>:
@@ -3652,7 +3652,7 @@ import</c> <c>subprocess</c>
     <c>count</c> <c>=</c> <c>N</c> <c>+</c> <c>1</c>
 </code>
 
-<t>Is</t> <t>there</t> <t>a</t> <t>simpler</t> <t>way</t> <t>of</t> <t>writing</t> <t>this</t>? <t>I</t> <t>mean</t>, <t>in</t> <t>Objective-C I</t> <t>would</t> <t>write</t> <t>this</t> <t>as</t>:
+<t>Is</t> <t>there</t> <t>a</t> <t>simpler</t> <t>way</t> <t>of</t> <t>writing</t> <t>this</t>? <t>I</t> <t>mean</t>, <t>in</t> <t>Objective-C</t> <t>I</t> <t>would</t> <t>write</t> <t>this</t> <t>as</t>:
 
 <code><c>count</c> <c>=</c> <c>count</c> <c>==</c> <c>N</c> <c>?</c> <c>0</c> : <c>count</c> <c>+</c> <c>1</c>;
 </code>
@@ -3670,7 +3670,7 @@ import</c> <c>subprocess</c>
 <code><c>pip</c> <c>install</c> <c>dulwich</c>
 </code>
 
-<t>But I</t> <t>get</t> <t>a</t> <t>cryptic</t> <t>error</t> <t>message</t>:
+<t>But</t> <t>I</t> <t>get</t> <t>a</t> <t>cryptic</t> <t>error</t> <t>message</t>:
 
 <code><c>error</c>: <c>Unable</c> <c>to</c> <c>find</c> <c>vcvarsall</c><c>.</c><c>bat</c>
 </code>
@@ -3750,7 +3750,7 @@ import</c> <c>subprocess</c>
 <t>Django</t> <t>1.2.1</t>
 <t>MySQL</t> <t>5.1.47</t> <t>osx10</t>.<t>6</t> <t>64bit</t>
 
-<t>I</t> <t>create</t> <t>a</t> <t>virtualenvwrapper</t> <t>with</t> <t>--no-site-packages</t>, <t>then</t> <t>installed</t> <t>Django</t>. <t>When I</t> <t>activate</t> <t>the</t> <t>virtualenv</t> <t>and</t> <t>run</t> <t>python</t> <t>manage</t>.<t>py</t> <t>syncdb</t>, <t>I</t> <t>get</t> <t>this</t> <t>error</t>:
+<t>I</t> <t>create</t> <t>a</t> <t>virtualenvwrapper</t> <t>with</t> <t>--no-site-packages</t>, <t>then</t> <t>installed</t> <t>Django</t>. <t>When</t> <t>I</t> <t>activate</t> <t>the</t> <t>virtualenv</t> <t>and</t> <t>run</t> <t>python</t> <t>manage</t>.<t>py</t> <t>syncdb</t>, <t>I</t> <t>get</t> <t>this</t> <t>error</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
 <c>File</c> ""<c>manage</c><c>.</c><c>py</c>"", <c>line</c> <c>11</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
@@ -3812,7 +3812,7 @@ import</c> <c>subprocess</c>
 
 <t>What</t> <t>is</t> <t>the</t> <t>explanation</t>?
 "
-2960772|"<t>Putting</t> <t>a</t> <t>variable</t> <t>inside</t> <t>a</t> <t>string</t> (<t>python</t>)"|"<t>Hi I</t> <t>am</t> <t>quite</t> <t>new</t> <t>to</t> <t>python</t> <t>and</t> <t>this</t> <t>is</t> <t>probably</t> <t>quite</t> <t>a</t> <t>basic</t> <t>question</t> <t>but</t> <t>the</t> <t>help</t> <t>would</t> <t>be</t> <t>much</t> <t>appreciated</t>.
+2960772|"<t>Putting</t> <t>a</t> <t>variable</t> <t>inside</t> <t>a</t> <t>string</t> (<t>python</t>)"|"<t>Hi</t> <t>I</t> <t>am</t> <t>quite</t> <t>new</t> <t>to</t> <t>python</t> <t>and</t> <t>this</t> <t>is</t> <t>probably</t> <t>quite</t> <t>a</t> <t>basic</t> <t>question</t> <t>but</t> <t>the</t> <t>help</t> <t>would</t> <t>be</t> <t>much</t> <t>appreciated</t>.
 
 <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>put</t> <t>an</t> <t>int</t> <t>within</t> <t>a</t> <t>string</t>. <t>This</t> <t>is</t> <t>what</t> <t>I</t> <t>am</t> <t>doing</t> <t>at</t> <t>the</t> <t>moment..</t>
 
@@ -3857,7 +3857,7 @@ import</c> <c>subprocess</c>
 <t>Code</t> <t>readability</t> <t>-</t> <t>which</t> <t>one</t> <t>is</t> <t>the</t> <t>standard</t> <t>convention</t>.
 
 "
-2988017|"<t>String</t> <t>comparison</t> <t>in</t> <t>Python</t>: <t>is</t> <t>vs</t>. <t>==</t>"|"<t>I</t> <t>noticed</t> <t>a</t> <t>Python</t> <t>script</t> <t>I</t> <t>was</t> <t>writing</t> <t>was</t> <t>acting</t> <t>squirrelly</t>, <t>and</t> <t>traced</t> <t>it</t> <t>to</t> <t>an</t> <t>infinite</t> <t>loop</t>, <t>where</t> <t>the</t> <t>loop</t> <t>condition</t> <t>was</t> <code><c>while</c> <c>line</c> <c>is</c> <c>not</c> ''</code>. <t>Running</t> <t>through</t> <t>it</t> <t>in</t> <t>the</t> <t>debugger</t>, <t>it</t> <t>turned</t> <t>out</t> <t>that</t> <t>line</t> <t>was</t> <t>in</t> <t>fact</t> <code>''</code>. <t>When I</t> <t>changed</t> <t>it</t> <t>to</t> <code><c>!=</c>''</code> <t>rather</t> <t>than</t> <code><c>is</c> <c>not</c> ''</code>, <t>it</t> <t>worked</t> <t>fine</t>. 
+2988017|"<t>String</t> <t>comparison</t> <t>in</t> <t>Python</t>: <t>is</t> <t>vs</t>. <t>==</t>"|"<t>I</t> <t>noticed</t> <t>a</t> <t>Python</t> <t>script</t> <t>I</t> <t>was</t> <t>writing</t> <t>was</t> <t>acting</t> <t>squirrelly</t>, <t>and</t> <t>traced</t> <t>it</t> <t>to</t> <t>an</t> <t>infinite</t> <t>loop</t>, <t>where</t> <t>the</t> <t>loop</t> <t>condition</t> <t>was</t> <code><c>while</c> <c>line</c> <c>is</c> <c>not</c> ''</code>. <t>Running</t> <t>through</t> <t>it</t> <t>in</t> <t>the</t> <t>debugger</t>, <t>it</t> <t>turned</t> <t>out</t> <t>that</t> <t>line</t> <t>was</t> <t>in</t> <t>fact</t> <code>''</code>. <t>When</t> <t>I</t> <t>changed</t> <t>it</t> <t>to</t> <code><c>!=</c>''</code> <t>rather</t> <t>than</t> <code><c>is</c> <c>not</c> ''</code>, <t>it</t> <t>worked</t> <t>fine</t>. 
 
 <t>Also</t>, <t>is</t> <t>it</t> <t>generally</t> <t>considered</t> <t>better</t> <t>to</t> <t>just</t> <t>use</t> '<t>==</t>' <t>by</t> <t>default</t>, <t>even</t> <t>when</t> <t>comparing</t> <t>int</t> <t>or</t> <t>Boolean</t> <t>values</t>? <t>I've</t> <t>always</t> <t>liked</t> <t>to</t> <t>use</t> '<t>is</t>' <t>because</t> <t>I</t> <t>find</t> <t>it</t> <t>more</t> <t>aesthetically</t> <t>pleasing</t> <t>and</t> <t>pythonic</t> (<t>which</t> <t>is</t> <t>how</t> <t>I</t> <t>fell</t> <t>into</t> <t>this</t> <t>trap...),</t> <t>but</t> <t>I</t> <t>wonder</t> <t>if</t> <t>it's</t> <t>intended</t> <t>to</t> <t>just</t> <t>be</t> <t>reserved</t> <t>for</t> <t>when</t> <t>you</t> <t>care</t> <t>about</t> <t>finding</t> <t>two</t> <t>objects</t> <t>with</t> <t>the</t> <t>same</t> <t>id</t>.
 "
@@ -3877,7 +3877,7 @@ import</c> <c>subprocess</c>
 
 <t>It's</t> <t>more</t> <t>readable</t>, <t>and</t> <t>if</t> <t>needed</t> <t>for</t> <t>performance</t> <t>the</t> <t>lambda</t> <t>could</t> <t>be</t> <t>taken</t> <t>out</t> <t>to</t> <t>gain</t> <t>something</t>.  
 
-<t>Question</t> <t>is</t>: <t>are</t> <t>there</t> <t>any</t> <t>caveats</t> <t>in</t> <t>using</t> <t>the</t> <t>second</t> <t>way</t>? <t>Any</t> <t>performance</t> <t>difference</t>? <t>Am I</t> <t>missing</t> <t>the</t> <t>Pythonic</t> <t>Way™</t> <t>entirely</t> <t>and</t> <t>should</t> <t>do</t> <t>it</t> <t>in</t> <t>yet</t> <t>another</t> <t>way</t> (<t>such</t> <t>as</t> <t>using</t> <t>itemgetter</t> <t>instead</t> <t>of</t> <t>the</t> <t>lambda</t>)?
+<t>Question</t> <t>is</t>: <t>are</t> <t>there</t> <t>any</t> <t>caveats</t> <t>in</t> <t>using</t> <t>the</t> <t>second</t> <t>way</t>? <t>Any</t> <t>performance</t> <t>difference</t>? <t>Am</t> <t>I</t> <t>missing</t> <t>the</t> <t>Pythonic</t> <t>Way™</t> <t>entirely</t> <t>and</t> <t>should</t> <t>do</t> <t>it</t> <t>in</t> <t>yet</t> <t>another</t> <t>way</t> (<t>such</t> <t>as</t> <t>using</t> <t>itemgetter</t> <t>instead</t> <t>of</t> <t>the</t> <t>lambda</t>)?
 "
 3061761|"<t>Numpy</t> <t>array</t> <t>dimensions</t>"|"<t>I'm</t> <t>currently</t> <t>trying</t> <t>to</t> <t>learn</t> <t>Numpy</t> <t>and</t> <t>Python</t>. <t>Given</t> <t>the</t> <t>following</t> <t>array</t>:
 
@@ -3902,9 +3902,9 @@ import</c> <c>subprocess</c>
 <c>data</c> <c>=</c> [(<c>1</c>,<c>2</c>,<c>3</c>), (<c>4</c>,<c>5</c>,<c>6</c>), (<c>7</c>,<c>8</c>,<c>9</c>)]
 </code>
 
-<t>And I</t> <t>want</t> <t>to</t> <t>sort</t> <t>by</t> <t>the</t> <t>2nd</t> <t>element</t> <t>in</t> <t>the</t> <t>subset</t>. <t>Meaning</t>, <t>sorting</t> <t>by</t> <t>2</t>,<t>5</t>,<t>8</t> <t>where</t> <t>2</t> <t>is</t> <t>from</t> (<t>1</t>,<t>2</t>,<t>3</t>), <t>5</t> <t>is</t> <t>from</t> (<t>4</t>,<t>5</t>,<t>6</t>). <t>What</t> <t>is</t> <t>the</t> <t>common</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t>? <t>Should I</t> <t>store</t> <t>tuples</t> <t>or</t> <t>lists</t> <t>in</t> <t>my</t> <t>list</t>? <t>Since</t> <t>tuples</t> <t>are</t> <t>more</t> <t>inflexible</t>.
+<t>And</t> <t>I</t> <t>want</t> <t>to</t> <t>sort</t> <t>by</t> <t>the</t> <t>2nd</t> <t>element</t> <t>in</t> <t>the</t> <t>subset</t>. <t>Meaning</t>, <t>sorting</t> <t>by</t> <t>2</t>,<t>5</t>,<t>8</t> <t>where</t> <t>2</t> <t>is</t> <t>from</t> (<t>1</t>,<t>2</t>,<t>3</t>), <t>5</t> <t>is</t> <t>from</t> (<t>4</t>,<t>5</t>,<t>6</t>). <t>What</t> <t>is</t> <t>the</t> <t>common</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t>? <t>Should</t> <t>I</t> <t>store</t> <t>tuples</t> <t>or</t> <t>lists</t> <t>in</t> <t>my</t> <t>list</t>? <t>Since</t> <t>tuples</t> <t>are</t> <t>more</t> <t>inflexible</t>.
 "
-3199171|"<t>append</t> <t>multiple</t> <t>values</t> <t>for</t> <t>one</t> <t>key</t> <t>in</t> <t>Python</t> <t>dictionary</t>"|"<t>I</t> <t>am</t> <t>new</t> <t>to</t> <t>python</t> <t>and</t> <t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>years</t> <t>and</t> <t>values</t> <t>for</t> <t>each</t> <t>year</t>. <t>What I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>check</t> <t>if</t> <t>the</t> <t>year</t> <t>already</t> <t>exists</t> <t>in</t> <t>a</t> <t>dictionary</t> <t>and</t> <t>if</t> <t>it</t> <t>does</t>, <t>append</t> <t>the</t> <t>value</t> <t>to</t> <t>that</t> <t>list</t> <t>of</t> <t>values</t> <t>for</t> <t>the</t> <t>specific</t> <t>key</t>.
+3199171|"<t>append</t> <t>multiple</t> <t>values</t> <t>for</t> <t>one</t> <t>key</t> <t>in</t> <t>Python</t> <t>dictionary</t>"|"<t>I</t> <t>am</t> <t>new</t> <t>to</t> <t>python</t> <t>and</t> <t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>years</t> <t>and</t> <t>values</t> <t>for</t> <t>each</t> <t>year</t>. <t>What</t> <t>I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>check</t> <t>if</t> <t>the</t> <t>year</t> <t>already</t> <t>exists</t> <t>in</t> <t>a</t> <t>dictionary</t> <t>and</t> <t>if</t> <t>it</t> <t>does</t>, <t>append</t> <t>the</t> <t>value</t> <t>to</t> <t>that</t> <t>list</t> <t>of</t> <t>values</t> <t>for</t> <t>the</t> <t>specific</t> <t>key</t>.
 
 <t>So</t> <t>for</t> <t>instance</t>, <t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>years</t> <t>and</t> <t>have</t> <t>one</t> <t>value</t> <t>for</t> <t>each</t> <t>year</t>:
 
@@ -3918,7 +3918,7 @@ import</c> <c>subprocess</c>
 <c>7</c>  
 </code>
 
-<t>What I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>populate</t> <t>a</t> <t>dictionary</t> <t>with</t> <t>the</t> <t>years</t> <t>as</t> <t>keys</t> <t>and</t> <t>those</t> <t>single</t> <t>digit</t> <t>numbers</t> <t>as</t> <t>values</t>. <t>However</t>, <t>if</t> <t>I</t> <t>have</t> <t>2009</t> <t>listed</t> <t>twice</t>, <t>I</t> <t>want</t> <t>to</t> <t>append</t> <t>that</t> <t>second</t> <t>value</t> <t>to</t> <t>my</t> <t>list</t> <t>of</t> <t>values</t> <t>in</t> <t>that</t> <t>dictionary</t>, <t>so</t> <t>I</t> <t>want</t>:  
+<t>What</t> <t>I</t> <t>want</t> <t>to</t> <t>do</t> <t>is</t> <t>populate</t> <t>a</t> <t>dictionary</t> <t>with</t> <t>the</t> <t>years</t> <t>as</t> <t>keys</t> <t>and</t> <t>those</t> <t>single</t> <t>digit</t> <t>numbers</t> <t>as</t> <t>values</t>. <t>However</t>, <t>if</t> <t>I</t> <t>have</t> <t>2009</t> <t>listed</t> <t>twice</t>, <t>I</t> <t>want</t> <t>to</t> <t>append</t> <t>that</t> <t>second</t> <t>value</t> <t>to</t> <t>my</t> <t>list</t> <t>of</t> <t>values</t> <t>in</t> <t>that</t> <t>dictionary</t>, <t>so</t> <t>I</t> <t>want</t>:  
 
 <code><c>2010</c>: <c>2</c>  
 <c>2009</c>: <c>4</c>, <c>7</c>  
@@ -3987,7 +3987,7 @@ import</c> <c>subprocess</c>
     <c>print</c> <c>key</c>, '<c>corresponds</c> <c>to</c>', <c>d</c>[<c>key</c>]
 </code>
 
-<t>What I</t> <t>don't</t> <t>understand</t> <t>is</t> <t>the</t> <code><c>key</c></code> <t>portion</t>. <t>How</t> <t>does</t> <t>Python</t> <t>recognize</t> <t>that</t> <t>it</t> <t>needs</t> <t>only</t> <t>to</t> <t>read</t> <t>the</t> <t>key</t> <t>from</t> <t>the</t> <t>dictionary</t>? <t>Is</t> <code><c>key</c></code> <t>a</t> <t>special</t> <t>word</t> <t>in</t> <t>Python</t>? <t>Or</t> <t>is</t> <t>it</t> <t>simply</t> <t>a</t> <t>variable</t>?
+<t>What</t> <t>I</t> <t>don't</t> <t>understand</t> <t>is</t> <t>the</t> <code><c>key</c></code> <t>portion</t>. <t>How</t> <t>does</t> <t>Python</t> <t>recognize</t> <t>that</t> <t>it</t> <t>needs</t> <t>only</t> <t>to</t> <t>read</t> <t>the</t> <t>key</t> <t>from</t> <t>the</t> <t>dictionary</t>? <t>Is</t> <code><c>key</c></code> <t>a</t> <t>special</t> <t>word</t> <t>in</t> <t>Python</t>? <t>Or</t> <t>is</t> <t>it</t> <t>simply</t> <t>a</t> <t>variable</t>?
 "
 3345202|"<t>Getting</t> <t>user</t> <t>input</t>"|"<t>I</t> <t>am</t> <t>running</t> <t>this</t>:
 
@@ -3998,7 +3998,7 @@ import</c> <c>subprocess</c>
     <c>print</c> <c>row</c>
 </code>
 
-<t>And I</t> <t>get</t> <t>this</t> <t>in</t> <t>response</t>:
+<t>And</t> <t>I</t> <t>get</t> <t>this</t> <t>in</t> <t>response</t>:
 
 <code>['<c>import</c> <c>csv</c>']
 ['<c>import</c> <c>sys</c>']
@@ -4025,7 +4025,7 @@ import</c> <c>subprocess</c>
 
 <t>What</t> <t>is</t> <t>the</t> <t>safest</t> <t>way</t> <t>to</t> <t>get</t> <t>an</t> <t>integer</t> <t>out</t> <t>of</t> <t>this</t> <t>float</t>, <t>without</t> <t>running</t> <t>the</t> <t>risk</t> <t>of</t> <t>rounding</t> <t>errors</t> (<t>for</t> <t>example</t> <t>if</t> <t>the</t> <t>float</t> <t>is</t> <t>the</t> <t>equivalent</t> <t>of</t> <t>1.99999</t>) <t>or</t> <t>perhaps</t> <t>I</t> <t>should</t> <t>use</t> <t>another</t> <t>function</t> <t>altogether</t>?
 "
-3394835|"<t>*args</t> <t>and</t> <t>**kwargs</t>?"|"<t>So I</t> <t>have</t> <t>difficulty</t> <t>with</t> <t>the</t> <t>concept</t> <t>of</t> <t>*args</t> <t>and</t> <t>**kwargs</t>.
+3394835|"<t>*args</t> <t>and</t> <t>**kwargs</t>?"|"<t>So</t> <t>I</t> <t>have</t> <t>difficulty</t> <t>with</t> <t>the</t> <t>concept</t> <t>of</t> <t>*args</t> <t>and</t> <t>**kwargs</t>.
 
 <t>So</t> <t>far</t> <t>I</t> <t>have</t> <t>learned</t> <t>that</t>:
 
@@ -4048,7 +4048,7 @@ import</c> <c>subprocess</c>
 
 <t>Is</t> <code><c>*</c><c>args</c></code> <t>and</t> <code><c>**</c><c>kwargs</c></code> <t>just</t> <t>a</t> <t>placeholder</t> <t>or</t> <t>do</t> <t>you</t> <t>use</t> <t>exactly</t> <code><c>*</c><c>args</c></code> <t>and</t> <code><c>**</c><c>kwargs</c></code> <t>in</t> <t>the</t> <t>code</t>?
 "
-3402168|"<t>Permanently</t> <t>add</t> <t>a</t> <t>directory</t> <t>to</t> <t>PYTHONPATH</t>"|"<t>Whenever I</t> <t>use</t> <code><c>sys</c><c>.</c><c>path</c><c>.</c><c>append</c></code>, <t>the</t> <t>new</t> <t>directory</t> <t>will</t> <t>be</t> <t>added</t>. <t>However</t>, <t>once</t> <t>I</t> <t>close</t> <t>python</t>, <t>the</t> <t>list</t> <t>will</t> <t>revert</t> <t>to</t> <t>the</t> <t>previous</t> (<t>default</t>?) <t>values</t>. <t>How</t> <t>do</t> <t>I</t> <t>permanently</t> <t>add</t> <t>a</t> <t>directory</t> <t>to</t> <t>PYTHONPATH</t>?
+3402168|"<t>Permanently</t> <t>add</t> <t>a</t> <t>directory</t> <t>to</t> <t>PYTHONPATH</t>"|"<t>Whenever</t> <t>I</t> <t>use</t> <code><c>sys</c><c>.</c><c>path</c><c>.</c><c>append</c></code>, <t>the</t> <t>new</t> <t>directory</t> <t>will</t> <t>be</t> <t>added</t>. <t>However</t>, <t>once</t> <t>I</t> <t>close</t> <t>python</t>, <t>the</t> <t>list</t> <t>will</t> <t>revert</t> <t>to</t> <t>the</t> <t>previous</t> (<t>default</t>?) <t>values</t>. <t>How</t> <t>do</t> <t>I</t> <t>permanently</t> <t>add</t> <t>a</t> <t>directory</t> <t>to</t> <t>PYTHONPATH</t>?
 "
 3437059|"<t>Does Python</t> <t>have</t> <t>a</t> <t>string</t> '<t>contains</t>' <t>substring</t> <t>method</t>?"|"<t>I'm</t> <t>looking</t> <t>for</t> <t>a</t> <code><c>string</c><c>.</c><c>contains</c></code> <t>or</t> <code><c>string</c><c>.</c><c>indexof</c></code> <t>method</t> <t>in</t> <t>Python</t>.
 
@@ -4127,7 +4127,7 @@ import</c> <c>subprocess</c>
 
 <t>Anyone</t> <t>know</t> <t>what</t> <t>i</t> <t>am</t> <t>doing</t> <t>wrong</t>?
 "
-3682748|"<t>Converting</t> <t>unix</t> <t>timestamp</t> <t>string</t> <t>to</t> <t>readable</t> <t>date</t> <t>in</t> <t>Python</t>"|"<t>I</t> <t>have</t> <t>a</t> <t>string</t> <t>representing</t> <t>a</t> <t>unix</t> <t>timestamp</t> (<t>i.e.</t> ""<t>1284101485</t>"") <t>in</t> <t>Python</t>, <t>and</t> <t>I'd</t> <t>like</t> <t>to</t> <t>convert</t> <t>it</t> <t>to</t> <t>a</t> <t>readable</t> <t>date</t>. <t>When I</t> <t>use</t> <code><c>time</c><c>.</c><c>strftime</c></code>, <t>I</t> <t>get</t> <t>a</t> <code><c>TypeError</c></code>:
+3682748|"<t>Converting</t> <t>unix</t> <t>timestamp</t> <t>string</t> <t>to</t> <t>readable</t> <t>date</t> <t>in</t> <t>Python</t>"|"<t>I</t> <t>have</t> <t>a</t> <t>string</t> <t>representing</t> <t>a</t> <t>unix</t> <t>timestamp</t> (<t>i.e.</t> ""<t>1284101485</t>"") <t>in</t> <t>Python</t>, <t>and</t> <t>I'd</t> <t>like</t> <t>to</t> <t>convert</t> <t>it</t> <t>to</t> <t>a</t> <t>readable</t> <t>date</t>. <t>When</t> <t>I</t> <t>use</t> <code><c>time</c><c>.</c><c>strftime</c></code>, <t>I</t> <t>get</t> <t>a</t> <code><c>TypeError</c></code>:
 
 <code><c>&gt;&gt;&gt;</c><c>import</c> <c>time</c>
 <c>&gt;&gt;&gt;</c><c>print</c> <c>time</c><c>.</c><c>strftime(</c>""<c>%</c><c>B</c> <c>%</c><c>d</c> <c>%</c><c>Y</c>"", ""<c>1284101485</c>"")
@@ -4161,7 +4161,7 @@ import</c> <c>subprocess</c>
     <c>print</c> <c>Exception</c>, <c>err</c>
 </code>
 
-<t>Note</t> <t>this</t> <t>is</t> <t>printing</t> <t>to</t> <t>a</t> <t>log</t> <t>file</t> <t>for</t> <t>later</t> <t>review</t>. <t>This</t> <t>usually</t> <t>prints</t> <t>very</t> <t>useless</t> <t>data</t>. <t>What I</t> <t>want</t> <t>is</t> <t>to</t> <t>print</t> <t>the</t> <t>exact</t> <t>same</t> <t>lines</t> <t>printed</t> <t>when</t> <t>the</t> <t>error</t> <t>triggers</t> <t>without</t> <t>the</t> <t>try-except</t> <t>intercepting</t> <t>the</t> <t>exception</t>, <t>but</t> <t>I</t> <t>don't</t> <t>want</t> <t>it</t> <t>to</t> <t>halt</t> <t>my</t> <t>program</t> <t>since</t> <t>it</t> <t>is</t> <t>nested</t> <t>in</t> <t>a</t> <t>series</t> <t>of</t> <t>for</t> <t>loops</t> <t>that</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>see</t> <t>to</t> <t>completion</t>.
+<t>Note</t> <t>this</t> <t>is</t> <t>printing</t> <t>to</t> <t>a</t> <t>log</t> <t>file</t> <t>for</t> <t>later</t> <t>review</t>. <t>This</t> <t>usually</t> <t>prints</t> <t>very</t> <t>useless</t> <t>data</t>. <t>What</t> <t>I</t> <t>want</t> <t>is</t> <t>to</t> <t>print</t> <t>the</t> <t>exact</t> <t>same</t> <t>lines</t> <t>printed</t> <t>when</t> <t>the</t> <t>error</t> <t>triggers</t> <t>without</t> <t>the</t> <t>try-except</t> <t>intercepting</t> <t>the</t> <t>exception</t>, <t>but</t> <t>I</t> <t>don't</t> <t>want</t> <t>it</t> <t>to</t> <t>halt</t> <t>my</t> <t>program</t> <t>since</t> <t>it</t> <t>is</t> <t>nested</t> <t>in</t> <t>a</t> <t>series</t> <t>of</t> <t>for</t> <t>loops</t> <t>that</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>see</t> <t>to</t> <t>completion</t>.
 "
 3768895|"<t>How</t> <t>to</t> <t>make</t> <t>a</t> <t>class</t> <t>JSON</t> <t>serializable</t>"|"<t>How</t> <t>to</t> <t>make</t> <t>a</t> <t>Python</t> <t>class</t> <t>serializable</t>?  
 
@@ -4208,7 +4208,7 @@ import</c> <c>subprocess</c>
 <code><c>execfile(</c>""<c>script2</c><c>.</c><c>py</c> <c>1</c>"")
 </code>
 
-<t>But</t> <t>it</t> <t>is</t> <t>not</t> <t>accepting</t> <t>variables</t> <t>properly</t>.  <t>When I</t> <t>print</t> <t>out</t> <t>the</t> <code><c>sys</c><c>.</c><c>argv</c></code> <t>in</t> <t>script2</t>.<t>py</t> <t>it</t> <t>is</t> <t>the</t> <t>original</t> <t>command</t> <t>call</t> <t>to</t> <t>first</t> <t>script</t> ""<t>['C:\script1.py'].</t>
+<t>But</t> <t>it</t> <t>is</t> <t>not</t> <t>accepting</t> <t>variables</t> <t>properly</t>.  <t>When</t> <t>I</t> <t>print</t> <t>out</t> <t>the</t> <code><c>sys</c><c>.</c><c>argv</c></code> <t>in</t> <t>script2</t>.<t>py</t> <t>it</t> <t>is</t> <t>the</t> <t>original</t> <t>command</t> <t>call</t> <t>to</t> <t>first</t> <t>script</t> ""<t>['C:\script1.py'].</t>
 
 <t>I</t> <t>don't</t> <t>really</t> <t>want</t> <t>to</t> <t>change</t> <t>the</t> <t>original</t> <t>script</t> (<t>i.e.</t> <t>script2</t>.<t>py</t> <t>in</t> <t>my</t> <t>example</t>) <t>since</t> <t>I</t> <t>don't</t> <t>own</t> <t>it</t>.
 
@@ -4221,7 +4221,7 @@ import</c> <c>subprocess</c>
 <c>print</c> <c>retvalue</c>
 </code>
 "
-3819449|"<t>How</t> <t>to</t> <t>uninstall</t> <t>Python</t> <t>2.7</t> <t>on</t> a <t>Mac OS X</t> <t>10.6.4</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>completely</t> <t>remove</t> <t>Python</t> <t>2.7</t> <t>from</t> my <t>Mac OS X</t> <t>10.6.4.</t> <t>I</t> <t>managed</t> <t>to</t> <t>remove</t> <t>the</t> <t>entry</t> <t>from</t> <t>the</t> <t>PATH</t> <t>variable</t> <t>by</t> <t>reverting</t> <t>my</t> <t>.bash_profile.</t> <t>But I</t> <t>also</t> <t>want</t> <t>to</t> <t>remove</t> <t>all</t> <t>directories</t>, <t>files</t>, <t>symlinks</t>, <t>and</t> <t>entries</t> <t>that</t> <t>got</t> <t>installed</t> <t>by</t> <t>the</t> <t>Python</t> <t>2.7</t> <t>install</t> <t>package</t>. <t>I've</t> <t>got</t> <t>the</t> <t>install</t> <t>package</t> <t>from</t> <t>http://www.python.org/.</t> <t>What</t> <t>directories/files/configuration</t> <t>file</t> <t>entries</t> <t>do</t> <t>I</t> <t>need</t> <t>to</t> <t>remove</t>? <t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t>?
+3819449|"<t>How</t> <t>to</t> <t>uninstall</t> <t>Python</t> <t>2.7</t> <t>on</t> a <t>Mac OS X</t> <t>10.6.4</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>completely</t> <t>remove</t> <t>Python</t> <t>2.7</t> <t>from</t> my <t>Mac OS X</t> <t>10.6.4.</t> <t>I</t> <t>managed</t> <t>to</t> <t>remove</t> <t>the</t> <t>entry</t> <t>from</t> <t>the</t> <t>PATH</t> <t>variable</t> <t>by</t> <t>reverting</t> <t>my</t> <t>.bash_profile.</t> <t>But</t> <t>I</t> <t>also</t> <t>want</t> <t>to</t> <t>remove</t> <t>all</t> <t>directories</t>, <t>files</t>, <t>symlinks</t>, <t>and</t> <t>entries</t> <t>that</t> <t>got</t> <t>installed</t> <t>by</t> <t>the</t> <t>Python</t> <t>2.7</t> <t>install</t> <t>package</t>. <t>I've</t> <t>got</t> <t>the</t> <t>install</t> <t>package</t> <t>from</t> <t>http://www.python.org/.</t> <t>What</t> <t>directories/files/configuration</t> <t>file</t> <t>entries</t> <t>do</t> <t>I</t> <t>need</t> <t>to</t> <t>remove</t>? <t>Is</t> <t>there</t> <t>a</t> <t>list</t> <t>somewhere</t>?
 "
 3845423|"<t>Remove</t> <t>empty</t> <t>strings</t> <t>from</t> <t>a</t> <t>list</t> <t>of</t> <t>strings</t>"|"<t>I</t> <t>want</t> <t>to</t> <t>remove</t> <t>all</t> <t>empty</t> <t>strings</t> <t>from</t> <t>a</t> <t>list</t> <t>of</t> <t>strings</t> <t>in</t> <t>python</t>.
 
@@ -4370,7 +4370,7 @@ import</c> <c>subprocess</c>
 <code><c>MyList</c> <c>=</c> [""<c>a</c>"", ""<c>b</c>"", ""<c>c</c>""]
 </code>
 
-<t>So I</t> <t>want</t> <t>to</t> <t>know</t> <t>there</t> <t>are</t> <t>three</t>.
+<t>So</t> <t>I</t> <t>want</t> <t>to</t> <t>know</t> <t>there</t> <t>are</t> <t>three</t>.
 <t>I</t> <t>am</t> <t>surely</t> <t>missing</t> <t>something</t>.
 "
 4142151|"<t>How</t> <t>to</t> <t>import</t> <t>the</t> <t>class</t> <t>within</t> <t>the</t> <t>same</t> <t>directory</t> <t>or</t> <t>sub</t> <t>directory</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>directory</t> <t>that</t> <t>stores</t> <t>all</t> <t>the</t> .<t>py</t> <t>files</t>.
@@ -4424,7 +4424,7 @@ import</c> <c>subprocess</c>
 
 <t>This</t> <t>works</t> <t>fine</t>.
 
-<t>Then I</t> <t>run</t> <t>the</t> <t>same</t> <t>code</t> <t>on</t> <t>a</t> <t>server</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t> <t>message</t>
+<t>Then</t> <t>I</t> <t>run</t> <t>the</t> <t>same</t> <t>code</t> <t>on</t> <t>a</t> <t>server</t> <t>and</t> <t>I</t> <t>get</t> <t>the</t> <t>following</t> <t>error</t> <t>message</t>
 
 <code>'<c>import</c> <c>site</c>' <c>failed</c>; <c>use</c> <c>-</c><c>v</c> <c>for</c> <c>traceback</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
@@ -4435,7 +4435,7 @@ import</c> <c>subprocess</c>
 
 <t>So</t> <t>what</t> <t>I</t> <t>did</t> <t>then</t> <t>is</t> <t>I</t> <t>inserted</t> <t>a</t> ""<t>print</t> <t>bashCommand</t>"" <t>which</t> <t>prints</t> <t>me</t> <t>then</t> <t>the</t> <t>command</t> <t>in</t> <t>the</t> <t>terminal</t> <t>before</t> <t>it</t> <t>runs</t> <t>it</t> <t>with</t> <t>os.system().</t>
 
-<t>Of</t> <t>course</t> <t>I</t> <t>get</t> <t>again</t> <t>the</t> <t>error</t> (<t>caused</t> <t>by</t> <t>os</t>.<t>system(bashCommand</t>)) <t>but</t> <t>before</t> <t>that</t> <t>error</t> <t>it</t> <t>prints</t> <t>the</t> <t>command</t> <t>in</t> <t>the</t> <t>terminal</t>. <t>Then I</t> <t>just</t> <t>copied</t> <t>that</t> <t>output</t> <t>and</t> <t>did</t> <t>a</t> <t>copy</t> <t>paste</t> <t>into</t> <t>the</t> <t>terminal</t> <t>and</t> <t>hit</t> <t>enter</t> <t>and</t> <t>it</t> <t>works...</t>
+<t>Of</t> <t>course</t> <t>I</t> <t>get</t> <t>again</t> <t>the</t> <t>error</t> (<t>caused</t> <t>by</t> <t>os</t>.<t>system(bashCommand</t>)) <t>but</t> <t>before</t> <t>that</t> <t>error</t> <t>it</t> <t>prints</t> <t>the</t> <t>command</t> <t>in</t> <t>the</t> <t>terminal</t>. <t>Then</t> <t>I</t> <t>just</t> <t>copied</t> <t>that</t> <t>output</t> <t>and</t> <t>did</t> <t>a</t> <t>copy</t> <t>paste</t> <t>into</t> <t>the</t> <t>terminal</t> <t>and</t> <t>hit</t> <t>enter</t> <t>and</t> <t>it</t> <t>works...</t>
 
 <t>Does</t> <t>anyone</t> <t>have</t> <t>a</t> <t>clue</t> <t>what's</t> <t>going</t> <t>on</t> :(?
 "
@@ -4457,7 +4457,7 @@ import</c> <c>subprocess</c>
 "
 4344017|"<t>How</t> <t>can</t> <t>I</t> <t>get</t> <t>the</t> <t>concatenation</t> <t>of</t> <t>two</t> <t>lists</t> <t>in</t> <t>Python</t> <t>without</t> <t>modifying</t> <t>either</t> <t>one</t>?"|"<t>In</t> <t>Python</t>, <t>the</t> <t>only</t> <t>way</t> <t>I</t> <t>can</t> <t>find</t> <t>to</t> <t>concatenate</t> <t>two</t> <t>lists</t> <t>is</t> <code><c>list</c><c>.</c><c>extend</c></code>, <t>which</t> <t>modifies</t> <t>the</t> <t>first</t> <t>list</t>. <t>Is</t> <t>there</t> <t>any</t> <t>concatenation</t> <t>function</t> <t>that</t> <t>returns</t> <t>its</t> <t>result</t> <t>without</t> <t>modifying</t> <t>its</t> <t>arguments</t>?
 "
-4362586|"<t>sum</t> <t>a</t> <t>list</t> <t>of</t> <t>numbers</t> <t>in</t> <t>Python</t>"|"<t>If I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>numbers</t> <t>such</t> <t>as</t> <code>[<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,5...]</code> <t>and</t> <t>I</t> <t>want</t> <t>to</t> <t>calculate</t> <code>(<c>1</c><c>+</c><c>2</c>)<c>/2</c></code> <t>and</t> <t>for</t> <t>the</t> <t>second</t>, <code>(<c>2</c><c>+</c><c>3</c>)<c>/2</c></code> <t>and</t> <t>the</t> <t>third</t>,
+4362586|"<t>sum</t> <t>a</t> <t>list</t> <t>of</t> <t>numbers</t> <t>in</t> <t>Python</t>"|"<t>If</t> <t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>numbers</t> <t>such</t> <t>as</t> <code>[<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>,5...]</code> <t>and</t> <t>I</t> <t>want</t> <t>to</t> <t>calculate</t> <code>(<c>1</c><c>+</c><c>2</c>)<c>/2</c></code> <t>and</t> <t>for</t> <t>the</t> <t>second</t>, <code>(<c>2</c><c>+</c><c>3</c>)<c>/2</c></code> <t>and</t> <t>the</t> <t>third</t>,
 <code>(<c>3</c><c>+</c><c>4</c>)<c>/2</c></code>, <t>and</t> <t>so</t> <t>on</t>.
 
 <t>How</t> <t>can</t> <t>I</t> <t>do</t> <t>that</t>?
@@ -4510,14 +4510,14 @@ import</c> <c>subprocess</c>
 
 <t>Is</t> <t>there</t> <t>any</t> <t>good</t> <t>built-in</t> <t>method</t> <t>to</t> <t>use</t>?
 "
-4455076|"<t>How</t> <t>to</t> <t>access</t> <t>the</t> <t>ith</t> <t>column</t> <t>of</t> <t>a</t> <t>NumPy</t> <t>multidimensional</t> <t>array</t>?"|"<t>Suppose I</t> <t>have</t>:
+4455076|"<t>How</t> <t>to</t> <t>access</t> <t>the</t> <t>ith</t> <t>column</t> <t>of</t> <t>a</t> <t>NumPy</t> <t>multidimensional</t> <t>array</t>?"|"<t>Suppose</t> <t>I</t> <t>have</t>:
 
 <code><c>test</c> <c>=</c> <c>numpy</c><c>.</c><c>array(</c>[[<c>1</c>, <c>2</c>], [<c>3</c>, <c>4</c>], [<c>5</c>, <c>6</c>]])
 </code>
 
 <code><c>test</c>[<c>i</c>]</code> <t>gets</t> <t>me</t> <t>ith</t> <t>line</t> <t>of</t> <t>the</t> <t>array</t> (<t>eg</t> <code>[<c>1</c>, <c>2</c>]</code>). <t>How</t> <t>can</t> <t>I</t> <t>access</t> <t>the</t> <t>ith</t> <t>column</t>? (<t>eg</t> <code>[<c>1</c>, <c>3</c>, <c>5</c>]</code>). <t>Also</t>, <t>would</t> <t>this</t> <t>be</t> <t>an</t> <t>expensive</t> <t>operation</t>?
 "
-4481724|"<t>Convert</t> <t>a</t> <t>list</t> <t>of</t> <t>characters</t> <t>into</t> <t>a</t> <t>string</t>"|"<t>If I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>chars</t>:
+4481724|"<t>Convert</t> <t>a</t> <t>list</t> <t>of</t> <t>characters</t> <t>into</t> <t>a</t> <t>string</t>"|"<t>If</t> <t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>chars</t>:
 
 <code><c>a</c> <c>=</c> ['<c>a</c>','<c>b</c>','<c>c</c>','<c>d</c>']
 </code>
@@ -4589,7 +4589,7 @@ import</c> <c>subprocess</c>
 
 <t>I</t> <t>have</t> <t>already</t> <t>tried</t> <code><c>sys</c><c>.</c><c>stdout</c> <c>=</c> <c>open(</c>'<c>somefile</c>', '<c>w</c>')</code>, <t>but</t> <t>this</t> <t>does</t> <t>not</t> <t>seem</t> <t>to</t> <t>prevent</t> <t>some</t> <t>external</t> <t>modules</t> <t>from</t> <t>still</t> <t>outputting</t> <t>to</t> <t>terminal</t> (<t>or</t> <t>maybe</t> <t>the</t> <code><c>sys</c><c>.</c><c>stdout</c> <c>=</c> ...</code> <t>line</t> <t>did</t> <t>not</t> <t>fire</t> <t>at</t> <t>all</t>). <t>I</t> <t>know</t> <t>it</t> <t>should</t> <t>work</t> <t>from</t> <t>simpler</t> <t>scripts</t> <t>I've</t> <t>tested</t> <t>on</t>, <t>but</t> <t>I</t> <t>also</t> <t>didn't</t> <t>have</t> <t>time</t> <t>yet</t> <t>to</t> <t>test</t> <t>on</t> <t>a</t> <t>web</t> <t>application</t> <t>yet</t>.
 "
-4693120|"<t>Use</t> <t>of</t> ""<t>global</t>"" <t>keyword</t> <t>in</t> <t>Python</t>"|"<t>What I</t> <t>understand</t> <t>from</t> <t>reading</t> <t>the</t> <t>documentation</t> <t>is</t> <t>that</t> <t>Python</t> <t>has</t> <t>a</t> <t>separate</t> <t>namespace</t> <t>for</t> <t>functions</t>, <t>and</t> <t>if</t> <t>I</t> <t>want</t> <t>to</t> <t>use</t> <t>a</t> <t>global</t> <t>variable</t> <t>in</t> <t>that</t> <t>function</t>, <t>I</t> <t>need</t> <t>to</t> <t>use</t> <code><c>global</c></code>.
+4693120|"<t>Use</t> <t>of</t> ""<t>global</t>"" <t>keyword</t> <t>in</t> <t>Python</t>"|"<t>What</t> <t>I</t> <t>understand</t> <t>from</t> <t>reading</t> <t>the</t> <t>documentation</t> <t>is</t> <t>that</t> <t>Python</t> <t>has</t> <t>a</t> <t>separate</t> <t>namespace</t> <t>for</t> <t>functions</t>, <t>and</t> <t>if</t> <t>I</t> <t>want</t> <t>to</t> <t>use</t> <t>a</t> <t>global</t> <t>variable</t> <t>in</t> <t>that</t> <t>function</t>, <t>I</t> <t>need</t> <t>to</t> <t>use</t> <code><c>global</c></code>.
 
 <t>I'm</t> <t>using</t> <t>Python</t> <t>2.7</t> <t>and</t> <t>I</t> <t>tried</t> <t>this</t> <t>little</t> <t>test</t>
 
@@ -4603,7 +4603,7 @@ import</c> <c>subprocess</c>
 
 <t>It</t> <t>seems</t> <t>things</t> <t>are</t> <t>working</t> <t>fine</t> <t>even</t> <t>without</t> <code><c>global</c></code>. <t>I</t> <t>was</t> <t>able</t> <t>to</t> <t>access</t> <t>global</t> <t>variable</t> <t>without</t> <t>any</t> <t>problem</t>.
 
-<t>Am I</t> <t>missing</t> <t>anything</t>? <t>Also</t>, <t>following</t> <t>is</t> <t>from</t> <t>Python</t> <t>documentation</t>:
+<t>Am</t> <t>I</t> <t>missing</t> <t>anything</t>? <t>Also</t>, <t>following</t> <t>is</t> <t>from</t> <t>Python</t> <t>documentation</t>:
 
 
   <t>Names</t> <t>listed</t> <t>in</t> <t>a</t> <t>global</t> <t>statement</t>
@@ -4728,7 +4728,7 @@ import</c> <c>subprocess</c>
 <c>print</c> <c>os</c><c>.</c><c>getcwd(</c>)
 </code>
 
-<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</c></code>.
+<t>I</t> <t>use</t> <code><c>os</c><c>.</c><c>getcwd(</c>)</code> <t>to</t> <t>get</t> <t>the</t> <t>script</t> <t>file's</t> <t>directory</t> <t>location</t>. <t>When</t> <t>I</t> <t>run</t> <t>the</t> <t>script</t> <t>from</t> <t>the</t> <t>command</t> <t>line</t> <t>it</t> <t>gives</t> <t>me</t> <t>the</t> <t>correct</t> <t>path</t> <t>whereas</t> <t>when</t> <t>I</t> <t>run</t> <t>it</t> <t>from</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>code</t> <t>in</t> <t>a</t> <t>Django</t> <t>view</t> <t>it</t> <t>prints</t> <code><c>/</c></code>.
 
 <t>How</t> <t>can</t> <t>I</t> <t>get</t> <t>the</t> <t>path</t> <t>to</t> <t>the</t> <t>script</t> <t>from</t> <t>within</t> <t>a</t> <t>script</t> <t>run</t> <t>by</t> <t>a</t> <t>Django</t> <t>view</t>?
 
@@ -4989,7 +4989,7 @@ sub1</c> <c>=</c> ""<c>python</c> <c>string</c><c>!</c>""
 <code><c>pip</c> <c>install</c> <c>htt</c><c>p://pypi.python.org/packages/source/p/psycopg2/psycopg2-2.4.tar.gz#md5=24f4368e2cfdc1a2b03282ddda814160
 </c></code>
 
-<t>And I</t> <t>have</t> <t>the</t> <t>following</t> <t>messages</t>:
+<t>And</t> <t>I</t> <t>have</t> <t>the</t> <t>following</t> <t>messages</t>:
 
 <code><c>Downloading</c><c>/unpacking</c> <c>htt</c><c>p://pypi.python.org/packages/source/p/psycopg2/psycopg2
 -2.4.tar.gz#md5=24f4368e2cfdc1a2b03282ddda814160
@@ -5248,7 +5248,7 @@ ip.log
 <c>mydic</c>['<c>key_name</c>'] <c>=</c> '<c>value_name</c>'
 </code>
 
-<t>Now I</t> <t>can</t> <t>check</t> <t>if</t> <code><c>mydic</c><c>.</c><c>has_key(</c>'<c>key_name</c>')</code>, <t>but</t> <t>what</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>do</t> <t>is</t> <t>print</t> <t>the</t> <t>name</t> <t>of</t> <t>the</t> <t>key</t> <code>'<c>key_name</c>'</code>. <t>Of</t> <t>course</t> <t>I</t> <t>could</t> <t>use</t> <code><c>mydic</c><c>.</c><c>items(</c>)</code>, <t>but</t> <t>I</t> <t>don't</t> <t>want</t> <t>all</t> <t>the</t> <t>keys</t> <t>listed</t>, <t>merely</t> <t>one</t> <t>specific</t> <t>key</t>. <t>For</t> <t>instance</t> <t>I'd</t> <t>expect</t> <t>something</t> <t>like</t> <t>this</t> (<t>in</t> <t>pseudo-code</t>):
+<t>Now</t> <t>I</t> <t>can</t> <t>check</t> <t>if</t> <code><c>mydic</c><c>.</c><c>has_key(</c>'<c>key_name</c>')</code>, <t>but</t> <t>what</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>do</t> <t>is</t> <t>print</t> <t>the</t> <t>name</t> <t>of</t> <t>the</t> <t>key</t> <code>'<c>key_name</c>'</code>. <t>Of</t> <t>course</t> <t>I</t> <t>could</t> <t>use</t> <code><c>mydic</c><c>.</c><c>items(</c>)</code>, <t>but</t> <t>I</t> <t>don't</t> <t>want</t> <t>all</t> <t>the</t> <t>keys</t> <t>listed</t>, <t>merely</t> <t>one</t> <t>specific</t> <t>key</t>. <t>For</t> <t>instance</t> <t>I'd</t> <t>expect</t> <t>something</t> <t>like</t> <t>this</t> (<t>in</t> <t>pseudo-code</t>):
 
 <code><c>print</c> ""<c>the</c> <c>key</c> <c>name</c> <c>is</c>"", <c>mydic</c>['<c>key_name</c>']<c>.</c><c>name_the_key(</c>), ""<c>and</c> <c>its</c> <c>value</c> <c>is</c>"", <c>mydic</c>['<c>key_name</c>']
 </code>
@@ -5262,7 +5262,7 @@ ip.log
 "
 5971312|"<t>How</t> <t>to</t> <t>set</t> <t>environment</t> <t>variables</t> <t>in</t> <t>Python</t>"|"<t>I</t> <t>need</t> <t>to</t> <t>set</t> <t>some</t> <t>environment</t> <t>variables</t> <t>in</t> <t>the</t> <t>python</t> <t>script</t> <t>and</t> <t>I</t> <t>want</t> <t>all</t> <t>the</t> <t>other</t> <t>scripts</t> <t>that</t> <t>are</t> <t>called</t> <t>from</t> <t>python</t> (<t>shell</t> <t>scripts</t>) <t>which</t> <t>will</t> <t>be</t> <t>child</t> <t>process</t> <t>to</t> <t>see</t> <t>the</t> <t>environment</t> <t>variables</t> <t>set</t>. <t>The</t> <t>value</t> <t>is</t> <t>a</t> <t>number</t>.
 
-<t>If I</t> <t>do</t> <code><c>os</c><c>.</c><c>environ</c>[""<c>DEBUSSY</c>""] <c>=</c> <c>1</c></code>, <t>it</t> <t>complains</t> <t>saying</t> <t>that</t> <code><c>1</c></code> <t>has</t> <t>to</t> <t>be</t> <t>string</t>.
+<t>If</t> <t>I</t> <t>do</t> <code><c>os</c><c>.</c><c>environ</c>[""<c>DEBUSSY</c>""] <c>=</c> <c>1</c></code>, <t>it</t> <t>complains</t> <t>saying</t> <t>that</t> <code><c>1</c></code> <t>has</t> <t>to</t> <t>be</t> <t>string</t>.
 <t>I</t> <t>also</t> <t>want</t> <t>to</t> <t>know</t> <t>how</t> <t>to</t> <t>read</t> <t>the</t> <t>environment</t> <t>variables</t> <t>in</t> <t>python</t> (<t>in</t> <t>the</t> <t>later</t> <t>part</t> <t>of</t> <t>the</t> <t>script</t>) <t>once</t> <t>I</t> <t>set</t> <t>it</t>. 
 "
 5982206|"<t>How</t> <t>to</t> <t>print</t> <t>a</t> <t>linebreak</t> <t>in</t> <t>a</t> <t>python</t> <t>function</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>list</t> <t>of</t> <t>strings</t> <t>in</t> <t>my</t> <t>code;</t>
@@ -5460,7 +5460,7 @@ ip.log
         <c>csv_file</c><c>.</c><c>writerow(</c>[<c>item</c>[""<c>gravatar_id</c>""], <c>item</c>[""<c>position</c>""], <c>item</c>[""<c>number</c>""], <c>item</c>[""<c>votes</c>""], <c>item</c>[""<c>created_at</c>""], <c>item</c>[""<c>comments</c>""], <c>item</c>[""<c>body</c>""], <c>item</c>[""<c>title</c>""], <c>item</c>[""<c>updated_at</c>""], <c>item</c>[""<c>html_url</c>""], <c>item</c>[""<c>user</c>""], <c>item</c>[""<c>labels</c>""], <c>item</c>[""<c>state</c>""]])
 </code>
 
-<t>Where</t> ""<t>issues</t>.<t>json</t>"" <t>is</t> <t>the</t> <t>json</t> <t>file</t> <t>containing</t> <t>my</t> <t>github</t> <t>issues</t>. <t>When I</t> <t>try</t> <t>to</t> <t>run</t> <t>that</t>, <t>I</t> <t>get</t> 
+<t>Where</t> ""<t>issues</t>.<t>json</t>"" <t>is</t> <t>the</t> <t>json</t> <t>file</t> <t>containing</t> <t>my</t> <t>github</t> <t>issues</t>. <t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>run</t> <t>that</t>, <t>I</t> <t>get</t> 
 
 <code><c>File</c> ""<c>foo</c><c>.</c><c>py</c>"", <c>line</c> <c>14</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
 <c>csv_file</c><c>.</c><c>writerow(</c>[<c>item</c>[""<c>gravatar_id</c>""], <c>item</c>[""<c>position</c>""], <c>item</c>[""<c>number</c>""], <c>item</c>[""<c>votes</c>""], <c>item</c>[""<c>created_at</c>""], <c>item</c>[""<c>comments</c>""], <c>item</c>[""<c>body</c>""], <c>item</c>[""<c>title</c>""], <c>item</c>[""<c>updated_at</c>""], <c>item</c>[""<c>html_url</c>""], <c>item</c>[""<c>user</c>""], <c>item</c>[""<c>labels</c>""], <c>item</c>[""<c>state</c>""]])
@@ -5471,7 +5471,7 @@ ip.log
 <t>What</t> <t>am</t> <t>I</t> <t>missing</t> <t>here</t>? <t>Which</t> <t>are</t> <t>the</t> ""<t>string</t> <t>indices</t>""? <t>I'm</t> <t>sure</t> <t>that</t> <t>once</t> <t>I</t> <t>get</t> <t>this</t> <t>working</t> <t>I'll</t> <t>have</t> <t>more</t> <t>issues</t>, <t>but</t> <t>for</t> <t>now</t> , <t>I'd</t> <t>just</t> <t>love</t> <t>for</t> <t>this</t> <t>to</t> <t>work</t>!
 
 <t>UPDATE</t>: 
-<t>When I</t> <t>tweak</t> <t>the</t> <code><c>for</c></code> <t>statement</t> <t>to</t> <t>simply</t> 
+<t>When</t> <t>I</t> <t>tweak</t> <t>the</t> <code><c>for</c></code> <t>statement</t> <t>to</t> <t>simply</t> 
 
 <code><c>for</c> <c>item</c> <c>in</c> <c>data</c>:
     <c>print</c> <c>item</c>
@@ -5526,7 +5526,7 @@ ip.log
 
 <t>How</t> <t>to</t> <t>achieve</t> <t>this</t>?
 "
-6468397|"<t>How</t> <t>to</t> <t>check</t> <t>Django</t> <t>version</t>"|"<t>I</t> <t>have</t> <t>to</t> <t>use</t> <t>Python</t> <t>and</t> <t>Django</t> <t>for</t> <t>our</t> <t>application</t>. <t>So I</t> <t>have</t> <t>two</t> <t>versions</t> <t>of</t> <t>Python</t>, <t>2.6</t> <t>and</t> <t>2.7.</t> <t>Now I</t> <t>have</t> <t>installed</t> <t>Django</t>. <t>I</t> <t>could</t> <t>run</t> <t>the</t> <t>sample</t> <t>application</t> <t>for</t> <t>testing</t> <t>Django</t> <t>succesfuly</t>. <t>But</t> <t>how</t> <t>do</t> <t>I</t> <t>make</t> <t>sure</t> <t>whether</t> <t>Django</t> <t>uses</t> <t>the</t> <t>2.6</t> <t>or</t> <t>2.7</t> <t>version</t> <t>and</t> <t>what</t> <t>version</t> <t>of</t> <t>modules</t> <t>Django</t> <t>uses</t>?
+6468397|"<t>How</t> <t>to</t> <t>check</t> <t>Django</t> <t>version</t>"|"<t>I</t> <t>have</t> <t>to</t> <t>use</t> <t>Python</t> <t>and</t> <t>Django</t> <t>for</t> <t>our</t> <t>application</t>. <t>So</t> <t>I</t> <t>have</t> <t>two</t> <t>versions</t> <t>of</t> <t>Python</t>, <t>2.6</t> <t>and</t> <t>2.7.</t> <t>Now</t> <t>I</t> <t>have</t> <t>installed</t> <t>Django</t>. <t>I</t> <t>could</t> <t>run</t> <t>the</t> <t>sample</t> <t>application</t> <t>for</t> <t>testing</t> <t>Django</t> <t>succesfuly</t>. <t>But</t> <t>how</t> <t>do</t> <t>I</t> <t>make</t> <t>sure</t> <t>whether</t> <t>Django</t> <t>uses</t> <t>the</t> <t>2.6</t> <t>or</t> <t>2.7</t> <t>version</t> <t>and</t> <t>what</t> <t>version</t> <t>of</t> <t>modules</t> <t>Django</t> <t>uses</t>?
 "
 6470428|"<t>Catch</t> <t>multiple</t> <t>exceptions</t> <t>in</t> <t>one</t> <t>line</t> (<t>except</t> <t>block</t>)"|"<t>I</t> <t>know</t> <t>that</t> <t>I</t> <t>can</t> <t>do</t>:
 
@@ -5578,7 +5578,7 @@ ip.log
 "
 6504810|"<t>How</t> <t>to</t> <t>install</t> <t>lxml</t> <t>on</t> <t>Ubuntu</t>"|"<t>I'm</t> <t>having</t> <t>difficulty</t> <t>installing</t> <t>lxml</t> <t>with</t> <t>easy_install</t> <t>on</t> <t>Ubuntu</t> <t>11</t>.
 
-<t>When I</t> <t>type</t> <code><c>$</c> <c>easy_install</c> <c>lxml</c></code> <t>I</t> <t>get</t>:
+<t>When</t> <t>I</t> <t>type</t> <code><c>$</c> <c>easy_install</c> <c>lxml</c></code> <t>I</t> <t>get</t>:
 
 <code><c>Searching</c> <c>for</c> <c>lxml</c>
 <c>Reading</c> <c>htt</c><c>p://pypi.python.org/simple/lxml/
@@ -5601,7 +5601,7 @@ src/lxml/etree_defs.h:9:31:</c> <c>fatal</c> <c>error</c>: <c>libxml</c><c>/xmlv
 
 <t>It</t> <t>seems</t> <t>that</t> <code><c>libxslt</c></code> <t>or</t> <code><c>libxml2</c></code> <t>is</t> <t>not</t> <t>installed</t>. <t>I've</t> <t>tried</t> <t>following</t> <t>the</t> <t>instructions</t> <t>at</t> <t>http://www.techsww.com/tutorials/libraries/libxslt/installation/installing_libxslt_on_ubuntu_linux.php</t> <t>and</t> <t>http://www.techsww.com/tutorials/libraries/libxml/installation/installing_libxml_on_ubuntu_linux.php</t> <t>with</t> <t>no</t> <t>success</t>.
 
-<t>If I</t> <t>try</t> <code><c>wget</c> <c>ft</c><c>p://xmlsoft.org/libxml2/libxml2-sources-2.6.27.tar.gz</c></code> <t>I</t> <t>get</t>
+<t>If</t> <t>I</t> <t>try</t> <code><c>wget</c> <c>ft</c><c>p://xmlsoft.org/libxml2/libxml2-sources-2.6.27.tar.gz</c></code> <t>I</t> <t>get</t>
 
 <code><c>&lt;</c><c>successful</c> <c>connection</c> <c>info</c><c>&gt;</c>
 <c>==</c><c>&gt;</c> <c>SYST</c> ... <c>done</c><c>.</c>    <c>==</c><c>&gt;</c> <c>PWD</c> ... <c>done</c><c>.</c>
@@ -5611,7 +5611,7 @@ src/lxml/etree_defs.h:9:31:</c> <c>fatal</c> <c>error</c>: <c>libxml</c><c>/xmlv
 <c>No</c> <c>such</c> <c>file</c> <c>`</c><c>libxml2-sources-2.6.27</c><c>.</c><c>tar</c><c>.</c><c>gz</c>'<c>.</c>
 </code>
 
-<t>If I</t> <t>try</t> <t>the</t> <t>other</t> <t>first</t>, <t>I'll</t> <t>get</t> <t>to</t> <code><c>.</c><c>/configure</c> <c>-</c><c>-</c><c>prefix</c><c>=</c><c>/usr/local/libxslt</c> <c>-</c><c>-</c><c>with-libxml-prefix</c><c>=</c><c>/usr/local/libxml2</c></code> <t>and</t> <t>that</t> <t>will</t> <t>fail</t> <t>eventually</t> <t>with</t>:
+<t>If</t> <t>I</t> <t>try</t> <t>the</t> <t>other</t> <t>first</t>, <t>I'll</t> <t>get</t> <t>to</t> <code><c>.</c><c>/configure</c> <c>-</c><c>-</c><c>prefix</c><c>=</c><c>/usr/local/libxslt</c> <c>-</c><c>-</c><c>with-libxml-prefix</c><c>=</c><c>/usr/local/libxml2</c></code> <t>and</t> <t>that</t> <t>will</t> <t>fail</t> <t>eventually</t> <t>with</t>:
 
 <code><c>checking</c> <c>for</c> <c>libxml</c> <c>libraries</c> <c>&gt;</c><c>=</c> <c>2.6.27</c>... <c>configure</c>: <c>error</c>: <c>Could</c> <c>not</c> <c>find</c> <c>libxml2</c> <c>anywhere</c>, <c>check</c> <c>ft</c><c>p://xmlsoft.org/.
 </c></code>
@@ -5696,12 +5696,12 @@ src/lxml/etree_defs.h:9:31:</c> <c>fatal</c> <c>error</c>: <c>libxml</c><c>/xmlv
 
 <t>And</t> <t>what</t> <t>is</t> <t>the</t> <t>difference</t> <t>between</t> <t>it</t> <t>and</t> <t>the</t> <code><c>print</c></code> <t>statement</t>?
 "
-7152762|"<t>How</t> <t>to</t> <t>redirect</t> '<t>print</t>' <t>output</t> <t>to</t> <t>a</t> <t>file</t> <t>using</t> <t>python</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>redirect</t> <t>the</t> <t>print</t> <t>to</t> <t>a</t> .<t>txt</t> <t>file</t> <t>using</t> <t>python</t>. <t>I</t> <t>have</t> <t>a</t> '<t>for</t>' <t>loop</t>, <t>which</t> <t>will</t> '<t>print</t>' <t>the</t> <t>output</t> <t>for</t> <t>each</t> <t>of</t> <t>my</t> .<t>bam</t> <t>file;</t> <t>while</t> <t>I</t> <t>want</t> <t>to</t> <t>redirect</t> <t>ALL</t> <t>these</t> <t>output</t> <t>to</t> <t>one</t> <t>file</t>. <t>So I</t> <t>tried</t> <t>to</t> <t>put</t>
+7152762|"<t>How</t> <t>to</t> <t>redirect</t> '<t>print</t>' <t>output</t> <t>to</t> <t>a</t> <t>file</t> <t>using</t> <t>python</t>?"|"<t>I</t> <t>want</t> <t>to</t> <t>redirect</t> <t>the</t> <t>print</t> <t>to</t> <t>a</t> .<t>txt</t> <t>file</t> <t>using</t> <t>python</t>. <t>I</t> <t>have</t> <t>a</t> '<t>for</t>' <t>loop</t>, <t>which</t> <t>will</t> '<t>print</t>' <t>the</t> <t>output</t> <t>for</t> <t>each</t> <t>of</t> <t>my</t> .<t>bam</t> <t>file;</t> <t>while</t> <t>I</t> <t>want</t> <t>to</t> <t>redirect</t> <t>ALL</t> <t>these</t> <t>output</t> <t>to</t> <t>one</t> <t>file</t>. <t>So</t> <t>I</t> <t>tried</t> <t>to</t> <t>put</t>
 
 <code> <c>f</c> <c>=</c> <c>open(</c>'<c>output</c><c>.</c><c>txt</c>','<c>w</c>'); <c>sys</c><c>.</c><c>stdout</c> <c>=</c> <c>f</c>
 </code>
 
-<t>at</t> <t>the</t> <t>beginning</t> <t>of</t> <t>my</t> <t>script</t>. <t>However I</t> <t>get</t> <t>nothing</t> <t>in</t> <t>the</t> .<t>txt</t> <t>file</t>.
+<t>at</t> <t>the</t> <t>beginning</t> <t>of</t> <t>my</t> <t>script</t>. <t>However</t> <t>I</t> <t>get</t> <t>nothing</t> <t>in</t> <t>the</t> .<t>txt</t> <t>file</t>.
 <t>My</t> <t>script</t> <t>is</t> <t>like</t> <t>below</t>:
 
 <code>#<c>!</c><c>/usr/bin/python
@@ -5795,7 +5795,7 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 <code><c>elem</c> <c>=</c> <c>wd</c><c>.</c><c>find_element_by_css_selector(</c>'#<c>my-id</c>')
 </code>
 
-<t>And I</t> <t>know</t> <t>I</t> <t>can</t> <t>get</t> <t>the</t> <t>full</t> <t>page</t> <t>source</t> <t>with...</t>
+<t>And</t> <t>I</t> <t>know</t> <t>I</t> <t>can</t> <t>get</t> <t>the</t> <t>full</t> <t>page</t> <t>source</t> <t>with...</t>
 
 <code><c>wd</c><c>.</c><c>page_source</c>
 </code>
@@ -5809,7 +5809,7 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 
 <t>Any</t> <t>thoughts</t> <t>on</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>access</t> <t>the</t> <t>HTML</t> <t>of</t> <t>an</t> <t>element</t> (<t>and</t> <t>its</t> <t>children</t>)?
 "
-7370801|"<t>Measure</t> <t>time</t> <t>elapsed</t> <t>in</t> <t>Python</t>?"|"<t>What I</t> <t>want</t> <t>is</t> <t>to</t> <t>start</t> <t>counting</t> <t>time</t> <t>somewhere</t> <t>in</t> <t>my</t> <t>code</t> <t>and</t> <t>then</t> <t>get</t> <t>the</t> <t>passed</t> <t>time</t>, <t>to</t> <t>measure</t> <t>the</t> <t>time</t> <t>it</t> <t>took</t> <t>to</t> <t>execute</t> <t>few</t> <t>function</t>. <t>I</t> <t>think</t> <t>I'm</t> <t>using</t> <t>the</t> <t>timeit</t> <t>module</t> <t>wrong</t>, <t>but</t> <t>the</t> <t>docs</t> <t>are</t> <t>just</t> <t>confusing</t> <t>for</t> <t>me</t>.
+7370801|"<t>Measure</t> <t>time</t> <t>elapsed</t> <t>in</t> <t>Python</t>?"|"<t>What</t> <t>I</t> <t>want</t> <t>is</t> <t>to</t> <t>start</t> <t>counting</t> <t>time</t> <t>somewhere</t> <t>in</t> <t>my</t> <t>code</t> <t>and</t> <t>then</t> <t>get</t> <t>the</t> <t>passed</t> <t>time</t>, <t>to</t> <t>measure</t> <t>the</t> <t>time</t> <t>it</t> <t>took</t> <t>to</t> <t>execute</t> <t>few</t> <t>function</t>. <t>I</t> <t>think</t> <t>I'm</t> <t>using</t> <t>the</t> <t>timeit</t> <t>module</t> <t>wrong</t>, <t>but</t> <t>the</t> <t>docs</t> <t>are</t> <t>just</t> <t>confusing</t> <t>for</t> <t>me</t>.
 
 <code><c>import</c> <c>timeit</c>
 
@@ -5827,13 +5827,13 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 <c>ImportError</c>: <c>No</c> <c>module</c> <c>named</c> <c>pkg_resources</c>
 </code>
 
-<t>pkg_resources</t> <t>appears</t> <t>to</t> <t>be</t> <t>distributed</t> <t>with</t> <t>setuptools</t>.  <t>Initially I</t> <t>thought</t> <t>this</t> <t>might</t> <t>not</t> <t>be</t> <t>installed</t> <t>to</t> <t>the</t> <t>python</t> <t>in</t> <t>the</t> <t>virtualenv</t> <t>so</t> <t>I</t> <t>installed</t> <t>setuptools</t> (<t>2</t>.<t>6</t>, <t>same</t> <t>version</t> <t>as</t> <t>Python</t>) <t>to</t> <t>the</t> <t>Python</t> <t>site-packages</t> <t>in</t> <t>the</t> <t>virtualenv</t> <t>with</t> <t>the</t> <t>following</t> <t>command</t>
+<t>pkg_resources</t> <t>appears</t> <t>to</t> <t>be</t> <t>distributed</t> <t>with</t> <t>setuptools</t>.  <t>Initially</t> <t>I</t> <t>thought</t> <t>this</t> <t>might</t> <t>not</t> <t>be</t> <t>installed</t> <t>to</t> <t>the</t> <t>python</t> <t>in</t> <t>the</t> <t>virtualenv</t> <t>so</t> <t>I</t> <t>installed</t> <t>setuptools</t> (<t>2</t>.<t>6</t>, <t>same</t> <t>version</t> <t>as</t> <t>Python</t>) <t>to</t> <t>the</t> <t>Python</t> <t>site-packages</t> <t>in</t> <t>the</t> <t>virtualenv</t> <t>with</t> <t>the</t> <t>following</t> <t>command</t>
 
 <code><c>sh</c> <c>setuptools-0.6c11-py2.6</c><c>.</c><c>egg</c> <c>-</c><c>-</c><c>install-dir</c> <c>/var/www/mydir/virtualenvs/dev/lib/python2.6/site-packages
 </c></code>
 
 <t>EDIT</t>
-<t>This</t> <t>only</t> <t>happens</t> <t>inside</t> <t>the</t> <t>virtualenv</t>.  <t>If I</t> <t>open</t> <t>a</t> <t>console</t> <t>outside</t> <t>the</t> <t>virtualenv</t> <t>then</t> <t>pkg_resources</t> <t>is</t> <t>present</t>
+<t>This</t> <t>only</t> <t>happens</t> <t>inside</t> <t>the</t> <t>virtualenv</t>.  <t>If</t> <t>I</t> <t>open</t> <t>a</t> <t>console</t> <t>outside</t> <t>the</t> <t>virtualenv</t> <t>then</t> <t>pkg_resources</t> <t>is</t> <t>present</t>
 
 <t>but</t> <t>I</t> <t>am</t> <t>still</t> <t>getting</t> <t>the</t> <t>same</t> <t>error</t>.  <t>Any</t> <t>ideas</t> <t>as</t> <t>to</t> <t>why</t> <t>pkg_resources</t> <t>is</t> <t>not</t> <t>on</t> <t>the</t> <t>path</t>?
 "
@@ -5904,7 +5904,7 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 <code><c>particles</c>[<c>x</c>]<c>.</c><c>location</c> <c>=</c> [<c>x</c>,<c>y</c>,<c>z</c>]
 </code>
 
-<t>And I</t> <t>test</t> <t>for</t> <t>each</t> <t>particles</t> <t>if</t> <t>a</t> <t>neighbour</t> <t>exist</t> <t>by</t> <t>searching</t>
+<t>And</t> <t>I</t> <t>test</t> <t>for</t> <t>each</t> <t>particles</t> <t>if</t> <t>a</t> <t>neighbour</t> <t>exist</t> <t>by</t> <t>searching</t>
 <t>in</t> <t>the</t> <t>location</t> <t>of</t> <t>each</t> <t>particles</t> <t>like</t>:
 
 <code><c>if</c> [<c>x</c><c>+</c><c>1</c>,<c>y</c>,<c>z</c>] <c>in</c> <c>particles</c><c>.</c><c>location</c>
@@ -6056,9 +6056,9 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
     <c>self</c><c>.</c><c>right</c> <c>=</c> <c>somenode2</c>
 </code>
 
-<t>If I</t> <t>wanted</t> <t>to</t> <t>remove</t> <t>some</t> <t>node</t> <t>from</t> <t>the</t> <t>tree</t>, <t>I</t> <t>would</t> <t>need</t> <t>to</t> <t>set</t> <code><c>self</c><c>.</c><c>left</c></code> <t>to</t> <t>empty</t>.
+<t>If</t> <t>I</t> <t>wanted</t> <t>to</t> <t>remove</t> <t>some</t> <t>node</t> <t>from</t> <t>the</t> <t>tree</t>, <t>I</t> <t>would</t> <t>need</t> <t>to</t> <t>set</t> <code><c>self</c><c>.</c><c>left</c></code> <t>to</t> <t>empty</t>.
 "
-8248397|"<t>How</t> <t>to</t> <t>know/change</t> <t>current</t> <t>directory</t> <t>in</t> <t>Python</t> <t>shell</t>?"|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>3.2</t> <t>on</t> <t>Windows</t> <t>7</t>.  <t>When I</t> <t>open</t> <t>the</t> <t>Python</t> <t>shell</t>, <t>how</t> <t>can</t> <t>I</t> <t>know</t> <t>what</t> <t>the</t> <t>current</t> <t>directory</t> <t>is</t> <t>and</t> <t>how</t> <t>can</t> <t>I</t> <t>change</t> <t>it</t> <t>to</t> <t>another</t> <t>directory</t> <t>where</t> <t>my</t> <t>modules</t> <t>are</t>?
+8248397|"<t>How</t> <t>to</t> <t>know/change</t> <t>current</t> <t>directory</t> <t>in</t> <t>Python</t> <t>shell</t>?"|"<t>I</t> <t>am</t> <t>using</t> <t>Python</t> <t>3.2</t> <t>on</t> <t>Windows</t> <t>7</t>.  <t>When</t> <t>I</t> <t>open</t> <t>the</t> <t>Python</t> <t>shell</t>, <t>how</t> <t>can</t> <t>I</t> <t>know</t> <t>what</t> <t>the</t> <t>current</t> <t>directory</t> <t>is</t> <t>and</t> <t>how</t> <t>can</t> <t>I</t> <t>change</t> <t>it</t> <t>to</t> <t>another</t> <t>directory</t> <t>where</t> <t>my</t> <t>modules</t> <t>are</t>?
 "
 8266529|"<t>Python</t> <t>-</t> <t>convert</t> <t>string</t> <t>to</t> <t>list</t>"|"
   <t>Possible</t> <t>Duplicate</t>:
@@ -6070,7 +6070,7 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 <t>i</t> <t>have</t> <t>a</t> <t>string</t> <t>like</t> <t>this</t> :
 
 
-  states = ""<t>Alaska Alabama Arkansas American Samoa Arizona California</t> <t>Colorado</t>""
+  states = ""Alaska <t>Alabama Arkansas American Samoa Arizona California</t> <t>Colorado</t>""
 
 
 <t>and</t> <t>I</t> <t>want</t> <t>to</t> <t>split</t> <t>it</t> <t>into</t> <t>a</t> <t>list</t> <t>like</t> <t>this</t>
@@ -6113,7 +6113,7 @@ pip</c> <c>install</c> <c>-</c><c>r</c> <c>/path/to/requirements.txt</c> <c>-</c
 <code>['<c>LLKKKKKKKKMMMMMMMMNNNNNNNNNNNNN</c><c>\n</c>', '<c>GGGGGGGGGHHHHHHHHHHHHHHHHHHHHEEEEEEEE</c>']
 </code>
 
-<t>As I</t> <t>see</t> <t>data</t> <t>is</t> <t>in</t> <t>list</t> <t>form</t>. <t>How</t> <t>do</t> <t>I</t> <t>make</t> <t>it</t> <t>string</t>. <t>And</t> <t>also</t> <t>how</t> <t>do</t> <t>I</t> <t>remove</t> ""<t>\n</t>"", ""<t>[</t>"", <t>and</t> ""<t>]</t>"" <t>characters</t> <t>from</t> <t>it</t> ?
+<t>As</t> <t>I</t> <t>see</t> <t>data</t> <t>is</t> <t>in</t> <t>list</t> <t>form</t>. <t>How</t> <t>do</t> <t>I</t> <t>make</t> <t>it</t> <t>string</t>. <t>And</t> <t>also</t> <t>how</t> <t>do</t> <t>I</t> <t>remove</t> ""<t>\n</t>"", ""<t>[</t>"", <t>and</t> ""<t>]</t>"" <t>characters</t> <t>from</t> <t>it</t> ?
 "
 8384737|"<t>Extract</t> <t>file</t> <t>name</t> <t>from</t> <t>path</t>, <t>no</t> <t>matter</t> <t>what</t> <t>the</t> <t>os/path</t> <t>format</t>"|"<t>Which Python</t> <t>library</t> <t>can</t> <t>I</t> <t>use</t> <t>to</t> <t>extract</t> <t>filenames</t> <t>from</t> <t>paths</t>, <t>no</t> <t>matter</t> <t>what</t> <t>the</t> <t>operating</t> <t>system</t> <t>or</t> <t>path</t> <t>format</t> <t>could</t> <t>be</t>?
 
@@ -6200,7 +6200,7 @@ a/b/../../a/b/c
 <c>9887.2000</c>
 </code>
 "
-8917885|"<t>Which</t> <t>version</t> <t>of</t> <t>Python</t> <t>do</t> <t>I</t> <t>have</t> <t>installed</t>?"|"<t>I</t> <t>have</t> <t>to</t> <t>run</t> <t>a</t> <t>Python</t> <t>script</t> <t>on</t> <t>a</t> <t>Windows</t> <t>server</t>. <t>How</t> <t>can</t> <t>I</t> <t>know</t> <t>which</t> <t>version</t> <t>of</t> <t>Python I</t> <t>have</t>, <t>and</t> <t>does</t> <t>it</t> <t>even</t> <t>really</t> <t>matter</t>? <t>I</t> <t>was</t> <t>thinking</t> <t>of</t> <t>updating</t> <t>to</t> <t>latest</t> <t>version</t> <t>of</t> <t>Python</t>.
+8917885|"<t>Which</t> <t>version</t> <t>of</t> <t>Python</t> <t>do</t> <t>I</t> <t>have</t> <t>installed</t>?"|"<t>I</t> <t>have</t> <t>to</t> <t>run</t> <t>a</t> <t>Python</t> <t>script</t> <t>on</t> <t>a</t> <t>Windows</t> <t>server</t>. <t>How</t> <t>can</t> <t>I</t> <t>know</t> <t>which</t> <t>version</t> <t>of</t> <t>Python</t> <t>I</t> <t>have</t>, <t>and</t> <t>does</t> <t>it</t> <t>even</t> <t>really</t> <t>matter</t>? <t>I</t> <t>was</t> <t>thinking</t> <t>of</t> <t>updating</t> <t>to</t> <t>latest</t> <t>version</t> <t>of</t> <t>Python</t>.
 "
 8930915|"<t>Append</t> <t>dictionary</t> <t>to</t> <t>a</t> <t>dictionary</t>?"|"<t>I</t> <t>have</t> <t>two</t> <t>existing</t> <t>dictionaries</t>, <t>and</t> <t>I</t> <t>wish</t> <t>to</t> '<t>append</t>' <t>one</t> <t>of</t> <t>them</t> <t>to</t> <t>the</t> <t>other</t>. <t>By</t> <t>that</t> <t>I</t> <t>mean</t> <t>that</t> <t>the</t> <t>key</t>,<t>values</t> <t>of</t> <t>the</t> <t>other</t> <t>dictionary</t> <t>should</t> <t>be</t> <t>made</t> <t>into</t> <t>the</t> <t>first</t> <t>dictionary</t>. <t>For</t> <t>example</t>:
 
@@ -6449,7 +6449,7 @@ a/b/../../a/b/c
         <c>return</c> <c>card</c>
 </code>
 
-<t>And I</t> <t>want</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>use</t> <t>these</t> <t>values</t> <t>separately</t>. <t>When I</t> <t>tried</t> <t>to</t> <t>use</t> <code><c>return</c> <c>i</c>, <c>card</c></code>, <t>it</t> <t>returns</t> <t>a</t> <code><c>tuple</c></code> <t>and</t> <t>this</t> <t>is</t> <t>not</t> <t>what</t> <t>I</t> <t>want</t>. 
+<t>And</t> <t>I</t> <t>want</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>use</t> <t>these</t> <t>values</t> <t>separately</t>. <t>When</t> <t>I</t> <t>tried</t> <t>to</t> <t>use</t> <code><c>return</c> <c>i</c>, <c>card</c></code>, <t>it</t> <t>returns</t> <t>a</t> <code><c>tuple</c></code> <t>and</t> <t>this</t> <t>is</t> <t>not</t> <t>what</t> <t>I</t> <t>want</t>. 
 "
 9780717|"<t>bash</t>: <t>pip</t>: <t>command</t> <t>not</t> <t>found</t>"|"<t>I</t> <t>downloaded</t> <t>pip</t> <t>and</t> <t>ran</t> <code><c>python</c> <c>setup</c><c>.</c><c>py</c> <c>install</c></code> <t>and</t> <t>everything</t> <t>worked</t> <t>just</t> <t>fine</t>. <t>The</t> <t>very</t> <t>next</t> <t>step</t> <t>in</t> <t>the</t> <t>tutorial</t> <t>is</t> <t>to</t> <t>run</t> <code><c>pip</c> <c>install</c> <c>&lt;</c><c>lib</c> <c>you</c> <c>want</c><c>&gt;</c></code> <t>but</t> <t>before</t> <t>it</t> <t>even</t> <t>tries</t> <t>to</t> <t>find</t> <t>anything</t> <t>online</t> <t>I</t> <t>get</t> <t>an</t> <t>error</t> ""<t>bash</t>: <t>pip</t>: <t>command</t> <t>not</t> <t>found</t>"".
 
@@ -6495,7 +6495,7 @@ a/b/../../a/b/c
 <code><c>string</c><c>.</c><c>replace(</c>',', '')<c>.</c><c>replace(</c>""<c>!</c>"", '')<c>.</c><c>replace(</c>"":"", '')<c>.</c><c>replace(</c>"";"", '')...
 </code>
 
-<t>But I</t> <t>have</t> <t>many</t> <t>characters</t> <t>I</t> <t>have</t> <t>to</t> <t>remove</t>. <t>I</t> <t>thought</t> <t>about</t> <t>a</t> <t>list</t>
+<t>But</t> <t>I</t> <t>have</t> <t>many</t> <t>characters</t> <t>I</t> <t>have</t> <t>to</t> <t>remove</t>. <t>I</t> <t>thought</t> <t>about</t> <t>a</t> <t>list</t>
 
 <code><c>list</c> <c>=</c> [',', '<c>!</c>', '<c>.</c>', ';'...]
 </code>
@@ -6561,7 +6561,7 @@ a/b/../../a/b/c
   <code><c>dict</c><c>.</c><c>iteritems(</c>)</code>: <t>Return</t> <t>an</t> <t>iterator</t> <t>over</t> <t>the</t> <t>dictionary’s</t> (<t>key</t>, <t>value</t>) <t>pairs</t>.
 
 
-<t>If I</t> <t>run</t> <t>the</t> <t>code</t> <t>below</t>, <t>each</t> <t>seems</t> <t>to</t> <t>return</t> <t>a</t> <t>reference</t> <t>to</t> <t>the</t> <t>same</t> <t>object</t>. <t>Are</t> <t>there</t> <t>any</t> <t>subtle</t> <t>differences</t> <t>that</t> <t>I</t> <t>am</t> <t>missing</t>?
+<t>If</t> <t>I</t> <t>run</t> <t>the</t> <t>code</t> <t>below</t>, <t>each</t> <t>seems</t> <t>to</t> <t>return</t> <t>a</t> <t>reference</t> <t>to</t> <t>the</t> <t>same</t> <t>object</t>. <t>Are</t> <t>there</t> <t>any</t> <t>subtle</t> <t>differences</t> <t>that</t> <t>I</t> <t>am</t> <t>missing</t>?
 
 <code>#<c>!</c><c>/usr/bin/python
 
@@ -6615,7 +6615,7 @@ d={1:</c>'<c>one</c>',<c>2</c>:'<c>two</c>',<c>3</c>:'<c>three</c>'}
 <c>UnicodeEncodeError</c>: '<c>ascii</c>' <c>codec</c> <c>can</c>'<c>t</c> <c>encode</c> <c>characters</c> <c>in</c> <c>position</c> <c>1-5</c>: <c>ordinal</c> <c>not</c> <c>in</c> <c>range(</c><c>128</c>)
 </code>
 "
-10588317|"<t>Python</t> <t>function</t> <t>global</t> <t>variables</t>?"|"<t>So I</t> <t>know</t> <t>I</t> <t>should</t> <t>avoid</t> <t>using</t> <t>global</t> <t>variables</t> <t>in</t> <t>the</t> <t>first</t> <t>place</t> <t>due</t> <t>to</t> <t>confusion</t> <t>like</t> <t>this</t>, <t>but</t> <t>if</t> <t>I</t> <t>were</t> <t>to</t> <t>use</t> <t>them</t>, <t>is</t> <t>the</t> <t>following</t> <t>a</t> <t>valid</t> <t>way</t> <t>to</t> <t>go</t> <t>about</t> <t>using</t> <t>them</t>? (<t>I</t> <t>am</t> <t>trying</t> <t>to</t> <t>call</t> <t>the</t> <t>global</t> <t>copy</t> <t>of</t> <t>a</t> <t>variable</t> <t>created</t> <t>in</t> <t>a</t> <t>separate</t> <t>function</t>.)
+10588317|"<t>Python</t> <t>function</t> <t>global</t> <t>variables</t>?"|"<t>So</t> <t>I</t> <t>know</t> <t>I</t> <t>should</t> <t>avoid</t> <t>using</t> <t>global</t> <t>variables</t> <t>in</t> <t>the</t> <t>first</t> <t>place</t> <t>due</t> <t>to</t> <t>confusion</t> <t>like</t> <t>this</t>, <t>but</t> <t>if</t> <t>I</t> <t>were</t> <t>to</t> <t>use</t> <t>them</t>, <t>is</t> <t>the</t> <t>following</t> <t>a</t> <t>valid</t> <t>way</t> <t>to</t> <t>go</t> <t>about</t> <t>using</t> <t>them</t>? (<t>I</t> <t>am</t> <t>trying</t> <t>to</t> <t>call</t> <t>the</t> <t>global</t> <t>copy</t> <t>of</t> <t>a</t> <t>variable</t> <t>created</t> <t>in</t> <t>a</t> <t>separate</t> <t>function</t>.)
 
 <code><c>x</c> <c>=</c> <c>somevalue</c>
 
@@ -6697,7 +6697,7 @@ d={1:</c>'<c>one</c>',<c>2</c>:'<c>two</c>',<c>3</c>:'<c>three</c>'}
 <code><c>res</c> <c>=</c> <c>DataFrame(</c><c>columns</c><c>=</c>('<c>lib</c>', '<c>qty1</c>', '<c>qty2</c>'))
 </code>
 
-<t>Then I</t> <t>can</t> <t>add</t> <t>a</t> <t>new</t> <t>row</t> <t>and</t> <t>fill</t> <t>a</t> <t>field</t> <t>with</t> :
+<t>Then</t> <t>I</t> <t>can</t> <t>add</t> <t>a</t> <t>new</t> <t>row</t> <t>and</t> <t>fill</t> <t>a</t> <t>field</t> <t>with</t> :
 
 <code><c>res</c> <c>=</c> <c>res</c><c>.</c><c>set_value(</c><c>len(</c><c>res</c>), '<c>qty1</c>', <c>10.0</c>)
 </code>
@@ -6709,7 +6709,7 @@ d={1:</c>'<c>one</c>',<c>2</c>:'<c>two</c>',<c>3</c>:'<c>three</c>'}
 10763440|"<t>How</t> <t>to</t> <t>install</t> <t>python3</t> <t>version</t> <t>of</t> <t>package</t> <t>via</t> <t>pip</t> <t>on</t> <t>Ubuntu</t>?"|"<t>I</t> <t>have</t> <t>both</t> <code><c>python</c><c>2.7</c></code> <t>and</t> <code><c>python</c><c>3.2</c></code> <t>installed</t> <t>in</t> <code><c>Ubuntu</c> <c>12.04</c></code>.
 <t>The</t> <t>symbolic</t> <t>link</t> <code><c>python</c></code> <t>links</t> <t>to</t> <code><c>python</c><c>2.7</c></code>.
 
-<t>When I</t> <t>type</t>:
+<t>When</t> <t>I</t> <t>type</t>:
 
 <code><c>sudo</c> <c>pip</c> <c>install</c> <c>package-name</c>
 </code>
@@ -6813,7 +6813,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 
 <t>Am</t> <t>I</t>?
 "
-11266068|"<t>Python</t>: <t>avoid</t> <t>new</t> <t>line</t> <t>with</t> <t>print</t> <t>command</t>"|"<t>I've</t> <t>started</t> <t>programming</t> <t>today</t> <t>and</t> <t>have</t> <t>this</t> <t>issue</t> <t>with</t> <t>Python</t>. <t>It's</t> <t>pretty</t> <t>dumb</t> <t>but</t> <t>I</t> <t>can't</t> <t>figure</t> <t>out</t> <t>how</t> <t>to</t> <t>do</t> <t>it</t>. <t>When I</t> <t>use</t> <t>the</t> <t>print</t> <t>command</t>, <t>it</t> <t>prints</t> <t>whatever</t> <t>I</t> <t>want</t> <t>and</t> <t>then</t> <t>goes</t> <t>to</t> <t>a</t> <t>different</t> <t>line</t>. <t>For</t> <t>example</t>: 
+11266068|"<t>Python</t>: <t>avoid</t> <t>new</t> <t>line</t> <t>with</t> <t>print</t> <t>command</t>"|"<t>I've</t> <t>started</t> <t>programming</t> <t>today</t> <t>and</t> <t>have</t> <t>this</t> <t>issue</t> <t>with</t> <t>Python</t>. <t>It's</t> <t>pretty</t> <t>dumb</t> <t>but</t> <t>I</t> <t>can't</t> <t>figure</t> <t>out</t> <t>how</t> <t>to</t> <t>do</t> <t>it</t>. <t>When</t> <t>I</t> <t>use</t> <t>the</t> <t>print</t> <t>command</t>, <t>it</t> <t>prints</t> <t>whatever</t> <t>I</t> <t>want</t> <t>and</t> <t>then</t> <t>goes</t> <t>to</t> <t>a</t> <t>different</t> <t>line</t>. <t>For</t> <t>example</t>: 
 
 <code><c>print</c> ""<c>this</c> <c>should</c> <c>be</c>""; <c>print</c> ""<c>on</c> <c>the</c> <c>same</c> <c>line</c>""
 </code>
@@ -7073,7 +7073,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 
 <t>I</t> <t>am</t> <t>baffled</t> <t>by</t> <t>these</t> <t>errors</t>. <t>Can</t> <t>anyone</t> <t>help</t> <t>please</t>?
 
-<t>By</t> <t>the</t> <t>way</t>, <t>I</t> <code><c>sudo</c></code> <t>all</t> <t>the</t> <t>commands</t>. <t>Also I</t> <t>am</t> <t>on</t> <t>RHEL</t> <t>5.5.</t>
+<t>By</t> <t>the</t> <t>way</t>, <t>I</t> <code><c>sudo</c></code> <t>all</t> <t>the</t> <t>commands</t>. <t>Also</t> <t>I</t> <t>am</t> <t>on</t> <t>RHEL</t> <t>5.5.</t>
 "
 11880430|"<t>How</t> <t>to</t> <t>write</t> <t>inline</t> <t>if</t> <t>statement</t> <t>for</t> <t>print</t>?"|"<t>I</t> <t>need</t> <t>to</t> <t>print</t> <t>some</t> <t>stuff</t> <t>only</t> <t>when</t> <t>a</t> <t>boolean</t> <t>variable</t> <t>is</t> <t>set</t> <t>to</t> <code><c>True</c></code>. <t>So</t>, <t>after</t> <t>looking</t> <t>at</t> <t>this</t>, <t>I</t> <t>tried</t> <t>with</t> <t>a</t> <t>simple</t> <t>example</t>:
 
@@ -7169,7 +7169,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 "
 12453580|"<t>Concatenate</t> <t>item</t> <t>in</t> <t>list</t> <t>to</t> <t>strings</t>"|"<t>Is</t> <t>there</t> <t>a</t> <t>simpler</t> <t>way</t> <t>to</t> <t>concatenate</t> <t>string</t> <t>items</t> <t>in</t> <t>list</t> <t>into</t> <t>a</t> <t>single</t> <t>string</t>?
 
-<t>Can I</t> <t>use</t> <t>the</t> <code><c>str</c><c>.</c><c>join(</c>)</code> <t>function</t> <t>to</t> <t>join</t> <t>items</t> <t>in</t> <t>list</t>?
+<t>Can</t> <t>I</t> <t>use</t> <t>the</t> <code><c>str</c><c>.</c><c>join(</c>)</code> <t>function</t> <t>to</t> <t>join</t> <t>items</t> <t>in</t> <t>list</t>?
 
 <t>E.g.</t> <t>this</t> <t>is</t> <t>the</t> <t>input</t> <code>['<c>this</c>','<c>is</c>','<c>a</c>','<c>sentence</c>']</code> <t>and</t> <t>this</t> <t>is</t> <t>the</t> <t>desired</t> <t>output</t> <code><c>this-is-a-sentence</c></code>
 
@@ -7187,7 +7187,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 
 <t>I</t> <t>can</t> <t>easily</t> <t>distinguish</t> <t>the</t> <t>genuine</t> <t>client</t>, <t>but</t> <t>I</t> <t>am</t> <t>logging</t> <t>to</t> <t>files</t> <t>all</t> <t>the</t> <t>data</t> <t>sent</t> <t>so</t> <t>I</t> <t>can</t> <t>analyze</t> <t>it</t> <t>later</t>.
 
-<t>Sometimes I</t> <t>get</t> <t>characters</t> <t>like</t> <t>this</t> <code><c>œ</c></code> <t>that</t> <t>cause</t> <t>the</t> <code><c>UnicodeDecodeError</c></code> <t>error</t>.
+<t>Sometimes</t> <t>I</t> <t>get</t> <t>characters</t> <t>like</t> <t>this</t> <code><c>œ</c></code> <t>that</t> <t>cause</t> <t>the</t> <code><c>UnicodeDecodeError</c></code> <t>error</t>.
 
 <t>I</t> <t>need</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>make</t> <t>the</t> <t>string</t> <t>UTF-8</t> <t>with</t> <t>or</t> <t>without</t> <t>those</t> <t>characters</t>.
 "
@@ -7221,7 +7221,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <code><c>y</c> <c>=</c> [<c>0</c>,<c>1</c>,<c>2</c>,<c>3</c>,<c>4</c>]
 </code>
 
-<t>Then I</t> <t>would</t> <t>do</t>:
+<t>Then</t> <t>I</t> <t>would</t> <t>do</t>:
 
 <code><c>matplotlib</c><c>.</c><c>pyplot</c><c>.</c><c>plot(</c><c>x</c>,<c>y</c>)
 <c>matplotlib</c><c>.</c><c>pyplot</c><c>.</c><c>show(</c>)
@@ -7239,7 +7239,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 "
 12836128|"<t>Convert</t> <t>list</t> <t>to</t> <t>tuple</t> <t>in</t> <t>Python</t>"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>convert</t> <t>a</t> <t>list</t> <t>to</t> <t>a</t> <t>tuple</t>. 
 
-<t>When I</t> <t>google</t> <t>it</t>, <t>I</t> <t>find</t> <t>a</t> <t>lot</t> <t>of</t> <t>answers</t> <t>similar</t> <t>to</t>:
+<t>When</t> <t>I</t> <t>google</t> <t>it</t>, <t>I</t> <t>find</t> <t>a</t> <t>lot</t> <t>of</t> <t>answers</t> <t>similar</t> <t>to</t>:
 
 <code><c>l</c> <c>=</c> [<c>4</c>,<c>5</c>,<c>6</c>]
 <c>tuple(</c><c>l</c>)
@@ -7282,7 +7282,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 "
 12943819|"<t>How</t> <t>to</t> <t>prettyprint</t> <t>a</t> <t>JSON</t> <t>file</t>?"|"<t>I</t> <t>have</t> <t>a</t> <t>JSON</t> <t>file</t> <t>that</t> <t>is</t> <t>a</t> <t>mess</t> <t>that</t> <t>I</t> <t>want</t> <t>to</t> <t>prettyprint--</t> <t>what's</t> <t>the</t> <t>easiest</t> <t>way</t> <t>to</t> <t>do</t> <t>this</t> <t>in</t> <t>python</t>? <t>I</t> <t>know</t> <t>PrettyPrint</t> <t>takes</t> <t>an</t> ""<t>object</t>"", <t>which</t> <t>I</t> <t>think</t> <t>can</t> <t>be</t> <t>a</t> <t>file</t>, <t>but</t> <t>I</t> <t>don't</t> <t>know</t> <t>how</t> <t>to</t> <t>pass</t> <t>a</t> <t>file</t> <t>in--</t> <t>just</t> <t>using</t> <t>the</t> <t>filename</t> <t>doesn't</t> <t>work</t>.
 "
-13411544|"<t>Delete</t> <t>column</t> <t>from</t> <t>pandas</t> <t>DataFrame</t>"|"<t>When</t> <t>deleting</t> <t>a</t> <t>column</t> <t>in</t> <t>a</t> <t>DataFrame I</t> <t>use</t>:
+13411544|"<t>Delete</t> <t>column</t> <t>from</t> <t>pandas</t> <t>DataFrame</t>"|"<t>When</t> <t>deleting</t> <t>a</t> <t>column</t> <t>in</t> <t>a</t> <t>DataFrame</t> <t>I</t> <t>use</t>:
 
 <code><c>del</c> <c>df</c>['<c>column_name</c>']
 </code>
@@ -7307,7 +7307,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <c>00000</c><c>1</c> <c>20111231</c>  <c>00000</c><c>1</c>  <c>NaN</c>   <c>NaN</c>
 </code>
 
-<t>Then I</t> <t>just</t> <t>want</t> <t>the</t> <t>records</t> <t>whose</t> <code><c>EPS</c></code> <t>is</t> <t>not</t> <code><c>NaN</c></code>, <t>that</t> <t>is</t>, <code><c>df</c><c>.</c><c>drop(</c><c>.</c>...)</code> <t>will</t> <t>return</t> <t>the</t> <t>dataframe</t> <t>as</t> <t>below</t>:
+<t>Then</t> <t>I</t> <t>just</t> <t>want</t> <t>the</t> <t>records</t> <t>whose</t> <code><c>EPS</c></code> <t>is</t> <t>not</t> <code><c>NaN</c></code>, <t>that</t> <t>is</t>, <code><c>df</c><c>.</c><c>drop(</c><c>.</c>...)</code> <t>will</t> <t>return</t> <t>the</t> <t>dataframe</t> <t>as</t> <t>below</t>:
 
 <code>                  <c>STK_ID</c>  <c>EPS</c>  <c>cash</c>
 <c>STK_ID</c> <c>RPT_Date</c>                   
@@ -7494,7 +7494,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
        <c>20070630</c>   <c>7.907</c>       <c>NaN</c>      <c>7.907</c>   <c>6.459</c>
 </code>
 
-<t>Then I</t> <t>want</t> <t>to</t> <t>drop</t> <t>rows</t> <t>with</t> <t>certain</t> <t>sequence</t> <t>numbers</t> <t>which</t> <t>indicated</t> <t>in</t> <t>a</t> <t>list</t>, <t>suppose</t> <t>here</t> <t>is</t> <code>[<c>1</c>,<c>2</c>,<c>4</c>],</code> <t>then</t> <t>left</t>:
+<t>Then</t> <t>I</t> <t>want</t> <t>to</t> <t>drop</t> <t>rows</t> <t>with</t> <t>certain</t> <t>sequence</t> <t>numbers</t> <t>which</t> <t>indicated</t> <t>in</t> <t>a</t> <t>list</t>, <t>suppose</t> <t>here</t> <t>is</t> <code>[<c>1</c>,<c>2</c>,<c>4</c>],</code> <t>then</t> <t>left</t>:
 
 <code>                  <c>sales</c>  <c>discount</c>  <c>net_sales</c>    <c>cogs</c>
 <c>STK_ID</c> <c>RPT_Date</c>                                     
@@ -7545,7 +7545,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 "
 15221473|"<t>How</t> <t>do</t> <t>I</t> <t>update</t> <t>pip</t> <t>itself</t> <t>from</t> <t>inside</t> <t>my</t> <t>virtual</t> <t>environment</t>?"|"<t>I'm</t> <t>able</t> <t>to</t> <t>update</t> <t>pip-managed</t> <t>packages</t>, <t>but</t> <t>how</t> <t>do</t> <t>I</t> <t>update</t> <t>pip</t> <t>itself</t>? <t>According</t> <t>to</t> <code><c>pip</c> <c>-</c><c>-</c><c>version</c></code>, <t>I</t> <t>currently</t> <t>have</t> <t>pip</t> <t>1.1</t> <t>installed</t> <t>in</t> <t>my</t> <t>virtualenv</t> <t>and</t> <t>I</t> <t>want</t> <t>to</t> <t>update</t> <t>to</t> <t>the</t> <t>latest</t> <t>version</t>. 
 
-<t>What's</t> <t>the</t> <t>command</t> <t>for</t> <t>that</t>? <t>Do I</t> <t>need</t> <t>to</t> <t>use</t> <t>distribute</t> <t>or</t> <t>is</t> <t>there</t> <t>a</t> <t>native</t> <t>pip</t> <t>or</t> <t>virtualenv</t> <t>command</t>? <t>I've</t> <t>already</t> <t>tried</t> <code><c>pip</c> <c>update</c></code> <t>and</t> <code><c>pip</c> <c>update</c> <c>pip</c></code> <t>with</t> <t>no</t> <t>success</t>.
+<t>What's</t> <t>the</t> <t>command</t> <t>for</t> <t>that</t>? <t>Do</t> <t>I</t> <t>need</t> <t>to</t> <t>use</t> <t>distribute</t> <t>or</t> <t>is</t> <t>there</t> <t>a</t> <t>native</t> <t>pip</t> <t>or</t> <t>virtualenv</t> <t>command</t>? <t>I've</t> <t>already</t> <t>tried</t> <code><c>pip</c> <c>update</c></code> <t>and</t> <code><c>pip</c> <c>update</c> <c>pip</c></code> <t>with</t> <t>no</t> <t>success</t>.
 "
 15286401|"<t>Print</t> <t>multiple</t> <t>arguments</t> <t>in</t> <t>python</t>"|"<t>This</t> <t>is</t> <t>just</t> <t>a</t> <t>snippet</t> <t>of</t> <t>my</t> <t>code</t>:
 
@@ -7600,7 +7600,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 {'<c>color</c>': <c>2</c>, '<c>speed</c>': <c>70</c>}
 </code>
 
-<t>But I</t> <t>want</t> <t>the</t> <t>program</t> <t>to</t> <t>print</t> <t>it</t> <t>like</t> <t>this</t>:
+<t>But</t> <t>I</t> <t>want</t> <t>the</t> <t>program</t> <t>to</t> <t>print</t> <t>it</t> <t>like</t> <t>this</t>:
 
 <code><c>B</c>
 <c>color</c> : <c>3</c>
@@ -7618,7 +7618,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <c>df</c> <c>=</c> <c>pd</c><c>.</c><c>DataFrame(</c><c>a</c>)
 </code>
 
-<t>What</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>convert</t> <t>the</t> <t>columns</t> <t>to</t> <t>the</t> <t>appropriate</t> <t>types</t>, <t>in</t> <t>this</t> <t>case</t> <t>columns</t> <t>2</t> <t>and</t> <t>3</t> <t>into</t> <t>floats</t>? <t>Is</t> <t>there</t> <t>a</t> <t>way</t> <t>to</t> <t>specify</t> <t>the</t> <t>types</t> <t>while</t> <t>converting</t> <t>to</t> <t>DataFrame</t>? <t>Or</t> <t>is</t> <t>it</t> <t>better</t> <t>to</t> <t>create</t> <t>the</t> <t>DataFrame</t> <t>first</t> <t>and</t> <t>then</t> <t>loop</t> <t>through</t> <t>the</t> <t>columns</t> <t>to</t> <t>change</t> <t>the</t> <t>type</t> <t>for</t> <t>each</t> <t>column</t>? <t>Ideally I</t> <t>would</t> <t>like</t> <t>to</t> <t>do</t> <t>this</t> <t>in</t> <t>a</t> <t>dynamic</t> <t>way</t> <t>because</t> <t>there</t> <t>can</t> <t>be</t> <t>hundreds</t> <t>of</t> <t>columns</t> <t>and</t> <t>I</t> <t>don't</t> <t>want</t> <t>to</t> <t>specify</t> <t>exactly</t> <t>which</t> <t>columns</t> <t>are</t> <t>of</t> <t>which</t> <t>type</t>. <t>All I</t> <t>can</t> <t>guarantee</t> <t>is</t> <t>that</t> <t>each</t> <t>columns</t> <t>contains</t> <t>values</t> <t>of</t> <t>the</t> <t>same</t> <t>type</t>.
+<t>What</t> <t>is</t> <t>the</t> <t>best</t> <t>way</t> <t>to</t> <t>convert</t> <t>the</t> <t>columns</t> <t>to</t> <t>the</t> <t>appropriate</t> <t>types</t>, <t>in</t> <t>this</t> <t>case</t> <t>columns</t> <t>2</t> <t>and</t> <t>3</t> <t>into</t> <t>floats</t>? <t>Is</t> <t>there</t> <t>a</t> <t>way</t> <t>to</t> <t>specify</t> <t>the</t> <t>types</t> <t>while</t> <t>converting</t> <t>to</t> <t>DataFrame</t>? <t>Or</t> <t>is</t> <t>it</t> <t>better</t> <t>to</t> <t>create</t> <t>the</t> <t>DataFrame</t> <t>first</t> <t>and</t> <t>then</t> <t>loop</t> <t>through</t> <t>the</t> <t>columns</t> <t>to</t> <t>change</t> <t>the</t> <t>type</t> <t>for</t> <t>each</t> <t>column</t>? <t>Ideally</t> <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>do</t> <t>this</t> <t>in</t> <t>a</t> <t>dynamic</t> <t>way</t> <t>because</t> <t>there</t> <t>can</t> <t>be</t> <t>hundreds</t> <t>of</t> <t>columns</t> <t>and</t> <t>I</t> <t>don't</t> <t>want</t> <t>to</t> <t>specify</t> <t>exactly</t> <t>which</t> <t>columns</t> <t>are</t> <t>of</t> <t>which</t> <t>type</t>. <t>All</t> <t>I</t> <t>can</t> <t>guarantee</t> <t>is</t> <t>that</t> <t>each</t> <t>columns</t> <t>contains</t> <t>values</t> <t>of</t> <t>the</t> <t>same</t> <t>type</t>.
 "
 15943769|"<t>How</t> <t>do</t> <t>I</t> <t>get</t> <t>the</t> <t>row</t> <t>count</t> <t>of</t> <t>a</t> <t>Pandas</t> <t>dataframe</t>?"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>get</t> <t>the</t> <t>number</t> <t>of</t> <t>rows</t> <t>of</t> <t>dataframe</t> <t>df</t> <t>with</t> <t>Pandas</t>, <t>and</t> <t>here</t> <t>is</t> <t>my</t> <t>code</t>.
 
@@ -7688,7 +7688,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <c>2</c>  <c>12</c>  <c>120</c>
 </code>
 
-<t>Now I</t> <t>want</t> <t>to</t> <t>iterate</t> <t>over</t> <t>the</t> <t>rows</t> <t>of</t> <t>the</t> <t>above</t> <t>frame</t>. <t>For</t> <t>every</t> <t>row</t> <t>I</t> <t>want</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>access</t> <t>its</t> <t>elements</t> (<t>values</t> <t>in</t> <t>cells</t>) <t>by</t> <t>the</t> <t>name</t> <t>of</t> <t>the</t> <t>columns</t>. <t>So</t>, <t>for</t> <t>example</t>, <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>have</t> <t>something</t> <t>like</t> <t>that</t>:
+<t>Now</t> <t>I</t> <t>want</t> <t>to</t> <t>iterate</t> <t>over</t> <t>the</t> <t>rows</t> <t>of</t> <t>the</t> <t>above</t> <t>frame</t>. <t>For</t> <t>every</t> <t>row</t> <t>I</t> <t>want</t> <t>to</t> <t>be</t> <t>able</t> <t>to</t> <t>access</t> <t>its</t> <t>elements</t> (<t>values</t> <t>in</t> <t>cells</t>) <t>by</t> <t>the</t> <t>name</t> <t>of</t> <t>the</t> <t>columns</t>. <t>So</t>, <t>for</t> <t>example</t>, <t>I</t> <t>would</t> <t>like</t> <t>to</t> <t>have</t> <t>something</t> <t>like</t> <t>that</t>:
 
 <code><c>for</c> <c>row</c> <c>in</c> <c>df</c><c>.</c><c>rows</c>:
    <c>print</c> <c>row</c>['<c>c1</c>'], <c>row</c>['<c>c2</c>']
@@ -7706,7 +7706,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <code><c>for</c> <c>row</c> <c>in</c> <c>df</c><c>.</c><c>iterrows(</c>):
 </code>
 
-<t>But I</t> <t>do</t> <t>not</t> <t>understand</t> <t>what</t> <t>the</t> <code><c>row</c></code> <t>object</t> <t>is</t> <t>and</t> <t>how</t> <t>I</t> <t>can</t> <t>work</t> <t>with</t> <t>it</t>.
+<t>But</t> <t>I</t> <t>do</t> <t>not</t> <t>understand</t> <t>what</t> <t>the</t> <code><c>row</c></code> <t>object</t> <t>is</t> <t>and</t> <t>how</t> <t>I</t> <t>can</t> <t>work</t> <t>with</t> <t>it</t>.
 "
 16503560|"<t>Read</t> <t>specific</t> <t>columns</t> <t>from</t> <t>a</t> <t>csv</t> <t>file</t> <t>with</t> <t>csv</t> <t>module</t>?"|"<t>I'm</t> <t>trying</t> <t>to</t> <t>parse</t> <t>through</t> <t>a</t> <t>csv</t> <t>file</t> <t>and</t> <t>extract</t> <t>the</t> <t>data</t> <t>from</t> <t>only</t> <t>specific</t> <t>columns</t>.
 
@@ -7784,7 +7784,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <c>dict_keys(</c>[<c>1</c>, <c>2</c>, <c>3</c>])
 </code>
 
-<t>So I</t> <t>have</t> <t>to</t> <t>do</t> <t>this</t> <t>to</t> <t>get</t> <t>a</t> <t>list</t>:
+<t>So</t> <t>I</t> <t>have</t> <t>to</t> <t>do</t> <t>this</t> <t>to</t> <t>get</t> <t>a</t> <t>list</t>:
 
 <code><c>newlist</c> <c>=</c> <c>list(</c>)
 <c>for</c> <c>i</c> <c>in</c> <c>newdict</c><c>.</c><c>keys(</c>):
@@ -7808,7 +7808,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 <t>Is</t> <t>there</t> <t>any</t> <t>way</t> <t>to</t> <t>get</t> <t>around</t> <t>this</t> <t>easily</t> (<t>i.e.</t> <t>I</t> <t>have</t> <t>unicode</t> <t>characters</t> <t>in</t> <t>my</t> <t>data</t> <t>frame</t>)? <t>And</t> <t>is</t> <t>there</t> <t>a</t> <t>way</t> <t>to</t> <t>write</t> <t>to</t> <t>a</t> <t>tab</t> <t>delimited</t> <t>file</t> <t>instead</t> <t>of</t> <t>a</t> <t>CSV</t> <t>using</t> <t>e.g.</t> <t>a</t> '<t>to-tab</t>' <t>method</t> (<t>that</t> <t>I</t> <t>dont</t> <t>think</t> <t>exists</t>)?
 "
 17071871|"<t>Select</t> <t>rows</t> <t>from</t> <t>a</t> <t>DataFrame</t> <t>based</t> <t>on</t> <t>values</t> <t>in</t> <t>a</t> <t>column</t> <t>in</t> <t>pandas</t>"|"<t>How</t> <t>to</t> <t>select</t> <t>rows</t> <t>from</t> <t>a</t> <t>DataFrame</t> <t>based</t> <t>on</t> <t>values</t> <t>in</t> <t>some</t> <t>column</t> <t>in</t> <t>pandas</t>?
-<t>In SQL I</t> <t>would</t> <t>use</t>: 
+<t>In SQL</t> <t>I</t> <t>would</t> <t>use</t>: 
 
 <code><c>select</c> <c>*</c> <c>from</c> <c>table</c> <c>where</c> <c>colume_name</c> <c>=</c> <c>some_value</c><c>.</c> 
 </code>
@@ -7857,7 +7857,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
   <t>This</t> <t>is</t> <t>how</t> <t>search</t> <t>and</t> <t>replace</t> <t>works</t> <t>abcd</t>
 
 
-<t>When I</t> <t>search</t> <t>and</t> <t>replace</t> '<t>ram</t>' <t>by</t> '<t>abcd</t>' <t>in</t> <t>above</t> <t>input</t> <t>file</t>, <t>it</t> <t>works</t> <t>as</t> <t>a</t> <t>charm</t>. <t>But</t> <t>when</t> <t>I</t> <t>do</t> <t>vice-verse</t> <t>i.e.</t> '<t>abcd</t>' <t>by</t> '<t>ram</t>', <t>some</t> <t>junk</t> <t>characters</t> <t>are</t> <t>left</t> <t>at</t> <t>the</t> <t>end</t>.
+<t>When</t> <t>I</t> <t>search</t> <t>and</t> <t>replace</t> '<t>ram</t>' <t>by</t> '<t>abcd</t>' <t>in</t> <t>above</t> <t>input</t> <t>file</t>, <t>it</t> <t>works</t> <t>as</t> <t>a</t> <t>charm</t>. <t>But</t> <t>when</t> <t>I</t> <t>do</t> <t>vice-verse</t> <t>i.e.</t> '<t>abcd</t>' <t>by</t> '<t>ram</t>', <t>some</t> <t>junk</t> <t>characters</t> <t>are</t> <t>left</t> <t>at</t> <t>the</t> <t>end</t>.
 
 <t>Replacing</t> '<t>abcd</t>' <t>by</t> '<t>ram</t>'
 
@@ -7900,7 +7900,7 @@ In</c> <c>file</c> <c>included</c> <c>from</c> <c>greenlet</c><c>.</c><c>c</c>:<
 
 <t>How</t> <t>do</t> <t>I</t> <t>install</t> <t>it</t>?
 "
-17309288|"<t>ImportError</t>: <t>No</t> <t>module</t> <t>named</t> <t>requests</t>"|"<t>Whenever I</t> <t>run</t> <t>this</t> <t>code</t>, <t>I</t> <t>consistently</t> <t>get</t> <t>an</t> <t>error</t> <t>saying</t> <code><c>No</c> <c>module</c> <c>Named</c> <c>requests</c></code>:
+17309288|"<t>ImportError</t>: <t>No</t> <t>module</t> <t>named</t> <t>requests</t>"|"<t>Whenever</t> <t>I</t> <t>run</t> <t>this</t> <t>code</t>, <t>I</t> <t>consistently</t> <t>get</t> <t>an</t> <t>error</t> <t>saying</t> <code><c>No</c> <c>module</c> <c>Named</c> <c>requests</c></code>:
 
 <code><c>import</c> <c>requests</c>
 </code>
@@ -8173,7 +8173,7 @@ Storing</c> <c>complete</c> <c>log</c> <c>in</c> <c>C:\Users\Joey\pip\pip.log
         <c>print</c> (""'{<c>0</c>}'<c>is</c> <c>longer</c> <c>than</c> '{<c>1</c>}'""<c>%</c> <c>name2</c>, <c>name1</c>)
 </code>
 
-<t>When I</t> <t>run</t> <t>this</t> <t>code</t> <t>it</t> <t>displays</t>:
+<t>When</t> <t>I</t> <t>run</t> <t>this</t> <t>code</t> <t>it</t> <t>displays</t>:
 
 <code><c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
   <c>File</c> ""<c>program</c><c>.</c><c>py</c>"", <c>line</c> <c>13</c>, <c>in</c> <c>&lt;</c><c>module</c><c>&gt;</c>
@@ -8223,7 +8223,7 @@ Storing</c> <c>complete</c> <c>log</c> <c>in</c> <c>C:\Users\Joey\pip\pip.log
 <code><c>list</c> <c>=</c> [<c>11</c>, <c>12</c>, <c>13</c>, <c>14</c>, <c>15</c>, <c>16</c>]
 </code>
 "
-18533621|"<t>Error</t> <t>when</t> <t>creating</t> <t>a</t> <t>new</t> <t>text</t> <t>file</t> <t>with</t> <t>python</t>?"|"<t>This</t> <t>function</t> <t>doesn't</t> <t>work</t> <t>and</t> <t>raises</t> <t>an</t> <t>error</t>. <t>Do I</t> <t>need</t> <t>to</t> <t>change</t> <t>any</t> <t>arguments</t> <t>or</t> <t>parameters</t>?  
+18533621|"<t>Error</t> <t>when</t> <t>creating</t> <t>a</t> <t>new</t> <t>text</t> <t>file</t> <t>with</t> <t>python</t>?"|"<t>This</t> <t>function</t> <t>doesn't</t> <t>work</t> <t>and</t> <t>raises</t> <t>an</t> <t>error</t>. <t>Do</t> <t>I</t> <t>need</t> <t>to</t> <t>change</t> <t>any</t> <t>arguments</t> <t>or</t> <t>parameters</t>?  
 
 <code><c>import</c> <c>sys</c>
 
@@ -8262,7 +8262,7 @@ Storing</c> <c>complete</c> <c>log</c> <c>in</c> <c>C:\Users\Joey\pip\pip.log
 
 <t>The</t> <t>solution</t> <t>at</t> <t>ImportError</t>: <t>DLL</t> <t>load</t> <t>failed</t>: <t>%1</t> <t>is</t> <t>not</t> <t>a</t> <t>valid</t> <t>Win32</t> <t>application</t> <t>says</t> <t>to</t> <t>add</t> ""<t>the</t> <t>new</t> <t>opencv</t> <t>binaries</t> <t>path</t> (<code><c>C:\opencv\build\bin\Release</c></code>) <t>to</t> <t>the</t> <t>Windows PATH</t> <t>environment</t> <t>variable</t>"". <t>But</t> <t>as</t> <t>shown</t> <t>above</t>, <t>I</t> <t>already</t> <t>have</t> <t>the</t> <t>OpenCV</t> <t>binaries</t> <t>folder</t> (<code><c>C:\lib\opencv\build\x64\vc11\bin</c></code>) <t>in</t> <t>my</t> <t>PATH</t>. <t>And</t> <t>my</t> <t>OpenCV</t> <t>installation</t> <t>doesn't</t> <t>have</t> <t>any</t> <t>Release</t> <t>folders</t> (<t>except</t> <t>for</t> <t>an</t> <t>empty</t> <t>one</t> <t>under</t> <t>build/java</t>).
 
-<t>Any</t> <t>ideas</t> <t>as</t> <t>to</t> <t>what's</t> <t>going</t> <t>wrong</t>? <t>Can I</t> <t>tell</t> <t>Python</t> <t>to</t> <t>verbosely</t> <t>trace</t> <t>the</t> <t>loading</t> <t>process</t>? <t>Exactly</t> <t>what</t> <t>DLL's</t> <t>is</t> <t>it</t> <t>looking</t> <t>for</t>?
+<t>Any</t> <t>ideas</t> <t>as</t> <t>to</t> <t>what's</t> <t>going</t> <t>wrong</t>? <t>Can</t> <t>I</t> <t>tell</t> <t>Python</t> <t>to</t> <t>verbosely</t> <t>trace</t> <t>the</t> <t>loading</t> <t>process</t>? <t>Exactly</t> <t>what</t> <t>DLL's</t> <t>is</t> <t>it</t> <t>looking</t> <t>for</t>?
 
 <t>Thanks</t>,
 <t>Lars</t>
@@ -8322,7 +8322,7 @@ Storing</c> <c>complete</c> <c>log</c> <c>in</c> <c>C:\Users\Joey\pip\pip.log
 "
 19747371|"<t>Python</t> <t>exit</t> <t>commands</t> <t>-</t> <t>why</t> <t>so</t> <t>many</t> <t>and</t> <t>when</t> <t>should</t> <t>each</t> <t>be</t> <t>used</t>?"|"<t>It</t> <t>seems</t> <t>that</t> <t>python</t> <t>supports</t> <t>many</t> <t>different</t> <t>commands</t> <t>to</t> <t>stop</t> <t>script</t> <t>execution</t>.<t>The</t> <t>choices</t> <t>I've</t> <t>found</t> <t>are</t>:  <code><c>quit(</c>)</code>, <code><c>exit(</c>)</code>, <code><c>sys</c><c>.</c><c>exit(</c>)</code>, <code><c>os</c><c>.</c><c>_exit(</c>)</code> 
 
-<t>Have I</t> <t>missed</t> <t>any</t>?
+<t>Have</t> <t>I</t> <t>missed</t> <t>any</t>?
 <t>What's</t> <t>the</t> <t>difference</t> <t>between</t> <t>them</t>? <t>When</t> <t>would</t> <t>you</t> <t>use</t> <t>each</t>?
 "
 20060096|"<t>Installing PIL</t> <t>with</t> <t>pip</t>"|"<t>I</t> <t>am</t> <t>trying</t> <t>to</t> <t>install</t> <t>PIL</t> (<t>the</t> <t>Python Imaging</t> <t>Library</t>) <t>using</t> <t>the</t> <t>command</t>:
@@ -8484,7 +8484,7 @@ unable</c> <c>to</c> <c>execute</c> <c>clang</c>: <c>No</c> <c>such</c> <c>file<
         <c>play</c> <c>=</c> <c>False</c>
 </code>
 "
-20646822|"<t>How</t> <t>to</t> <t>serve</t> <t>static</t> <t>files</t> <t>in</t> <t>Flask</t>"|"<t>So</t> <t>this</t> <t>is</t> <t>embarrassing</t>. <t>I've</t> <t>got</t> <t>an</t> <t>application</t> <t>that</t> <t>I</t> <t>threw</t> <t>together</t> <t>in</t> <code><c>Flask</c></code> <t>and</t> <t>for</t> <t>now</t> <t>it</t> <t>is</t> <t>just</t> <t>serving</t> <t>up</t> <t>a</t> <t>single</t> <t>static</t> <t>HTML</t> <t>page</t> <t>with</t> <t>some</t> <t>links</t> <t>to</t> <t>CSS</t> <t>and</t> <t>JS</t>. <t>And I</t> <t>can't</t> <t>find</t> <t>where</t> <t>in</t> <t>the</t> <t>documentation</t> <code><c>Flask</c></code> <t>describes</t> <t>returning</t> <t>static</t> <t>files</t>. <t>Yes</t>, <t>I</t> <t>could</t> <t>use</t> <code><c>render_template</c></code> <t>but</t> <t>I</t> <t>know</t> <t>the</t> <t>data</t> <t>is</t> <t>not</t> <t>templatized</t>. <t>I'd</t> <t>have</t> <t>thought</t> <code><c>send_file</c></code> <t>or</t> <code><c>url_for</c></code> <t>was</t> <t>the</t> <t>right</t> <t>thing</t>, <t>but</t> <t>I</t> <t>could</t> <t>not</t> <t>get</t> <t>those</t> <t>to</t> <t>work</t>. <t>In</t> <t>the</t> <t>meantime</t>, <t>I</t> <t>am</t> <t>opening</t> <t>the</t> <t>files</t>, <t>reading</t> <t>content</t>, <t>and</t> <t>rigging</t> <t>up</t> <t>a</t> <code><c>Response</c></code> <t>with</t> <t>appropriate</t> <t>mimetype</t>:
+20646822|"<t>How</t> <t>to</t> <t>serve</t> <t>static</t> <t>files</t> <t>in</t> <t>Flask</t>"|"<t>So</t> <t>this</t> <t>is</t> <t>embarrassing</t>. <t>I've</t> <t>got</t> <t>an</t> <t>application</t> <t>that</t> <t>I</t> <t>threw</t> <t>together</t> <t>in</t> <code><c>Flask</c></code> <t>and</t> <t>for</t> <t>now</t> <t>it</t> <t>is</t> <t>just</t> <t>serving</t> <t>up</t> <t>a</t> <t>single</t> <t>static</t> <t>HTML</t> <t>page</t> <t>with</t> <t>some</t> <t>links</t> <t>to</t> <t>CSS</t> <t>and</t> <t>JS</t>. <t>And</t> <t>I</t> <t>can't</t> <t>find</t> <t>where</t> <t>in</t> <t>the</t> <t>documentation</t> <code><c>Flask</c></code> <t>describes</t> <t>returning</t> <t>static</t> <t>files</t>. <t>Yes</t>, <t>I</t> <t>could</t> <t>use</t> <code><c>render_template</c></code> <t>but</t> <t>I</t> <t>know</t> <t>the</t> <t>data</t> <t>is</t> <t>not</t> <t>templatized</t>. <t>I'd</t> <t>have</t> <t>thought</t> <code><c>send_file</c></code> <t>or</t> <code><c>url_for</c></code> <t>was</t> <t>the</t> <t>right</t> <t>thing</t>, <t>but</t> <t>I</t> <t>could</t> <t>not</t> <t>get</t> <t>those</t> <t>to</t> <t>work</t>. <t>In</t> <t>the</t> <t>meantime</t>, <t>I</t> <t>am</t> <t>opening</t> <t>the</t> <t>files</t>, <t>reading</t> <t>content</t>, <t>and</t> <t>rigging</t> <t>up</t> <t>a</t> <code><c>Response</c></code> <t>with</t> <t>appropriate</t> <t>mimetype</t>:
 
 <code><c>import</c> <c>os</c><c>.</c><c>path</c>
 
@@ -8653,7 +8653,7 @@ staller\Ruby1.9.3\bin</c>;<c>C:\Users\Javi\AppData\Roaming\npm
 
 <t>e.g.</t> <t>sudo</t> <t>virtualenv</t> <t>envPython3</t>
 
-<t>If I</t> <t>try</t>:
+<t>If</t> <t>I</t> <t>try</t>:
 
 <code><c>virtualenv</c> <c>-</c><c>p</c> <c>python3</c> <c>test</c>
 </code>
@@ -8678,12 +8678,12 @@ Failed</c> <c>to</c> <c>import</c> <c>the</c> <c>site</c> <c>module</c>
 "
 25865270|"<t>How</t> <t>to</t> <t>install</t> <t>Python MySQLdb</t> <t>module</t> <t>using</t> <t>pip</t>?"|"<t>How</t> <t>can</t> <t>I</t> <t>install</t> <t>the</t> <t>MySQLdb</t> <t>module</t> <t>for</t> <t>Python</t> <t>using</t> <t>pip</t>?
 "
-26053982|"<t>error</t>: <t>Setup</t> <t>script</t> <t>exited</t> <t>with</t> <t>error</t>: <t>command</t> '<t>x86_64-linux-gnu-gcc</t>' <t>failed</t> <t>with</t> <t>exit</t> <t>status</t> <t>1</t>"|"<t>When I</t> <t>try</t> <t>to</t> <t>install</t> <t>odoo-server</t> <t>I</t> <t>got</t> <t>the</t> <t>following</t> <t>error</t> <t>could</t> <t>anyone</t> <t>help</t> <t>me</t> <t>to</t> <t>resolve</t> <t>this</t>?
+26053982|"<t>error</t>: <t>Setup</t> <t>script</t> <t>exited</t> <t>with</t> <t>error</t>: <t>command</t> '<t>x86_64-linux-gnu-gcc</t>' <t>failed</t> <t>with</t> <t>exit</t> <t>status</t> <t>1</t>"|"<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>install</t> <t>odoo-server</t> <t>I</t> <t>got</t> <t>the</t> <t>following</t> <t>error</t> <t>could</t> <t>anyone</t> <t>help</t> <t>me</t> <t>to</t> <t>resolve</t> <t>this</t>?
 
 <code><c>error</c>: <c>Setup</c> <c>script</c> <c>exited</c> <c>with</c> <c>error</c>: <c>command</c> '<c>x86_64-linux-gnu-gcc</c>' <c>failed</c> <c>with</c> <c>exit</c> <c>status</c> <c>1</c>
 </code>
 "
-27341064|"<t>How</t> <t>do</t> <t>I</t> <t>fix</t> '<t>ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?"|"<t>When I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
+27341064|"<t>How</t> <t>do</t> <t>I</t> <t>fix</t> '<t>ImportError</t>: <t>cannot</t> <t>import</t> <t>name</t> <t>IncompleteRead</t>'?"|"<t>When</t> <t>I</t> <t>try</t> <t>to</t> <t>install</t> <t>anything</t> <t>with</t> <code><c>pip</c></code> <t>or</t> <code><c>pip3</c></code>, <t>I</t> <t>get</t>:
 
 <code><c>$</c> <c>sudo</c> <c>pip3</c> <c>install</c> <c>python3-tk</c>
 <c>Traceback</c> (<c>most</c> <c>recent</c> <c>call</c> <c>last</c>):
