@@ -11,16 +11,24 @@ CZ4045 Natural Language Processing Project 1 README
 
   Python 3.6
   BeautifulSoup 4
+  matplotlib
   nltk
-  sklearn
+  numpy
+  scipy
   scikit-learn
+  sklearn
+  sklearn_crfsuite
 
 — Third-party Libraries Commands:
 
   BeautifulSoup 4:  pip install bs4
+  matplotlib        pip install matplotlib   
   nltk:             pip install nltk
-  sklearn:          pip install sklearn
+  numpy:            pip install numpy
+  scipy:            pip install scipy
   scikit-learn:     pip install scikit-learn 
+  sklearn:          pip install sklearn
+  sklearn_crfsuite: pip install sklearn_crfsuite 
   
   OR
   
@@ -48,7 +56,7 @@ CZ4045 Natural Language Processing Project 1 README
   6. Run the following command to compute the top 4 keywords in all question posts data:
         python application.py
 
-- Explainations
+- Explanations of data
 
   all_posts.txt:                  contains data from all question posts
   all_answers.txt:                contains data from all answers posts
@@ -63,3 +71,15 @@ CZ4045 Natural Language Processing Project 1 README
   answers_training_annotated.txt: contains all annotated training data from answers posts
   
   all_posts_top_4_keywords.txt:   contains top 4 keywords of all question posts
+
+— Explanations of sourcecode
+  
+  application.py                  main application
+  data_processing.py              clean all xml tags and output a “clean” version of 
+                                  dataset
+  evaluation.py                   calculate evaluation metrics
+  nltk_controller.py              use nltk package to do stemming, pos-tagging and section
+                                  3.4
+  tokeniser.py                    take a “clean“ version of dataset and tokenise both code
+                                  and text
+  utilities.py
