@@ -1,4 +1,8 @@
-# CZ4045 Natural Language Processing Project 1 README
+# CZ4045 Natural Language Processing Project
+
+## Introduction
+
+We developed an generalized regex-based tokenizer on Stack Overflow posts.
 
 ## Contributors:
   
@@ -23,7 +27,7 @@
   sklearn_crfsuite: pip install sklearn_crfsuite 
 
   OR
-  ```bash
+  ```
   pip install -U -r requirements.txt
   ```
 
