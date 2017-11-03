@@ -1,6 +1,6 @@
 # CZ4045 Natural Language Processing Project
 
-# Introduction
+## Introduction
 
 This serves as partial fulfillment to course CZ4045 : Natural Language Processing in Nanyang Technological University, Singapore.
 
@@ -16,15 +16,15 @@ which greatly improved the accuracy of tokenization, thus enhanced the performan
 
 In the end, our CRF-based tokenizer achieved f1 score of 0.9483 on 5-fold cross validation, and regex-based tokenizer achieved f1-score of 0.9653.
 
-# Contributors:
+## Contributors:
 
   Chen Hailin @Chen-Hailin , Deng Yue @spenceryue97 , Liu Hualin @liuhualin333 , Shi Ziji @stevenshi-23
 
-# Dependencies:
+## Dependencies:
  We have tested our program on python 3.
 
 
-# Third-party Libraries Commands:(use pip3 install if default is python 2.7 pip)
+## Third-party Libraries Commands:(use pip3 install if default is python 2.7 pip)
 
   BeautifulSoup 4:  pip install bs4
   matplotlib        pip install matplotlib   
@@ -36,32 +36,34 @@ In the end, our CRF-based tokenizer achieved f1 score of 0.9483 on 5-fold cross 
   sklearn_crfsuite: pip install sklearn_crfsuite 
 
   OR
-  ```
+  ```bash
   pip install -U -r requirements.txt
   ```
 
-# Dataset Download Link(Please download the data folder and put it under Root)
   
-  [Data folder] (https://drive.google.com/open?id=1Na1gK7uqZkhbiwmi1DWThBBmUhrkzNwH)
+## Dataset Download Link
+- Please download the data folder and put it under Root
+  
+  [Data folder](https://drive.google.com/open?id=1Na1gK7uqZkhbiwmi1DWThBBmUhrkzNwH)
 
-  [Dataset post link] (https://drive.google.com/open?id=190DqYXS8wDPmAB2UM20vHSOKUiRN0fNW)
+  [Dataset post link](https://drive.google.com/open?id=190DqYXS8wDPmAB2UM20vHSOKUiRN0fNW)
 
-  [Dataset answer link] (https://drive.google.com/open?id=1CcssLW8sSC-KE_sAflbXk93d6ZbxpYGj)
+  [Dataset answer link](https://drive.google.com/open?id=1CcssLW8sSC-KE_sAflbXk93d6ZbxpYGj)
 
-  [Annotated post link] (https://drive.google.com/open?id=0B1rcXBqgX69sbGZpUTZobk5hcDQ)
+  [Annotated post link](https://drive.google.com/open?id=0B1rcXBqgX69sbGZpUTZobk5hcDQ)
 
-  [Annotated answer link] (https://drive.google.com/open?id=0B1rcXBqgX69sbTB3SFVaVXItWFE)
+  [Annotated answer link](https://drive.google.com/open?id=0B1rcXBqgX69sbTB3SFVaVXItWFE)
 
 # Installation Guide
 
-  1. Download *python3* and third party libraries according to previous instruction.
+  1. Download *python3* and third party libraries according to previous instruction.
   2. Run the following command open python interpreter:
      ``` python ```
      Then, run the following commands to download nltk resources:
-  ```
+  ```python
         import nltk
         nltk.download('stopwords')
-        nltk.download('averaged_perceptron_tagger')
+        nltk.download('averaged_perceptron_tagger')   
   ```
      Last, press ctrl + Z to exit.
   3. Download datasets and put it into Data/ folder according to link given.
@@ -98,8 +100,8 @@ In the end, our CRF-based tokenizer achieved f1 score of 0.9483 on 5-fold cross 
 
 # Performance Summery
     Results on our annotated corpus:
-
+    
     |                    | precision |   recall | f1-score |
     |--------------------|-----------|----------|----------|
-    |**Regex tokenizer** |    0.9578 |   0.9729 |   0.9653 |
-    |  **CRF tokenizer** |    0.9478 |    0.949 |   0.9483 |
+    |    Regex tokenizer |    0.9578 |   0.9729 |   0.9653 |
+    |      CRF tokenizer |    0.9478 |    0.949 |   0.9483 |
