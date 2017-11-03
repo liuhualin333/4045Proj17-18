@@ -47,11 +47,9 @@ We developed an generalized regex-based tokenizer on Stack Overflow posts.
 
   1. Download *python3* and third party libraries according to previous instruction.
   2. Run the following command open python interpreter:
-  ```
-        python
-  ```
+     ``` python ```
      Then, run the following commands to download nltk resources:
-  ```python
+  ```
         import nltk
         nltk.download('stopwords')
         nltk.download('averaged_perceptron_tagger')
