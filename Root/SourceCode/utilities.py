@@ -245,7 +245,7 @@ def split_train_text(file_text):
 
 def TextFromFile(filepath):
 	text = StringBuilder()
-	rpost_list = split_train_text(open(filepath).read())
+	rpost_list = split_train_text(open(filepath,encoding="utf-8").read())
 	for p in rpost_list:
 		if(p.ptype == 'post'):
 			text.Append(' '.join([tb for tb in p.ptitle]))

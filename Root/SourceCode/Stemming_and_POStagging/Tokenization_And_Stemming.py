@@ -10,7 +10,7 @@ Tested input : /Root/Data/All_Posts.txt
 import re
 from io import StringIO
 import sys
-
+import utilities as ut
 from nltk.stem.snowball import SnowballStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -41,7 +41,10 @@ def mostCommon(tknlst,top):
 def Tokenize(text):
     return word_tokenize(text)
 
-def main(source, stemFlag):
+def main(stemFlag):
+    source1 = open("../Data/all_answers_clean.txt", encoding="utf-8").read()
+    source2 = open("../Data/all_posts_clean.txt", encoding="utf-8").read()
+    source = source1 + " "+source2
     # Escape tokenizing on code section
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
 
