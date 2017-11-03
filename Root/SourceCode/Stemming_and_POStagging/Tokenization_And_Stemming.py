@@ -38,8 +38,8 @@ def mostCommon(tknlst,top):
 def Tokenize(text):
     return word_tokenize(text)
 
-def main(file, stemFlag):
-    source = open(file, encoding="utf-8").read()
+def main(filepath, stemFlag):
+    source = open(filepath).read()
     # Escape tokenizing on code section
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
 
