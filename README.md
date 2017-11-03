@@ -54,7 +54,7 @@ We developed an generalized regex-based tokenizer on Stack Overflow posts.
         nltk.download('stopwords')
         nltk.download('averaged_perceptron_tagger')
   ```
-     Last, press ` ctrl + Z ` to exit.
+     Last, press ctrl + Z to exit.
   3. Download datasets and put it into Data/ folder according to link given.
   4. Navigate to SourceCode/ folder:
   5. Run the following command to tokenize all sentences in dataset:
