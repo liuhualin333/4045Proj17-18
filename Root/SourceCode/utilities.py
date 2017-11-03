@@ -224,20 +224,36 @@ def split_train_text(file_text):
 	#pdb.set_trace()
 	def post2rpost(post):
 		# initialize the post
-		p = rpost(ptype, post.group(1))
-		_text, _label, _types = MixAnno2charsTokens(post.group(2))
-		if(ptype == 'post'):
-			p.addTitle(_text, _label, _types)
-			_text, _label, _types = MixAnno2charsTokens(post.group(3))
-			p.addBody(_text, _label, _types)
-		else:
-			p.addBody(_text, _label, _types)
-		rpost_list.append(p)
+		try:
+			p = rpost(ptype, post.group(1))
+			_text, _label, _types = MixAnno2charsTokens(post.group(2))
+			if(ptype == 'post'):
+				p.addTitle(_text, _label, _types)
+				_text, _label, _types = MixAnno2charsTokens(post.group(3))
+				p.addBody(_text, _label, _types)
+			else:
+				p.addBody(_text, _label, _types)
+			rpost_list.append(p)
+		except Exception as e:
+			pdb.set_trace()
+			pass
 	try:
 		for post in pattern.finditer(file_text):
-			post2rpost(post)
-		last_post = end_pattern.search(file_text, post.end())
-		post2rpost(last_post)
+			if(post):
+				post2rpost(post)
+			else:
+				pdb.set_trace()
+				pass
+		if(post):
+			last_post = end_pattern.search(file_text, post.end())
+		else:
+			pdb.set_trace()
+			pass
+		if(last_post):
+			post2rpost(last_post)
+		else:
+			pdb.set_trace()
+			pass
 	except Exception as e:
 		pdb.set_trace()
 		pass
