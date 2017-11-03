@@ -16,7 +16,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from collections import Counter
 sys.path.insert(0, '..')
-import utilities as ut
 
 
 
@@ -42,11 +41,7 @@ def mostCommon(tknlst,top):
 def Tokenize(text):
     return word_tokenize(text)
 
-def main(file1,file2, stemFlag):
-    source1 = ut.TextFromFile(file1)
-    source2 = ut.TextFromFile(file2)
-    source=source1+source2
-
+def main(source, stemFlag):
     # Escape tokenizing on code section
     code_secs = re.compile("<code>.*?</code>", flags=re.S | re.M).finditer(source)
 
