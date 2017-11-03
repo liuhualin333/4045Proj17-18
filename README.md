@@ -77,16 +77,16 @@ In the end, our CRF-based tokenizer achieved f1 score of 0.9483 on 5-fold cross 
 
 # Explanations of data
   
-  all_posts_clean.txt:            contains all question posts which remove tags        
-  all_answers_clean.txt:          contains all answers posts which remove tags
+  ` all_posts_clean.txt`:            contains all question posts which remove tags        
+  ` all_answers_clean.txt`:          contains all answers posts which remove tags
   
-  posts_training_clean.txt:             contains training data from question posts with tags removed
-  answers_training_clean.txt:           contains training data from answers posts with tags removed
+  ` posts_training_clean.txt`:             contains training data from question posts with tags removed
+  ` answers_training_clean.txt`:           contains training data from answers posts with tags removed
   
-  posts_manual_tokenized.txt:    contains all annotated training data from question posts
-  answers_manual_tokenized.txt: contains all annotated training data from answers posts
+  ` posts_manual_tokenized.txt`:    contains all annotated training data from question posts
+  ` answers_manual_tokenized.txt`: contains all annotated training data from answers posts
   
-  all_posts_top_4_keywords.txt:   contains top 4 keywords of all question posts
+  ` all_posts_top_4_keywords.txt `:   contains top 4 keywords of all question posts
 
 # Explanations of sourcecode
   
